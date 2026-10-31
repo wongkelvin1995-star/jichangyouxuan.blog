@@ -1,0 +1,258 @@
+---
+import Base from '../../layouts/Base.astro';
+import Mascot from '../../components/Mascot.astro';
+import RegisterLink from '../../components/RegisterLink.astro';
+import { airports, DETAIL_SLUGS, getAirport, rankOf, fullName } from '../../data/airports';
+import { SITE, abs } from '../../data/site';
+import { profileOf, plansOf, periodLabel, periodMonths, costPerGb, perMonth, isCustom, fmt, summaryLine, startPlan, bestMonthlyGb } from '../../data/plans';
+import { coupons } from '../../data/coupons';
+import Art from '../../components/Art.astro';
+import { initial } from '../../data/art';
+
+export function getStaticPaths() {
+  return DETAIL_SLUGS.map((slug) => ({ params: { slug } }));
+}
+const { slug } = Astro.params;
+const a = getAirport(slug as string);
+const pr = profileOf(a.slug);
+const ps = plansOf(a.slug);
+const rank = rankOf(a);
+const coupon = coupons[a.slug];
+const isLd = a.slug === 'lingdongyun';
+const official = pr.sourceType === 'official';
+const verified = !!pr.verifiedBy;
+const date = pr.verifiedAt ?? pr.collectedAt;
+
+const start = startPlan(a.slug);
+const best = bestMonthlyGb(a.slug);
+const monthly = ps.filter((p) => p.period === 'monthly' && !isCustom(p)).sort((x, y) => x.priceCny - y.priceCny);
+const custom = ps.filter(isCustom);
+const packs = ps.filter((p) => p.period === 'one-time');
+const longTerm = ps.filter((p) => ['quarterly', 'half-year', 'yearly'].includes(p.period));
+
+// 同一套餐在不同周期的月均价对比
+const names = Array.from(new Set(ps.filter((p) => p.period !== 'one-time').map((p) => p.planName)));
+const cmp = names
+  .map((n) => {
+    const rows = ps.filter((p) => p.planName === n && p.period !== 'one-time');
+    const m = rows.find((r) => r.period === 'monthly');
+    return { n, m, rows };
+  })
+  .filter((x) => x.m && x.rows.length > 1);
+
+// 月付各档边际成本
+const margins = monthly
+  .slice(1)
+  .map((p, i) => {
+    const q = monthly[i];
+    const dg = (p.gbPerMonth ?? 0) - (q.gbPerMonth ?? 0);
+    const dp = p.priceCny - q.priceCny;
+    return dg > 0 ? { from: q.planName, to: p.planName, dp, dg, per: dp / dg } : null;
+  })
+  .filter(Boolean) as { from: string; to: string; dp: number; dg: number; per: number }[];
+
+const packRange = packs.length ? [Math.min(...packs.map(costPerGb)), Math.max(...packs.map(costPerGb))] : null;
+const tag = (p: (typeof ps)[number]) => (p.period === 'one-time' ? '一次性' : periodLabel[p.period]);
+
+const title = `${a.name}机场套餐价格、线路与适合人群｜机场优选 2026`;
+const description = `${a.name}${start ? `最低 ¥${fmt(start.priceCny)}${start.period === 'monthly' ? '/月' : ''}起` : ''}，共 ${ps.length} 档套餐。本页整理${a.name}的价格、每 GB 成本、线路、客户端与适合人群，资料${verified ? `按官网套餐页核对于 ${date}` : `为 ${date} 历史参考`}，实测待更新。`;
+
+const faqs = [
+  { q: `${a.name}多少钱？`, a: start ? `按 ${date} 整理的资料，${a.name}最低的${periodLabel[start.period]}套餐是「${start.planName}」，¥${fmt(start.priceCny)}，${start.gbPerMonth ? `每月 ${start.gbPerMonth}GB` : `${start.trafficGbPerPeriod}GB`}；共 ${ps.length} 档套餐，完整价格见本页套餐表。${verified ? '价格按官网套餐页核对' : '价格为历史参考'}，不含优惠码，以结算页为准。` : '暂无套餐资料。' },
+  { q: `${a.name}有优惠码吗？`, a: coupon ? `${a.name}的优惠码是「${coupon.code}」。${coupon.note ?? ''}价格表里的价格不含优惠码，实际金额请以结算页为准。` : `本站目前没有收到${a.name}的优惠码，所以不编造。` },
+  { q: `${a.name}有本站实测吗？`, a: '目前没有，实测数据待更新中。所以本页不写速度、延迟或稳定性结论；线路、AI 与流媒体信息均来自服务商宣传或整理资料，请以自己的试用为准。' },
+  { q: `${a.name}适合哪些人？`, a: pr.suitableFor.length ? `${pr.suitableFor.join('；')}。` + (pr.notSuitableFor.length ? `不太适合：${pr.notSuitableFor.join('；')}。` : '') : '暂无整理。' },
+];
+const ld = [
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+const near = [airports[(a.id - 2 + airports.length) % airports.length], airports[a.id % airports.length]];
+---
+<Base
+  title={title}
+  description={description}
+  path={`/airports/${slug}/`}
+  crumbs={[{ name: '机场图鉴', path: '/airports/' }, { name: a.name, path: `/airports/${slug}/` }]}
+  jsonLd={ld}
+>
+  <section class="container page-head">
+    <span class="eyebrow">{rank ? `编辑精选 No.${rank}` : `目录第 ${a.id} 家`}</span>
+    <h1>{a.name}机场：套餐价格、线路与适合人群</h1>
+    <p class="lead">{pr.intro}</p>
+    <div class="btn-row">
+      <RegisterLink airport={a} label={`前往${a.name}注册`} class="btn" where="detail-top" />
+      <a class="btn btn-ghost" href="/prices/">到价格页对比每 GB 成本</a>
+    </div>
+  </section>
+
+  <div class="container pp-read">
+    <div class="pp-main">
+    <div class="prose">
+      <div class="summary-box"><b>摘要</b>{a.name}共整理到 {ps.length} 档套餐，{start ? `最低 ¥${fmt(start.priceCny)}${start.period === 'monthly' ? '/月' : ''}（${start.planName}）` : ''}{best && `，月付档里每 GB 成本最低的是「${best.planName}」约 ¥${costPerGb(best).toFixed(2)}`}。资料{verified ? `按${pr.verifiedBy}核对` : official ? '整理时读取过服务商官网' : '按公开资料整理'}，日期 {date}，<strong>{verified ? '本站未在结算页逐条下单核验' : '本站没有在结算页核验'}</strong>，实测数据待更新中。{rank === 1 ? '灵动云是本站第 1 位编辑精选，同时存在推广合作，这不是测速排名。' : rank ? `本品牌是本站第 ${rank} 位编辑精选，与推广合作有关，这不是测速排名。` : ''}</div>
+
+      <h2>基本信息</h2>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th scope="row">全称</th><td>{fullName(a)}{a.aliases.length > 0 && <>（别名：{a.aliases.join('、')}）</>}</td></tr>
+            <tr><th scope="row">价格 / 线路</th><td>{summaryLine(a.slug)}</td></tr>
+            <tr><th scope="row">优惠码</th><td>{coupon ? <><strong>{coupon.code}</strong>　<span class="small muted">{coupon.note}</span></> : <span class="muted">暂无（本站没有收到可核实的优惠码）</span>}</td></tr>
+            <tr><th scope="row">本站实测</th><td>待更新中（目前不发布速度、延迟、稳定性结论）</td></tr>
+            <tr><th scope="row">资料来源</th><td>{verified ? pr.verifiedBy : official ? '整理时读取过官网' : '公开资料整理'}，{date}；{verified ? '价格以结算页为准' : '本站未在结算页核验'}。{pr.officialSite && <> 官网：{pr.officialSite}</>}</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>{a.name}全部套餐与每 GB 成本</h2>
+      {verified ? <p>下表数字按 <strong>{pr.verifiedBy}</strong> 核对，日期 {date}；价格可能随时调整，下单仍以结算页为准。每 GB 成本、月均费用由本站按「付款金额 ÷ 周期总流量」计算，不含任何优惠码。</p> : <p>下表所有数字为 {date} 的<strong>历史参考</strong>，来自站长另一博客的整理，不代表当前在售。每 GB 成本、月均费用由本站按「付款金额 ÷ 周期总流量」计算，不含任何优惠码。</p>}
+      <div class="table-wrap">
+        <table style="min-width:720px">
+          <thead><tr><th>套餐</th><th>周期</th><th>价格</th><th>每月流量</th><th>周期总流量</th><th>每 GB</th><th>月均</th><th>备注</th></tr></thead>
+          <tbody>
+            {ps.map((p) => (
+              <tr>
+                <td>{p.planName}</td>
+                <td>{tag(p)}</td>
+                <td>¥{fmt(p.priceCny)}</td>
+                <td>{p.gbPerMonth ? `${p.gbPerMonth} GB` : '—'}</td>
+                <td>{p.trafficGbPerPeriod} GB</td>
+                <td>¥{costPerGb(p).toFixed(2)}</td>
+                <td>{perMonth(p) ? `¥${perMonth(p)!.toFixed(2)}` : '—'}</td>
+                <td class="small">{p.note || '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>这些价格怎么读</h2>
+      {monthly.length > 0 && (
+        <>
+          <h3>月付：哪一档更划算</h3>
+          <p>{a.name}的常规月付档有 {monthly.length} 个：{monthly.map((p) => `${p.planName}（¥${fmt(p.priceCny)}/${p.gbPerMonth}GB）`).join('、')}。每 GB 成本从 ¥{costPerGb(monthly[0]).toFixed(2)} 到 ¥{costPerGb(monthly[monthly.length - 1]).toFixed(2)}，其中最低的是「{best?.planName}」，约 ¥{best ? costPerGb(best).toFixed(2) : ''}/GB。用不完的流量一般不结转，先估算自己的月用量，再选刚好覆盖的档位。</p>
+          {margins.length > 0 && (
+            <ul>
+              {margins.map((m) => <li>从「{m.from}」升到「{m.to}」：多付 ¥{fmt(m.dp)}，多得 {m.dg}GB，边际成本约 ¥{m.per.toFixed(2)}/GB。</li>)}
+            </ul>
+          )}
+        </>
+      )}
+      {cmp.length > 0 && (
+        <>
+          <h3>同一套餐，不同周期差多少</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>套餐</th><th>周期</th><th>付款金额</th><th>月均</th><th>相对月付</th></tr></thead>
+              <tbody>
+                {cmp.flatMap((c) => c.rows.map((r) => {
+                  const mo = perMonth(r)!;
+                  const d = 1 - mo / c.m!.priceCny;
+                  return <tr><td>{c.n}</td><td>{periodLabel[r.period]}</td><td>¥{fmt(r.priceCny)}</td><td>¥{mo.toFixed(2)}</td><td>{r.period === 'monthly' ? '基准' : d > 0.005 ? `便宜约 ${(d * 100).toFixed(0)}%` : d < -0.005 ? `贵约 ${(-d * 100).toFixed(0)}%` : '持平'}</td></tr>;
+                }))}
+              </tbody>
+            </table>
+          </div>
+          <p>长周期更便宜，但要一次性付出更多，并承担服务变动的风险。想了解取舍，请读<a href="/guides/monthly-vs-yearly-airport-plan/">《月付机场与年付机场怎么选》</a>。</p>
+        </>
+      )}
+      {packs.length > 0 && packRange && (
+        <>
+          <h3>不限时流量包</h3>
+          <p>{packs.map((p) => `${p.planName}（¥${fmt(p.priceCny)}/${p.trafficGbPerPeriod}GB）`).join('、')}。每 GB 成本约 ¥{packRange[0].toFixed(2)}{packRange[1] !== packRange[0] ? `–¥${packRange[1].toFixed(2)}` : ''}{best ? `，约是上面月付最低档（¥${costPerGb(best).toFixed(2)}/GB）的 ${(packRange[0] / costPerGb(best)).toFixed(1)}–${(packRange[1] / costPerGb(best)).toFixed(1)} 倍` : ''}。它们买的是「不按月续费」的灵活，适合偶尔使用的人；购买前请确认有效期和是否可以叠加。</p>
+        </>
+      )}
+      {custom.length > 0 && (
+        <>
+          <h3>定制 / 独享档位</h3>
+          <p>{custom.map((p) => `${p.planName}（¥${fmt(p.priceCny)}/${p.gbPerMonth ? p.gbPerMonth + 'GB/月' : p.trafficGbPerPeriod + 'GB'}${p.note ? '：' + p.note : ''}）`).join('；')}。这类档位的价值在独立带宽或独立 IP，而不是流量，每 GB 成本不能和普通档位直接比较，下单前请向客服确认内容与交付时间。</p>
+        </>
+      )}
+
+      <h2>线路、协议与客户端</h2>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th scope="row">线路类型</th><td>{pr.lineTypes.join('；') || '未说明'}</td></tr>
+            <tr><th scope="row">节点地区</th><td>{pr.regions.join('、') || '资料未列明'}</td></tr>
+            <tr><th scope="row">协议</th><td>{pr.protocols.join('、') || '资料未列明'}</td></tr>
+            <tr><th scope="row">客户端</th><td>{pr.clients.join('；') || '资料未列明'}</td></tr>
+            <tr><th scope="row">AI 服务</th><td>{pr.aiCompat}</td></tr>
+            <tr><th scope="row">流媒体</th><td>{pr.streamingCompat}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>线路名称不等于速度，也不能代替实测，详见<a href="/guides/iepl-iplc-relay-direct-explained/">线路选择文章</a>；AI 与流媒体的可用性随节点变化，请参考<a href="/guides/chatgpt-streaming-airport-checklist/">检查清单文章</a>；客户端怎么选见<a href="/guides/clash-shadowrocket-v2rayn-client-guide/">客户端选择文章</a>。</p>
+
+      <h2>适合谁、不适合谁</h2>
+      <div class="grid-2">
+        <div class="card-soft"><h3>更适合</h3><ul>{pr.suitableFor.length ? pr.suitableFor.map((x) => <li>{x}</li>) : <li>资料未整理</li>}</ul></div>
+        <div class="card-soft"><h3>需要谨慎</h3><ul>{pr.notSuitableFor.length ? pr.notSuitableFor.map((x) => <li>{x}</li>) : <li>资料未整理</li>}</ul></div>
+      </div>
+
+      <h2>购买限制与条款提示</h2>
+      <ul>{pr.limits.map((x) => <li>{x}</li>)}</ul>
+
+      <h2>下单前的核对清单</h2>
+      <ol>
+        <li>结算页的价格、周期和流量是否与本页一致（本页资料日期 {date}{verified ? '' : '，为历史参考'}）；</li>
+        <li>流量如何重置，未用完是否结转，是否有倍率；</li>
+        <li>设备数量与客户端是否符合你的使用习惯；</li>
+        <li>退款与试用条款有没有天数、已用流量的限制；</li>
+        <li>先买月付小额试用，再决定是否长期购买。</li>
+      </ol>
+      <p>更完整的方法见<a href="/selection-guide/">机场选购指南</a>和<a href="/guides/airport-buying-pitfalls-guide/">购买避坑文章</a>。</p>
+      {isLd && <p>灵动云的价格结构有一篇专门的解读：<a href="/guides/lingdongyun-plan-price-structure/">《灵动云套餐价格结构解读》</a>，里面算了每 GB 成本和升档的边际成本。</p>}
+
+      <h2>常见问题</h2>
+      <div class="faq" style="margin-top:12px">
+        {faqs.map((f) => <details open><summary>{f.q}</summary><p>{f.a}</p></details>)}
+      </div>
+
+      <h2>看看相邻的品牌</h2>
+      <p>{near.map((n) => <><a href={`/airports/${n.slug}/`}>{n.name}</a>　</>)}<a href="/airports/">返回 34 家机场目录</a></p>
+    </div>
+
+    <div class="cta-box">
+      <Mascot />
+      <div>
+        <h3>准备试试{a.name}？</h3>
+        <p>点击后会在新窗口打开{a.name}的推广入口，本站可能因此获得佣金，详见<a href="/affiliate-disclosure/">推广关系说明</a>。{coupon && <>优惠码：<strong>{coupon.code}</strong>。</>}</p>
+        <RegisterLink airport={a} label={`前往${a.name}注册`} class="btn btn-sun" where="detail-bottom" />
+      </div>
+    </div>
+    </div>
+
+    <aside class="pp-side" aria-label="品牌速览">
+      <div class="pp-panel">
+        <div class="pp-hero-art"><Art i={a.id - 1} glyph={initial(a.name)} />{rank > 0 && <span class="cat">编辑精选 No.{rank}</span>}</div>
+        <dl class="facts">
+          <dt>品牌</dt><dd>{a.name}</dd>
+          <dt>套餐</dt><dd>{ps.length} 档</dd>
+          <dt>价格</dt><dd>{summaryLine(a.slug).split(' · ')[0]}</dd>
+          <dt>优惠码</dt><dd>{coupon ? coupon.code : '暂无'}</dd>
+          <dt>本站实测</dt><dd>待更新中</dd>
+          <dt>资料日期</dt><dd>{date}</dd>
+        </dl>
+        <RegisterLink airport={a} label={`前往${a.name}注册`} class="btn" where="detail-side" />
+      </div>
+    </aside>
+  </div>
+
+  <div class="container pp-sec" data-strip>
+    <section class="pp-panel" aria-labelledby="near-feat">
+      <div class="pl-head">
+        <h2 id="near-feat"><span class="ico" aria-hidden="true">★</span>更多机场品牌</h2>
+        <div class="pl-arrows"><button type="button" data-dir="-1" aria-label="向左">‹</button><button type="button" data-dir="1" aria-label="向右">›</button></div>
+      </div>
+      <div class="pl-strip">
+        {[...airports.slice(a.id), ...airports.slice(0, a.id - 1)].slice(0, 12).map((n) => (
+          <a class="pl-card" href={`/airports/${n.slug}/`}>
+            <Art i={n.id - 1} />
+            <span class="no">{n.id}</span>
+            <span class="cap"><b>{n.name}</b><small>{summaryLine(n.slug).split(' · ')[0]}</small></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>

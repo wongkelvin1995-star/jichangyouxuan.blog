@@ -1,0 +1,121 @@
+---
+import Base from '../../layouts/Base.astro';
+import Mascot from '../../components/Mascot.astro';
+import RegisterLink from '../../components/RegisterLink.astro';
+import { getCollection, render } from 'astro:content';
+import { abs, fmtDate, SITE } from '../../data/site';
+import { lingdong } from '../../data/airports';
+import Art from '../../components/Art.astro';
+import { initial } from '../../data/art';
+
+export async function getStaticPaths() {
+  const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+  return guides.map((g, i) => ({ params: { slug: g.id }, props: { entry: g, prev: guides[i - 1], next: guides[i + 1], all: guides } }));
+}
+const { entry, prev, next, all } = Astro.props;
+const { Content, headings } = await render(entry);
+const d = entry.data;
+const hanCount = (entry.body ?? '').replace(/[^一-鿿]/g, '').length;
+const minutes = Math.max(3, Math.round(hanCount / 450));
+const toc = headings.filter((h) => h.depth === 2);
+const related = d.related.map((s: string) => all.find((x: any) => x.id === s)).filter(Boolean);
+const path = `/guides/${entry.id}/`;
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': abs(path) },
+  headline: d.title,
+  description: d.description,
+  image: [abs(SITE.ogImage)],
+  datePublished: fmtDate(d.pubDate),
+  dateModified: fmtDate(d.updatedDate),
+  inLanguage: SITE.lang,
+  author: { '@type': 'Organization', name: `${SITE.short}编辑部`, url: abs('/about/') },
+  publisher: { '@id': abs('/#org') },
+};
+---
+<Base
+  title={d.title}
+  description={d.description}
+  path={path}
+  type="article"
+  published={fmtDate(d.pubDate)}
+  modified={fmtDate(d.updatedDate)}
+  crumbs={[{ name: '文章', path: '/guides/' }, { name: d.title, path }]}
+  jsonLd={[article]}
+>
+  <header class="container page-head" style="padding-bottom:26px">
+    <span class="eyebrow">{d.category}</span>
+    <h1>{d.title}</h1>
+    <div class="meta-line">
+      <span class="chip">发布 {fmtDate(d.pubDate)}</span>
+      <span class="chip">更新 {fmtDate(d.updatedDate)}</span>
+      <span class="chip">约 {minutes} 分钟读完</span>
+      <span class="chip chip-sun">核心词：{d.keyword}</span>
+    </div>
+  </header>
+  <div class="container pp-read">
+    <article class="pp-main">
+      <div class="summary-box"><b>摘要</b>{d.summary}</div>
+      <div class="prose">
+        <Content />
+      </div>
+
+      <div class="cta-box">
+        <Mascot />
+        <div>
+          <h3>想直接动手比较？</h3>
+          <p>先用 <a href="/prices/#calculator">每 GB 成本计算器</a>算清楚数字，再到目录里挑几家月付试用。本站首位编辑精选是灵动云（推广合作关系，见<a href="/affiliate-disclosure/">说明</a>）。</p>
+          <div class="btn-row">
+            <RegisterLink airport={lingdong} label="前往灵动云注册" class="btn btn-sun btn-sm" where="article" />
+            <a class="btn btn-ghost btn-sm" href="/airports/lingdongyun/">灵动云详细页</a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="related" style="max-width:none" aria-label="上一篇与下一篇">
+        <ul>
+          {prev && <li><a href={`/guides/${prev.id}/`}>← 上一篇：{prev.data.title}</a></li>}
+          {next && <li><a href={`/guides/${next.id}/`}>下一篇：{next.data.title} →</a></li>}
+        </ul>
+      </nav>
+    </article>
+
+    <aside class="pp-side" aria-label="文章侧栏">
+      {toc.length > 2 && (
+        <nav class="pp-panel toc-card" aria-label="文章目录">
+          <h2>本文目录</h2>
+          <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+        </nav>
+      )}
+      {related.length > 0 && (
+        <section class="pp-panel" aria-label="相关阅读">
+          <h2>相关阅读</h2>
+          <ul class="pl-rank">
+            {related.map((r: any) => (
+              <li><a class="row" href={`/guides/${r.id}/`}><span><b>{r.data.title}</b><small>{r.data.category}</small></span></a></li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </aside>
+  </div>
+
+  <div class="container pp-sec" data-strip>
+    <section class="pp-panel" aria-labelledby="more-feat">
+      <div class="pl-head">
+        <h2 id="more-feat"><span class="ico" aria-hidden="true">★</span>继续阅读</h2>
+        <div class="pl-arrows"><button type="button" data-dir="-1" aria-label="向左">‹</button><button type="button" data-dir="1" aria-label="向右">›</button></div>
+      </div>
+      <div class="pl-strip">
+        {all.filter((x: any) => x.id !== entry.id).map((g: any, i: number) => (
+          <a class="pl-card" href={`/guides/${g.id}/`}>
+            <Art i={i + 2} />
+            <span class="no">{i + 1}</span>
+            <span class="cap"><b>{g.data.title}</b><small>{g.data.category}</small></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>

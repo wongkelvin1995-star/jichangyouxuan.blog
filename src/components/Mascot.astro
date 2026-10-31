@@ -1,0 +1,8 @@
+---
+/** 站长指定的吉祥物图片（由站长提供，版权责任由站长承担；见 README「吉祥物图片」）。 */
+interface Props { class?: string; size?: 'hero' | 'card' | 'face' }
+const { class: cls = 'mascot', size = 'card' } = Astro.props;
+const src = size === 'hero' ? '/img/mascot.webp' : size === 'face' ? '/img/mascot-face.webp' : '/img/mascot-480.webp';
+const px = size === 'hero' ? 900 : size === 'face' ? 160 : 480;
+---
+<img class={`${cls} mascot-img mascot-${size}`} src={src} srcset={size === 'hero' ? '/img/mascot-480.webp 480w, /img/mascot.webp 900w' : undefined} sizes={size === 'hero' ? '(max-width: 640px) 70vw, (max-width: 1100px) 40vw, 420px' : undefined} width={px} height={px} alt="机场优选吉祥物：飞身出拳的小武道家" loading={size === 'hero' ? 'eager' : 'lazy'} fetchpriority={size === 'hero' ? 'high' : 'auto'} decoding="async" />

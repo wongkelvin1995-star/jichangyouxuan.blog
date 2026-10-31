@@ -1,0 +1,219 @@
+---
+import '../styles/global.css';
+import Sprite from '../components/Sprite.astro';
+import MascotFloat from '../components/MascotFloat.astro';
+import PromoBanner from '../components/PromoBanner.astro';
+import { SITE, NAV, abs } from '../data/site';
+import { getCollection } from 'astro:content';
+
+export interface Crumb { name: string; path: string }
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  type?: 'website' | 'article';
+  crumbs?: Crumb[];
+  jsonLd?: object[];
+  noindex?: boolean;
+  published?: string;
+  modified?: string;
+  ogImage?: string;
+}
+const { title, description, path, type = 'website', crumbs = [], jsonLd = [], noindex = false, published, modified, ogImage = SITE.ogImage } = Astro.props;
+const canonical = abs(path);
+const image = abs(ogImage);
+const bingVerify = import.meta.env.PUBLIC_BING_VERIFY;
+
+const allCrumbs: Crumb[] = crumbs.length ? [{ name: '首页', path: '/' }, ...crumbs] : [];
+const graph: object[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': abs('/#org'),
+    name: SITE.name,
+    alternateName: SITE.en,
+    url: abs('/'),
+    logo: abs('/favicon.svg'),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': abs('/#website'),
+    url: abs('/'),
+    name: SITE.name,
+    inLanguage: SITE.lang,
+    publisher: { '@id': abs('/#org') },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: abs('/search/') + '?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+];
+if (allCrumbs.length) {
+  graph.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: allCrumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: abs(c.path) })),
+  });
+}
+graph.push(...jsonLd);
+
+const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+<!doctype html>
+<html lang="zh-CN" class="no-js" data-style={SITE.style}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'} />
+    <meta name="theme-color" content="#1b1838" />
+    {bingVerify && <meta name="msvalidate.01" content={bingVerify} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="机场优选 2026：小武道家吉祥物小武与站点名称" />
+    {type === 'article' && published && <meta property="article:published_time" content={published} />}
+    {type === 'article' && modified && <meta property="article:modified_time" content={modified} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <script is:inline>document.documentElement.className = 'js';</script>
+    {graph.map((g) => <script type="application/ld+json" set:html={JSON.stringify(g)} />)}
+  </head>
+  <body>
+    <a class="skip" href="#main">跳到正文</a>
+    <Sprite />
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="/" aria-label="机场优选 2026 首页">
+          <img class="logo-mark" src="/img/mascot-face.webp" width="160" height="160" alt="" aria-hidden="true" decoding="async" />
+          <span class="logo-text"><b>机场优选</b><i>2026</i></span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单">☰</button>
+        <nav class="nav" id="site-nav" aria-label="主导航">
+          {NAV.map((n) => <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a>)}
+        </nav>
+        <form class="header-search" action="/search/" method="get" role="search">
+          <label class="visually-hidden" for="hs-q">搜索品牌或文章</label>
+          <input id="hs-q" name="q" type="search" placeholder="搜索品牌、文章…" autocomplete="off" />
+          <button type="submit" aria-label="搜索">🔍</button>
+        </form>
+        <div class="header-social">
+          <a class="hs-ico hs-tg" href={SITE.telegram} target="_blank" rel="noopener nofollow" aria-label="加入 Telegram 频道" title="Telegram 频道">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.6 19.6c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.3 1.8 11.8c-1-.3-1-1 .2-1.5L20.4 3.2c.9-.3 1.6.2 1.5 1.1Z"/></svg>
+          </a>
+          {SITE.github && (
+            <a class="hs-ico hs-gh" href={SITE.github} target="_blank" rel="noopener" aria-label="GitHub 仓库" title="GitHub">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.200 1.8 1.200 1 1.800 2.700 1.300 3.300 1 .1-.7.4-1.300.7-1.600-2.600-.3-5.300-1.300-5.300-5.700 0-1.300.5-2.300 1.200-3.100-.1-.3-.5-1.500.1-3.100 0 0 1-.3 3.200 1.200a11 11 0 0 1 5.800 0c2.200-1.500 3.200-1.200 3.200-1.200.6 1.600.2 2.800.1 3.100.8.800 1.200 1.800 1.200 3.100 0 4.400-2.700 5.400-5.300 5.700.4.400.8 1.100.8 2.200v3.200c0 .3.2.7.8.6A11.500 11.500 0 0 0 12 .5Z"/></svg>
+            </a>
+          )}
+        </div>
+      </div>
+    </header>
+
+    {allCrumbs.length > 0 && (
+      <div class="container">
+        <nav class="crumbs" aria-label="面包屑">
+          <ol>
+            {allCrumbs.map((c, i) => (
+              <li>{i === allCrumbs.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.path}>{c.name}</a>}</li>
+            ))}
+          </ol>
+        </nav>
+      </div>
+    )}
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="foot-grid">
+          <div>
+            <a class="logo" href="/" aria-label="机场优选 2026 首页">
+              <img class="logo-mark" src="/img/mascot-face.webp" width="160" height="160" alt="" aria-hidden="true" decoding="async" />
+              <span class="logo-text"><b>机场优选</b><i>2026</i></span>
+            </a>
+            <p class="small" style="margin-top:12px">从预算、流量、周期到客户端，把机场套餐看明白再下单。独立内容站，包含推广链接。</p>
+          </div>
+          <div>
+            <h2>关于本站</h2>
+            <ul>
+              <li><a href="/about/">关于机场优选</a></li>
+              <li><a href="/methodology/">编辑与比较方法</a></li>
+              <li><a href="/affiliate-disclosure/">推广关系说明</a></li>
+              <li><a href="/privacy/">隐私政策</a></li>
+              <li><a href="/faq/">常见问题</a></li>
+              <li><a href="/updates/">更新记录</a></li>
+              <li><a href="/sitemap/">网站地图</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>文章目录</h2>
+            <ul>
+              {guides.map((g) => <li><a href={`/guides/${g.id}/`}>{g.data.title.split('：')[0].split('？')[0]}</a></li>)}
+              <li><a href="/guides/">全部文章 →</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>工具与目录</h2>
+            <ul>
+              <li><a href="/airports/">34 家机场图鉴</a></li>
+              <li><a href="/rankings/">价格排行榜</a></li>
+              <li><a href="/coupons/">优惠码总表</a></li>
+              <li><a href="/airports/lingdongyun/">灵动云详细页</a></li>
+              <li><a href="/prices/">套餐价格比较</a></li>
+              <li><a href="/budget-guide/">按预算选机场</a></li>
+              <li><a href="/selection-guide/">机场选购指南</a></li>
+              <li><a href="/search/">站内搜索</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="foot-note">
+          © {SITE.year} {SITE.name}（{SITE.en}）· 本站不是任何机场品牌的官方网站，部分按钮为推广链接，详见<a href="/affiliate-disclosure/">推广关系说明</a>。请在遵守所在地法律法规的前提下使用相关服务。
+        </p>
+      </div>
+    </footer>
+    <script is:inline>
+      (function () {
+        var b = document.querySelector('.nav-toggle'), n = document.getElementById('site-nav');
+        if (!b || !n) return;
+        b.addEventListener('click', function () {
+          var o = n.classList.toggle('open');
+          b.setAttribute('aria-expanded', o ? 'true' : 'false');
+          b.setAttribute('aria-label', o ? '关闭菜单' : '打开菜单');
+          b.textContent = o ? '✕' : '☰';
+        });
+      })();
+    </script>
+    <MascotFloat />
+    <PromoBanner />
+    <script src="/js/orbit.js" defer></script>
+    <script is:inline>
+      (function () {
+        [].slice.call(document.querySelectorAll('[data-strip]')).forEach(function (box) {
+          var st = box.querySelector('.pl-strip'), pv = box.querySelector('[data-dir="-1"]'), nx = box.querySelector('[data-dir="1"]');
+          if (!st) return;
+          var go = function (d) { st.scrollBy({ left: d * st.clientWidth * 0.8, behavior: 'smooth' }); };
+          if (pv) pv.addEventListener('click', function () { go(-1); });
+          if (nx) nx.addEventListener('click', function () { go(1); });
+        });
+      })();
+    </script>
+  </body>
+</html>

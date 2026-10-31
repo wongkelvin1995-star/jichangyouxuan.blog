@@ -1,0 +1,16 @@
+{
+  "name": "jichangyouxuan-blog",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/audit.mjs",
+    "preview": "astro preview",
+    "check": "node scripts/audit.mjs",
+    "indexnow": "node scripts/indexnow.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.14.0"
+  }
+}

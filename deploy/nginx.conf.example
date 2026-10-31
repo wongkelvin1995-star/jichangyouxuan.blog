@@ -1,0 +1,33 @@
+# 自建服务器（Nginx）示例：强制 HTTPS、www → 非 www、/index.html → /，并返回真实 404 状态
+server {
+  listen 80;
+  server_name jichangyouxuan.blog www.jichangyouxuan.blog;
+  return 301 https://jichangyouxuan.blog$request_uri;
+}
+server {
+  listen 443 ssl http2;
+  server_name www.jichangyouxuan.blog;
+  # ssl_certificate ...; ssl_certificate_key ...;
+  return 301 https://jichangyouxuan.blog$request_uri;
+}
+server {
+  listen 443 ssl http2;
+  server_name jichangyouxuan.blog;
+  # ssl_certificate ...; ssl_certificate_key ...;
+  root /var/www/jichangyouxuan.blog/dist;
+  index index.html;
+  charset utf-8;
+
+  # /index.html 与 /xxx/index.html 统一 301 到目录形式
+  rewrite ^(.*)/index\.html$ $1/ permanent;
+
+  location / {
+    try_files $uri $uri/index.html =404;
+  }
+  error_page 404 /404.html;
+  location = /404.html { internal; }
+
+  location /_astro/ { add_header Cache-Control "public, max-age=31536000, immutable"; }
+  gzip on;
+  gzip_types text/plain text/css application/json application/javascript application/xml image/svg+xml;
+}

@@ -1,0 +1,343 @@
+---
+import Base from '../layouts/Base.astro';
+import Mascot from '../components/Mascot.astro';
+import RegisterLink from '../components/RegisterLink.astro';
+import Art from '../components/Art.astro';
+import { getCollection } from 'astro:content';
+import { airports, top5, rankOf } from '../data/airports';
+import { homeFaqs } from '../data/faq';
+import { abs, fmtDate, SITE } from '../data/site';
+import { summaryLine, plansOf, startPlan, bestMonthlyGb, costPerGb, profileOf, fmt } from '../data/plans';
+import { coupons } from '../data/coupons';
+import { paletteOf, initial } from '../data/art';
+import { categories, categoryOf } from '../data/categories';
+import { rankingById } from '../data/rankings';
+import { planStats } from '../data/plans';
+
+const allGuides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+const latest = [...allGuides].sort((a, b) => +b.data.updatedDate - +a.data.updatedDate || b.data.order - a.data.order);
+const posts = latest.slice(0, 6);
+
+// 首屏粒子与速度线：确定性随机，保证每次构建一致
+let seed = 11;
+const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+const particles = Array.from({ length: 26 }, () => ({ x: (rnd() * 100).toFixed(1), s: (3 + rnd() * 6).toFixed(1), d: (7 + rnd() * 8).toFixed(1), dl: (-rnd() * 14).toFixed(1), dx: ((rnd() - 0.5) * 120).toFixed(0) }));
+// 漫画集中线：从角色中心向外的细长楔形
+const wedges = Array.from({ length: 64 }, (_, i) => { const ang = (i / 64) * Math.PI * 2 + rnd() * 0.05; const r0 = 190 + rnd() * 80, r1 = 900 + rnd() * 300; const hw = 0.004 + rnd() * 0.006; const cx = 1130, cy = 300; return { d: `M${(cx + Math.cos(ang - hw) * r0).toFixed(0)} ${(cy + Math.sin(ang - hw) * r0).toFixed(0)}L${(cx + Math.cos(ang) * r1).toFixed(0)} ${(cy + Math.sin(ang) * r1).toFixed(0)}L${(cx + Math.cos(ang + hw) * r0).toFixed(0)} ${(cy + Math.sin(ang + hw) * r0).toFixed(0)}Z`, o: (0.12 + rnd() * 0.3).toFixed(2), w: rnd() > 0.7 }; });
+const burst = Array.from({ length: 28 }, (_, i) => { const a = (i / 28) * Math.PI * 2; const r = i % 2 ? 150 : 230 + rnd() * 30; return `${(260 + Math.cos(a) * r).toFixed(0)},${(260 + Math.sin(a) * r).toFixed(0)}`; }).join(' ');
+const clouds = [[120, 110, 1.1], [420, 70, .8], [700, 130, .7], [1380, 90, .95], [1520, 200, .6]];
+const mesas = [[-40, 420, 260, 170, '#c9733a'], [180, 470, 160, 110, '#e08a4a'], [1180, 400, 300, 190, '#c9733a'], [1440, 450, 220, 140, '#e08a4a'], [900, 480, 180, 90, '#d47f42']];
+const rocks = [[300, 250, 28], [1500, 300, 20], [860, 190, 16]];
+const lines = Array.from({ length: 36 }, (_, i) => { const ang = (i / 36) * Math.PI * 2 + rnd() * 0.08; const len = 520 + rnd() * 420; return { x2: (1180 + Math.cos(ang) * len).toFixed(0), y2: (300 + Math.sin(ang) * len).toFixed(0), w: (0.6 + rnd() * 1.6).toFixed(1), o: (0.15 + rnd() * 0.5).toFixed(2) }; });
+
+// 八个内部类别（武道风命名 + 机场关键词说明）
+const cats = [
+  { href: '/#top5', ic: '🔥', t: '热血推荐', s: '编辑精选 TOP 5 机场' },
+  { href: '/budget-guide/', ic: '🗺️', t: '入门冒险', s: '新手按预算选机场' },
+  { href: '/airports/', ic: '🥋', t: '机场图鉴', s: '34 家品牌详细页' },
+  { href: '/guides/category/lines/', ic: '⚡', t: '线路实战', s: 'IEPL / IPLC / 中转 / 直连' },
+  { href: '/coupons/', ic: '🎯', t: '经典招式', s: '34 家优惠码与选购技巧' },
+  { href: '/rankings/', ic: '📊', t: '战力分析', s: '价格排行榜与每 GB 成本' },
+  { href: '/guides/', ic: '📜', t: '篇章解析', s: `${allGuides.length} 篇原创文章` },
+  { href: '/updates/', ic: '🕰️', t: '更新记录', s: '资料与页面更新日志' },
+];
+
+const featured = top5[0];
+const rest4 = top5.slice(1);
+const ldStart = startPlan(featured.slug);
+const ldBest = bestMonthlyGb(featured.slug);
+const ldProfile = profileOf(featured.slug);
+
+const scenes = [
+  { icon: '🪙', title: '预算有限', sub: '如何选择入门套餐', text: '先月付小套餐试用，再决定是否升级。看懂「付款金额」和「每月流量」两个数。', href: '/budget-guide/', bg: 'linear-gradient(150deg,#b3341e,#ff6a1a 70%,#ffb21a)' },
+  { icon: '📊', title: '日常使用', sub: '如何判断每月流量', text: '用流量估算器把网页、视频、下载折算成每月 GB，再留出余量。', href: '/budget-guide/#traffic-estimator', bg: 'linear-gradient(150deg,#1b1838,#2e2461 60%,#5a3ea0)' },
+  { icon: '📱', title: '多设备用户', sub: '如何比较兼容性与设备限制', text: '手机、电脑、平板分别用什么客户端？订阅格式和同时在线设备数怎么核对。', href: '/guides/clash-shadowrocket-v2rayn-client-guide/', bg: 'linear-gradient(150deg,#163a8a,#2d7ff9 70%,#8ec2ff)' },
+  { icon: '🤖', title: 'AI 与流媒体需求', sub: '如何确认实际支持条件', text: '没有任何服务能永久保证解锁。下单前该问什么、怎么用月付验证。', href: '/guides/chatgpt-streaming-airport-checklist/', bg: 'linear-gradient(150deg,#0e7a6c,#1aa98f 70%,#8fe3c8)' },
+];
+
+// 战力比较：TOP 5 的入门月付价与月付最低每 GB（真实数据，历史参考）
+const power = top5.map((a) => {
+  const s = startPlan(a.slug);
+  const b = bestMonthlyGb(a.slug);
+  return { a, entry: s?.period === 'monthly' ? s.priceCny : null, entryPlan: s, gb: b ? costPerGb(b) : null, gbPlan: b, n: plansOf(a.slug).length };
+});
+const maxEntry = Math.max(...power.map((p) => p.entry ?? 0));
+const maxGb = Math.max(...power.map((p) => p.gb ?? 0));
+const rk = rankingById('entry-yearly');
+
+const hotTags = [['灵动云', '灵动云'], ['预算', '预算'], ['月付', '月付'], ['年付', '年付'], ['每GB成本', '每 GB'], ['IEPL', 'IEPL'], ['IPLC', 'IPLC'], ['Clash', 'Clash'], ['小火箭', '小火箭'], ['ChatGPT', 'ChatGPT'], ['流量包', '流量包'], ['避坑', '避坑'], ['优惠码', '优惠码']];
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: '机场优选 2026 编辑精选 TOP 5（展示顺序，非测速排名）',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: top5.length,
+  itemListElement: top5.map((a, i) => ({ '@type': 'ListItem', position: i + 1, name: a.name, url: abs(`/airports/${a.slug}/`) })),
+};
+---
+<Base
+  title="机场优选 2026｜机场推荐、梯子优选与套餐价格比较指南"
+  description="机场优选 2026 提供机场推荐、梯子优选、套餐价格和流量比较指南，帮助你根据预算、线路、客户端与使用需求选择适合的机场方案。"
+  path="/"
+  jsonLd={[itemList]}
+>
+  <!-- A. 武道家动态首屏（白天荒野战场） -->
+  <section class="bd-hero">
+    <svg class="bd-scene-art" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="bd-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f7fe6" /><stop offset=".55" stop-color="#5fb8ff" /><stop offset="1" stop-color="#c8ecff" /></linearGradient>
+        <linearGradient id="bd-ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb259" /><stop offset="1" stop-color="#e07a2c" /></linearGradient>
+      </defs>
+      <rect width="1600" height="600" fill="url(#bd-sky)" />
+      <circle cx="300" cy="120" r="70" fill="#fff6c4" opacity=".9" /><circle cx="300" cy="120" r="110" fill="#fff6c4" opacity=".25" />
+      {clouds.map(([x, y, k]) => (
+        <g transform={`translate(${x} ${y}) scale(${k})`} fill="#fff" stroke="#14214a" stroke-width="5" stroke-linejoin="round">
+          <path d="M0 60c-30 0-40-30-14-42 2-26 42-34 56-12 18-14 50-4 48 20 26 2 30 34 0 34z" />
+        </g>
+      ))}
+      <g fill="#8fd0ff" opacity=".6"><path d="M0 470c200-60 420-70 640-30s460 20 960-60v220H0z" /></g>
+      {mesas.map(([x, y, w, h, c]) => (
+        <g>
+          <path d={`M${x} ${y + h}L${x + w * 0.1} ${y + h * 0.25}Q${x + w * 0.16} ${y} ${x + w * 0.3} ${y}L${x + w * 0.7} ${y}Q${x + w * 0.84} ${y} ${x + w * 0.9} ${y + h * 0.25}L${x + w} ${y + h}Z`} fill={c} stroke="#14214a" stroke-width="5" stroke-linejoin="round" />
+          <path d={`M${x + w * 0.14} ${y + h * 0.3}H${x + w * 0.86}M${x + w * 0.1} ${y + h * 0.55}H${x + w * 0.9}`} stroke="#14214a" stroke-width="3" opacity=".35" />
+        </g>
+      ))}
+      {rocks.map(([x, y, r]) => <path d={`M${x - r} ${y}l${r * 0.4} ${-r * 0.8}h${r * 1.2}l${r * 0.4} ${r * 0.8}l${-r * 0.5} ${r * 0.9}h${-r}z`} fill="#e08a4a" stroke="#14214a" stroke-width="4" stroke-linejoin="round" />)}
+      <rect x="0" y="548" width="1600" height="60" fill="url(#bd-ground)" />
+      <path d="M0 548h1600" stroke="#14214a" stroke-width="5" />
+      <g stroke="#b85c1a" stroke-width="3" opacity=".6"><path d="M80 570h120M300 585h80M620 568h160M1000 586h120M1300 570h140" /></g>
+    </svg>
+    <svg class="bd-lines" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      {wedges.map((w) => <path d={w.d} fill={w.w ? '#fff' : '#14214a'} opacity={w.o} />)}
+    </svg>
+    <div class="bd-particles" aria-hidden="true">
+      {particles.map((p) => <span style={`--x:${p.x}%;--s:${p.s}px;--d:${p.d}s;--dl:${p.dl}s;--dx:${p.dx}px`}></span>)}
+    </div>
+    <div class="container bd-hero-inner">
+      <div>
+        <span class="eyebrow">2026 · 独立选购博客 · 实测待更新</span>
+        <h1><span class="bd-title" data-text="机场优选 2026：从预算到套餐，"><span>机场优选 2026：从预算到套餐，</span></span><br /><em class="bd-title is-gold" data-text="找到适合你的机场"><span>找到适合你的机场</span></em></h1>
+        <p class="hero-intro">「机场优选 2026」专注于机场推荐、梯子选择和套餐比较，帮助读者理解不同价格、流量周期、线路类型及客户端需求之间的差异。从入门套餐到多设备使用，我们用清晰的比较方法和实用指南，把选机场这件事讲明白。</p>
+        <form class="search-form" action="/search/" method="get" role="search">
+          <label class="visually-hidden" for="hero-q">搜索品牌或文章</label>
+          <input id="hero-q" type="search" name="q" placeholder="搜索品牌或文章，例如：灵动云、年付、IEPL" autocomplete="off" />
+          <button class="btn btn-sm" type="submit">搜索</button>
+        </form>
+        <div class="btn-row">
+          <a class="btn btn-fire" href="#top5">查看热血推荐 →</a>
+          <a class="btn btn-ghost" href="/rankings/">价格排行榜</a>
+        </div>
+        <div class="trust" aria-label="本站原则">
+          <span class="chip chip-sun">编辑精选 · 非测速排名</span>
+          <span class="chip">价格为 {SITE.referenceDate} 历史参考</span>
+          <span class="chip">推广关系公开</span>
+        </div>
+      </div>
+      <div class="bd-fighter">
+        <div class="bubble">我是小武！机场优选灵动云，本站第一推荐！</div>
+        <svg class="bd-burst" viewBox="0 0 520 520" aria-hidden="true" focusable="false">
+          <g class="spin"><polygon points={burst} fill="#ffc400" stroke="#14214a" stroke-width="6" stroke-linejoin="round" /><polygon points={burst} fill="#fff6c4" transform="translate(260 260) scale(.72) translate(-260 -260)" opacity=".9" /></g>
+        </svg>
+        <svg class="bd-wave" viewBox="0 0 600 54" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="bd-beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd34d" stop-opacity="0" /><stop offset=".5" stop-color="#fff" /><stop offset="1" stop-color="#ff6a1a" stop-opacity="0" /></linearGradient></defs>
+          <g class="beam"><ellipse cx="300" cy="27" rx="290" ry="9" fill="url(#bd-beam)" opacity=".9" /><ellipse cx="300" cy="27" rx="200" ry="3.5" fill="#fff" /></g>
+        </svg>
+        <Mascot size="hero" />
+      </div>
+    </div>
+  </section>
+
+  <!-- A2. 分类导航（八个内部类别） -->
+  <div class="container">
+    <nav class="bd-cats" aria-label="内容分类">
+      {cats.map((c) => (
+        <a class="bd-cat" href={c.href}><span class="ic" aria-hidden="true">{c.ic}</span><span><b>{c.t}</b><small>{c.s}</small></span></a>
+      ))}
+    </nav>
+  </div>
+
+  <!-- B. 热血推荐（编辑精选 TOP 5） -->
+  <section class="section" id="top5" style="padding-top:44px">
+    <div class="container">
+      <div class="bd-sec-head">
+        <div><span class="eyebrow">热血推荐</span><h2>编辑精选 TOP 5 机场</h2></div>
+        <a class="more" href="/airports/">全部 34 家 ›</a>
+        <p>这是编辑精选展示顺序，<strong>不是测速排行榜</strong>，也不会因为价格排序或筛选而改变。本站与下列品牌存在推广合作关系，详见<a href="/affiliate-disclosure/">推广关系说明</a>；下面的数字全部来自 {SITE.referenceDate} 的套餐资料，不含优惠码。</p>
+      </div>
+
+      <article class="bd-champ" aria-labelledby="top1-title">
+        <div>
+          <span class="crown">👑 编辑精选 No.1</span>
+          <h3 id="top1-title">{featured.name}<small>本站第 1 位推荐</small></h3>
+          <p>灵动云是本站现阶段的第一位编辑推荐。本站尚未公布独立实测数据，所以这里不写速度、延迟或稳定性的结论；下面的面板只放可以复算的套餐数字，建议先看详细页里的套餐表和「下单前的核对清单」，再用月付小额试用。</p>
+          <div class="bd-stats" aria-label="灵动云套餐数据（历史参考）">
+            <div class="bd-stat"><small>入门月付</small><b>{ldStart ? `¥${fmt(ldStart.priceCny)}/月` : '—'}</b></div>
+            <div class="bd-stat"><small>月付最低每 GB</small><b>{ldBest ? `¥${costPerGb(ldBest).toFixed(2)}` : '—'}</b></div>
+            <div class="bd-stat"><small>套餐档位</small><b>{plansOf(featured.slug).length} 档</b></div>
+            <div class="bd-stat"><small>线路类型</small><b style="font-size:15px">{ldProfile.lineTypes.join(' / ') || '未说明'}</b></div>
+            <div class="bd-stat"><small>优惠码</small><b>{coupons[featured.slug]?.code ?? '暂无'}</b></div>
+            <div class="bd-stat"><small>本站实测</small><b style="font-size:15px">待更新中</b></div>
+          </div>
+          <div class="btn-row">
+            <RegisterLink airport={featured} label="前往灵动云注册" class="btn btn-fire" where="home-top1" />
+            <a class="btn btn-ghost" href="/airports/lingdongyun/">灵动云详细页</a>
+          </div>
+        </div>
+        <div class="side" aria-hidden="true">
+          <span class="rank-big">1</span>
+          <Mascot />
+        </div>
+      </article>
+
+      <div class="bd-fcards">
+        {rest4.map((a) => (
+          <article class="bd-fcard">
+            <span class="no">No.{rankOf(a)}</span>
+            <span class="th" style={`background:${paletteOf(a.id - 1)}`} aria-hidden="true">{initial(a.name)}</span>
+            <h3>{a.name}{a.en && <span class="small muted" style="font-weight:700;margin-left:6px">{a.en}</span>}</h3>
+            <p class="meta">{summaryLine(a.slug)}{coupons[a.slug] && <> · 优惠码 <strong>{coupons[a.slug].code}</strong></>}</p>
+            <a class="btn btn-ghost btn-sm" href={`/airports/${a.slug}/`}>查看详细页</a>
+            <RegisterLink airport={a} label={`前往 ${a.name} 注册`} class="btn btn-sm" where="home-top5" />
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- C. 机场图鉴（34 家品牌海报墙预览） -->
+  <section class="section section-alt" id="atlas" style="padding-block:44px">
+    <div class="container">
+      <div class="bd-sec-head">
+        <div><span class="eyebrow">机场图鉴</span><h2>34 家机场品牌图鉴</h2></div>
+        <a class="more" href="/airports/">打开完整图鉴 ›</a>
+        <p>每家品牌一张「角色卡」：首字封面、价格与线路一句话、套餐档位数和优惠码。收录不等于推荐，点进详细页能看到全部套餐、每 GB 成本和适合人群。</p>
+      </div>
+      <div class="pp-wall" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px">
+        {airports.slice(0, 12).map((a) => {
+          const r = rankOf(a);
+          return (
+            <article class={`pp-poster${r ? ' is-top' : ''}`}>
+              <a class="pp-cover" href={`/airports/${a.slug}/`} aria-label={`${a.name}详细页`}>
+                <Art i={a.id - 1} glyph={initial(a.name)} />
+                <span class="no">{a.id}</span>
+                {r > 0 && <span class="tag">精选 No.{r}</span>}
+                <span class="cap"><b style="font-size:16px">{a.name}</b><small>{summaryLine(a.slug).split(' · ')[0]}{coupons[a.slug] ? ` · 码 ${coupons[a.slug].code}` : ''}</small></span>
+              </a>
+            </article>
+          );
+        })}
+      </div>
+      <div class="btn-row" style="margin-top:20px"><a class="btn" href="/airports/">查看全部 34 家图鉴</a><a class="btn btn-ghost" href="/coupons/">优惠码总表</a></div>
+    </div>
+  </section>
+
+  <!-- D. 实战名场面（按需求选） -->
+  <section class="section" id="by-need">
+    <div class="container">
+      <div class="bd-sec-head">
+        <div><span class="eyebrow">实战场景</span><h2>按需求选择机场</h2></div>
+        <p>先想清楚「我为什么要买」，比比较价格更重要。四个场景分别对应一类常见需求，点进去都是有实际内容的页面。</p>
+      </div>
+      <div class="bd-scenes">
+        {scenes.map((n) => (
+          <a class="bd-scene" href={n.href} style={`background:${n.bg}`}>
+            <span class="ic" aria-hidden="true">{n.icon}</span>
+            <h3>{n.title}</h3>
+            <p class="sub">{n.sub}</p>
+            <p>{n.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- E. 战力比较（价格） -->
+  <section class="section section-alt" id="price-compare" style="padding-block:44px">
+    <div class="container">
+      <div class="bd-sec-head">
+        <div><span class="eyebrow">战力比较</span><h2>TOP 5 套餐价格战力面板</h2></div>
+        <a class="more" href="/prices/">{planStats.total} 档套餐全表 ›</a>
+        <p>「战力」只是比喻，条形图里的数字都是可以复算的：入门月付价取每家最低的常规月付档，每 GB 成本 = 月价 ÷ 每月流量。条越短越便宜。全部为 {SITE.referenceDate} 历史参考，不含优惠码，不代表速度。</p>
+      </div>
+      <div class="bd-power">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>品牌</th><th>入门月付价（越低越好）</th><th>月付最低每 GB（越低越好）</th><th>档位</th></tr></thead>
+            <tbody>
+              {power.map((p, i) => (
+                <tr>
+                  <td class="name"><a href={`/airports/${p.a.slug}/`}>No.{i + 1} {p.a.name}</a><small>{p.gbPlan ? `最低每 GB 档：${p.gbPlan.planName}` : ''}</small></td>
+                  <td><span class="bd-bar"><i style={`--w:${p.entry ? ((p.entry / maxEntry) * 100).toFixed(0) : 0}%`}></i><b>{p.entry ? `¥${fmt(p.entry)}/月` : '—'}</b></span></td>
+                  <td><span class="bd-bar blue"><i style={`--w:${p.gb ? ((p.gb / maxGb) * 100).toFixed(0) : 0}%`}></i><b>{p.gb ? `¥${p.gb.toFixed(2)}` : '—'}</b></span></td>
+                  <td>{p.n} 档</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="note">全站 34 家按同样规则排序的榜单见<a href="/rankings/">价格排行榜</a>（当前「年付入门价最低」第一名：{rk.rows[0]?.airport.name} ¥{rk.rows[0]?.value}/年）。想自己算，用<a href="/prices/#calculator">每 GB 成本计算器</a>。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- F. 篇章解析（原创文章） -->
+  <section class="section" id="guides">
+    <div class="container">
+      <div class="bd-sec-head">
+        <div><span class="eyebrow">篇章解析</span><h2>原创文章与选购解读</h2></div>
+        <a class="more" href="/guides/">全部 {allGuides.length} 篇 ›</a>
+        <p>每一篇都是可以直接读完的完整正文，注明发布与更新日期；数字示例若为假设会明确标出。</p>
+      </div>
+      <div class="bd-posts">
+        <div class="pp-cards" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">
+          {posts.map((g, i) => (
+            <a class="pp-acard" href={`/guides/${g.id}/`}>
+              <span class="pl-thumb"><Art i={i + 1} /><span class="cat">{g.data.category}</span></span>
+              <span class="txt">
+                <h3>{g.data.title}</h3>
+                <p>{g.data.summary}</p>
+                <span class="meta">{fmtDate(g.data.updatedDate)} 更新</span>
+              </span>
+            </a>
+          ))}
+        </div>
+        <aside class="pl-side" aria-label="侧栏">
+          <section class="pl-box" aria-labelledby="pl-cats">
+            <div class="pl-head"><h2 id="pl-cats"><span class="ico" aria-hidden="true">▤</span>分类专区</h2></div>
+            <ol class="pl-rank">
+              {categories.map((c) => {
+                const n = allGuides.filter((g) => g.data.category === c.name).length;
+                return n > 0 ? (
+                  <li><span class="n">{n}</span><a class="row" href={`/guides/category/${c.slug}/`}><span style="min-width:0"><b>{c.name}</b><small>{c.flavor} · {n} 篇</small></span></a></li>
+                ) : null;
+              })}
+            </ol>
+          </section>
+          <section class="pl-box" aria-labelledby="pl-tag">
+            <div class="pl-head"><h2 id="pl-tag"><span class="ico" aria-hidden="true">#</span>热门标签</h2><a class="more" href="/search/">搜索 ›</a></div>
+            <div class="pl-tags">{hotTags.map(([q, label]) => <a href={`/search/?q=${encodeURIComponent(q)}`}># {label}</a>)}</div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- G. FAQ -->
+  <section class="section section-alt" id="faq" style="padding-block:44px">
+    <div class="container">
+      <div class="bd-sec-head">
+        <div><span class="eyebrow">FAQ</span><h2>常见问题</h2></div>
+        <a class="more" href="/faq/">更多问题 ›</a>
+      </div>
+      <div class="faq">
+        {homeFaqs.map((f) => (
+          <details open>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

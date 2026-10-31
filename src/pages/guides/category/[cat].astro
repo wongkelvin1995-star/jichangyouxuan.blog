@@ -1,0 +1,51 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Art from '../../../components/Art.astro';
+import { getCollection } from 'astro:content';
+import { categories } from '../../../data/categories';
+import { abs, fmtDate } from '../../../data/site';
+
+export async function getStaticPaths() {
+  const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+  return categories
+    .filter((c) => guides.some((g) => g.data.category === c.name))
+    .map((c) => ({ params: { cat: c.slug }, props: { c, list: guides.filter((g) => g.data.category === c.name), all: guides } }));
+}
+const { c, list, all } = Astro.props;
+const path = `/guides/category/${c.slug}/`;
+const others = categories.filter((x) => x.slug !== c.slug && all.some((g: any) => g.data.category === x.name));
+const ld = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${c.name}文章专区`, url: abs(path),
+  mainEntity: { '@type': 'ItemList', itemListElement: list.map((g: any, i: number) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/guides/${g.id}/`), name: g.data.title })) },
+};
+---
+<Base
+  title={`${c.name}文章专区：${list.length} 篇机场选购解读｜机场优选 2026`}
+  description={`机场优选 2026「${c.name}」分类专区：${c.desc}`}
+  path={path}
+  crumbs={[{ name: '文章', path: '/guides/' }, { name: c.name, path }]}
+  jsonLd={[ld]}
+  noindex={list.length < 2}
+>
+  <section class="container page-head">
+    <span class="eyebrow">{c.flavor} · 分类专区</span>
+    <h1>{c.name}：{list.length} 篇文章</h1>
+    <p class="lead">{c.desc}</p>
+    <div class="chips">{others.map((o) => <a class="chip" href={`/guides/category/${o.slug}/`}>{o.name}</a>)}<a class="chip chip-sun" href="/guides/">全部文章</a></div>
+  </section>
+  <section class="container" style="padding-bottom:30px">
+    <div class="pp-cards">
+      {list.map((g: any, i: number) => (
+        <a class="pp-acard" href={`/guides/${g.id}/`}>
+          <span class="pl-thumb"><Art i={all.indexOf(g)} /><span class="cat">{g.data.category}</span></span>
+          <span class="txt">
+            <h3>{g.data.title}</h3>
+            <p>{g.data.summary}</p>
+            <span class="meta">发布 {fmtDate(g.data.pubDate)} · 更新 {fmtDate(g.data.updatedDate)}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+    <p class="small muted" style="margin-top:18px">文章数量少于一页时不分页；新增文章会按发布日期加入本专区。{list.length < 2 && ' 本专区目前只有 1 篇文章，暂不参与搜索引擎收录，满 2 篇后自动开放。'}</p>
+  </section>
+</Base>

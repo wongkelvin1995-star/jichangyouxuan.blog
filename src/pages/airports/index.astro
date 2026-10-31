@@ -1,0 +1,159 @@
+---
+import Base from '../../layouts/Base.astro';
+import RegisterLink from '../../components/RegisterLink.astro';
+import { airports, rankOf, fullName, DETAIL_SLUGS } from '../../data/airports';
+import { summaryLine, plansOf, profileOf } from '../../data/plans';
+import { coupons } from '../../data/coupons';
+import { abs } from '../../data/site';
+import Art from '../../components/Art.astro';
+import { initial } from '../../data/art';
+import { top5 } from '../../data/airports';
+
+const notes: Record<string, string> = {
+  flyv: '飞V（FlyV）与「飞为（Firefly）」是两家不同的品牌，本站分别收录，请注意区分。',
+  firefly: '飞为（Firefly）与「飞V（FlyV）」是两家不同的品牌，本站分别收录，请注意区分。',
+  dalaoyun: '本站收录的是「大佬云」，与名称相近的「大哥云」不是同一个品牌。',
+};
+
+const list = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: '34 家机场优选目录',
+  url: abs('/airports/'),
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: airports.length,
+    itemListElement: airports.map((a) => ({ '@type': 'ListItem', position: a.id, name: fullName(a) })),
+  },
+};
+---
+<Base
+  title="机场图鉴｜34 家机场品牌目录、套餐价格与注册入口｜机场优选 2026"
+  description="机场优选 2026 收录 34 家机场品牌，每家都有独立详细页：套餐价格、每 GB 成本、线路与客户端、适合人群。按编辑精选顺序排列，实测待更新，不虚构评分。"
+  path="/airports/"
+  crumbs={[{ name: '机场图鉴', path: '/airports/' }]}
+  jsonLd={[list]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">机场图鉴 · 品牌资料库</span>
+    <h1>34 家机场图鉴：品牌目录与注册入口</h1>
+    <p class="lead">这里收录了 34 家机场品牌。前 5 位是编辑精选展示顺序（灵动云固定第一），其余按收录顺序排列。每个品牌都有自己的详细页，写明套餐价格、线路、客户端和适合人群；这些资料是 2026-10-20 的历史参考，本站实测数据待更新中，不会用评分或星级制造完整感。</p>
+    <div class="callout callout-note">
+      <b class="t">先读这三点</b>
+      <ul>
+        <li>目录顺序是编辑精选顺序，<strong>不是测速排名</strong>；你可以改变下方显示顺序，但不会改变首页精选。</li>
+        <li>注册按钮是各品牌自己的推广入口，属于<a href="/affiliate-disclosure/">推广链接</a>；本站不是任何品牌的官方网站，也未逐一验证这些链接此刻是否可访问。</li>
+        <li>想知道价格怎么比，请看<a href="/prices/">价格比较</a>和<a href="/methodology/">比较方法</a>。</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="container pp-sec" data-strip>
+    <section class="pp-panel" aria-labelledby="dir-feat">
+      <div class="pl-head">
+        <h2 id="dir-feat"><span class="ico" aria-hidden="true">★</span>编辑精选 TOP 5 轮播</h2>
+        <div class="pl-arrows"><button type="button" data-dir="-1" aria-label="向左">‹</button><button type="button" data-dir="1" aria-label="向右">›</button></div>
+      </div>
+      <div class="pl-strip">
+        {top5.map((a, i) => (
+          <a class={`pl-card is-${i + 1}`} href={`/airports/${a.slug}/`}>
+            <Art i={i} />
+            <span class="no">{i + 1}</span>
+            <span class="cap"><b>{a.name}</b><small>{summaryLine(a.slug).split(' · ')[0]}{coupons[a.slug] ? ' · 优惠码 ' + coupons[a.slug].code : ''}</small></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <section class="container" style="padding-bottom:24px">
+    <div class="tools">
+      <label class="visually-hidden" for="dir-q">按名称搜索品牌</label>
+      <input id="dir-q" type="search" placeholder="按名称搜索，如：灵动云、飞V、飞为" autocomplete="off" />
+      <div class="chips" role="group" aria-label="筛选">
+        <button class="chip chip-btn is-active" type="button" data-f="all">全部 34</button>
+        <button class="chip chip-btn" type="button" data-f="top">编辑精选 TOP 5</button>
+        <button class="chip chip-btn" type="button" data-f="rest">其余 29 家</button>
+      </div>
+      <label class="visually-hidden" for="dir-sort">显示顺序</label>
+      <select id="dir-sort" class="chip chip-btn" style="padding-inline:12px">
+        <option value="edit">显示顺序：编辑顺序</option>
+        <option value="py">显示顺序：名称拼音</option>
+      </select>
+      <span class="count-note" id="dir-count" aria-live="polite"></span>
+    </div>
+    <p class="small muted">暂不提供「按价格排序」：不同周期、不同流量规则的套餐不能直接排名，请到<a href="/prices/">价格比较页</a>按周期筛选，或打开品牌详细页查看每 GB 成本。</p>
+
+    <div class="pp-wall" id="dir-grid">
+      {airports.map((a) => {
+        const r = rankOf(a);
+        return (
+          <article class={`pp-poster brand-card${r ? ' is-top' : ''}`} id={a.slug} data-name={[a.name, a.en, ...a.aliases].join(' ').toLowerCase()} data-top={r ? '1' : '0'} data-id={a.id} data-zh={a.name}>
+            <a class="pp-cover" href={`/airports/${a.slug}/`} aria-label={`${a.name}详细页`}>
+              <Art i={a.id - 1} glyph={initial(a.name)} />
+              <span class="no">{a.id}</span>
+              {r > 0 && <span class="tag">编辑精选 No.{r}</span>}
+              <span class="cap"><b>{a.name}</b>{a.en && <small>{a.en}</small>}</span>
+            </a>
+            <div class="pp-body">
+              <p class="pp-line">{summaryLine(a.slug)}</p>
+              <div class="chips">
+                <span class="chip">{plansOf(a.slug).length} 档套餐</span>
+                {profileOf(a.slug).verifiedBy ? <span class="chip chip-mint">官网核对 {profileOf(a.slug).verifiedAt ?? profileOf(a.slug).collectedAt}</span> : <span class="chip chip-mint">历史参考</span>}
+                {coupons[a.slug] && <span class="chip chip-sun">有优惠码</span>}
+              </div>
+              <details>
+                <summary>查看收录信息</summary>
+                <dl>
+                  <dt>收录编号</dt><dd>第 {a.id} 家</dd>
+                  {a.aliases.length > 0 && (<><dt>别名</dt><dd>{a.aliases.join('、')}</dd></>)}
+                  <dt>价格/线路</dt><dd>{summaryLine(a.slug)}</dd>
+                  <dt>本站实测</dt><dd>待更新中</dd>
+                  <dt>优惠码</dt><dd>{coupons[a.slug] ? coupons[a.slug].code : '暂无'}</dd>
+                </dl>
+                {notes[a.slug] && <p class="small" style="margin:8px 0 0"><strong>{notes[a.slug]}</strong></p>}
+              </details>
+              <div class="pp-acts">
+                <a class="btn btn-ghost btn-sm" href={`/airports/${a.slug}/`}>详细页</a>
+                <RegisterLink airport={a} label="前往注册" class="btn btn-sm" where="directory" />
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+    <p class="empty" id="dir-empty" hidden>没有找到匹配的品牌。可以试试更短的名称，或到<a href="/search/">站内搜索</a>查文章。</p>
+  </section>
+
+  <section class="container section">
+    <div class="card-soft prose">
+      <h2>详细页里有什么？</h2>
+      <p>34 家品牌都有独立详细页，内容来自各自的套餐、线路、客户端和购买限制资料，而不是只换品牌名的模板：页面会列出全部套餐、每 GB 成本和月均费用，比较同一套餐在月付与长周期下的差价，说明线路与协议、适合和不适合的人群，并附上优惠码（有来源才会写）。所有价格是 2026-10-20 的<a href="/methodology/">历史参考</a>，不代表当前在售；本站实测数据待更新中，因此不会发布速度结论。</p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var grid = document.getElementById('dir-grid'); if (!grid) return;
+      var cards = [].slice.call(grid.querySelectorAll('.brand-card')), q = document.getElementById('dir-q'), sel = document.getElementById('dir-sort');
+      var chips = [].slice.call(document.querySelectorAll('.tools .chip-btn[data-f]')), count = document.getElementById('dir-count'), empty = document.getElementById('dir-empty'), mode = 'all';
+      function run() {
+        var t = q.value.trim().toLowerCase(), n = 0;
+        cards.forEach(function (c) {
+          var ok = (!t || c.dataset.name.indexOf(t) > -1) && (mode === 'all' || (mode === 'top' && c.dataset.top === '1') || (mode === 'rest' && c.dataset.top === '0'));
+          c.hidden = !ok; if (ok) n++;
+        });
+        count.textContent = '显示 ' + n + ' / ' + cards.length; empty.hidden = n > 0;
+      }
+      function sort() {
+        var arr = cards.slice();
+        if (sel.value === 'py') arr.sort(function (a, b) { return a.dataset.zh.localeCompare(b.dataset.zh, 'zh-Hans-CN'); });
+        else arr.sort(function (a, b) { return a.dataset.id - b.dataset.id; });
+        arr.forEach(function (c) { grid.appendChild(c); });
+      }
+      chips.forEach(function (c) { c.addEventListener('click', function () { mode = c.dataset.f; chips.forEach(function (x) { x.classList.toggle('is-active', x === c); }); run(); }); });
+      q.addEventListener('input', run); sel.addEventListener('change', sort); run();
+      if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) { var d = el.querySelector('details'); if (d) d.open = true; } }
+    })();
+  </script>
+</Base>

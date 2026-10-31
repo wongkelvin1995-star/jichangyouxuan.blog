@@ -1,0 +1,6 @@
+---
+import type { Airport } from '../data/airports';
+interface Props { airport: Airport; label?: string; class?: string; where?: string }
+const { airport, label, class: cls = 'btn', where = 'page' } = Astro.props;
+---
+<a class={cls} href={airport.url} target="_blank" rel="sponsored nofollow noopener" data-brand={airport.slug} data-where={where}>{label ?? `前往 ${airport.name} 注册`}<span class="visually-hidden">（推广链接，新窗口打开）</span></a>

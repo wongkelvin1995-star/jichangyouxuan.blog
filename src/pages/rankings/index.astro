@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import RegisterLink from '../../components/RegisterLink.astro';
+import { rankings } from '../../data/rankings';
+import { rankOf } from '../../data/airports';
+import { coupons } from '../../data/coupons';
+import { SITE, abs } from '../../data/site';
+
+const TOPN = 10;
+const ld = rankings.map((r) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `机场${r.title}排行榜（${SITE.referenceDate} 历史参考）`,
+  description: r.rule,
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: Math.min(TOPN, r.rows.length),
+  itemListElement: r.rows.slice(0, TOPN).map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.airport.name, url: abs(`/airports/${x.airport.slug}/`) })),
+}));
+---
+<Base
+  title="机场排行榜 2026：按价格规则排名的 34 家机场（非测速）｜机场优选 2026"
+  description="机场优选 2026 的价格排行榜：年付入门价最低、月付每 GB 成本最低、年付月均最低、套餐档位最多、流量包每 GB 最低。每个榜单都写明可复算的规则，数据为 2026-10-20 历史参考，不是测速排名。"
+  path="/rankings/"
+  crumbs={[{ name: '排行榜', path: '/rankings/' }]}
+  jsonLd={ld}
+>
+  <section class="container page-head">
+    <span class="eyebrow">战力分析 · 价格排行榜</span>
+    <h1>机场排行榜 2026：按明确价格规则排名</h1>
+    <p class="lead">这里的每个榜单都只用一条写明的规则排序，你可以用<a href="/prices/">价格页</a>的数据自己复算。它们回答的是「哪家便宜」这一类问题，<strong>不回答「哪家快」</strong>：本站实测数据待更新中，不发布速度排名。数据为 {SITE.referenceDate} 的历史参考，不含优惠码，以结算页为准。</p>
+    <div class="chips">{rankings.map((r) => <a class="chip" href={`#${r.id}`}>{r.title}</a>)}</div>
+  </section>
+
+  <div class="container pp-read no-side">
+    <div class="pp-main">
+      <div class="prose">
+        <div class="summary-box"><b>先读</b>排行榜与首页的「编辑精选 TOP 5」是两套东西：编辑精选是本站的推荐顺序（含推广合作，灵动云第一）；排行榜是纯规则排序，不受推荐影响，灵动云在不同榜单上的位置也不同。两者放在一起，是为了让你看到推荐背后的价格事实。</div>
+        {rankings.map((r) => (
+          <section id={r.id} style="margin-top:34px">
+            <h2>{r.title}</h2>
+            <p class="small"><strong>规则：</strong>{r.rule}</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>#</th><th>品牌</th><th>{r.unit}</th><th>对应套餐</th><th>优惠码</th><th></th></tr></thead>
+                <tbody>
+                  {r.rows.slice(0, TOPN).map((x, i) => (
+                    <tr>
+                      <td><strong>{i + 1}</strong></td>
+                      <td><a href={`/airports/${x.airport.slug}/`}>{x.airport.name}</a>{rankOf(x.airport) > 0 && <span class="chip chip-sun" style="margin-left:6px;font-size:12px">精选 No.{rankOf(x.airport)}</span>}</td>
+                      <td><strong>{r.fmt(x.value)}</strong></td>
+                      <td class="small">{x.plan.planName}{x.extra ? `（${x.extra}）` : ''}</td>
+                      <td class="small">{coupons[x.airport.slug]?.code ?? '—'}</td>
+                      <td><RegisterLink airport={x.airport} label="注册" class="btn btn-ghost btn-sm" where="rankings" /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {r.rows.length > TOPN && <p class="small muted">共 {r.rows.length} 家符合条件，只展示前 {TOPN} 名；其余品牌请到<a href="/prices/">价格页</a>按周期筛选。</p>}
+          </section>
+        ))}
+
+        <h2 style="margin-top:40px">怎么用这些榜单</h2>
+        <ol>
+          <li>先用<a href="/budget-guide/#traffic-estimator">流量估算器</a>知道自己每月大约用多少 GB，再看「月付每 GB 成本最低」榜里哪一档的流量刚好覆盖；</li>
+          <li>只想先试一试，看「月付每 GB 成本最低」榜里的小流量档，或直接在价格比较页按月付筛选，花最少的钱验证线路是否适合自己；想一次付清锁定低价，看「年付入门价最低」榜；</li>
+          <li>确定长期用，再比较「年付月均最低」榜，并核对退款与条款；</li>
+          <li>榜单位置会随价格调整变化，本页数据日期是 {SITE.referenceDate}，下单前以结算页为准。</li>
+        </ol>
+        <p>比较口径见<a href="/methodology/">比较方法</a>；每家品牌的全部套餐见<a href="/airports/">机场图鉴</a>。</p>
+      </div>
+    </div>
+  </div>
+</Base>

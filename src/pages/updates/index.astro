@@ -1,0 +1,36 @@
+---
+import { planStats } from '../../data/plans';
+import Base from '../../layouts/Base.astro';
+import { updates } from '../../data/updates';
+import { SITE } from '../../data/site';
+---
+<Base
+  title="更新记录：机场优选 2026 资料与页面变更日志｜机场优选 2026"
+  description="机场优选 2026 的更新记录：套餐资料整理日期、文章发布、详细页上线、优惠码变更与版式调整，按真实日期记录，方便读者判断信息新旧。"
+  path="/updates/"
+  crumbs={[{ name: '更新记录', path: '/updates/' }]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">更新记录</span>
+    <h1>更新记录：资料与页面变更日志</h1>
+    <p class="lead">每一条都是实际发生的变更，日期为真实日期。套餐价格的资料日期是 {SITE.referenceDate}；页面上的「本站实测」仍为待更新中，开始发布实测时会在这里记录方法与日期。</p>
+  </section>
+  <div class="container pp-read no-side">
+    <div class="pp-main">
+      <div class="prose">
+        {updates.map((u) => (
+          <section style="margin-bottom:28px">
+            <h2 style="font-size:21px"><span class="chip chip-sun" style="margin-right:8px">{u.date}</span>{u.title}</h2>
+            <ul>{u.items.map((it) => <li set:html={it} />)}</ul>
+          </section>
+        ))}
+        <h2>还没做的事</h2>
+        <ul>
+          <li>发布本站实测数据（目前所有品牌均为「待更新中」，不写速度结论）。</li>
+          <li>按官网套餐页截图逐家核对剩余 {planStats.reference} 档「历史参考」套餐（已核对 {planStats.verified} 档），核对过的改为「已核对」并写明日期。</li>
+        </ul>
+        <p>发现错误请发邮件到 {SITE.contactEmail ? <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> : '站长邮箱'}，核实后会更新并记录。</p>
+      </div>
+    </div>
+  </div>
+</Base>

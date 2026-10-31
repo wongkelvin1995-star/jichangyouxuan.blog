@@ -1,0 +1,67 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { abs, fmtDate } from '../../data/site';
+import Art from '../../components/Art.astro';
+import { categoryOf } from '../../data/categories';
+
+const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+const cats = [...new Set(guides.map((g) => g.data.category))];
+const list = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: '机场选购原创文章',
+  url: abs('/guides/'),
+  mainEntity: { '@type': 'ItemList', itemListElement: guides.map((g, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/guides/${g.id}/`), name: g.data.title })) },
+};
+---
+<Base
+  title="机场选购原创文章｜预算、套餐、成本与避坑指南｜机场优选 2026"
+  description="机场优选 2026 的原创文章合集：预算与流量选择、月付年付取舍、每 GB 成本计算、线路术语、AI 与流媒体条件、客户端兼容性和购买避坑，全部为完整正文。"
+  path="/guides/"
+  crumbs={[{ name: '文章', path: '/guides/' }]}
+  jsonLd={[list]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">原创文章</span>
+    <h1>机场选购原创文章</h1>
+    <p class="lead">这里的文章围绕「怎么选」展开：预算、流量、周期、线路、客户端和购买注意事项。不做节点测速，也不堆砌排行榜，每一篇都是可以直接读完的完整正文。</p>
+  </section>
+  <div class="container pp-sec" data-strip>
+    <section class="pp-panel" aria-labelledby="gd-feat">
+      <div class="pl-head">
+        <h2 id="gd-feat"><span class="ico" aria-hidden="true">★</span>精选文章轮播</h2>
+        <div class="pl-arrows"><button type="button" data-dir="-1" aria-label="向左">‹</button><button type="button" data-dir="1" aria-label="向右">›</button></div>
+      </div>
+      <div class="pl-strip">
+        {guides.map((g, i) => (
+          <a class="pl-card" href={`/guides/${g.id}/`}>
+            <Art i={i} />
+            <span class="no">{i + 1}</span>
+            <span class="cap"><b>{g.data.title}</b><small>{g.data.category}</small></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+  <section class="container" style="padding-bottom:30px">
+    {cats.map((c) => (
+      <div>
+        <h2 class="pp-cat">{categoryOf(c) ? <a href={`/guides/category/${categoryOf(c)!.slug}/`} style="color:inherit;text-decoration:none">{c} ›</a> : c}</h2>
+        <div class="pp-cards">
+          {guides.filter((g) => g.data.category === c).map((g) => (
+            <a class="pp-acard" href={`/guides/${g.id}/`}>
+              <span class="pl-thumb"><Art i={guides.indexOf(g)} /><span class="cat">{g.data.category}</span></span>
+              <span class="txt">
+                <h3>{g.data.title}</h3>
+                <p>{g.data.summary}</p>
+                <span class="meta">发布 {fmtDate(g.data.pubDate)} · 更新 {fmtDate(g.data.updatedDate)}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+    <div class="callout callout-note" style="max-width:820px;margin-top:30px"><b class="t">文章之外</b>想直接动手？试试<a href="/prices/#calculator">每 GB 成本计算器</a>和<a href="/budget-guide/#traffic-estimator">流量估算器</a>，或浏览<a href="/airports/">34 家机场目录</a>。</div>
+  </section>
+</Base>

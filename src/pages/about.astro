@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import Mascot from '../components/Mascot.astro';
+import { SITE } from '../data/site';
+---
+<Base
+  title="关于机场优选 2026｜一个只讲「怎么选」的独立选购博客"
+  description="了解机场优选 2026 的定位：不做节点测速和排行榜，专注预算、套餐、流量成本与购买注意事项，并公开推广关系与数据核验方式。"
+  path="/about/"
+  crumbs={[{ name: '关于', path: '/about/' }]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">关于我们</span>
+    <h1>关于机场优选 2026</h1>
+    <p class="lead">机场优选 2026（{SITE.en}）是一个独立维护的中文选购博客，目标很简单：帮你在花钱之前把套餐看明白。</p>
+  </section>
+  <section class="container" style="padding-bottom:30px">
+    <div class="prose">
+      <div class="cta-box" style="margin-top:0;margin-bottom:28px">
+        <Mascot />
+        <div><h3>这是灵灵</h3><p style="margin:0">站点吉祥物，一朵爱算账的小橙云。它的口头禅是：先想清楚需求，再比价格。</p></div>
+      </div>
+
+      <h2>我们做什么</h2>
+      <p>本站围绕「购买决策」写内容：怎么根据预算估算流量，月付与年付怎么取舍，每 GB 成本怎么计算，线路名称和客户端分别意味着什么，下单前要核对哪些条款。我们还整理了一份 34 家机场品牌的目录，方便你查找和对比。</p>
+
+      <h2>我们不做什么</h2>
+      <ul>
+        <li>不做节点测速和速度排行榜，也不会把宣传语写成实测结论；</li>
+        <li>不虚构评分、评价、成交量或获奖信息；</li>
+        <li>不为凑页面数量批量生成低价值品牌页；</li>
+        <li>不假装自己是任何品牌的官方网站。</li>
+      </ul>
+
+      <h2>我们如何获得收入</h2>
+      <p>本站的注册按钮为各品牌的推广入口，读者通过它们开通服务，本站可能获得佣金。这会影响我们「重点推荐谁」，因此我们把这件事写在显眼位置，并把「编辑精选」与「测速排名」严格区分。完整说明见<a href="/affiliate-disclosure/">推广关系说明</a>。</p>
+
+      <h2>内容如何保持可信</h2>
+      <p>价格、线路等信息会标注整理日期与状态：目前全部是「历史参考」，本站实测待更新中。我们公开了排序与计算方法，你可以在<a href="/methodology/">评选与套餐计算方法</a>里看到全部规则。</p>
+
+      <h2>使用提醒</h2>
+      <p>请在遵守所在地法律法规的前提下使用相关服务。本站的内容只是购买前的参考，不构成法律、财务或技术建议。</p>
+
+      {SITE.contactEmail && (
+        <>
+          <h2>联系与纠错</h2>
+          <p>发现错误或有建议，请发送邮件到 <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>。我们会核实后更新页面并保留更新日期。</p>
+        </>
+      )}
+    </div>
+  </section>
+</Base>

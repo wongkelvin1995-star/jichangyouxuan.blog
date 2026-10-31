@@ -1,0 +1,8 @@
+---
+import { paletteOf } from '../data/art';
+interface Props { i?: number; glyph?: string }
+const { i = 0, glyph = '' } = Astro.props;
+---
+<span class="art" style={`background:${paletteOf(i)}`}></span>
+<svg viewBox="0 0 240 156" preserveAspectRatio="none" aria-hidden="true" focusable="false"><circle cx={170 - (i % 6) * 6} cy="40" r="22" fill="#fff" opacity=".4" /><g stroke="#fff" stroke-width="1.2" opacity=".35"><path d={`M${170 - (i % 6) * 6} 40L0 0M${170 - (i % 6) * 6} 40L240 0M${170 - (i % 6) * 6} 40L0 90M${170 - (i % 6) * 6} 40L240 110`} /></g><path d="M0 156v-40l18-28 16 28 12-10 20 10 8-34 22 34 14-12 20 12 10-26 20 26 14-8 22 8 22-18 22 18v40Z" fill="#2a1a0c" opacity=".5" /></svg>
+{glyph && <span class="glyph" aria-hidden="true">{glyph}</span>}

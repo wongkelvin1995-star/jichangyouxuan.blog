@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="根据预算选择机场｜流量估算器与预算反推每 GB 成本｜机场优选 2026"
+  description="不知道该花多少钱买机场？先用流量估算器算出每月需要多少 GB，再用预算反推可接受的每 GB 成本，最后按月付试用、年付长期的顺序选择适合自己的套餐。"
+  path="/budget-guide/"
+  crumbs={[{ name: '按预算选', path: '/budget-guide/' }]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">按预算选</span>
+    <h1>根据预算选择机场：先算清流量，再决定花多少钱</h1>
+    <p class="lead">预算有限时，最容易犯的错是先看最低价。更稳妥的顺序是：先估算每月需要多少流量，再用预算反推「每 GB 最多愿意花多少」，最后用月付做一次小额试用。下面两个小工具会帮你完成前两步。</p>
+  </section>
+
+  <section class="container" style="padding-bottom:20px" id="traffic-estimator">
+    <div class="section-head">
+      <h2>第一步：流量估算器</h2>
+      <p>只有「走代理」的那部分上网流量才会消耗套餐，不需要把全部上网时间都算进去。下面的单位流量是典型估算值，实际会随内容与应用变化。</p>
+    </div>
+    <div class="calc">
+      <form class="card" id="est-form" onsubmit="return false">
+        <div class="field"><label for="e-web">每天网页 / 社交浏览（小时）</label><input id="e-web" type="number" inputmode="decimal" min="0" step="0.5" value="1.5" /></div>
+        <div class="field"><label for="e-vid">每天在线视频（小时）</label><input id="e-vid" type="number" inputmode="decimal" min="0" step="0.5" value="0.5" /></div>
+        <div class="field"><label for="e-q">视频清晰度</label>
+          <select id="e-q"><option value="0.4">480p（约 0.4 GB/小时）</option><option value="0.9" selected>720p（约 0.9 GB/小时）</option><option value="2">1080p（约 2 GB/小时）</option><option value="7">4K（约 7 GB/小时）</option></select></div>
+        <div class="field"><label for="e-aud">每天音乐 / 播客（小时）</label><input id="e-aud" type="number" inputmode="decimal" min="0" step="0.5" value="0" /></div>
+        <div class="field"><label for="e-ai">每天 AI 对话 / 在线办公（小时）</label><input id="e-ai" type="number" inputmode="decimal" min="0" step="0.5" value="0.5" /></div>
+        <div class="field"><label for="e-dl">每月大文件下载（GB）</label><input id="e-dl" type="number" inputmode="decimal" min="0" step="1" value="0" /></div>
+        <div class="field"><label for="e-days">每月使用天数</label><input id="e-days" type="number" inputmode="numeric" min="1" max="31" step="1" value="30" /></div>
+      </form>
+      <div class="result" id="est-out" aria-live="polite"></div>
+    </div>
+    <p class="small muted" style="margin-top:14px">单位流量参考：网页/社交约 0.2 GB/小时，音乐约 0.06 GB/小时，AI 对话与在线办公约 0.03 GB/小时，视频按所选清晰度。这些是教学用的典型估算值，不代表任何服务商的实测数据。</p>
+  </section>
+
+  <section class="container section" id="budget-calc" style="padding-top:10px">
+    <div class="section-head">
+      <h2>第二步：用预算反推可接受的每 GB 成本</h2>
+      <p>每月预算 ÷ 每月需要的流量 = 你可以接受的每 GB 成本上限。看到任何套餐，只要它的每 GB 成本高于这个数，就说明它超出你的预算范围。</p>
+    </div>
+    <div class="calc">
+      <form class="card" onsubmit="return false">
+        <div class="field"><label for="b-money">每月预算（元）</label><input id="b-money" type="number" inputmode="decimal" min="0" step="1" placeholder="例如 30" /></div>
+        <div class="field"><label for="b-gb">每月需要的流量（GB）</label><input id="b-gb" type="number" inputmode="decimal" min="0" step="1" placeholder="可参考上面的估算结果" /></div>
+      </form>
+      <div class="result" id="bud-out" aria-live="polite"><p class="muted" style="margin:0">填入预算和流量，这里会显示每 GB 成本上限。</p></div>
+    </div>
+  </section>
+
+  <section class="container section" style="padding-top:0">
+    <div class="prose">
+      <h2>两个教学示例（数字均为假设）</h2>
+      <p>下面的例子只用来演示算法，数字是为教学设定的假设，不对应任何真实套餐。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>假设用户</th><th>使用习惯</th><th>估算每月流量</th><th>留 20% 余量</th></tr></thead>
+          <tbody>
+            <tr><td>A：轻度用户</td><td>每天网页 1.5 小时 + 720p 视频 0.5 小时</td><td>（1.5×0.2 + 0.5×0.9）×30 ≈ 22.5 GB</td><td>约 27 GB</td></tr>
+            <tr><td>B：视频为主</td><td>每天网页 2 小时 + 1080p 视频 2 小时</td><td>（2×0.2 + 2×2）×30 ≈ 132 GB</td><td>约 158 GB</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>可以看到，视频清晰度对流量的影响远大于网页浏览。如果你的预算有限，把视频清晰度调低一档，往往比换一个更便宜的套餐更有效。</p>
+
+      <h2>预算有限时的四步选择法</h2>
+      <ol>
+        <li><strong>先估算，再比价：</strong>用上面的估算器得到每月需要的 GB，再留出 20% 左右的余量。</li>
+        <li><strong>先月付，不急年付：</strong>第一次购买某一家，优先月付，试用一到两周再决定。详见<a href="/guides/monthly-vs-yearly-airport-plan/">月付与年付怎么选</a>。</li>
+        <li><strong>按每 GB 成本比较：</strong>把套餐价格填进<a href="/prices/#calculator">价格计算器</a>，只比较同一周期、同一规则的数字。</li>
+        <li><strong>把条款也算进成本：</strong>设备数量、流量倍率、退款政策都会影响真正的使用成本，见<a href="/guides/airport-buying-pitfalls-guide/">购买避坑指南</a>。</li>
+      </ol>
+
+      <h2>不同使用类型，预算应该花在哪里</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>使用类型</th><th>优先关注</th><th>可以先不追求</th></tr></thead>
+          <tbody>
+            <tr><td>以网页、文字、AI 对话为主</td><td>稳定可用、客户端易用、客服响应</td><td>超大流量、昂贵的专线线路</td></tr>
+            <tr><td>经常看视频</td><td>每 GB 成本、流量重置方式、是否有倍率</td><td>节点数量</td></tr>
+            <tr><td>手机 + 电脑 + 平板多设备</td><td>同时在线设备数、订阅格式兼容性</td><td>最低价格</td></tr>
+            <tr><td>家庭共用</td><td>设备数量、流量总量、付款周期的灵活度</td><td>一次性买到最长周期</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>想要更完整的决策流程，请继续阅读<a href="/selection-guide/">机场选购指南</a>；想从概念上理解「需求比价格更重要」，请读<a href="/guides/airport-selection-2026-budget-traffic-needs/">《机场优选 2026：如何根据预算、流量与实际需求选择机场》</a>。</p>
+      <div class="callout callout-note"><b class="t">想看具体品牌？</b>浏览<a href="/airports/">34 家机场目录</a>，或查看首页的<a href="/#top5">编辑精选 TOP 5</a>。目录顺序不是测速排名。</div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var g = function (id) { return document.getElementById(id); }, n = function (id) { return parseFloat(g(id).value) || 0; };
+      var out = g('est-out'); if (!out) return;
+      function est() {
+        var days = Math.max(1, Math.min(31, n('e-days')));
+        var day = n('e-web') * 0.2 + n('e-vid') * n('e-q') + n('e-aud') * 0.06 + n('e-ai') * 0.03;
+        var mon = day * days + n('e-dl');
+        var buf = mon * 1.2;
+        out.innerHTML = '<div class="big">约 ' + mon.toFixed(1) + ' GB / 月</div><p class="small muted" style="margin:0">估算范围：' + (mon * 0.7).toFixed(0) + ' – ' + (mon * 1.4).toFixed(0) + ' GB（习惯会波动）</p><dl><dt>每天平均</dt><dd>' + day.toFixed(2) + ' GB</dd><dt>留 20% 余量后建议不少于</dt><dd>' + buf.toFixed(0) + ' GB</dd></dl>';
+        var b = g('b-gb'); if (!b.dataset.touched) { b.value = Math.ceil(buf); bud(); }
+      }
+      function bud() {
+        var m = n('b-money'), gb = n('b-gb'), o = g('bud-out');
+        if (m > 0 && gb > 0) o.innerHTML = '<div class="big">≤ ¥' + (m / gb).toFixed(2) + ' / GB</div><p class="small muted" style="margin:0">每 GB 成本高于这个数的套餐，会超出你的月预算。</p><dl><dt>每月预算</dt><dd>¥' + m.toFixed(2) + '</dd><dt>每月流量需求</dt><dd>' + gb + ' GB</dd></dl>';
+        else o.innerHTML = '<p class="muted" style="margin:0">填入预算和流量，这里会显示每 GB 成本上限。</p>';
+      }
+      ['e-web','e-vid','e-q','e-aud','e-ai','e-dl','e-days'].forEach(function (id) { g(id).addEventListener('input', est); g(id).addEventListener('change', est); });
+      g('b-gb').addEventListener('input', function () { this.dataset.touched = '1'; bud(); });
+      g('b-money').addEventListener('input', bud);
+      est();
+    })();
+  </script>
+</Base>

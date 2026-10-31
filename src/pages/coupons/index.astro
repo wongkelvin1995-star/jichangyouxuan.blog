@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import RegisterLink from '../../components/RegisterLink.astro';
+import { airports, rankOf, fullName } from '../../data/airports';
+import { coupons } from '../../data/coupons';
+import { summaryLine } from '../../data/plans';
+import { SITE } from '../../data/site';
+
+const withCode = airports.filter((a) => coupons[a.slug]);
+---
+<Base
+  title="机场优惠码汇总 2026：34 家机场优惠码一览（含灵动云 ld888）｜机场优选 2026"
+  description="机场优选 2026 整理的 34 家机场优惠码总表：灵动云 ld888、暮光加速 mm88、飞猫云 flycat888 等。优惠码由站长提供，是否仍有效、适用哪些套餐以结算页为准；价格表均不含优惠码。"
+  path="/coupons/"
+  crumbs={[{ name: '优惠码', path: '/coupons/' }]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">经典招式 · 优惠码总表</span>
+    <h1>机场优惠码汇总 2026</h1>
+    <p class="lead">本页集中列出 {withCode.length} 家机场的优惠码，与各品牌详细页、图鉴卡片同步。优惠码由站长整理提供，<strong>本站没有逐一在结算页验证</strong>，是否仍有效、适用哪些套餐和周期，请以结算页显示为准；本站所有价格表都是未使用优惠码的原价（{SITE.referenceDate} 历史参考）。</p>
+  </section>
+
+  <div class="container pp-read no-side">
+    <div class="pp-main">
+      <div class="prose">
+        <h2>优惠码怎么用才不吃亏</h2>
+        <ol>
+          <li><strong>先算后用：</strong>优惠码通常按比例或固定金额减价，先用<a href="/prices/#calculator">每 GB 成本计算器</a>比较原价，再看折后差多少；折扣不会改变「流量够不够用」这件事。</li>
+          <li><strong>看适用范围：</strong>有的码只对首单、只对年付或只对特定档位有效，结算页没减价就说明不适用，不要为了用码而换档。</li>
+          <li><strong>月付先试：</strong>即使年付折扣更大，第一次购买仍建议月付小额试用，确认线路与客户端适合自己再考虑长周期。</li>
+          <li><strong>码失效很正常：</strong>服务商会调整活动，发现失效可以发邮件告诉我们{SITE.contactEmail ? `（${SITE.contactEmail}）` : ''}，我们会更新本页并保留日期。</li>
+        </ol>
+
+        <h2>34 家机场优惠码一览</h2>
+        <p class="small muted">按图鉴收录顺序排列，前 5 位是编辑精选顺序（含推广合作），不是测速排名。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>品牌</th><th>优惠码</th><th>价格 / 线路（历史参考）</th><th>说明</th><th></th></tr></thead>
+            <tbody>
+              {airports.map((a) => (
+                <tr id={a.slug}>
+                  <td>{a.id}</td>
+                  <td><a href={`/airports/${a.slug}/`}>{fullName(a)}</a>{rankOf(a) > 0 && <span class="chip chip-sun" style="margin-left:6px;font-size:12px">精选 No.{rankOf(a)}</span>}</td>
+                  <td>{coupons[a.slug] ? <code style="font-size:16px;font-weight:900">{coupons[a.slug].code}</code> : <span class="muted">暂无</span>}</td>
+                  <td class="small">{summaryLine(a.slug)}</td>
+                  <td class="small">{coupons[a.slug]?.note ?? '本站没有收到可核实的优惠码，所以不编造。'}</td>
+                  <td><RegisterLink airport={a} label="注册" class="btn btn-ghost btn-sm" where="coupons" /></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>关于本页的几点说明</h2>
+        <ul>
+          <li>注册按钮是各品牌的推广入口，本站可能因此获得佣金，详见<a href="/affiliate-disclosure/">推广关系说明</a>；优惠码本身不会因为推广关系而变得更划算或更不划算。</li>
+          <li>我们不会用优惠码计算「折后每 GB 成本」并排名，因为适用条件不透明，排出来会误导。</li>
+          <li>优惠码变更会记录在<a href="/updates/">更新记录</a>。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Base>

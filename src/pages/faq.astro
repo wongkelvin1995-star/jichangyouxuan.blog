@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import { faqs } from '../data/faq';
+
+const groups = [...new Set(faqs.map((f) => f.group))];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<Base
+  title="机场常见问题 FAQ｜预算、套餐、线路与使用疑问解答｜机场优选 2026"
+  description="机场常见问题解答：怎么估算流量、月付年付怎么选、每 GB 成本怎么算、IEPL 一定更好吗、ChatGPT 与流媒体能否保证可用，以及本站排名与推广关系的说明。"
+  path="/faq/"
+  crumbs={[{ name: '常见问题', path: '/faq/' }]}
+  jsonLd={[schema]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">FAQ</span>
+    <h1>机场常见问题</h1>
+    <p class="lead">把读者最常问的问题集中回答。所有答案默认展开，可以直接阅读；想看展开论述，请进入对应的文章。</p>
+  </section>
+  <section class="container" style="padding-bottom:30px">
+    {groups.map((g) => (
+      <div style="margin-bottom:34px">
+        <h2><span class="chip chip-sun" style="font-size:18px">{g}</span></h2>
+        <div class="faq">
+          {faqs.filter((f) => f.group === g).map((f) => (
+            <details open><summary>{f.q}</summary><p>{f.a}</p></details>
+          ))}
+        </div>
+      </div>
+    ))}
+    <p>没有找到答案？试试<a href="/search/">站内搜索</a>，或阅读<a href="/guides/">全部原创文章</a>。</p>
+  </section>
+</Base>

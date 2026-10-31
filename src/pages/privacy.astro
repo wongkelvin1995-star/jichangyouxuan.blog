@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+---
+<Base
+  title="隐私政策｜机场优选 2026 收集什么、不收集什么"
+  description="机场优选 2026 隐私政策：站内搜索与计算器均在浏览器本地完成，本站默认不设置广告 Cookie，说明服务器日志、第三方链接及后续接入统计工具时的处理方式。"
+  path="/privacy/"
+  crumbs={[{ name: '隐私政策', path: '/privacy/' }]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">隐私</span>
+    <h1>隐私政策</h1>
+    <p class="lead">我们尽量少收集信息。下面说明本站如何处理你的数据。生效日期：{SITE.updated}。</p>
+  </section>
+  <section class="container" style="padding-bottom:30px">
+    <div class="prose">
+      <h2>我们收集什么</h2>
+      <p>本站是静态网站，没有注册、登录或评论功能，不要求你提供姓名、邮箱等个人信息。站内搜索、流量估算器和价格计算器都在你的浏览器本地运行，你输入的关键词和数字不会上传到我们的服务器。</p>
+
+      <h2>Cookie 与本地存储</h2>
+      <p>默认情况下，本站不设置广告或跟踪 Cookie，也不使用第三方广告脚本。</p>
+
+      <h2>服务器日志</h2>
+      <p>托管服务商可能记录常规访问日志（例如访问时间、页面地址、IP 地址、浏览器类型），用于安全与排错。这些日志由托管服务商按其政策处理。</p>
+
+      <h2>第三方链接</h2>
+      <p>本站包含指向机场品牌的推广链接。点击后你会进入第三方网站，它们有自己的隐私政策和 Cookie 机制，推广码也可能被用于归因。请在第三方页面注册或付款前阅读其条款，并使用独立邮箱，避免重复使用重要密码。</p>
+
+      <h2>统计工具</h2>
+      <p>如果将来接入网站统计或搜索引擎站长工具，我们会在此页更新所使用的工具及其收集的内容。</p>
+
+      <h2>未成年人</h2>
+      <p>本站内容面向成年读者，不面向未成年人。</p>
+
+      <h2>政策变更</h2>
+      <p>政策更新时，我们会修改本页并更新日期。</p>
+
+      {SITE.contactEmail && <p>隐私相关问题请联系：<a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>。</p>}
+      <p>推广关系请见<a href="/affiliate-disclosure/">推广关系说明</a>。</p>
+    </div>
+  </section>
+</Base>

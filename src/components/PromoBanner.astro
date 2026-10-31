@@ -1,0 +1,42 @@
+---
+import RegisterLink from './RegisterLink.astro';
+import { lingdong } from '../data/airports';
+import { coupons } from '../data/coupons';
+const code = coupons.lingdongyun?.code ?? 'ld888';
+/** 穿云年付：原价与站长标注的 8 折；展示价按折后计算，是否仍享该折扣以结算页为准 */
+const LIST = 99, DISCOUNT = 0.8, GB_YEAR = 840;
+const price = Math.round(LIST * DISCOUNT * 100) / 100;            // 79.2
+const perMonth = (price / 12).toFixed(2);                          // 6.60
+const perGb = (price / GB_YEAR).toFixed(3).replace(/0$/, '');      // 0.094
+---
+<aside class="promo" id="promo" aria-labelledby="promo-title">
+  <button class="promo-mini" type="button" aria-expanded="false" aria-controls="promo-card" title="展开推荐">
+    <span class="promo-fire" aria-hidden="true">🔥</span><b>优选灵动云</b><small>穿云 ¥{price}/年</small>
+  </button>
+  <div class="promo-card" id="promo-card">
+    <button class="promo-x" type="button" aria-label="收起推荐">✕</button>
+    <span class="promo-tag">优选灵动云 · 本站第一推荐</span>
+    <p class="promo-h" id="promo-title">穿云（IPLC）年付 <s class="promo-was">¥{LIST}</s> <b>¥{price}</b></p>
+    <ul class="promo-facts">
+      <li><b>70GB</b> 每 30 天刷新 · 全年 840GB</li>
+      <li>月均 <b>¥{perMonth}</b> · 每 GB 约 <b>¥{perGb}</b></li>
+      <li>全 IPLC 专线 · 设备不限 · 原生 IP 解锁<sup>*</sup></li>
+      <li>优惠码 <code>{code}</code><span class="muted-w">（已按 8 折计入，原价 ¥{LIST}，以结算页为准）</span></li>
+    </ul>
+    <RegisterLink airport={lingdong} label="立即注册 →" class="btn btn-fire promo-btn" where="promo" />
+    <a class="promo-more" href="/airports/lingdongyun/">看灵动云全部套餐 ›</a>
+    <small class="promo-note">* 服务商宣称 · 实测待更新 · 推广链接 · 折后价按优惠码估算，原价为历史参考</small>
+  </div>
+</aside>
+<script is:inline>
+  (function () {
+    var r = document.getElementById('promo'); if (!r) return;
+    var mini = r.querySelector('.promo-mini'), card = r.querySelector('.promo-card'), x = r.querySelector('.promo-x');
+    var open; try { open = sessionStorage.getItem('promo-open'); } catch (e) {}
+    if (open === null || open === undefined) open = matchMedia('(min-width: 1700px)').matches ? '1' : '0';
+    function set(o) { r.classList.toggle('is-open', o); mini.setAttribute('aria-expanded', o ? 'true' : 'false'); try { sessionStorage.setItem('promo-open', o ? '1' : '0'); } catch (e) {} }
+    set(open === '1');
+    mini.addEventListener('click', function () { set(true); });
+    x.addEventListener('click', function () { set(false); });
+  })();
+</script>

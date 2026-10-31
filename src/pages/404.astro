@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Mascot from '../components/Mascot.astro';
+---
+<Base
+  title="页面不存在 (404)｜机场优选 2026"
+  description="你访问的页面不存在或已移动。可以回到机场优选 2026 首页，或使用站内搜索与机场目录继续查找。"
+  path="/404.html"
+  noindex={true}
+>
+  <section class="container section center">
+    <Mascot />
+    <h1>咦，这朵云飘走了（404）</h1>
+    <p class="lead muted">你要找的页面不存在，也可能已经搬家。试试下面的入口吧。</p>
+    <div class="btn-row" style="justify-content:center">
+      <a class="btn" href="/">回到首页</a>
+      <a class="btn btn-ghost" href="/airports/">机场目录</a>
+      <a class="btn btn-ghost" href="/guides/">全部文章</a>
+      <a class="btn btn-ghost" href="/search/">站内搜索</a>
+    </div>
+  </section>
+</Base>

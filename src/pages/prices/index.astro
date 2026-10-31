@@ -1,0 +1,150 @@
+---
+import { planStats } from '../../data/plans';
+import Base from '../../layouts/Base.astro';
+import { plans, periodLabel, costPerGb, perMonth, fmt } from '../../data/plans';
+import { airports } from '../../data/airports';
+import { SITE } from '../../data/site';
+
+const name = (slug: string) => airports.find((a) => a.slug === slug)?.name ?? slug;
+---
+<Base
+  title="机场套餐价格比较｜同周期每 GB 成本计算器｜机场优选 2026"
+  description={`机场套餐价格比较：34 家机场共 ${planStats.total} 档套餐（${planStats.verified} 档已按官网截图核对），按月付、季付、半年付、年付、一次性流量包分开比较每 GB 成本与月均费用，附计算器，价格均标明来源与日期。`}
+  path="/prices/"
+  crumbs={[{ name: '价格比较', path: '/prices/' }]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">套餐价格比较</span>
+    <h1>机场套餐价格比较：同周期、同规则的每 GB 成本</h1>
+    <p class="lead">一个套餐便不便宜，不能只看标价。这里先把比较口径讲清楚：同一周期、同样的流量规则、算出每 GB 成本和月均费用，再放到一起比。你也可以直接用下面的计算器，输入任何套餐的数字。</p>
+  </section>
+
+  <section class="container" style="padding-bottom:20px">
+    <div class="card" style="background:#fff3da;margin-bottom:24px">
+      <h2>目前：34 家 {plans.length} 档套餐，已核对 {plans.filter((p) => p.status === 'verified').length} 条，其余为历史参考</h2>
+      <p>标为<strong>「已核对」</strong>的套餐（目前为 {planStats.verifiedBrands.map((s) => airports.find((a) => a.slug === s)?.name).join('、')}）按站长提供的官网套餐页截图逐档核对；其余数字来自站长另一博客在 {SITE.referenceDate} 整理的资料，<strong>均为「历史参考」</strong>，尚未逐档核对，也不代表当前在售。两类都不含优惠码，付款前请以对应品牌的结算页为准。</p>
+      <p style="margin-bottom:0">每 GB 成本和月均费用由本站按「付款金额 ÷ 周期总流量」计算。月付、季付、年付、一次性流量包请分开看（用上方按钮筛选），不同周期的每 GB 成本不能直接排名。</p>
+    </div>
+    <div class="tools" style="margin-bottom:10px">
+      <label class="visually-hidden" for="p-brand">按品牌筛选</label>
+      <select id="p-brand" class="chip chip-btn" style="padding-inline:12px">
+        <option value="">全部 34 家品牌</option>
+        {airports.map((a) => <option value={a.slug}>{a.name}</option>)}
+      </select>
+    </div>
+    <div class="chips" role="group" aria-label="按计费周期筛选" style="margin-bottom:14px">
+      <button class="chip chip-btn is-active" type="button" data-p="all">全部 {plans.length}</button>
+      <button class="chip chip-btn" type="button" data-p="monthly">月付 {plans.filter((p) => p.period === 'monthly').length}</button>
+      <button class="chip chip-btn" type="button" data-p="quarterly">季付 {plans.filter((p) => p.period === 'quarterly').length}</button>
+      <button class="chip chip-btn" type="button" data-p="half-year">半年付 {plans.filter((p) => p.period === 'half-year').length}</button>
+      <button class="chip chip-btn" type="button" data-p="yearly">年付 {plans.filter((p) => p.period === 'yearly').length}</button>
+      <button class="chip chip-btn" type="button" data-p="one-time">一次性流量包 {plans.filter((p) => p.period === 'one-time').length}</button>
+      <span class="count-note" id="p-count" aria-live="polite"></span>
+    </div>
+    <div class="table-wrap">
+      <table id="plan-table" style="min-width:900px">
+        <thead><tr><th>品牌</th><th>套餐</th><th>周期</th><th>价格（¥）</th><th>每月流量</th><th>周期总流量</th><th>每 GB</th><th>月均（¥）</th><th>整理日期</th></tr></thead>
+        <tbody>
+          {plans.map((p) => (
+            <tr data-p={p.period} data-b={p.airportSlug}>
+              <td><a href={`/airports/${p.airportSlug}/`}><strong>{name(p.airportSlug)}</strong></a></td>
+              <td>{p.planName}{p.note && <div class="small muted">{p.note}</div>}</td>
+              <td>{periodLabel[p.period]}</td>
+              <td>{fmt(p.priceCny)}</td>
+              <td>{p.gbPerMonth ? `${p.gbPerMonth} GB` : '—'}</td>
+              <td>{p.trafficGbPerPeriod} GB</td>
+              <td><strong>¥{costPerGb(p).toFixed(2)}</strong></td>
+              <td>{perMonth(p) ? perMonth(p)!.toFixed(2) : '—'}</td>
+              <td>{p.status === 'verified' ? <span class="chip chip-mint">已核对</span> : <span class="chip chip-sun">历史参考</span>}<div class="small muted">{p.verifiedOn}</div></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:12px">线路、AI 与流媒体信息请到各品牌详细页查看，均来自服务商宣传或整理资料，本站实测待更新中。「周期总流量」：月付为每月流量，季付、半年付、年付为每月流量乘以月数，一次性流量包为总量；定制或独享档位的价值在独立带宽或 IP，不宜和普通档位直接比较每 GB。</p>
+  </section>
+
+  <section class="container section" style="padding-top:10px">
+    <div class="prose">
+      <h2>从这张表能读出什么</h2>
+      <p>以灵动云为例（历史参考）：月付四档从 ¥20/100GB 到 ¥180/1500GB，每 GB 成本从 ¥0.20 降到 ¥0.12，档位越大越划算；年付「穿云」¥99，每 30 天刷新 70GB，折合每 GB 约 ¥0.12，是流量不大时很便宜的入口，但只有 70GB/月，也不是通用线路；一次性流量包的每 GB 成本在 ¥1.1–¥1.3，远高于月付档。同样叫「便宜」，换成不同的周期和规则，成本可以差出十倍。完整解读见<a href="/guides/lingdongyun-plan-price-structure/">《灵动云套餐价格结构解读》</a>，其他品牌请打开各自的详细页。</p>
+      <p>要提醒的是：定制或独享档位（例如 ¥680 的独立 IP 方案）买的是独立带宽或独立公网 IP，不是流量，因此不要用它们的每 GB 成本去和普通档位比较。</p>
+    </div>
+  </section>
+
+  <section class="container section" id="calculator">
+    <div class="section-head">
+      <h2>每 GB 成本与月均费用计算器</h2>
+      <p>把套餐页上的数字填进来即可。计算全部在你的浏览器里完成，不会上传任何内容。</p>
+    </div>
+    <div class="calc">
+      <form class="card" id="calc-form" onsubmit="return false">
+        <div class="field"><label for="c-price">付款金额（元）</label><input id="c-price" inputmode="decimal" type="number" min="0" step="0.01" value="" placeholder="例如 60" /></div>
+        <div class="field"><label for="c-period">计费周期</label>
+          <select id="c-period">
+            <option value="1">月付（1 个月）</option><option value="3">季付（3 个月）</option><option value="6">半年付（6 个月）</option><option value="12">年付（12 个月）</option><option value="0">一次性流量包</option>
+          </select></div>
+        <div class="field"><label for="c-gb">该周期内的总流量（GB）</label><input id="c-gb" inputmode="decimal" type="number" min="0" step="0.1" placeholder="年付填全年总流量" /><small>月付填每月流量；年付要填「全年总量」，不要填每月流量。</small></div>
+        <div class="field"><label for="c-mult">流量倍率（可选，默认 1）</label><input id="c-mult" inputmode="decimal" type="number" min="0.1" step="0.1" value="1" /><small>如果某些线路「用 1GB 扣 2GB」，倍率填 2；没有倍率填 1。</small></div>
+        <div class="field" id="c-valid-wrap" hidden><label for="c-valid">流量包有效期（月，可选）</label><input id="c-valid" inputmode="numeric" type="number" min="1" step="1" placeholder="例如 12" /></div>
+        <div class="field"><label for="c-need">你每月实际需要的流量（GB，可选）</label><input id="c-need" inputmode="decimal" type="number" min="0" step="1" placeholder="不确定？先用流量估算器" /><small><a href="/budget-guide/#traffic-estimator">打开流量估算器</a></small></div>
+      </form>
+      <div class="result" id="calc-out" aria-live="polite">
+        <p class="muted" style="margin:0">填入价格、周期和流量后，这里会显示结果。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" style="padding-top:0">
+    <div class="prose">
+      <h2>不同计费周期怎么比较</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>周期</th><th>比较口径</th><th>最容易出错的地方</th></tr></thead>
+          <tbody>
+            <tr><td>月付</td><td>付款金额 ÷ 当月流量</td><td>流量是否每月重置、是否有倍率。</td></tr>
+            <tr><td>季付 / 半年付</td><td>付款金额 ÷ 周期总流量；月均 = 付款金额 ÷ 月数</td><td>把总流量误当成每月流量。</td></tr>
+            <tr><td>年付</td><td>付款金额 ÷ 全年总流量；月均 = 付款金额 ÷ 12</td><td>年付折扣大，但一次性付出更多，退款与服务持续性风险也更大。</td></tr>
+            <tr><td>一次性流量包</td><td>付款金额 ÷ 总流量；再看有效期</td><td>不限时与限时流量包不能直接比较。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>本站不会把不同周期的套餐放进同一个价格排序而不加说明：价格排序只在同一周期内进行，跨周期时同时给出「实际付款金额」和「月均费用」两个数。完整规则见<a href="/methodology/">评选与套餐计算方法</a>。</p>
+
+      <h2>每条套餐会记录哪些信息</h2>
+      <p>一条合格的套餐记录至少包含：品牌名称、套餐名称、人民币价格、计费周期、每周期流量、流量重置方式、每 GB 参考成本、线路类型、可用客户端、AI 与流媒体相关支持信息，以及资料来源类型和日期。缺少日期的记录，不会进入比较表。</p>
+      <p>想了解为什么低价不等于划算，请读<a href="/guides/cheap-airport-cost-per-gb/">《便宜机场真的划算吗？学会计算每 GB 流量成本》</a>；想了解月付与年付如何取舍，请读<a href="/guides/monthly-vs-yearly-airport-plan/">《月付机场与年付机场怎么选》</a>。</p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var $ = function (id) { return document.getElementById(id); };
+      var price = $('c-price'), per = $('c-period'), gb = $('c-gb'), mult = $('c-mult'), valid = $('c-valid'), need = $('c-need'), out = $('c-out') || $('calc-out'), vw = $('c-valid-wrap');
+      if (!price) return;
+      var f2 = function (n) { return n.toFixed(2); };
+      function run() {
+        var p = parseFloat(price.value), g = parseFloat(gb.value), m = parseFloat(mult.value) || 1, months = parseInt(per.value, 10), nd = parseFloat(need.value);
+        vw.hidden = months !== 0;
+        if (!(p >= 0) || !(g > 0) || isNaN(p)) { out.innerHTML = '<p class="muted" style="margin:0">填入价格、周期和流量后，这里会显示结果。</p>'; return; }
+        var eff = g / m, perGb = p / eff, html = '<div class="big">¥' + f2(perGb) + ' / GB</div><p class="small muted" style="margin:0">每 GB 成本 = 付款金额 ÷（周期总流量 ÷ 倍率）</p><dl>';
+        html += '<dt>实际付款金额</dt><dd>¥' + f2(p) + '</dd><dt>折算后可用流量</dt><dd>' + eff.toFixed(1) + ' GB</dd>';
+        var mo = months;
+        if (months === 0) { var v = parseInt(valid.value, 10); mo = v > 0 ? v : 0; }
+        if (mo > 0) {
+          html += '<dt>月均费用</dt><dd>¥' + f2(p / mo) + '</dd><dt>月均可用流量</dt><dd>' + (eff / mo).toFixed(1) + ' GB</dd>';
+          if (nd > 0) { var ok = eff / mo >= nd; html += '<dt>你每月需要</dt><dd>' + nd + ' GB（' + (ok ? '够用' : '不够用') + '）</dd><dt>按你的用量折算月花费</dt><dd>¥' + f2(perGb * nd) + '</dd>'; }
+        } else if (months === 0) { html += '<dt>月均费用</dt><dd>填写有效期后显示</dd>'; }
+        html += '</dl>';
+        if (months === 12 || months === 6 || months === 3) html += '<p class="small" style="margin:10px 0 0">提示：这是「全周期」流量。请确认套餐的流量是否真的可以在整个周期内自由分配。</p>';
+        out.innerHTML = html;
+      }
+      [price, per, gb, mult, valid, need].forEach(function (e) { e.addEventListener('input', run); e.addEventListener('change', run); });
+      run();
+      var chips = [].slice.call(document.querySelectorAll('[data-p].chip-btn')), rows = [].slice.call(document.querySelectorAll('#plan-table tbody tr')), brand = $('p-brand'), cnt = $('p-count'), mode = 'all';
+      function filt() { var n = 0, b = brand.value; rows.forEach(function (r) { var ok = (mode === 'all' || r.dataset.p === mode) && (!b || r.dataset.b === b); r.hidden = !ok; if (ok) n++; }); cnt.textContent = '显示 ' + n + ' / ' + rows.length; }
+      chips.forEach(function (c) { c.addEventListener('click', function () { mode = c.dataset.p; chips.forEach(function (x) { x.classList.toggle('is-active', x === c); }); filt(); }); });
+      brand.addEventListener('change', filt); filt();
+    })();
+  </script>
+</Base>

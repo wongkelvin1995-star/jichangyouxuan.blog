@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { airports } from '../data/airports';
+const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+const pages = [
+  ['/', '首页'], ['/airports/', '34 家机场图鉴'], ['/prices/', '套餐价格比较'], ['/rankings/', '价格排行榜'], ['/coupons/', '优惠码总表'], ['/budget-guide/', '按预算选机场'],
+  ['/selection-guide/', '机场选购指南'], ['/guides/', '原创文章列表'], ['/methodology/', '评选与套餐计算方法'], ['/faq/', '常见问题'], ['/updates/', '更新记录'], ['/search/', '站内搜索'],
+  ['/guides/category/selection/', '分类：选购思路'], ['/guides/category/price/', '分类：价格成本'], ['/guides/category/lines/', '分类：线路选择'], ['/guides/category/scenarios/', '分类：使用场景'], ['/guides/category/clients/', '分类：客户端'], ['/guides/category/pitfalls/', '分类：避坑指南'], ['/guides/category/methodology/', '分类：方法与透明度'],
+  ['/about/', '关于机场优选'], ['/affiliate-disclosure/', '推广关系说明'], ['/privacy/', '隐私政策'],
+];
+---
+<Base
+  title="网站地图｜机场优选 2026 全部页面"
+  description="机场优选 2026 网站地图：列出全部栏目页面、9 篇原创文章与 34 家机场品牌详细页，方便读者与搜索引擎快速找到所有内容。"
+  path="/sitemap/"
+  crumbs={[{ name: '网站地图', path: '/sitemap/' }]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">网站地图</span>
+    <h1>网站地图</h1>
+    <p class="lead">这里列出了全站页面。机器可读版本见 <a href="/sitemap.xml">sitemap.xml</a>。</p>
+  </section>
+  <section class="container" style="padding-bottom:30px">
+    <div class="grid g3">
+      <div class="card-soft"><h2 style="font-size:20px">栏目页面</h2><ul>{pages.map(([h, t]) => <li><a href={h}>{t}</a></li>)}</ul></div>
+      <div class="card-soft"><h2 style="font-size:20px">原创文章</h2><ul>{guides.map((g) => <li><a href={`/guides/${g.id}/`}>{g.data.title}</a></li>)}</ul></div>
+      <div class="card-soft"><h2 style="font-size:20px">品牌目录（34 家）</h2><ul style="columns:2;column-gap:20px">{airports.map((a) => <li><a href={`/airports/${a.slug}/`}>{a.name}</a></li>)}</ul></div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,5 @@
+# Cloudflare Pages / Netlify 通用重定向（host 级别的 www→非 www、HTTP→HTTPS 请在托管平台设置，见 README）
+/index.html / 301
+/airports/index.html /airports/ 301
+/prices/index.html /prices/ 301
+/guides/index.html /guides/ 301

@@ -1,0 +1,132 @@
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="cloud-shape">
+      <circle cx="62" cy="92" r="34" />
+      <circle cx="106" cy="68" r="44" />
+      <circle cx="150" cy="94" r="32" />
+      <rect x="34" y="88" width="148" height="50" rx="25" />
+    </g>
+    <g id="cat-shape">
+      <polygon points="46,66 56,14 98,46" />
+      <polygon points="164,66 154,14 112,46" />
+      <ellipse cx="105" cy="98" rx="68" ry="52" />
+    </g>
+    <g id="orange-shape">
+      <circle cx="105" cy="96" r="60" />
+    </g>
+  </defs>
+  <symbol id="mascot" viewBox="0 0 210 170">
+    <ellipse cx="108" cy="158" rx="62" ry="7" fill="#3d2314" opacity=".12" />
+    <!-- 云朵（贴纸风） -->
+    <g class="m-cloud">
+      <use href="#cloud-shape" fill="#3d2314" stroke="#3d2314" stroke-width="14" stroke-linejoin="round" />
+      <use href="#cloud-shape" fill="#ff9a3c" />
+      <path d="M78 54c12-12 30-14 44-8" stroke="#ffd9a8" stroke-width="8" stroke-linecap="round" fill="none" />
+      <path d="M106 26c-8-12-2-22 10-24" stroke="#3d2314" stroke-width="5" stroke-linecap="round" fill="none" />
+      <path d="M122 -2l4 7 8 1-6 5 2 8-8-4-7 4 2-8-6-5 8-1z" transform="translate(12 8)" fill="#ffd166" stroke="#3d2314" stroke-width="3" stroke-linejoin="round" />
+      <ellipse cx="86" cy="100" rx="7.5" ry="9.5" fill="#3d2314" /><ellipse cx="128" cy="100" rx="7.5" ry="9.5" fill="#3d2314" />
+      <circle cx="88.5" cy="96.5" r="3" fill="#fff" /><circle cx="130.5" cy="96.5" r="3" fill="#fff" />
+      <ellipse cx="68" cy="116" rx="9" ry="6" fill="#ff6b7a" opacity=".6" /><ellipse cx="146" cy="116" rx="9" ry="6" fill="#ff6b7a" opacity=".6" />
+      <path d="M97 112q10 12 20 0" stroke="#3d2314" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="#fff" />
+    </g>
+    <!-- 橘猫（果冻风） -->
+    <g class="m-cat">
+      <use href="#cat-shape" fill="#5a2d12" stroke="#5a2d12" stroke-width="12" stroke-linejoin="round" />
+      <use href="#cat-shape" fill="#ffa64d" />
+      <polygon points="58,50 62,28 82,44" fill="#ffc1b0" /><polygon points="152,50 148,28 128,44" fill="#ffc1b0" />
+      <path d="M105 52v14M90 55l3 12M120 55l-3 12" stroke="#e8731a" stroke-width="6" stroke-linecap="round" fill="none" />
+      <ellipse cx="105" cy="118" rx="30" ry="22" fill="#fff0dc" />
+      <ellipse cx="80" cy="98" rx="8" ry="10" fill="#5a2d12" /><ellipse cx="130" cy="98" rx="8" ry="10" fill="#5a2d12" />
+      <circle cx="83" cy="94" r="3.2" fill="#fff" /><circle cx="133" cy="94" r="3.2" fill="#fff" />
+      <path d="M99 108h12l-6 6z" fill="#ff7a8a" stroke="#5a2d12" stroke-width="2.5" stroke-linejoin="round" />
+      <path d="M105 114q-3 8-12 5M105 114q3 8 12 5" stroke="#5a2d12" stroke-width="3.5" stroke-linecap="round" fill="none" />
+      <ellipse cx="62" cy="114" rx="9" ry="6" fill="#ff7a8a" opacity=".55" /><ellipse cx="148" cy="114" rx="9" ry="6" fill="#ff7a8a" opacity=".55" />
+      <path d="M40 104l-22-4M40 112l-22 6M170 104l22-4M170 112l22 6" stroke="#5a2d12" stroke-width="3" stroke-linecap="round" />
+    </g>
+    <!-- 星球猫（星空风） -->
+    <g class="m-planet">
+      <defs>
+        <linearGradient id="pl-sphere" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9b6ff" /><stop offset="1" stop-color="#7a5cf0" /></linearGradient>
+      </defs>
+      <g transform="rotate(-14 105 100)"><ellipse cx="105" cy="100" rx="94" ry="22" fill="none" stroke="#2a2060" stroke-width="14" /><ellipse cx="105" cy="100" rx="94" ry="22" fill="none" stroke="#ffd37a" stroke-width="7" /></g>
+      <polygon points="64,62 68,20 98,46" fill="#7a5cf0" stroke="#2a2060" stroke-width="6" stroke-linejoin="round" /><polygon points="146,62 142,20 112,46" fill="#7a5cf0" stroke="#2a2060" stroke-width="6" stroke-linejoin="round" />
+      <polygon points="72,50 74,32 88,44" fill="#ffb3dc" /><polygon points="138,50 136,32 122,44" fill="#ffb3dc" />
+      <circle cx="105" cy="96" r="56" fill="url(#pl-sphere)" stroke="#2a2060" stroke-width="7" />
+      <path d="M66 70c10-14 26-20 42-18" stroke="#e6dcff" stroke-width="7" stroke-linecap="round" fill="none" />
+      <circle cx="140" cy="128" r="6" fill="#6a4ad8" opacity=".6" /><circle cx="70" cy="132" r="4" fill="#6a4ad8" opacity=".6" />
+      <g transform="rotate(-14 105 100)"><path d="M11 100A94 22 0 0 0 199 100" fill="none" stroke="#2a2060" stroke-width="14" stroke-linecap="round" /><path d="M11 100A94 22 0 0 0 199 100" fill="none" stroke="#ffd37a" stroke-width="7" stroke-linecap="round" /></g>
+      <ellipse cx="84" cy="92" rx="7.5" ry="9.5" fill="#2a2060" /><ellipse cx="128" cy="92" rx="7.5" ry="9.5" fill="#2a2060" />
+      <circle cx="86.5" cy="88.5" r="3" fill="#fff" /><circle cx="130.5" cy="88.5" r="3" fill="#fff" />
+      <ellipse cx="68" cy="108" rx="9" ry="6" fill="#ff8fc7" opacity=".7" /><ellipse cx="146" cy="108" rx="9" ry="6" fill="#ff8fc7" opacity=".7" />
+      <path d="M97 104q9 11 18 0" stroke="#2a2060" stroke-width="4.5" stroke-linecap="round" fill="#fff" />
+      <path d="M170 28l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="#ffd37a" stroke="#2a2060" stroke-width="2.5" stroke-linejoin="round" />
+    </g>
+    <!-- 小武（武道金色能量风）：原创角色 v3 —— 少年漫比例、深蓝描边、两段上色、飞身出拳 -->
+    <g class="m-budo" stroke-linejoin="round" stroke-linecap="round">
+      <defs>
+        <linearGradient id="bd-flame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6c4" /><stop offset=".4" stop-color="#ffd12e" /><stop offset=".78" stop-color="#ff8a00" /><stop offset="1" stop-color="#ff5a1a" /></linearGradient>
+        <linearGradient id="bd-hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f8cff" /><stop offset="1" stop-color="#1f3f9c" /></linearGradient>
+        <linearGradient id="bd-gi" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3d7a" /><stop offset="1" stop-color="#17234c" /></linearGradient>
+        <radialGradient id="bd-fist" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff" /><stop offset=".4" stop-color="#ffd34d" stop-opacity=".9" /><stop offset="1" stop-color="#ff8c1a" stop-opacity="0" /></radialGradient>
+        <radialGradient id="bd-skin" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#ffe9d2" /><stop offset="1" stop-color="#f7c9a4" /></radialGradient>
+      </defs>
+      <!-- 火焰气场（后） -->
+      <path d="M106 172C58 160 40 118 56 84c6 16 14 18 16 6-10-28 4-48 20-66-2 22 6 30 12 24 0-18 12-34 30-44-8 22-4 38 8 42 4-14 16-18 24-16-10 22 0 44-12 66 8 8 14 24 2 42-4-14-12-14-14-4 4 24-16 40-36 42z" fill="url(#bd-flame)" stroke="#14214a" stroke-width="3" />
+      <path d="M106 156c-28-8-36-36-26-58 4 10 10 12 12 4-6-18 4-32 14-42 0 14 6 20 10 14 2-10 10-20 20-24-4 14 0 24 8 26 2-8 10-10 16-8-8 14 0 28-8 42 6 4 8 14 0 26-2-8-8-8-10-2 2 14-14 24-36 22z" fill="#fff6c4" opacity=".6" />
+      <!-- 后臂 + 能量球 -->
+      <path d="M92 108L60 128" stroke="#14214a" stroke-width="15" /><path d="M92 108L60 128" stroke="#2b3d7a" stroke-width="10" />
+      <circle cx="48" cy="134" r="26" fill="url(#bd-fist)" />
+      <circle cx="48" cy="134" r="11" fill="#ffd34d" stroke="#14214a" stroke-width="2.5" /><circle cx="48" cy="134" r="5.5" fill="#fff" />
+      <g stroke="#ffd34d" stroke-width="2.5"><path d="M24 118l-6-6M20 136h-8M26 152l-6 6" /></g>
+      <!-- 腿 -->
+      <path d="M100 140L66 156" stroke="#14214a" stroke-width="18" /><path d="M100 140L66 156" stroke="#2b3d7a" stroke-width="12" />
+      <path d="M114 142l-10 20" stroke="#14214a" stroke-width="18" /><path d="M114 142l-10 20" stroke="#2b3d7a" stroke-width="12" />
+      <path d="M48 154c4-6 14-8 22-4 4 2 4 8-2 10l-20 2c-4 0-4-6 0-8z" fill="#e23b2e" stroke="#14214a" stroke-width="2.5" /><path d="M94 164c2-6 12-8 20-4 4 2 4 8-2 10H96c-4 0-4-4-2-6z" fill="#e23b2e" stroke="#14214a" stroke-width="2.5" />
+      <!-- 躯干 -->
+      <path d="M88 100l42-9 10 46-42 11z" fill="url(#bd-gi)" stroke="#14214a" stroke-width="3" />
+      <path d="M102 101l12 18 10-21" fill="#ffe9d2" stroke="#14214a" stroke-width="2.5" />
+      <path d="M96 136l42-10 2 10-42 10z" fill="#ffc400" stroke="#14214a" stroke-width="2.5" /><path d="M98 144l-26 12 8-16z" fill="#ffc400" stroke="#14214a" stroke-width="2.5" />
+      <circle cx="120" cy="137" r="4.5" fill="#ff8c1a" stroke="#14214a" stroke-width="2" />
+      <!-- 前臂出拳 -->
+      <path d="M128 98l30-20" stroke="#14214a" stroke-width="19" /><path d="M128 98l30-20" stroke="#2b3d7a" stroke-width="13" />
+      <circle cx="172" cy="70" r="21" fill="url(#bd-skin)" stroke="#14214a" stroke-width="3" />
+      <path d="M160 60l5-4M168 56l6-3M177 56l6 1M185 61l4 4" stroke="#c98a5c" stroke-width="2.4" />
+      <g stroke="#14214a" stroke-width="5"><path d="M196 50l12-10M200 70h14M196 90l12 10" /></g>
+      <g stroke="#ffc400" stroke-width="2.2"><path d="M196 50l12-10M200 70h14M196 90l12 10" /></g>
+      <!-- 头发（后层） -->
+      <path d="M90 66L36 56l42-4L46 30l42 12L72 8l34 26-2-32 16 32 16-22-2 32 20-10-12 24z" fill="url(#bd-hair)" stroke="#14214a" stroke-width="3" />
+      <!-- 头 -->
+      <circle cx="118" cy="72" r="34" fill="url(#bd-skin)" stroke="#14214a" stroke-width="3" />
+      <!-- 刘海 -->
+      <path d="M85 68c2-22 18-34 34-34 16 0 30 10 34 32-7 3-13-2-17-11-4 11-13 13-20 5-7 8-15 8-19 0-4 8-9 9-12 8z" fill="url(#bd-hair)" stroke="#14214a" stroke-width="3" />
+      <path d="M100 44c8-6 20-8 30-4" stroke="#8fb8ff" stroke-width="3" opacity=".8" />
+      <!-- 头带 -->
+      <path d="M88 60q30 11 60-2l1 9q-31 13-62 2z" fill="#e23b2e" stroke="#14214a" stroke-width="2.5" />
+      <path d="M90 62L52 74l14-12-24-6 48-4z" fill="#e23b2e" stroke="#14214a" stroke-width="2.5" />
+      <circle cx="103" cy="64" r="4" fill="#ffc400" stroke="#14214a" stroke-width="1.5" />
+      <!-- 眉眼：少年漫大眼 -->
+      <path d="M100 70l16 4M142 66l-14 6" stroke="#14214a" stroke-width="4.5" />
+      <ellipse cx="110" cy="82" rx="7.5" ry="10" fill="#fff" stroke="#14214a" stroke-width="2" /><ellipse cx="136" cy="80" rx="7.5" ry="10" fill="#fff" stroke="#14214a" stroke-width="2" />
+      <ellipse cx="111" cy="84" rx="5" ry="7.5" fill="#1f3f9c" /><ellipse cx="137" cy="82" rx="5" ry="7.5" fill="#1f3f9c" />
+      <circle cx="113" cy="80" r="2.4" fill="#fff" /><circle cx="139" cy="78" r="2.4" fill="#fff" />
+      <circle cx="109" cy="87" r="1.2" fill="#fff" opacity=".8" /><circle cx="135" cy="85" r="1.2" fill="#fff" opacity=".8" />
+      <path d="M116 94q10 11 20-1-3 12-17 9z" fill="#14214a" /><path d="M121 97q6 5 11 0-2 4-9 3z" fill="#ff7a5c" />
+      <ellipse cx="97" cy="90" rx="6" ry="4" fill="#ff8a7a" opacity=".55" /><ellipse cx="148" cy="88" rx="6" ry="4" fill="#ff8a7a" opacity=".55" />
+      <!-- 速度残影 -->
+      <g stroke="#14214a" stroke-width="2.5" opacity=".55"><path d="M30 96h-18M28 108h-14M34 84h-12" /></g>
+    </g>
+    <!-- 橘子（蜡笔风） -->
+    <g class="m-orange">
+      <use href="#orange-shape" fill="#3d2314" stroke="#3d2314" stroke-width="12" />
+      <use href="#orange-shape" fill="#ff9a3c" />
+      <path d="M62 62c10-14 26-20 42-18" stroke="#ffd9a8" stroke-width="8" stroke-linecap="round" fill="none" />
+      <path d="M105 36c0-10 2-16 6-22" stroke="#3d2314" stroke-width="5" stroke-linecap="round" fill="none" />
+      <path d="M112 22c14-16 34-12 40-6-6 14-24 20-40 6z" fill="#7bc96f" stroke="#3d2314" stroke-width="4" stroke-linejoin="round" />
+      <path d="M118 22c8-2 18-2 26 0" stroke="#3d2314" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      <ellipse cx="84" cy="98" rx="7.5" ry="9.5" fill="#3d2314" /><ellipse cx="128" cy="98" rx="7.5" ry="9.5" fill="#3d2314" />
+      <circle cx="86.5" cy="94.5" r="3" fill="#fff" /><circle cx="130.5" cy="94.5" r="3" fill="#fff" />
+      <ellipse cx="66" cy="116" rx="9" ry="6" fill="#ff6b7a" opacity=".6" /><ellipse cx="146" cy="116" rx="9" ry="6" fill="#ff6b7a" opacity=".6" />
+      <path d="M96 112q10 12 20 0" stroke="#3d2314" stroke-width="4.5" stroke-linecap="round" fill="#fff" />
+    </g>
+  </symbol>
+</svg>

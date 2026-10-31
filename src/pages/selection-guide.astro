@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import { checklist } from '../data/checklist';
+---
+<Base
+  title="机场选购指南｜六步判断一个机场套餐值不值得买｜机场优选 2026"
+  description="机场选购指南：从明确用途、估算流量、选择周期，到核对线路、客户端与退款条款，再到七天试用复盘，六步帮你判断一个机场套餐是否适合自己。"
+  path="/selection-guide/"
+  crumbs={[{ name: '选购指南', path: '/selection-guide/' }]}
+>
+  <section class="container page-head">
+    <span class="eyebrow">选购指南</span>
+    <h1>机场选购指南：六步判断一个套餐值不值得买</h1>
+    <p class="lead">这是一份可以照着做的流程。每一步都对应一个具体动作和一篇更深入的文章，做完六步，你不需要依赖别人的排名，也能自己判断一个机场套餐是否适合自己。</p>
+  </section>
+
+  <section class="container" style="padding-bottom:30px">
+    <div class="prose">
+      <h2>第 1 步：写下你的用途</h2>
+      <p>先回答三个问题：主要用在哪些设备？主要做什么（网页、视频、AI 工具、下载）？大概在什么时间段使用？把答案写成两三句话，后面每一步都拿它来对照。没有这一步，后面的价格比较很容易变成「谁便宜选谁」。</p>
+
+      <h2>第 2 步：估算每月流量</h2>
+      <p>用<a href="/budget-guide/#traffic-estimator">流量估算器</a>算出每月大概需要多少 GB，并留出 20% 左右的余量。视频清晰度对流量的影响最大，其次是下载。得到数字后，再用预算反推每 GB 成本的上限。</p>
+
+      <h2>第 3 步：选择付款周期</h2>
+      <p>首次购买一家服务时，优先月付。确认体验后再考虑季付或年付，并且比较的是「实际付款金额」和「周期总流量」，而不是折算后的月均价。更多取舍见<a href="/guides/monthly-vs-yearly-airport-plan/">月付与年付的文章</a>。</p>
+
+      <h2>第 4 步：核对线路和客户端</h2>
+      <p>线路名称（例如 IEPL、IPLC、中转、直连）说明的是网络结构，不是速度保证，请把它们当作需要向服务商核实的说明，而不是答案，详见<a href="/guides/iepl-iplc-relay-direct-explained/">线路选择文章</a>。同时确认你的设备能不能导入服务商给出的订阅格式，见<a href="/guides/clash-shadowrocket-v2rayn-client-guide/">客户端选择文章</a>。</p>
+
+      <h2>第 5 步：读一遍条款</h2>
+      <p>设备数量限制、流量倍率、使用期限、退款政策——这四项决定了套餐的真实成本。详细的识别方法放在<a href="/guides/airport-buying-pitfalls-guide/">购买避坑指南</a>里。</p>
+
+      <h2>第 6 步：七天试用，然后复盘</h2>
+      <p>买月付，在真实使用的时间段用满一周，记下顺畅和不顺畅的场景，再对照流量用量，决定续费、换套餐，还是换一家。整个流程只花一个月的月付费用，却能避免一次性买下长期套餐后的后悔。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>决策速查表：根据情况看哪里</h2>
+        <p>遇到下面的情况，优先看对应的内容。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>如果你……</th><th>先看这里</th></tr></thead>
+          <tbody>
+            <tr><td>预算很紧，不知道从哪儿开始</td><td><a href="/budget-guide/">按预算选机场</a></td></tr>
+            <tr><td>被各种「超低价」搞糊涂了</td><td><a href="/guides/cheap-airport-cost-per-gb/">便宜机场与每 GB 成本</a></td></tr>
+            <tr><td>在月付和年付之间犹豫</td><td><a href="/guides/monthly-vs-yearly-airport-plan/">月付与年付怎么选</a></td></tr>
+            <tr><td>需要 AI 工具或流媒体</td><td><a href="/guides/chatgpt-streaming-airport-checklist/">ChatGPT 与流媒体选购条件</a></td></tr>
+            <tr><td>有多台不同系统的设备</td><td><a href="/guides/clash-shadowrocket-v2rayn-client-guide/">客户端兼容性</a></td></tr>
+            <tr><td>想知道本站怎么排顺序</td><td><a href="/methodology/">评选与套餐计算方法</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>下单前检查清单</h2>
+        <p>付款之前，把这六项再过一遍。</p>
+      </div>
+      <div class="grid g3">
+        {checklist.map((c) => (
+          <a class="card card-link" href={c.href}>
+            <span class="emoji" aria-hidden="true">{c.icon}</span>
+            <h3>{c.title}</h3>
+            <p class="muted small">{c.text}</p>
+          </a>
+        ))}
+      </div>
+      <div class="prose" style="margin-top:36px">
+        <h2>三个常见误区</h2>
+        <ul>
+          <li><strong>把排名当结论：</strong>任何站点的「排名」都可能包含推广因素，本站的 TOP 5 也是编辑精选顺序，不是测速结论。</li>
+          <li><strong>只看月均价：</strong>年付的月均价低，但一次性付款更多，且你要承担服务持续性风险。</li>
+          <li><strong>相信「永久解锁」：</strong>AI 和流媒体平台规则会变化，没有任何服务能永久保证。</li>
+        </ul>
+        <p>准备好了吗？到<a href="/airports/">34 家机场目录</a>里挑几家，各开一个月付套餐比较，或先看看<a href="/airports/lingdongyun/">灵动云详细页</a>。</p>
+      </div>
+    </div>
+  </section>
+</Base>

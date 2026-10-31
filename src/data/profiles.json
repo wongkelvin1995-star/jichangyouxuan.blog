@@ -1,0 +1,5455 @@
+{
+  "lingdongyun": {
+    "status": "verified",
+    "sourceType": "official",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": "2026-10-31",
+    "officialSite": "",
+    "intro": "灵动云的线路为 IEPL 专线、BGP 网络与 IPLC 线路三类（服务商说明：全部套餐配备 IEPL 专线，IPLC 线路仅随「穿云」年付套餐提供）。常规套餐（拂风、驭浪、破晓、凌霄）标注不限速、不限设备，另有不限时流量包和独立 IP 定制方案。客户端方面目前以官方专用客户端为主，通用订阅需通过客服渠道获取。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "韩国",
+      "阿根廷",
+      "马来西亚",
+      "越南",
+      "菲律宾",
+      "泰国",
+      "印度",
+      "德国",
+      "法国",
+      "英国"
+    ],
+    "lineTypes": [
+      "IEPL 专线（服务商宣称全部套餐配备）",
+      "BGP 网络",
+      "IPLC 线路（仅穿云套餐）"
+    ],
+    "protocols": [
+      "Shadowsocks（套餐标注）"
+    ],
+    "clients": [
+      "目前暂不推荐第三方客户端：为避免泄露订阅链接、节点信息及访问凭证，通用订阅暂时必须通过客服渠道获取，并了解相关详情"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Claude，官网另介绍 Midjourney（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、HBO、TikTok、Abema 以及 Spotify（穿云另列）；部分新加坡 / 台湾节点 YouTube 通过 1080p、1440p 和 4K 视频测试。相关实测案例及部分资料将在之后更新。",
+    "suitableFor": [
+      "需要固定月流量、多设备同时使用的用户",
+      "低频或备用需求（可选不限时流量包）",
+      "需要独立 IP 的跨境业务（定制方案）"
+    ],
+    "notSuitableFor": [
+      "只想用通用订阅、不愿联系客服的用户（通用订阅需另行申请）"
+    ],
+    "sources": [],
+    "limits": [
+      "全部套餐标注不限速；设备数不限",
+      "另有两年付、三年付选项（拂风两年 ¥384、三年 ¥540 等），本表未列出",
+      "可单独购买“重置流量包”（价格与对应套餐月付相同）",
+      "条款提及可申请退款与升级补差价，具体条件需按平台指引确认",
+      "支付方式：支付宝、微信、USDT"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "拂风",
+        "period": "monthly",
+        "priceCny": 20,
+        "gbPerMonth": 100,
+        "totalGb": 100,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "拂风",
+        "period": "quarterly",
+        "priceCny": 57,
+        "gbPerMonth": 100,
+        "totalGb": 300,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "拂风",
+        "period": "half-year",
+        "priceCny": 108,
+        "gbPerMonth": 100,
+        "totalGb": 600,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "拂风",
+        "period": "yearly",
+        "priceCny": 204,
+        "gbPerMonth": 100,
+        "totalGb": 1200,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "驭浪",
+        "period": "monthly",
+        "priceCny": 50,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "驭浪",
+        "period": "quarterly",
+        "priceCny": 142.5,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "驭浪",
+        "period": "half-year",
+        "priceCny": 270,
+        "gbPerMonth": 300,
+        "totalGb": 1800,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "驭浪",
+        "period": "yearly",
+        "priceCny": 510,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "破晓",
+        "period": "monthly",
+        "priceCny": 100,
+        "gbPerMonth": 700,
+        "totalGb": 700,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "破晓",
+        "period": "quarterly",
+        "priceCny": 285,
+        "gbPerMonth": 700,
+        "totalGb": 2100,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "破晓",
+        "period": "half-year",
+        "priceCny": 540,
+        "gbPerMonth": 700,
+        "totalGb": 4200,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "破晓",
+        "period": "yearly",
+        "priceCny": 1020,
+        "gbPerMonth": 700,
+        "totalGb": 8400,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "凌霄",
+        "period": "monthly",
+        "priceCny": 180,
+        "gbPerMonth": 1500,
+        "totalGb": 1500,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "凌霄",
+        "period": "quarterly",
+        "priceCny": 513,
+        "gbPerMonth": 1500,
+        "totalGb": 4500,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "凌霄",
+        "period": "half-year",
+        "priceCny": 972,
+        "gbPerMonth": 1500,
+        "totalGb": 9000,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "凌霄",
+        "period": "yearly",
+        "priceCny": 1836,
+        "gbPerMonth": 1500,
+        "totalGb": 18000,
+        "note": "不限速，1 倍率"
+      },
+      {
+        "name": "穿云（IPLC）",
+        "period": "yearly",
+        "priceCny": 99,
+        "gbPerMonth": 70,
+        "totalGb": 840,
+        "note": "购买日起每 30 天刷新 70GB；标注 IPLC 专线"
+      },
+      {
+        "name": "闲云 不限时包",
+        "period": "one-time",
+        "priceCny": 199,
+        "gbPerMonth": null,
+        "totalGb": 150,
+        "note": "一次性，用完为止"
+      },
+      {
+        "name": "惊云 不限时包",
+        "period": "one-time",
+        "priceCny": 499,
+        "gbPerMonth": null,
+        "totalGb": 400,
+        "note": "一次性，用完为止"
+      },
+      {
+        "name": "飞云 不限时包",
+        "period": "one-time",
+        "priceCny": 899,
+        "gbPerMonth": null,
+        "totalGb": 800,
+        "note": "一次性，用完为止"
+      },
+      {
+        "name": "至尊私人定制",
+        "period": "monthly",
+        "priceCny": 680,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": "独立带宽与独立公网 IP，约 2–3 个工作日交付"
+      }
+    ],
+    "verifiedBy": "站长提供的官网套餐页截图资料（站长确认全部来自官网，2026-10-31）"
+  },
+  "muguang-jiasu": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "暮光加速（又称暮光网络 / TwiLight）提供通用订阅，支持 VLESS 与 Shadowsocks，套餐标注 BGP 智能路由与专线出口。服务商资料称由新加坡团队运营，成立于 2025 年。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineTypes": [
+      "BGP 智能路由",
+      "专线出口（未注明 IEPL/IPLC）"
+    ],
+    "protocols": [
+      "VLESS",
+      "Shadowsocks"
+    ],
+    "clients": [
+      "通用订阅：Clash 系、Shadowrocket、v2rayN 等兼容客户端"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Claude（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Hulu、HBO、Disney+、DAZN（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "需要通用订阅与 VLESS 的用户",
+      "希望一次付费、流量不按月清零的用户（不限时包）",
+      "需要独立 IP 的跨境或直播业务"
+    ],
+    "notSuitableFor": [
+      "需要明确退款细则的用户（资料未给出退款条件）"
+    ],
+    "sources": [],
+    "limits": [
+      "基础版、标准版、至尊版标注不限速；旗舰版限速情况未写明",
+      "流量按每月额度计算，不放大计费",
+      "服务商称提供退款，但未写明退款窗口与扣费方式",
+      "服务商称 24 小时客服",
+      "支付：支付宝；微信与 USDT 需联系客服"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "年付轻量版",
+        "period": "yearly",
+        "priceCny": 109,
+        "gbPerMonth": 70,
+        "totalGb": 840,
+        "note": ""
+      },
+      {
+        "name": "基础版",
+        "period": "monthly",
+        "priceCny": 20,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": "标注不限速、不限设备"
+      },
+      {
+        "name": "基础版",
+        "period": "quarterly",
+        "priceCny": 57,
+        "gbPerMonth": 120,
+        "totalGb": 360,
+        "note": "标注不限速、不限设备"
+      },
+      {
+        "name": "基础版",
+        "period": "half-year",
+        "priceCny": 103,
+        "gbPerMonth": 120,
+        "totalGb": 720,
+        "note": "标注不限速、不限设备"
+      },
+      {
+        "name": "基础版",
+        "period": "yearly",
+        "priceCny": 204,
+        "gbPerMonth": 120,
+        "totalGb": 1440,
+        "note": "标注不限速、不限设备"
+      },
+      {
+        "name": "标准版",
+        "period": "monthly",
+        "priceCny": 40,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": "标注不限速"
+      },
+      {
+        "name": "标准版",
+        "period": "quarterly",
+        "priceCny": 114,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": "标注不限速"
+      },
+      {
+        "name": "标准版",
+        "period": "half-year",
+        "priceCny": 216,
+        "gbPerMonth": 300,
+        "totalGb": 1800,
+        "note": "标注不限速"
+      },
+      {
+        "name": "标准版",
+        "period": "yearly",
+        "priceCny": 408,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": "标注不限速"
+      },
+      {
+        "name": "旗舰版",
+        "period": "monthly",
+        "priceCny": 100,
+        "gbPerMonth": 700,
+        "totalGb": 700,
+        "note": "标注不限设备"
+      },
+      {
+        "name": "旗舰版",
+        "period": "quarterly",
+        "priceCny": 285,
+        "gbPerMonth": 700,
+        "totalGb": 2100,
+        "note": "标注不限设备"
+      },
+      {
+        "name": "旗舰版",
+        "period": "half-year",
+        "priceCny": 540,
+        "gbPerMonth": 700,
+        "totalGb": 4200,
+        "note": "标注不限设备"
+      },
+      {
+        "name": "旗舰版",
+        "period": "yearly",
+        "priceCny": 1020,
+        "gbPerMonth": 700,
+        "totalGb": 8400,
+        "note": "标注不限设备"
+      },
+      {
+        "name": "至尊版",
+        "period": "monthly",
+        "priceCny": 180,
+        "gbPerMonth": 1500,
+        "totalGb": 1500,
+        "note": "标注不限速"
+      },
+      {
+        "name": "至尊版",
+        "period": "quarterly",
+        "priceCny": 513,
+        "gbPerMonth": 1500,
+        "totalGb": 4500,
+        "note": "标注不限速"
+      },
+      {
+        "name": "至尊版",
+        "period": "half-year",
+        "priceCny": 972,
+        "gbPerMonth": 1500,
+        "totalGb": 9000,
+        "note": "标注不限速"
+      },
+      {
+        "name": "至尊版",
+        "period": "yearly",
+        "priceCny": 1836,
+        "gbPerMonth": 1500,
+        "totalGb": 18000,
+        "note": "标注不限速"
+      },
+      {
+        "name": "不限时轻量包",
+        "period": "one-time",
+        "priceCny": 219,
+        "gbPerMonth": null,
+        "totalGb": 150,
+        "note": "一次性，用完为止"
+      },
+      {
+        "name": "不限时标准包",
+        "period": "one-time",
+        "priceCny": 529,
+        "gbPerMonth": null,
+        "totalGb": 400,
+        "note": "一次性，用完为止"
+      },
+      {
+        "name": "不限时大容量包",
+        "period": "one-time",
+        "priceCny": 959,
+        "gbPerMonth": null,
+        "totalGb": 800,
+        "note": "一次性，用完为止"
+      },
+      {
+        "name": "独享私人定制节点",
+        "period": "monthly",
+        "priceCny": 680,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": "独立带宽、独立公网 IP，需工单咨询"
+      }
+    ]
+  },
+  "feimaoyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "飞猫云主打 IEPL 专线，有自研客户端，也支持通用订阅，协议包括 Shadowsocks、Trojan、VLESS。周期套餐标注不限设备、高峰不降速，另有 1000GB 不限时流量包和独享原生 IP 定制套餐。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "韩国",
+      "其他地区"
+    ],
+    "lineTypes": [
+      "IEPL 专线"
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan",
+      "VLESS"
+    ],
+    "clients": [
+      "飞猫云自研客户端",
+      "通用订阅：Clash 系、Shadowrocket、v2rayN、Stash"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Claude（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、TikTok，套餐注明原生 IP 线路（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "预算有限的新手（学生版年付 ¥84，每月 50GB）",
+      "经常使用流媒体和 AI 工具的用户",
+      "需要独享原生 IP 的跨境、直播、远程办公场景（定制套餐）"
+    ],
+    "notSuitableFor": [
+      "只想按月短期试用且需要季付以上优惠的用户（月付不在新人优惠范围内）"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限设备数；节点标称最高 2.5Gbps、高峰不降速（服务商宣称）",
+      "热门时段香港节点偶有排队（资料提示）",
+      "季付及以上从购买日起每 30 天刷新流量；月付刷新规则未写明",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、微信、USDT"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "学生版",
+        "period": "yearly",
+        "priceCny": 84,
+        "gbPerMonth": 50,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "星耀版",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": ""
+      },
+      {
+        "name": "星耀版",
+        "period": "quarterly",
+        "priceCny": 67,
+        "gbPerMonth": 150,
+        "totalGb": 450,
+        "note": ""
+      },
+      {
+        "name": "星耀版",
+        "period": "half-year",
+        "priceCny": 127,
+        "gbPerMonth": 150,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "星耀版",
+        "period": "yearly",
+        "priceCny": 240,
+        "gbPerMonth": 150,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "星环版",
+        "period": "monthly",
+        "priceCny": 45,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "星环版",
+        "period": "quarterly",
+        "priceCny": 121,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "星环版",
+        "period": "half-year",
+        "priceCny": 229,
+        "gbPerMonth": 300,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "星环版",
+        "period": "yearly",
+        "priceCny": 432,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "银河版",
+        "period": "monthly",
+        "priceCny": 85,
+        "gbPerMonth": 600,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "银河版",
+        "period": "quarterly",
+        "priceCny": 229,
+        "gbPerMonth": 600,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "银河版",
+        "period": "half-year",
+        "priceCny": 433,
+        "gbPerMonth": 600,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "银河版",
+        "period": "yearly",
+        "priceCny": 816,
+        "gbPerMonth": 600,
+        "totalGb": 7200,
+        "note": ""
+      },
+      {
+        "name": "宇宙版",
+        "period": "monthly",
+        "priceCny": 150,
+        "gbPerMonth": 1000,
+        "totalGb": 1000,
+        "note": ""
+      },
+      {
+        "name": "宇宙版",
+        "period": "quarterly",
+        "priceCny": 400,
+        "gbPerMonth": 1000,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "宇宙版",
+        "period": "half-year",
+        "priceCny": 750,
+        "gbPerMonth": 1000,
+        "totalGb": 6000,
+        "note": ""
+      },
+      {
+        "name": "宇宙版",
+        "period": "yearly",
+        "priceCny": 1360,
+        "gbPerMonth": 1000,
+        "totalGb": 12000,
+        "note": ""
+      },
+      {
+        "name": "不限时套餐",
+        "period": "one-time",
+        "priceCny": 680,
+        "gbPerMonth": null,
+        "totalGb": 1000,
+        "note": "一次性，用完为止；可付费手动重置（¥612）"
+      },
+      {
+        "name": "定制套餐",
+        "period": "monthly",
+        "priceCny": 550,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": "专属节点、独享原生 IP、独立带宽，配置需联系客服"
+      }
+    ]
+  },
+  "dalaoyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "大佬云 2024 年开始运营，公开资料标注为 IEPL 专线，节点覆盖香港、日本、美国。套餐分为年付活动包、初云、凌云、御云三档周期套餐，另有两档不限时流量包；月付 ¥23 起（130GB/月），年付活动包 ¥96（每月 60GB）。",
+    "regions": [
+      "香港",
+      "日本",
+      "美国"
+    ],
+    "lineTypes": [
+      "IEPL 专线（公开测评标注）"
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan"
+    ],
+    "clients": [
+      "主流客户端可一键导入订阅（公开测评描述）"
+    ],
+    "aiCompat": "公开测评称 ChatGPT、Claude 可解锁；也有资料表示尚未核验。本站未检测，AI 服务对节点 IP 有限制，请以实际使用为准。",
+    "streamingCompat": "公开测评称 Netflix（香港、新加坡、日本等区）、Disney+、YouTube 可解锁；也有资料表示尚未核验。本站未检测，解锁情况随节点变化。",
+    "suitableFor": [
+      "预算有限、主要查资料和学习的学生",
+      "作为主力机场之外的备用订阅（可选最小档位）",
+      "每月 130–600GB 的周期使用者"
+    ],
+    "notSuitableFor": [
+      "3 台以上设备同时大流量使用的家庭或团队（公开测评认为并发有限）",
+      "对零丢包有要求的企业用户",
+      "追求不限时包低单价的用户（不限时包每GB约 ¥1.24–1.27，偏高）"
+    ],
+    "sources": [],
+    "limits": [
+      "周期套餐流量每月重置；不限时包一次性购买、用完为止",
+      "公开测评（2026 年 10 月，高校校园网环境）称晚高峰 21:00–23:00 丢包约 3%–5%，网页与聊天不受影响，大文件同步建议避开该时段",
+      "公开测评称客服以文档与工单为主，不提供即时一对一咨询",
+      "有测评提到“约 5.6 元/月 60GB”的入门价，与本站整理的价格表不一致；本站以价格表为准，下单前请以官网结算页为准",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "节点地区说法不一：有资料列出香港、日本、美国，也有测评称覆盖港、日、美、新、韩、台等 45+ 节点。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "年付活动包",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "初云·入门版",
+        "period": "monthly",
+        "priceCny": 23,
+        "gbPerMonth": 130,
+        "totalGb": 130,
+        "note": ""
+      },
+      {
+        "name": "初云·入门版",
+        "period": "quarterly",
+        "priceCny": 66,
+        "gbPerMonth": 130,
+        "totalGb": 390,
+        "note": ""
+      },
+      {
+        "name": "初云·入门版",
+        "period": "yearly",
+        "priceCny": 228,
+        "gbPerMonth": 130,
+        "totalGb": 1560,
+        "note": ""
+      },
+      {
+        "name": "凌云·基础版",
+        "period": "monthly",
+        "priceCny": 43,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "凌云·基础版",
+        "period": "quarterly",
+        "priceCny": 123,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "凌云·基础版",
+        "period": "yearly",
+        "priceCny": 408,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "御云·高级版",
+        "period": "monthly",
+        "priceCny": 73,
+        "gbPerMonth": 600,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "御云·高级版",
+        "period": "quarterly",
+        "priceCny": 210,
+        "gbPerMonth": 600,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "御云·高级版",
+        "period": "yearly",
+        "priceCny": 696,
+        "gbPerMonth": 600,
+        "totalGb": 7200,
+        "note": ""
+      },
+      {
+        "name": "78GB 不限时流量包",
+        "period": "one-time",
+        "priceCny": 99,
+        "gbPerMonth": null,
+        "totalGb": 78,
+        "note": "一次性，用完为止"
+      },
+      {
+        "name": "160GB 不限时流量包",
+        "period": "one-time",
+        "priceCny": 199,
+        "gbPerMonth": null,
+        "totalGb": 160,
+        "note": "一次性，用完为止"
+      }
+    ]
+  },
+  "breezenet": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "微风网络（Breeze / Breezenet）提供三网优化入口与 IPLC 专线，支持通用订阅，协议包括 Shadowsocks、VMess、Trojan。套餐标注不限速、不限同时在线设备，另有两档不限时流量包。",
+    "regions": [
+      "香港",
+      "新加坡",
+      "日本",
+      "美国"
+    ],
+    "lineTypes": [
+      "IPLC 专线",
+      "三网优化入口"
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "VMess",
+      "Trojan"
+    ],
+    "clients": [
+      "据公开资料，2026 年 10 月起改用官方专属客户端（下载 App 登录即用，新订单不提供订阅链接，不再支持 Clash、Shadowrocket 等第三方客户端）",
+      "已有订阅链接的老用户不受影响（此前资料：Windows、macOS、iOS、Android 客户端（通用订阅））"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Claude（服务商称全节点提供住宅 IP）（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "日常浏览、看视频、用 AI 工具的用户",
+      "家里多台设备同时使用的用户",
+      "用量不规律、想买不限时包的用户"
+    ],
+    "notSuitableFor": [
+      "需要查看节点地区清单再决定的用户（资料未列出地区）"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限速、不限同时在线设备",
+      "周期套餐流量从购买日起按月重置；不限时包不重置",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、微信、USDT",
+      "客户端变更：据公开资料，自 2026 年 10 月起只能用官方专属客户端，支持哪些平台以官网为准；下单前请确认你的设备可以安装。",
+      "线路与协议说法不一：有资料标注 IPLC 专线、Shadowsocks / VMess / Trojan，也有资料标注 IEPL 专线、VLESS 协议，以官网为准。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "清风",
+        "period": "yearly",
+        "priceCny": 137,
+        "gbPerMonth": 100,
+        "totalGb": 1200,
+        "note": "仅年付"
+      },
+      {
+        "name": "乘风",
+        "period": "monthly",
+        "priceCny": 27,
+        "gbPerMonth": 200,
+        "totalGb": 200,
+        "note": ""
+      },
+      {
+        "name": "乘风",
+        "period": "quarterly",
+        "priceCny": 72,
+        "gbPerMonth": 200,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "乘风",
+        "period": "half-year",
+        "priceCny": 137,
+        "gbPerMonth": 200,
+        "totalGb": 1200,
+        "note": ""
+      },
+      {
+        "name": "乘风",
+        "period": "yearly",
+        "priceCny": 259,
+        "gbPerMonth": 200,
+        "totalGb": 2400,
+        "note": ""
+      },
+      {
+        "name": "破风",
+        "period": "monthly",
+        "priceCny": 57,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": ""
+      },
+      {
+        "name": "破风",
+        "period": "quarterly",
+        "priceCny": 153,
+        "gbPerMonth": 500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "破风",
+        "period": "half-year",
+        "priceCny": 290,
+        "gbPerMonth": 500,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "破风",
+        "period": "yearly",
+        "priceCny": 547,
+        "gbPerMonth": 500,
+        "totalGb": 6000,
+        "note": ""
+      },
+      {
+        "name": "御风",
+        "period": "monthly",
+        "priceCny": 127,
+        "gbPerMonth": 1200,
+        "totalGb": 1200,
+        "note": ""
+      },
+      {
+        "name": "御风",
+        "period": "quarterly",
+        "priceCny": 342,
+        "gbPerMonth": 1200,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "御风",
+        "period": "half-year",
+        "priceCny": 647,
+        "gbPerMonth": 1200,
+        "totalGb": 7200,
+        "note": ""
+      },
+      {
+        "name": "御风",
+        "period": "yearly",
+        "priceCny": 1219,
+        "gbPerMonth": 1200,
+        "totalGb": 14400,
+        "note": ""
+      },
+      {
+        "name": "信风 不限时包",
+        "period": "one-time",
+        "priceCny": 200,
+        "gbPerMonth": null,
+        "totalGb": 270,
+        "note": "一次性，用完为止"
+      },
+      {
+        "name": "长风 不限时包",
+        "period": "one-time",
+        "priceCny": 370,
+        "gbPerMonth": null,
+        "totalGb": 570,
+        "note": "一次性，用完为止"
+      }
+    ]
+  },
+  "flyv": {
+    "status": "verified",
+    "sourceType": "official",
+    "collectedAt": "2026-10-31",
+    "verifiedAt": "2026-10-31",
+    "officialSite": "https://flyv.my/",
+    "intro": "飞V（FlyV）的套餐分四个常规档位（入门 150GB、进阶 380GB、高端 800GB、商业 1.8TB，均按月重置），每档都有月付、季付、半年付、年付四种周期，长周期按月均价递减；另有 ¥99/年的轻量版（每月 65GB）、三档一次性永久有效流量包，以及独立公网 IP 的「原生IP·独享黄金专线」。套餐页标注全节点统一 1× 倍率、不限速、不限设备数，线路为 BGP 三网智能调度配 IEPL/IPLC 专线，协议为 Shadowsocks。",
+    "regions": [
+      "多国家及地区节点（套餐页未列出具体地区）"
+    ],
+    "lineTypes": [
+      "BGP 三网智能调度",
+      "IEPL / IPLC 专线（进阶及以上档位标注）",
+      "原生 IP 独享专线（黄金专线档）"
+    ],
+    "protocols": [
+      "Shadowsocks"
+    ],
+    "clients": [
+      "电脑、手机、平板多终端同时在线（套餐页未限制设备数）",
+      "Shadowsocks 兼容客户端（Clash、Shadowrocket、v2rayN 等）"
+    ],
+    "aiCompat": "套餐页称适配 ChatGPT、Claude、Midjourney 等 AI 工具（本站未检测）。",
+    "streamingCompat": "套餐页称支持 Netflix、YouTube、Disney+ 等主流平台（本站未检测）。",
+    "suitableFor": [
+      "想用低价先试的用户：入门方案 ¥25/月 150GB，或 ¥99/年的 65GB 轻量版",
+      "流量需求稳定、愿意按年付拿折扣的用户（年付月均比月付低约 15%）",
+      "偶尔出国或备用需求：一次性流量包永久有效，不按月过期",
+      "多设备家庭或团队：套餐页不限制同时在线设备数"
+    ],
+    "notSuitableFor": [
+      "每月用量很小又不想一次付一年的人：月付最低档 ¥25，没有更小的月付档",
+      "需要独立 IP 的用户要注意黄金专线 ¥680/月 的价格与 2–3 个工作日交付",
+      "在意具体节点地区的人：套餐页没有列出地区清单，下单前请向客服确认"
+    ],
+    "sources": [
+      {
+        "label": "飞V 官网套餐页截图（站长提供，2026-10-31）",
+        "url": "https://flyv.my/"
+      },
+      {
+        "label": "飞V 官网首页（2026-10-20 读取）",
+        "url": "https://flyv.my/"
+      }
+    ],
+    "limits": [
+      "全节点统一 1× 倍率，不限速，不限同时在线设备数（以套餐页标注为准）",
+      "常规档位流量每月重置；年付轻量版明确标注未用完不结转",
+      "一次性流量包永久有效，用完即止，不可重置",
+      "退款与试用条款套餐页未写明，下单前请向客服确认",
+      "原生IP·独享黄金专线仅月付 ¥680（站长已确认），预计 2–3 个工作日交付",
+      "原生IP·独享黄金专线仅月付，预计 2–3 个工作日交付"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "入门方案",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": "不限速、设备不限、1× 倍率"
+      },
+      {
+        "name": "进阶方案",
+        "period": "monthly",
+        "priceCny": 50,
+        "gbPerMonth": 380,
+        "totalGb": 380,
+        "note": "不限速、设备不限、1× 倍率"
+      },
+      {
+        "name": "高端方案",
+        "period": "monthly",
+        "priceCny": 110,
+        "gbPerMonth": 800,
+        "totalGb": 800,
+        "note": "不限速、设备不限、1× 倍率"
+      },
+      {
+        "name": "商业方案",
+        "period": "monthly",
+        "priceCny": 190,
+        "gbPerMonth": 1800,
+        "totalGb": 1800,
+        "note": "不限速、设备不限、1× 倍率"
+      },
+      {
+        "name": "入门方案",
+        "period": "quarterly",
+        "priceCny": 71.25,
+        "gbPerMonth": 150,
+        "totalGb": 450,
+        "note": "季付，月均约 ¥23.75"
+      },
+      {
+        "name": "进阶方案",
+        "period": "quarterly",
+        "priceCny": 142.5,
+        "gbPerMonth": 380,
+        "totalGb": 1140,
+        "note": "季付，月均约 ¥47.50"
+      },
+      {
+        "name": "高端方案",
+        "period": "quarterly",
+        "priceCny": 313.5,
+        "gbPerMonth": 800,
+        "totalGb": 2400,
+        "note": "季付，月均约 ¥104.50"
+      },
+      {
+        "name": "商业方案",
+        "period": "quarterly",
+        "priceCny": 541.5,
+        "gbPerMonth": 1800,
+        "totalGb": 5400,
+        "note": "季付，月均约 ¥180.50"
+      },
+      {
+        "name": "入门方案",
+        "period": "half-year",
+        "priceCny": 135,
+        "gbPerMonth": 150,
+        "totalGb": 900,
+        "note": "半年付，月均 ¥22.50"
+      },
+      {
+        "name": "进阶方案",
+        "period": "half-year",
+        "priceCny": 270,
+        "gbPerMonth": 380,
+        "totalGb": 2280,
+        "note": "半年付，月均 ¥45.00"
+      },
+      {
+        "name": "高端方案",
+        "period": "half-year",
+        "priceCny": 594,
+        "gbPerMonth": 800,
+        "totalGb": 4800,
+        "note": "半年付，月均 ¥99.00"
+      },
+      {
+        "name": "商业方案",
+        "period": "half-year",
+        "priceCny": 1026,
+        "gbPerMonth": 1800,
+        "totalGb": 10800,
+        "note": "半年付，月均 ¥171.00"
+      },
+      {
+        "name": "年付标准轻量版",
+        "period": "yearly",
+        "priceCny": 99,
+        "gbPerMonth": 65,
+        "totalGb": 780,
+        "note": "仅年付；每月重置，未用完不结转"
+      },
+      {
+        "name": "入门方案",
+        "period": "yearly",
+        "priceCny": 255,
+        "gbPerMonth": 150,
+        "totalGb": 1800,
+        "note": "年付，月均 ¥21.25"
+      },
+      {
+        "name": "进阶方案",
+        "period": "yearly",
+        "priceCny": 510,
+        "gbPerMonth": 380,
+        "totalGb": 4560,
+        "note": "年付，月均 ¥42.50"
+      },
+      {
+        "name": "高端方案",
+        "period": "yearly",
+        "priceCny": 1122,
+        "gbPerMonth": 800,
+        "totalGb": 9600,
+        "note": "年付，月均 ¥93.50"
+      },
+      {
+        "name": "商业方案",
+        "period": "yearly",
+        "priceCny": 1938,
+        "gbPerMonth": 1800,
+        "totalGb": 21600,
+        "note": "年付，月均 ¥161.50"
+      },
+      {
+        "name": "原生IP·独享黄金专线",
+        "period": "monthly",
+        "priceCny": 680,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": "独立公网 IP、专属带宽、1 对 1 技术协助，预计 2–3 个工作日交付；站长确认价格为 ¥680/月"
+      },
+      {
+        "name": "单次轻量版·小流量包",
+        "period": "one-time",
+        "priceCny": 189,
+        "gbPerMonth": null,
+        "totalGb": 130,
+        "note": "一次性购买，永久有效，用完即止"
+      },
+      {
+        "name": "单次轻量版·标准流量包",
+        "period": "one-time",
+        "priceCny": 479,
+        "gbPerMonth": null,
+        "totalGb": 380,
+        "note": "一次性购买，永久有效，用完即止"
+      },
+      {
+        "name": "单次轻量版·精英流量包",
+        "period": "one-time",
+        "priceCny": 799,
+        "gbPerMonth": null,
+        "totalGb": 600,
+        "note": "一次性购买，永久有效，用完即止"
+      }
+    ],
+    "verifiedBy": "站长提供的官网套餐页截图（2026-10-31）"
+  },
+  "laddercloud": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "梯子云（LadderCloud）主打 IEPL 专线和 VLESS 协议，提供自研全平台 App，也支持通用订阅接入 Clash、Shadowrocket、sing-box。所有套餐都按月刷新流量，另有附独享公网 IP 的定制专线。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineTypes": [
+      "IEPL 专线"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "自研全平台 App",
+      "通用订阅：Clash、Shadowrocket、sing-box"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Claude（原生 IP）（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、YouTube（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "轻度或备用使用（年度保活，每月 60GB）",
+      "看视频、用 AI、下载较多的用户（350GB 档以上）",
+      "TikTok 直播、独立站等需要固定出口的业务"
+    ],
+    "notSuitableFor": [
+      "想买不限时流量包的用户（没有不限时套餐）"
+    ],
+    "sources": [],
+    "limits": [
+      "所有套餐为每月额度，没有不限时包",
+      "“60+ 节点、2Gbps+ 带宽”为服务端容量说明，并非单用户速率",
+      "设备数与限速情况资料未写明",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "年度保活方案",
+        "period": "yearly",
+        "priceCny": 89,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": "全年实付 ¥89，流量每月刷新"
+      },
+      {
+        "name": "初阶·基础视界",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 125,
+        "totalGb": 125,
+        "note": ""
+      },
+      {
+        "name": "初阶·基础视界",
+        "period": "quarterly",
+        "priceCny": 71.25,
+        "gbPerMonth": 125,
+        "totalGb": 375,
+        "note": ""
+      },
+      {
+        "name": "初阶·基础视界",
+        "period": "yearly",
+        "priceCny": 255,
+        "gbPerMonth": 125,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "中阶·极清多线",
+        "period": "monthly",
+        "priceCny": 60,
+        "gbPerMonth": 350,
+        "totalGb": 350,
+        "note": ""
+      },
+      {
+        "name": "中阶·极清多线",
+        "period": "quarterly",
+        "priceCny": 171,
+        "gbPerMonth": 350,
+        "totalGb": 1050,
+        "note": ""
+      },
+      {
+        "name": "中阶·极清多线",
+        "period": "yearly",
+        "priceCny": 612,
+        "gbPerMonth": 350,
+        "totalGb": 4200,
+        "note": ""
+      },
+      {
+        "name": "高阶·全球智联",
+        "period": "monthly",
+        "priceCny": 110,
+        "gbPerMonth": 750,
+        "totalGb": 750,
+        "note": ""
+      },
+      {
+        "name": "高阶·全球智联",
+        "period": "quarterly",
+        "priceCny": 313.5,
+        "gbPerMonth": 750,
+        "totalGb": 2250,
+        "note": ""
+      },
+      {
+        "name": "高阶·全球智联",
+        "period": "yearly",
+        "priceCny": 1122,
+        "gbPerMonth": 750,
+        "totalGb": 9000,
+        "note": ""
+      },
+      {
+        "name": "顶阶·全球骨干",
+        "period": "monthly",
+        "priceCny": 190,
+        "gbPerMonth": 1600,
+        "totalGb": 1600,
+        "note": ""
+      },
+      {
+        "name": "顶阶·全球骨干",
+        "period": "quarterly",
+        "priceCny": 541.5,
+        "gbPerMonth": 1600,
+        "totalGb": 4800,
+        "note": ""
+      },
+      {
+        "name": "顶阶·全球骨干",
+        "period": "yearly",
+        "priceCny": 1938,
+        "gbPerMonth": 1600,
+        "totalGb": 19200,
+        "note": ""
+      },
+      {
+        "name": "云端独享定制专线",
+        "period": "monthly",
+        "priceCny": 680,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": "独享公网 IP、独立带宽"
+      }
+    ]
+  },
+  "wavenet": {
+    "status": "verified",
+    "sourceType": "official",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": "2026-10-20",
+    "officialSite": "https://wavenet.my/",
+    "intro": "浪网 WaveNet 官网称采用 BGP 多线智能调度与专线级出口，协议为 Shadowsocks，所有节点统一 1 倍率。套餐只有月付，流量从 150GB 到 2TB，另有带独立公网 IP 的定制线路包，提供 Windows、macOS、iOS、Android 客户端。",
+    "regions": [
+      "官网未列出具体地区（官网称“全球节点”）"
+    ],
+    "lineTypes": [
+      "BGP 多线智能调度",
+      "专线级出口",
+      "独享专线（定制包）"
+    ],
+    "protocols": [
+      "Shadowsocks"
+    ],
+    "clients": [
+      "Windows 10+",
+      "macOS 10.15+",
+      "iOS 12.0+",
+      "Android 5.0+（订阅链接或二维码导入）"
+    ],
+    "aiCompat": "官网称支持 ChatGPT、Claude 等 AI 应用与开发工具（本站未检测）。",
+    "streamingCompat": "官网称支持 Netflix、Hulu、HBO、Disney+、DAZN（本站未检测）。",
+    "suitableFor": [
+      "远程办公、团队协作（进阶、商业档）",
+      "流量需求大的用户（2TB 商业档每GB 约 ¥0.10）",
+      "直播上传与固定出口业务（定制线路包）"
+    ],
+    "notSuitableFor": [
+      "预算低的轻度用户（入门档 ¥30 起，高于多数同类入门价）",
+      "想年付省钱的用户（官网只列月付）"
+    ],
+    "sources": [
+      {
+        "label": "浪网 WaveNet 官网首页（2026-10-20 读取）",
+        "url": "https://wavenet.my/"
+      }
+    ],
+    "limits": [
+      "所有节点 1 倍率",
+      "节点地区与设备数官网未列明",
+      "官网公开的新用户首单优惠码：lw888",
+      "24/7 在线协助（官网描述）",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "lw888",
+    "plans": [
+      {
+        "name": "浪网 入门",
+        "period": "monthly",
+        "priceCny": 30,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": "标注无速率限制"
+      },
+      {
+        "name": "浪网 进阶",
+        "period": "monthly",
+        "priceCny": 70,
+        "gbPerMonth": 400,
+        "totalGb": 400,
+        "note": "纯专线出口；标注无速率限制"
+      },
+      {
+        "name": "浪网 高端",
+        "period": "monthly",
+        "priceCny": 120,
+        "gbPerMonth": 800,
+        "totalGb": 800,
+        "note": ""
+      },
+      {
+        "name": "浪网 商业",
+        "period": "monthly",
+        "priceCny": 200,
+        "gbPerMonth": 2000,
+        "totalGb": 2000,
+        "note": "团队与高并发；标注无速率限制"
+      },
+      {
+        "name": "浪网 定制线路包",
+        "period": "monthly",
+        "priceCny": 640,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": "独享专线、独立公网 IP，约 2–3 个工作日交付"
+      }
+    ]
+  },
+  "yinxingren": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "隐形人主打纯专线与 VLESS 协议，服务覆盖香港、台湾、日本、新加坡、美国等地区。套餐从年付 80GB/月的轻量档到 1.6TB/月，通用订阅需联系客服获取。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineTypes": [
+      "专线（未注明 IEPL/IPLC）"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "Clash",
+      "Shadowrocket（通用订阅需联系客服）"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT，另列 GitHub Copilot、Hugging Face 使用场景（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、Prime Video、BBC、Abema、TVer（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "备用梯子、低频查资料（星耀风暴）",
+      "日常观影与办公（白银纪元及以上）",
+      "下载较多的用户（黄金序列及以上）"
+    ],
+    "notSuitableFor": [
+      "经常看高清视频却选最低档的用户（每月 80GB 不够用）",
+      "想买不限时流量包的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "服务商称支持不满意退款，适用范围以条款为准",
+      "服务商称线路故障 1 小时内修复",
+      "设备数与限速资料未写明",
+      "通用订阅需联系客服获取"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "星耀风暴",
+        "period": "yearly",
+        "priceCny": 109,
+        "gbPerMonth": 80,
+        "totalGb": 960,
+        "note": ""
+      },
+      {
+        "name": "白银纪元",
+        "period": "monthly",
+        "priceCny": 24,
+        "gbPerMonth": 144,
+        "totalGb": 144,
+        "note": ""
+      },
+      {
+        "name": "白银纪元",
+        "period": "quarterly",
+        "priceCny": 68.4,
+        "gbPerMonth": 144,
+        "totalGb": 432,
+        "note": ""
+      },
+      {
+        "name": "白银纪元",
+        "period": "yearly",
+        "priceCny": 244.8,
+        "gbPerMonth": 144,
+        "totalGb": 1728,
+        "note": ""
+      },
+      {
+        "name": "黄金序列",
+        "period": "monthly",
+        "priceCny": 48,
+        "gbPerMonth": 360,
+        "totalGb": 360,
+        "note": ""
+      },
+      {
+        "name": "黄金序列",
+        "period": "quarterly",
+        "priceCny": 136.8,
+        "gbPerMonth": 360,
+        "totalGb": 1080,
+        "note": ""
+      },
+      {
+        "name": "黄金序列",
+        "period": "yearly",
+        "priceCny": 489.6,
+        "gbPerMonth": 360,
+        "totalGb": 4320,
+        "note": ""
+      },
+      {
+        "name": "铂金至臻",
+        "period": "monthly",
+        "priceCny": 105,
+        "gbPerMonth": 750,
+        "totalGb": 750,
+        "note": ""
+      },
+      {
+        "name": "铂金至臻",
+        "period": "quarterly",
+        "priceCny": 299.25,
+        "gbPerMonth": 750,
+        "totalGb": 2250,
+        "note": ""
+      },
+      {
+        "name": "铂金至臻",
+        "period": "yearly",
+        "priceCny": 1071,
+        "gbPerMonth": 750,
+        "totalGb": 9000,
+        "note": ""
+      },
+      {
+        "name": "钻石穹顶",
+        "period": "monthly",
+        "priceCny": 185,
+        "gbPerMonth": 1600,
+        "totalGb": 1600,
+        "note": ""
+      },
+      {
+        "name": "钻石穹顶",
+        "period": "quarterly",
+        "priceCny": 527.25,
+        "gbPerMonth": 1600,
+        "totalGb": 4800,
+        "note": ""
+      },
+      {
+        "name": "钻石穹顶",
+        "period": "yearly",
+        "priceCny": 1887,
+        "gbPerMonth": 1600,
+        "totalGb": 19200,
+        "note": ""
+      },
+      {
+        "name": "王者定制版",
+        "period": "monthly",
+        "priceCny": 680,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": "独立带宽，需联系客服"
+      }
+    ]
+  },
+  "stardream": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "星岛梦（StarDream，也称 XDM）提供直连与 IPLC 两类线路，套餐从年付 60GB/月到 1TB/月，另有三档一次性不限时流量包。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "英国"
+    ],
+    "lineTypes": [
+      "直连",
+      "IPLC"
+    ],
+    "protocols": [
+      "Trojan",
+      "VLESS"
+    ],
+    "clients": [
+      "Clash",
+      "Clash Meta",
+      "sing-box",
+      "v2rayN",
+      "Shadowrocket"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Copilot、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、HBO Max、YouTube、Spotify、Hulu（原生 IP 节点）（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "轻度使用（贴心小包）",
+      "日常看视频和用 AI（300G、500G 档）",
+      "用量不规律的用户（不限时包每GB约 ¥0.6–1）"
+    ],
+    "notSuitableFor": [
+      "只想用最低价尝鲜的用户",
+      "对稳定性和解锁有硬性要求、需要先看实测数据的用户（建议先买月付实测）"
+    ],
+    "sources": [],
+    "limits": [
+      "设备数资料未写明",
+      "服务商称晚高峰不限速，未给出具体数值",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、微信、USDT"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "贴心小包",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "超量150G",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": ""
+      },
+      {
+        "name": "超量150G",
+        "period": "quarterly",
+        "priceCny": 75,
+        "gbPerMonth": 150,
+        "totalGb": 450,
+        "note": ""
+      },
+      {
+        "name": "超量150G",
+        "period": "yearly",
+        "priceCny": 240,
+        "gbPerMonth": 150,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "进阶300G",
+        "period": "monthly",
+        "priceCny": 50,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "进阶300G",
+        "period": "quarterly",
+        "priceCny": 145,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "进阶300G",
+        "period": "yearly",
+        "priceCny": 480,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "闪光500G",
+        "period": "monthly",
+        "priceCny": 70,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": ""
+      },
+      {
+        "name": "闪光500G",
+        "period": "quarterly",
+        "priceCny": 195,
+        "gbPerMonth": 500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "闪光500G",
+        "period": "yearly",
+        "priceCny": 699,
+        "gbPerMonth": 500,
+        "totalGb": 6000,
+        "note": ""
+      },
+      {
+        "name": "旗舰1T版",
+        "period": "monthly",
+        "priceCny": 130,
+        "gbPerMonth": 1000,
+        "totalGb": 1000,
+        "note": ""
+      },
+      {
+        "name": "旗舰1T版",
+        "period": "quarterly",
+        "priceCny": 370,
+        "gbPerMonth": 1000,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "旗舰1T版",
+        "period": "yearly",
+        "priceCny": 1249,
+        "gbPerMonth": 1000,
+        "totalGb": 12000,
+        "note": ""
+      },
+      {
+        "name": "永久不限时 100G",
+        "period": "one-time",
+        "priceCny": 100,
+        "gbPerMonth": null,
+        "totalGb": 100,
+        "note": ""
+      },
+      {
+        "name": "永久不限时 300G",
+        "period": "one-time",
+        "priceCny": 300,
+        "gbPerMonth": null,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "永久不限时 1TB",
+        "period": "one-time",
+        "priceCny": 600,
+        "gbPerMonth": null,
+        "totalGb": 1000,
+        "note": ""
+      }
+    ]
+  },
+  "lightspeed": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "光速云（LightSpeed）主打大流量套餐，线路标注为隧道中转与高速专线，月付最低 ¥17 起（110GB/月），另有 1TB 一次性不限时套餐。",
+    "regions": [
+      "香港",
+      "台湾",
+      "新加坡",
+      "日本",
+      "美国"
+    ],
+    "lineTypes": [
+      "隧道中转",
+      "高速专线"
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan"
+    ],
+    "clients": [
+      "Clash",
+      "Clash Meta",
+      "sing-box",
+      "v2rayN",
+      "Shadowrocket"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Copilot、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、HBO Max、YouTube、Spotify、Hulu（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "想用低月付价格拿到较多流量的用户",
+      "大流量用户（量子版、无界版）"
+    ],
+    "notSuitableFor": [
+      "需要明确节点地区清单的用户（资料未列出地区）"
+    ],
+    "sources": [],
+    "limits": [
+      "节点地区、协议、设备数资料未写明",
+      "服务商称晚高峰不限速、负载均衡",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "据公开资料，部分特殊商品不支持退款；另有测评称节点还覆盖英国、德国、澳大利亚、法国等地区（60+ 节点）。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "轻量版",
+        "period": "yearly",
+        "priceCny": 99,
+        "gbPerMonth": 59,
+        "totalGb": 708,
+        "note": ""
+      },
+      {
+        "name": "极速版",
+        "period": "monthly",
+        "priceCny": 17,
+        "gbPerMonth": 110,
+        "totalGb": 110,
+        "note": ""
+      },
+      {
+        "name": "极速版",
+        "period": "quarterly",
+        "priceCny": 50,
+        "gbPerMonth": 110,
+        "totalGb": 330,
+        "note": ""
+      },
+      {
+        "name": "极速版",
+        "period": "yearly",
+        "priceCny": 160,
+        "gbPerMonth": 110,
+        "totalGb": 1320,
+        "note": ""
+      },
+      {
+        "name": "流光版",
+        "period": "monthly",
+        "priceCny": 34,
+        "gbPerMonth": 220,
+        "totalGb": 220,
+        "note": ""
+      },
+      {
+        "name": "流光版",
+        "period": "quarterly",
+        "priceCny": 100,
+        "gbPerMonth": 220,
+        "totalGb": 660,
+        "note": ""
+      },
+      {
+        "name": "流光版",
+        "period": "yearly",
+        "priceCny": 320,
+        "gbPerMonth": 220,
+        "totalGb": 2640,
+        "note": ""
+      },
+      {
+        "name": "量子版",
+        "period": "monthly",
+        "priceCny": 68,
+        "gbPerMonth": 450,
+        "totalGb": 450,
+        "note": ""
+      },
+      {
+        "name": "量子版",
+        "period": "quarterly",
+        "priceCny": 200,
+        "gbPerMonth": 450,
+        "totalGb": 1350,
+        "note": ""
+      },
+      {
+        "name": "量子版",
+        "period": "yearly",
+        "priceCny": 667,
+        "gbPerMonth": 450,
+        "totalGb": 5400,
+        "note": ""
+      },
+      {
+        "name": "无界版",
+        "period": "monthly",
+        "priceCny": 130,
+        "gbPerMonth": 900,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "无界版",
+        "period": "quarterly",
+        "priceCny": 390,
+        "gbPerMonth": 900,
+        "totalGb": 2700,
+        "note": ""
+      },
+      {
+        "name": "无界版",
+        "period": "yearly",
+        "priceCny": 1248,
+        "gbPerMonth": 900,
+        "totalGb": 10800,
+        "note": ""
+      },
+      {
+        "name": "不限时套餐",
+        "period": "one-time",
+        "priceCny": 680,
+        "gbPerMonth": null,
+        "totalGb": 1024,
+        "note": "一次性 1TB，有效期以结算页为准"
+      }
+    ]
+  },
+  "v2yun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "唯兔云（V2云）主打 IPLC 专线和 VLESS 协议，另有 IEPL 年付套餐和备用直连节点。标注不限速、不限设备、全节点 1 倍率，并有 100GB 至 500GB 的不限时流量包。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "韩国",
+      "东南亚",
+      "印度",
+      "部分欧美地区"
+    ],
+    "lineTypes": [
+      "IPLC 专线",
+      "IEPL（年付加强）",
+      "备用直连"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "兼容 VLESS 的客户端",
+      "Shadowrocket（服务商提供下载账号）"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "预算很低的轻量用户（年付 ¥79.9）",
+      "低频或备用（不限时包，500GB 约 ¥0.68/GB）",
+      "需要按月灵活购买的用户"
+    ],
+    "notSuitableFor": [
+      "对稳定性、解锁有硬性要求，又不愿先买短周期实测的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限速、不限设备、全节点 1 倍率",
+      "“节日限时套餐”为活动价，可能随时下架",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、微信、USDT"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "年付版限量款",
+        "period": "yearly",
+        "priceCny": 79.9,
+        "gbPerMonth": 45,
+        "totalGb": 540,
+        "note": ""
+      },
+      {
+        "name": "年付加强专线（IEPL）",
+        "period": "yearly",
+        "priceCny": 120,
+        "gbPerMonth": 75,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "节日限时套餐",
+        "period": "monthly",
+        "priceCny": 14.9,
+        "gbPerMonth": 100,
+        "totalGb": 100,
+        "note": "限时活动价"
+      },
+      {
+        "name": "节日限时套餐",
+        "period": "quarterly",
+        "priceCny": 40.9,
+        "gbPerMonth": 100,
+        "totalGb": 300,
+        "note": "限时活动价"
+      },
+      {
+        "name": "节日限时套餐",
+        "period": "half-year",
+        "priceCny": 75.9,
+        "gbPerMonth": 100,
+        "totalGb": 600,
+        "note": "限时活动价"
+      },
+      {
+        "name": "节日限时套餐",
+        "period": "yearly",
+        "priceCny": 149.9,
+        "gbPerMonth": 100,
+        "totalGb": 1200,
+        "note": "限时活动价"
+      },
+      {
+        "name": "普通版",
+        "period": "monthly",
+        "priceCny": 19.9,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": ""
+      },
+      {
+        "name": "普通版",
+        "period": "quarterly",
+        "priceCny": 53.9,
+        "gbPerMonth": 150,
+        "totalGb": 450,
+        "note": ""
+      },
+      {
+        "name": "普通版",
+        "period": "half-year",
+        "priceCny": 101.9,
+        "gbPerMonth": 150,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "普通版",
+        "period": "yearly",
+        "priceCny": 191.9,
+        "gbPerMonth": 150,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "进阶版",
+        "period": "monthly",
+        "priceCny": 29.9,
+        "gbPerMonth": 200,
+        "totalGb": 200,
+        "note": ""
+      },
+      {
+        "name": "进阶版",
+        "period": "quarterly",
+        "priceCny": 80.9,
+        "gbPerMonth": 200,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "进阶版",
+        "period": "half-year",
+        "priceCny": 152.9,
+        "gbPerMonth": 200,
+        "totalGb": 1200,
+        "note": ""
+      },
+      {
+        "name": "进阶版",
+        "period": "yearly",
+        "priceCny": 286.9,
+        "gbPerMonth": 200,
+        "totalGb": 2400,
+        "note": ""
+      },
+      {
+        "name": "专业版",
+        "period": "monthly",
+        "priceCny": 59.9,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": ""
+      },
+      {
+        "name": "专业版",
+        "period": "quarterly",
+        "priceCny": 161.9,
+        "gbPerMonth": 500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "专业版",
+        "period": "half-year",
+        "priceCny": 305.9,
+        "gbPerMonth": 500,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "专业版",
+        "period": "yearly",
+        "priceCny": 547.9,
+        "gbPerMonth": 500,
+        "totalGb": 6000,
+        "note": ""
+      },
+      {
+        "name": "至尊版",
+        "period": "monthly",
+        "priceCny": 119.9,
+        "gbPerMonth": 1000,
+        "totalGb": 1000,
+        "note": ""
+      },
+      {
+        "name": "至尊版",
+        "period": "quarterly",
+        "priceCny": 323.9,
+        "gbPerMonth": 1000,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "至尊版",
+        "period": "half-year",
+        "priceCny": 611.9,
+        "gbPerMonth": 1000,
+        "totalGb": 6000,
+        "note": ""
+      },
+      {
+        "name": "至尊版",
+        "period": "yearly",
+        "priceCny": 1150.9,
+        "gbPerMonth": 1000,
+        "totalGb": 12000,
+        "note": ""
+      },
+      {
+        "name": "永久不限时 100GB",
+        "period": "one-time",
+        "priceCny": 100,
+        "gbPerMonth": null,
+        "totalGb": 100,
+        "note": ""
+      },
+      {
+        "name": "永久不限时 200GB",
+        "period": "one-time",
+        "priceCny": 160,
+        "gbPerMonth": null,
+        "totalGb": 200,
+        "note": ""
+      },
+      {
+        "name": "永久不限时 500GB",
+        "period": "one-time",
+        "priceCny": 340,
+        "gbPerMonth": null,
+        "totalGb": 500,
+        "note": "续费重置享 9 折"
+      }
+    ]
+  },
+  "u1s1": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "U1S1（有一说一）采用 BGP 三网优化与 IEPL 专线出口，协议为 Shadowsocks，支持通用订阅，不限 IP 与连接设备数量。",
+    "regions": [
+      "香港",
+      "台湾",
+      "新加坡",
+      "日本",
+      "美国"
+    ],
+    "lineTypes": [
+      "BGP 三网优化",
+      "IEPL 专线出口"
+    ],
+    "protocols": [
+      "Shadowsocks"
+    ],
+    "clients": [
+      "兼容 SS 的客户端（iOS、Android、Windows、macOS）",
+      "Shadowrocket（服务商提供下载账号）"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Claude、Midjourney（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 TikTok、Netflix、Disney+、HBO、DAZN（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "多设备日常使用",
+      "跨境电商、TikTok 运营、海外直播（另有 ¥600/月 定制包）"
+    ],
+    "notSuitableFor": [
+      "想买不限时流量包的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限速、不限设备（不等于不限流量）",
+      "服务商称最高 1000Mbps、晚高峰不降速",
+      "60GB 年付按购买日起每月重置",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "就是好用包",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "普通人真够了包",
+        "period": "monthly",
+        "priceCny": 20,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": ""
+      },
+      {
+        "name": "普通人真够了包",
+        "period": "quarterly",
+        "priceCny": 54,
+        "gbPerMonth": 120,
+        "totalGb": 360,
+        "note": ""
+      },
+      {
+        "name": "普通人真够了包",
+        "period": "half-year",
+        "priceCny": 102,
+        "gbPerMonth": 120,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "普通人真够了包",
+        "period": "yearly",
+        "priceCny": 192,
+        "gbPerMonth": 120,
+        "totalGb": 1440,
+        "note": ""
+      },
+      {
+        "name": "你以为用不到包",
+        "period": "monthly",
+        "priceCny": 40,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "你以为用不到包",
+        "period": "quarterly",
+        "priceCny": 108,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "你以为用不到包",
+        "period": "half-year",
+        "priceCny": 204,
+        "gbPerMonth": 300,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "你以为用不到包",
+        "period": "yearly",
+        "priceCny": 384,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "瘾大就拉满包",
+        "period": "monthly",
+        "priceCny": 100,
+        "gbPerMonth": 700,
+        "totalGb": 700,
+        "note": ""
+      },
+      {
+        "name": "瘾大就拉满包",
+        "period": "quarterly",
+        "priceCny": 270,
+        "gbPerMonth": 700,
+        "totalGb": 2100,
+        "note": ""
+      },
+      {
+        "name": "瘾大就拉满包",
+        "period": "half-year",
+        "priceCny": 510,
+        "gbPerMonth": 700,
+        "totalGb": 4200,
+        "note": ""
+      },
+      {
+        "name": "瘾大就拉满包",
+        "period": "yearly",
+        "priceCny": 960,
+        "gbPerMonth": 700,
+        "totalGb": 8400,
+        "note": ""
+      },
+      {
+        "name": "我全都要包",
+        "period": "monthly",
+        "priceCny": 180,
+        "gbPerMonth": 1500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "我全都要包",
+        "period": "quarterly",
+        "priceCny": 486,
+        "gbPerMonth": 1500,
+        "totalGb": 4500,
+        "note": ""
+      },
+      {
+        "name": "我全都要包",
+        "period": "half-year",
+        "priceCny": 918,
+        "gbPerMonth": 1500,
+        "totalGb": 9000,
+        "note": ""
+      },
+      {
+        "name": "我全都要包",
+        "period": "yearly",
+        "priceCny": 1728,
+        "gbPerMonth": 1500,
+        "totalGb": 18000,
+        "note": ""
+      }
+    ]
+  },
+  "jilianyun": {
+    "status": "verified",
+    "sourceType": "official",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": "2026-10-20",
+    "officialSite": "https://jiliancloud.org/",
+    "intro": "极连云（JilianCloud）官网称全线 IPLC 专线接入，节点分布在亚洲、美洲和欧洲，不限在线客户端数量，最大带宽 2.5Gbps。官网只列三档月付套餐，月付 ¥15.5 起（100GB）。",
+    "regions": [
+      "亚洲",
+      "美洲",
+      "欧洲（官网未列出具体国家）"
+    ],
+    "lineTypes": [
+      "IPLC 专线"
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan（以上协议来自公开测评，官网未列出）"
+    ],
+    "clients": [
+      "iOS",
+      "Android",
+      "macOS",
+      "Windows",
+      "路由器"
+    ],
+    "aiCompat": "官网称原生支持 ChatGPT、Gemini，套餐写明可解锁 ChatGPT、TikTok（本站未检测）。",
+    "streamingCompat": "官网称原生 IP 可解锁 Netflix、Disney+、HBO Max、YouTube（本站未检测）。",
+    "suitableFor": [
+      "想用较低月付价格使用 IPLC 专线的用户（¥15.5/100GB）",
+      "家里多台设备同时在线的用户（不限客户端数）"
+    ],
+    "notSuitableFor": [
+      "需要不限时流量包或年付的用户（官网只列月付）",
+      "需要先看清协议与节点清单的用户（官网未列出）"
+    ],
+    "sources": [
+      {
+        "label": "极连云官网首页（2026-10-20 读取）",
+        "url": "https://jiliancloud.org/"
+      }
+    ],
+    "limits": [
+      "不限制在线客户端数量",
+      "官网称提供全链路加密、DNS 防污染与企业级 SLA",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "基础套餐",
+        "period": "monthly",
+        "priceCny": 15.5,
+        "gbPerMonth": 100,
+        "totalGb": 100,
+        "note": "不限在线客户端；标称最大 2.5Gbps"
+      },
+      {
+        "name": "进阶套餐",
+        "period": "monthly",
+        "priceCny": 30.5,
+        "gbPerMonth": 200,
+        "totalGb": 200,
+        "note": "不限在线客户端；标称最大 2.5Gbps"
+      },
+      {
+        "name": "旗舰套餐",
+        "period": "monthly",
+        "priceCny": 65.5,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": "不限在线客户端；标称最大 2.5Gbps"
+      }
+    ]
+  },
+  "quanqiuyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "全球云主打专线出口（IPLC/IEPL）与 BGP 智能路由，协议为 Shadowsocks，支持通用订阅。节点地区覆盖亚洲、欧洲多国，另有三档不限时流量包。",
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国",
+      "英国",
+      "德国",
+      "法国",
+      "韩国",
+      "马来西亚",
+      "泰国",
+      "越南",
+      "菲律宾",
+      "土耳其"
+    ],
+    "lineTypes": [
+      "IPLC/IEPL 专线",
+      "BGP 智能路由"
+    ],
+    "protocols": [
+      "Shadowsocks"
+    ],
+    "clients": [
+      "Clash Verge Rev",
+      "Shadowrocket",
+      "v2rayN"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Claude（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、TikTok（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "需要欧洲、东南亚等多地区节点的用户",
+      "多设备用户",
+      "跨境业务（独享专线）"
+    ],
+    "notSuitableFor": [
+      "流量需求较大却选轻量版的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "常规套餐标注不限速；入门与高端方案标注不限设备",
+      "不限时包按 1 倍率计费，用完为止",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、微信、USDT"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "轻量版",
+        "period": "yearly",
+        "priceCny": 99,
+        "gbPerMonth": 59,
+        "totalGb": 708,
+        "note": ""
+      },
+      {
+        "name": "入门方案",
+        "period": "monthly",
+        "priceCny": 20,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": ""
+      },
+      {
+        "name": "入门方案",
+        "period": "quarterly",
+        "priceCny": 54,
+        "gbPerMonth": 120,
+        "totalGb": 360,
+        "note": ""
+      },
+      {
+        "name": "入门方案",
+        "period": "half-year",
+        "priceCny": 102,
+        "gbPerMonth": 120,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "入门方案",
+        "period": "yearly",
+        "priceCny": 192,
+        "gbPerMonth": 120,
+        "totalGb": 1440,
+        "note": ""
+      },
+      {
+        "name": "进阶方案",
+        "period": "monthly",
+        "priceCny": 40,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "进阶方案",
+        "period": "quarterly",
+        "priceCny": 108,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "进阶方案",
+        "period": "half-year",
+        "priceCny": 204,
+        "gbPerMonth": 300,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "进阶方案",
+        "period": "yearly",
+        "priceCny": 384,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "高端方案",
+        "period": "monthly",
+        "priceCny": 100,
+        "gbPerMonth": 700,
+        "totalGb": 700,
+        "note": ""
+      },
+      {
+        "name": "高端方案",
+        "period": "quarterly",
+        "priceCny": 270,
+        "gbPerMonth": 700,
+        "totalGb": 2100,
+        "note": ""
+      },
+      {
+        "name": "高端方案",
+        "period": "half-year",
+        "priceCny": 510,
+        "gbPerMonth": 700,
+        "totalGb": 4200,
+        "note": ""
+      },
+      {
+        "name": "高端方案",
+        "period": "yearly",
+        "priceCny": 960,
+        "gbPerMonth": 700,
+        "totalGb": 8400,
+        "note": ""
+      },
+      {
+        "name": "商业方案",
+        "period": "monthly",
+        "priceCny": 180,
+        "gbPerMonth": 1500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "商业方案",
+        "period": "quarterly",
+        "priceCny": 486,
+        "gbPerMonth": 1500,
+        "totalGb": 4500,
+        "note": ""
+      },
+      {
+        "name": "商业方案",
+        "period": "half-year",
+        "priceCny": 918,
+        "gbPerMonth": 1500,
+        "totalGb": 9000,
+        "note": ""
+      },
+      {
+        "name": "商业方案",
+        "period": "yearly",
+        "priceCny": 1728,
+        "gbPerMonth": 1500,
+        "totalGb": 18000,
+        "note": ""
+      },
+      {
+        "name": "不限时轻量包",
+        "period": "one-time",
+        "priceCny": 100,
+        "gbPerMonth": null,
+        "totalGb": 100,
+        "note": ""
+      },
+      {
+        "name": "不限时标准包",
+        "period": "one-time",
+        "priceCny": 360,
+        "gbPerMonth": null,
+        "totalGb": 400,
+        "note": ""
+      },
+      {
+        "name": "不限时大容量包",
+        "period": "one-time",
+        "priceCny": 700,
+        "gbPerMonth": null,
+        "totalGb": 800,
+        "note": ""
+      },
+      {
+        "name": "独享私人专线节点",
+        "period": "monthly",
+        "priceCny": 680,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": ""
+      }
+    ]
+  },
+  "guangnianti": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "光年梯资料称全线采用 IPLC 专线、SS 协议，入门版标注不限速、不限客户端，晋级版以上标注高峰满速。年付入门版 ¥90（每月 50GB，折合 ¥7.5/月），月付 ¥18 起（110GB），支持支付宝和加密货币付款。",
+    "regions": [
+      "香港",
+      "日本",
+      "美国",
+      "新加坡",
+      "韩国"
+    ],
+    "lineTypes": [
+      "IPLC 专线",
+      "独享私人专线"
+    ],
+    "protocols": [
+      "Shadowsocks"
+    ],
+    "clients": [
+      "通用订阅，可导入 Clash、Shadowrocket、v2rayN 等客户端"
+    ],
+    "aiCompat": "公开测评称 ChatGPT 可解锁，也有资料标注为“官方声明支持”。本站未检测，AI 服务对节点 IP 有限制，请以实际使用为准。",
+    "streamingCompat": "公开测评称 Netflix、Disney+ 可解锁，也有资料称“大部分节点支持”。本站未检测，解锁情况随节点变化。",
+    "suitableFor": [
+      "极致省钱的轻度用户（年付折合 ¥7.5/月）",
+      "月用量 110–900GB 的月付用户"
+    ],
+    "notSuitableFor": [
+      "无法承受服务中断、又只买长期套餐的用户",
+      "需要确认节点地区与解锁情况再购买的用户（资料未列出）"
+    ],
+    "sources": [],
+    "limits": [
+      "资料提醒购买前核对常用节点倍率、流量重置、同时在线设备、退款与域名迁移渠道",
+      "支付：支付宝、加密货币",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "入门版（年付）",
+        "period": "yearly",
+        "priceCny": 90,
+        "gbPerMonth": 50,
+        "totalGb": 600,
+        "note": "不限速、不限客户端"
+      },
+      {
+        "name": "入门版",
+        "period": "monthly",
+        "priceCny": 18,
+        "gbPerMonth": 110,
+        "totalGb": 110,
+        "note": "不限速、不限客户端"
+      },
+      {
+        "name": "晋级版",
+        "period": "monthly",
+        "priceCny": 34,
+        "gbPerMonth": 220,
+        "totalGb": 220,
+        "note": "高峰满速（宣称）"
+      },
+      {
+        "name": "专业版",
+        "period": "monthly",
+        "priceCny": 68,
+        "gbPerMonth": 450,
+        "totalGb": 450,
+        "note": "高峰满速（宣称）"
+      },
+      {
+        "name": "至尊版",
+        "period": "monthly",
+        "priceCny": 130,
+        "gbPerMonth": 900,
+        "totalGb": 900,
+        "note": "高峰满速（宣称）"
+      },
+      {
+        "name": "独享私人专线",
+        "period": "monthly",
+        "priceCny": 680,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": "独立带宽与独立公网 IP"
+      }
+    ]
+  },
+  "sogoyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "Sogo云采用 VLESS、IPLC 与三网优化，提供自研客户端和通用订阅，资料列有 60+ 节点，全节点 1 倍率，另有四档不限时流量包。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "泰国"
+    ],
+    "lineTypes": [
+      "IPLC",
+      "三网优化"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "自研客户端",
+      "Shadowrocket",
+      "Clash",
+      "v2rayN",
+      "v2rayNG",
+      "Surge",
+      "Quantumult X",
+      "Stash"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Gemini，并提供 TikTok 相关节点（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney、HBO Max、YouTube、Spotify、Hulu（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "使用 Surge、Quantumult X 等 iOS 进阶客户端的用户",
+      "轻度用户（年付小包或不限时基础版）"
+    ],
+    "notSuitableFor": [
+      "一定要用 Clash、Shadowrocket 的用户（有资料称只能用自研客户端，与其他资料不一致，购买前请先向客服确认）",
+      "流量大却只想买年付小包的用户（这类用户更适合月付）"
+    ],
+    "sources": [],
+    "limits": [
+      "全节点 1 倍率，服务商称晚高峰不限速",
+      "支持 iOS、macOS、Android、Windows、Linux 多设备",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "客户端说法不一：有资料列出自研客户端及 Shadowrocket、Clash 等，也有资料称第三方客户端不可用。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "小包 年付版",
+        "period": "yearly",
+        "priceCny": 98,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "基础版",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": ""
+      },
+      {
+        "name": "基础版",
+        "period": "quarterly",
+        "priceCny": 65,
+        "gbPerMonth": 120,
+        "totalGb": 360,
+        "note": ""
+      },
+      {
+        "name": "基础版",
+        "period": "yearly",
+        "priceCny": 250,
+        "gbPerMonth": 120,
+        "totalGb": 1440,
+        "note": ""
+      },
+      {
+        "name": "优选版",
+        "period": "monthly",
+        "priceCny": 45,
+        "gbPerMonth": 250,
+        "totalGb": 250,
+        "note": ""
+      },
+      {
+        "name": "优选版",
+        "period": "quarterly",
+        "priceCny": 125,
+        "gbPerMonth": 250,
+        "totalGb": 750,
+        "note": ""
+      },
+      {
+        "name": "优选版",
+        "period": "yearly",
+        "priceCny": 485,
+        "gbPerMonth": 250,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "强化版",
+        "period": "monthly",
+        "priceCny": 80,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": ""
+      },
+      {
+        "name": "强化版",
+        "period": "quarterly",
+        "priceCny": 230,
+        "gbPerMonth": 500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "强化版",
+        "period": "yearly",
+        "priceCny": 850,
+        "gbPerMonth": 500,
+        "totalGb": 6000,
+        "note": ""
+      },
+      {
+        "name": "顶配版",
+        "period": "monthly",
+        "priceCny": 150,
+        "gbPerMonth": 1000,
+        "totalGb": 1000,
+        "note": ""
+      },
+      {
+        "name": "顶配版",
+        "period": "quarterly",
+        "priceCny": 440,
+        "gbPerMonth": 1000,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "顶配版",
+        "period": "yearly",
+        "priceCny": 1750,
+        "gbPerMonth": 1000,
+        "totalGb": 12000,
+        "note": ""
+      },
+      {
+        "name": "不限时 基础版",
+        "period": "one-time",
+        "priceCny": 120,
+        "gbPerMonth": null,
+        "totalGb": 100,
+        "note": ""
+      },
+      {
+        "name": "不限时 优选版",
+        "period": "one-time",
+        "priceCny": 220,
+        "gbPerMonth": null,
+        "totalGb": 250,
+        "note": ""
+      },
+      {
+        "name": "不限时 强化版",
+        "period": "one-time",
+        "priceCny": 450,
+        "gbPerMonth": null,
+        "totalGb": 500,
+        "note": ""
+      },
+      {
+        "name": "不限时 至尊版",
+        "period": "one-time",
+        "priceCny": 850,
+        "gbPerMonth": null,
+        "totalGb": 1000,
+        "note": ""
+      }
+    ]
+  },
+  "yuzhouyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "宇宙云（YuZhou）提供直连与 IPLC 两类线路，套餐有 50GB 月付小包、60GB 年付小包，以及 120GB 至 1TB 的月度档位。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "英国"
+    ],
+    "lineTypes": [
+      "直连",
+      "IPLC"
+    ],
+    "protocols": [
+      "官网与公开资料均未公布具体协议（可用 Clash、Shadowrocket、v2rayN 等客户端导入订阅）"
+    ],
+    "clients": [
+      "Clash",
+      "Clash Meta",
+      "sing-box",
+      "v2rayN",
+      "Shadowrocket"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Copilot、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、HBO Max、YouTube、Spotify、Hulu（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "想先用 ¥12.5 月付小包试用的用户",
+      "日常流媒体与 AI 用户（恒星、星系档）"
+    ],
+    "notSuitableFor": [
+      "想买不限时流量包的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "续费与流量重置细则资料未详细说明",
+      "设备数资料未写明",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "星云年付小包",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "星云月付小包",
+        "period": "monthly",
+        "priceCny": 12.5,
+        "gbPerMonth": 50,
+        "totalGb": 50,
+        "note": ""
+      },
+      {
+        "name": "行星基础版",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": ""
+      },
+      {
+        "name": "行星基础版",
+        "period": "quarterly",
+        "priceCny": 70,
+        "gbPerMonth": 120,
+        "totalGb": 360,
+        "note": ""
+      },
+      {
+        "name": "行星基础版",
+        "period": "yearly",
+        "priceCny": 230,
+        "gbPerMonth": 120,
+        "totalGb": 1440,
+        "note": ""
+      },
+      {
+        "name": "恒星标准版",
+        "period": "monthly",
+        "priceCny": 50,
+        "gbPerMonth": 240,
+        "totalGb": 240,
+        "note": ""
+      },
+      {
+        "name": "恒星标准版",
+        "period": "quarterly",
+        "priceCny": 140,
+        "gbPerMonth": 240,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "恒星标准版",
+        "period": "yearly",
+        "priceCny": 480,
+        "gbPerMonth": 240,
+        "totalGb": 2880,
+        "note": ""
+      },
+      {
+        "name": "星系专业版",
+        "period": "monthly",
+        "priceCny": 100,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": ""
+      },
+      {
+        "name": "星系专业版",
+        "period": "quarterly",
+        "priceCny": 285,
+        "gbPerMonth": 500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "星系专业版",
+        "period": "yearly",
+        "priceCny": 980,
+        "gbPerMonth": 500,
+        "totalGb": 6000,
+        "note": ""
+      },
+      {
+        "name": "寰宇旗舰版",
+        "period": "monthly",
+        "priceCny": 200,
+        "gbPerMonth": 1000,
+        "totalGb": 1000,
+        "note": ""
+      },
+      {
+        "name": "寰宇旗舰版",
+        "period": "quarterly",
+        "priceCny": 570,
+        "gbPerMonth": 1000,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "寰宇旗舰版",
+        "period": "yearly",
+        "priceCny": 1980,
+        "gbPerMonth": 1000,
+        "totalGb": 12000,
+        "note": ""
+      }
+    ]
+  },
+  "ermaoyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "二猫云（2mao）主打 IEPL 线路和原生 IP 节点，兼容常用客户端，资料称提供全天客服。月付小包 ¥13 起（60GB/月）。",
+    "regions": [
+      "香港",
+      "日本",
+      "美国"
+    ],
+    "lineTypes": [
+      "IEPL",
+      "原生 IP"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "Clash",
+      "Clash Meta",
+      "sing-box",
+      "v2rayN",
+      "Shadowrocket"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Copilot、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、HBO Max、YouTube、Spotify、Hulu（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "想低价月付试用的用户（¥13/60GB）",
+      "日常流媒体与 AI 用户（橘猫、牛奶猫档）"
+    ],
+    "notSuitableFor": [
+      "想买不限时流量包的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "超额与计费规则资料未说明",
+      "节点地区、设备数资料未写明",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "月付小包",
+        "period": "monthly",
+        "priceCny": 13,
+        "gbPerMonth": 60,
+        "totalGb": 60,
+        "note": ""
+      },
+      {
+        "name": "年付小包",
+        "period": "yearly",
+        "priceCny": 89,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "白猫套餐",
+        "period": "monthly",
+        "priceCny": 20,
+        "gbPerMonth": 130,
+        "totalGb": 130,
+        "note": ""
+      },
+      {
+        "name": "白猫套餐",
+        "period": "quarterly",
+        "priceCny": 57,
+        "gbPerMonth": 130,
+        "totalGb": 390,
+        "note": ""
+      },
+      {
+        "name": "白猫套餐",
+        "period": "yearly",
+        "priceCny": 204,
+        "gbPerMonth": 130,
+        "totalGb": 1560,
+        "note": ""
+      },
+      {
+        "name": "橘猫畅玩版",
+        "period": "monthly",
+        "priceCny": 40,
+        "gbPerMonth": 230,
+        "totalGb": 230,
+        "note": ""
+      },
+      {
+        "name": "橘猫畅玩版",
+        "period": "quarterly",
+        "priceCny": 114,
+        "gbPerMonth": 230,
+        "totalGb": 690,
+        "note": ""
+      },
+      {
+        "name": "橘猫畅玩版",
+        "period": "yearly",
+        "priceCny": 408,
+        "gbPerMonth": 230,
+        "totalGb": 2760,
+        "note": ""
+      },
+      {
+        "name": "牛奶猫尊享版",
+        "period": "monthly",
+        "priceCny": 80,
+        "gbPerMonth": 430,
+        "totalGb": 430,
+        "note": ""
+      },
+      {
+        "name": "牛奶猫尊享版",
+        "period": "quarterly",
+        "priceCny": 228,
+        "gbPerMonth": 430,
+        "totalGb": 1290,
+        "note": ""
+      },
+      {
+        "name": "牛奶猫尊享版",
+        "period": "yearly",
+        "priceCny": 816,
+        "gbPerMonth": 430,
+        "totalGb": 5160,
+        "note": ""
+      },
+      {
+        "name": "黑猫重度用户版",
+        "period": "monthly",
+        "priceCny": 160,
+        "gbPerMonth": 850,
+        "totalGb": 850,
+        "note": ""
+      },
+      {
+        "name": "黑猫重度用户版",
+        "period": "quarterly",
+        "priceCny": 456,
+        "gbPerMonth": 850,
+        "totalGb": 2550,
+        "note": ""
+      },
+      {
+        "name": "黑猫重度用户版",
+        "period": "yearly",
+        "priceCny": 1632,
+        "gbPerMonth": 850,
+        "totalGb": 10200,
+        "note": ""
+      }
+    ]
+  },
+  "yifanyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "一翻云（1fly）提供专线节点、自研客户端与通用订阅，套餐从年付 60GB/月到 1.2TB/月，年付价格相对月付折扣较大。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "英国"
+    ],
+    "lineTypes": [
+      "专线"
+    ],
+    "protocols": [
+      "Hysteria 2",
+      "VLESS-Reality",
+      "Shadowsocks"
+    ],
+    "clients": [
+      "自研客户端",
+      "Clash",
+      "sing-box",
+      "v2rayN",
+      "Shadowrocket"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Copilot、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、HBO Max、YouTube、Spotify、Hulu（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "确认稳定后愿意年付、追求低每GB成本的用户",
+      "备用线路需求者"
+    ],
+    "notSuitableFor": [
+      "想买不限时流量包的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "服务商称晚高峰不限速",
+      "设备数资料未写明",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "年付版",
+        "period": "yearly",
+        "priceCny": 98,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "轻享版",
+        "period": "monthly",
+        "priceCny": 20,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": ""
+      },
+      {
+        "name": "轻享版",
+        "period": "quarterly",
+        "priceCny": 55,
+        "gbPerMonth": 150,
+        "totalGb": 450,
+        "note": ""
+      },
+      {
+        "name": "轻享版",
+        "period": "yearly",
+        "priceCny": 168,
+        "gbPerMonth": 150,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "舒享版",
+        "period": "monthly",
+        "priceCny": 35,
+        "gbPerMonth": 350,
+        "totalGb": 350,
+        "note": ""
+      },
+      {
+        "name": "舒享版",
+        "period": "quarterly",
+        "priceCny": 98,
+        "gbPerMonth": 350,
+        "totalGb": 1050,
+        "note": ""
+      },
+      {
+        "name": "舒享版",
+        "period": "yearly",
+        "priceCny": 298,
+        "gbPerMonth": 350,
+        "totalGb": 4200,
+        "note": ""
+      },
+      {
+        "name": "尊享版",
+        "period": "monthly",
+        "priceCny": 55,
+        "gbPerMonth": 600,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "尊享版",
+        "period": "quarterly",
+        "priceCny": 155,
+        "gbPerMonth": 600,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "尊享版",
+        "period": "yearly",
+        "priceCny": 498,
+        "gbPerMonth": 600,
+        "totalGb": 7200,
+        "note": ""
+      },
+      {
+        "name": "极致版",
+        "period": "monthly",
+        "priceCny": 95,
+        "gbPerMonth": 1200,
+        "totalGb": 1200,
+        "note": ""
+      },
+      {
+        "name": "极致版",
+        "period": "quarterly",
+        "priceCny": 268,
+        "gbPerMonth": 1200,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "极致版",
+        "period": "yearly",
+        "priceCny": 888,
+        "gbPerMonth": 1200,
+        "totalGb": 14400,
+        "note": ""
+      }
+    ]
+  },
+  "edgenova": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "边缘节点（EdgeNova）标注 IPLC 专线、1 倍率计费、不限设备数量，支持通用订阅，周期套餐外另有两档永久不限时流量包。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "英国"
+    ],
+    "lineTypes": [
+      "IPLC 专线"
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "VLESS"
+    ],
+    "clients": [
+      "Clash",
+      "Clash Meta",
+      "sing-box",
+      "v2rayN",
+      "Shadowrocket"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Copilot、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、HBO Max、YouTube、Spotify、Hulu（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "偏好专线、多设备使用的用户",
+      "低频或备用（不限时包）"
+    ],
+    "notSuitableFor": [
+      "需要冷门地区流媒体的用户（公开测评称部分冷门地区需要手动挑选节点）"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限设备、1 倍率；服务商称最高 2.5Gbps、高峰不降速",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、微信、USDT"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "限时体验月付小包",
+        "period": "monthly",
+        "priceCny": 15,
+        "gbPerMonth": 50,
+        "totalGb": 50,
+        "note": ""
+      },
+      {
+        "name": "限时年付",
+        "period": "yearly",
+        "priceCny": 98,
+        "gbPerMonth": 45,
+        "totalGb": 540,
+        "note": ""
+      },
+      {
+        "name": "极界·标准",
+        "period": "monthly",
+        "priceCny": 22,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": ""
+      },
+      {
+        "name": "极界·标准",
+        "period": "quarterly",
+        "priceCny": 62,
+        "gbPerMonth": 120,
+        "totalGb": 360,
+        "note": ""
+      },
+      {
+        "name": "极界·标准",
+        "period": "yearly",
+        "priceCny": 225,
+        "gbPerMonth": 120,
+        "totalGb": 1440,
+        "note": ""
+      },
+      {
+        "name": "极界·专享",
+        "period": "monthly",
+        "priceCny": 35,
+        "gbPerMonth": 200,
+        "totalGb": 200,
+        "note": ""
+      },
+      {
+        "name": "极界·专享",
+        "period": "quarterly",
+        "priceCny": 99.75,
+        "gbPerMonth": 200,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "极界·专享",
+        "period": "yearly",
+        "priceCny": 357,
+        "gbPerMonth": 200,
+        "totalGb": 2400,
+        "note": ""
+      },
+      {
+        "name": "极界·进阶",
+        "period": "monthly",
+        "priceCny": 50,
+        "gbPerMonth": 250,
+        "totalGb": 250,
+        "note": ""
+      },
+      {
+        "name": "极界·进阶",
+        "period": "quarterly",
+        "priceCny": 145,
+        "gbPerMonth": 250,
+        "totalGb": 750,
+        "note": ""
+      },
+      {
+        "name": "极界·进阶",
+        "period": "yearly",
+        "priceCny": 510,
+        "gbPerMonth": 250,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "极界·高级",
+        "period": "monthly",
+        "priceCny": 100,
+        "gbPerMonth": 499,
+        "totalGb": 499,
+        "note": ""
+      },
+      {
+        "name": "极界·高级",
+        "period": "quarterly",
+        "priceCny": 290,
+        "gbPerMonth": 499,
+        "totalGb": 1497,
+        "note": ""
+      },
+      {
+        "name": "极界·高级",
+        "period": "yearly",
+        "priceCny": 1020,
+        "gbPerMonth": 499,
+        "totalGb": 5988,
+        "note": ""
+      },
+      {
+        "name": "极界·极限",
+        "period": "monthly",
+        "priceCny": 200,
+        "gbPerMonth": 1000,
+        "totalGb": 1000,
+        "note": ""
+      },
+      {
+        "name": "极界·极限",
+        "period": "quarterly",
+        "priceCny": 580,
+        "gbPerMonth": 1000,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "极界·极限",
+        "period": "yearly",
+        "priceCny": 2040,
+        "gbPerMonth": 1000,
+        "totalGb": 12000,
+        "note": ""
+      },
+      {
+        "name": "永久不限时 100GB",
+        "period": "one-time",
+        "priceCny": 100,
+        "gbPerMonth": null,
+        "totalGb": 100,
+        "note": ""
+      },
+      {
+        "name": "永久不限时 450GB",
+        "period": "one-time",
+        "priceCny": 399,
+        "gbPerMonth": null,
+        "totalGb": 450,
+        "note": ""
+      }
+    ]
+  },
+  "kexinyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "可信云（KeXin）提供全 IEPL 专线订阅，有 60GB 月付小包和年费小礼包，以及 150GB 至 1.2TB 的月度档位。",
+    "regions": [
+      "香港",
+      "台湾",
+      "新加坡",
+      "日本",
+      "美国",
+      "韩国",
+      "东南亚",
+      "印度",
+      "欧美"
+    ],
+    "lineTypes": [
+      "IEPL 专线"
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan"
+    ],
+    "clients": [
+      "通用订阅，可导入 Clash、Shadowrocket、v2rayN 等客户端"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 主流流媒体（未列出具体平台）（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "短期体验（月付小包 ¥15）",
+      "日常流媒体与 AI（Basic、Standard）",
+      "高流量用户（Pro、Ultimate）"
+    ],
+    "notSuitableFor": [
+      "想买不限时流量包的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "协议、客户端、设备数、限速资料未写明",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、微信、USDT"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "月付小包",
+        "period": "monthly",
+        "priceCny": 15,
+        "gbPerMonth": 60,
+        "totalGb": 60,
+        "note": ""
+      },
+      {
+        "name": "年费小礼包",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "基础版 Basic",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": ""
+      },
+      {
+        "name": "基础版 Basic",
+        "period": "quarterly",
+        "priceCny": 71.25,
+        "gbPerMonth": 150,
+        "totalGb": 450,
+        "note": ""
+      },
+      {
+        "name": "基础版 Basic",
+        "period": "yearly",
+        "priceCny": 255,
+        "gbPerMonth": 150,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "标准版 Standard",
+        "period": "monthly",
+        "priceCny": 50,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "标准版 Standard",
+        "period": "quarterly",
+        "priceCny": 142.5,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "标准版 Standard",
+        "period": "yearly",
+        "priceCny": 510,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "专业版 Pro",
+        "period": "monthly",
+        "priceCny": 100,
+        "gbPerMonth": 600,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "专业版 Pro",
+        "period": "quarterly",
+        "priceCny": 285,
+        "gbPerMonth": 600,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "专业版 Pro",
+        "period": "yearly",
+        "priceCny": 1020,
+        "gbPerMonth": 600,
+        "totalGb": 7200,
+        "note": ""
+      },
+      {
+        "name": "旗舰版 Ultimate",
+        "period": "monthly",
+        "priceCny": 200,
+        "gbPerMonth": 1200,
+        "totalGb": 1200,
+        "note": ""
+      },
+      {
+        "name": "旗舰版 Ultimate",
+        "period": "quarterly",
+        "priceCny": 570,
+        "gbPerMonth": 1200,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "旗舰版 Ultimate",
+        "period": "yearly",
+        "priceCny": 2040,
+        "gbPerMonth": 1200,
+        "totalGb": 14400,
+        "note": ""
+      }
+    ]
+  },
+  "sujie": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "速界（SuJie）主打端到端 IEPL 国际专线，节点覆盖香港、台湾、日本、新加坡、美国、英国，提供 ¥15 单月试用。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "英国"
+    ],
+    "lineTypes": [
+      "IEPL 专线"
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan"
+    ],
+    "clients": [
+      "Clash",
+      "Clash Meta",
+      "sing-box",
+      "v2rayN",
+      "Shadowrocket"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Copilot、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、HBO Max、YouTube、Spotify、Hulu（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "想先短期试用的用户",
+      "日常流媒体与 AI（超速、光速版）"
+    ],
+    "notSuitableFor": [
+      "想买不限时流量包的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "服务商称晚高峰不限速",
+      "设备数、协议资料未写明",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "单月试用",
+        "period": "monthly",
+        "priceCny": 15,
+        "gbPerMonth": 50,
+        "totalGb": 50,
+        "note": ""
+      },
+      {
+        "name": "年付体验包",
+        "period": "yearly",
+        "priceCny": 90,
+        "gbPerMonth": 50,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "极速版",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": ""
+      },
+      {
+        "name": "极速版",
+        "period": "quarterly",
+        "priceCny": 71.25,
+        "gbPerMonth": 120,
+        "totalGb": 360,
+        "note": ""
+      },
+      {
+        "name": "极速版",
+        "period": "yearly",
+        "priceCny": 255,
+        "gbPerMonth": 120,
+        "totalGb": 1440,
+        "note": ""
+      },
+      {
+        "name": "超速版",
+        "period": "monthly",
+        "priceCny": 50,
+        "gbPerMonth": 250,
+        "totalGb": 250,
+        "note": ""
+      },
+      {
+        "name": "超速版",
+        "period": "quarterly",
+        "priceCny": 142.5,
+        "gbPerMonth": 250,
+        "totalGb": 750,
+        "note": ""
+      },
+      {
+        "name": "超速版",
+        "period": "yearly",
+        "priceCny": 510,
+        "gbPerMonth": 250,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "光速版",
+        "period": "monthly",
+        "priceCny": 100,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": ""
+      },
+      {
+        "name": "光速版",
+        "period": "quarterly",
+        "priceCny": 285,
+        "gbPerMonth": 500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "光速版",
+        "period": "yearly",
+        "priceCny": 1020,
+        "gbPerMonth": 500,
+        "totalGb": 6000,
+        "note": ""
+      },
+      {
+        "name": "跃迁版",
+        "period": "monthly",
+        "priceCny": 200,
+        "gbPerMonth": 1000,
+        "totalGb": 1000,
+        "note": ""
+      },
+      {
+        "name": "跃迁版",
+        "period": "quarterly",
+        "priceCny": 570,
+        "gbPerMonth": 1000,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "跃迁版",
+        "period": "yearly",
+        "priceCny": 2040,
+        "gbPerMonth": 1000,
+        "totalGb": 12000,
+        "note": ""
+      }
+    ]
+  },
+  "kuaili": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "快狸（KuaiLi）提供可导入多种客户端的订阅，套餐从 30GB 到 1000GB，有月付、季付与年付。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineTypes": [
+      "IEPL 专线（公开测评标注）"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "Clash",
+      "Clash Meta",
+      "sing-box",
+      "v2rayN",
+      "Shadowrocket"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Copilot、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、HBO Max、YouTube、Spotify、Hulu（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "日常流媒体与 AI 用户（灵狸标准版）",
+      "大流量用户"
+    ],
+    "notSuitableFor": [
+      "看重每GB价格的轻度用户（年付小套餐每月仅 30GB，单价偏高）",
+      "想买不限时流量包的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "线路类型、协议、设备数资料未写明",
+      "服务商称晚高峰不限速，资料未附实测",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "年付小套餐",
+        "period": "yearly",
+        "priceCny": 120,
+        "gbPerMonth": 30,
+        "totalGb": 360,
+        "note": ""
+      },
+      {
+        "name": "月付小套餐",
+        "period": "monthly",
+        "priceCny": 15,
+        "gbPerMonth": 50,
+        "totalGb": 50,
+        "note": ""
+      },
+      {
+        "name": "小狸基础版",
+        "period": "monthly",
+        "priceCny": 22,
+        "gbPerMonth": 100,
+        "totalGb": 100,
+        "note": ""
+      },
+      {
+        "name": "小狸基础版",
+        "period": "quarterly",
+        "priceCny": 62,
+        "gbPerMonth": 100,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "小狸基础版",
+        "period": "yearly",
+        "priceCny": 255,
+        "gbPerMonth": 100,
+        "totalGb": 1200,
+        "note": ""
+      },
+      {
+        "name": "灵狸标准版",
+        "period": "monthly",
+        "priceCny": 35,
+        "gbPerMonth": 250,
+        "totalGb": 250,
+        "note": ""
+      },
+      {
+        "name": "灵狸标准版",
+        "period": "quarterly",
+        "priceCny": 103,
+        "gbPerMonth": 250,
+        "totalGb": 750,
+        "note": ""
+      },
+      {
+        "name": "灵狸标准版",
+        "period": "yearly",
+        "priceCny": 415,
+        "gbPerMonth": 250,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "夜狸强化版",
+        "period": "monthly",
+        "priceCny": 95,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": ""
+      },
+      {
+        "name": "夜狸强化版",
+        "period": "quarterly",
+        "priceCny": 290,
+        "gbPerMonth": 500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "夜狸强化版",
+        "period": "yearly",
+        "priceCny": 1025,
+        "gbPerMonth": 500,
+        "totalGb": 6000,
+        "note": ""
+      },
+      {
+        "name": "天狸顶配版",
+        "period": "monthly",
+        "priceCny": 180,
+        "gbPerMonth": 1000,
+        "totalGb": 1000,
+        "note": ""
+      },
+      {
+        "name": "天狸顶配版",
+        "period": "quarterly",
+        "priceCny": 535,
+        "gbPerMonth": 1000,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "天狸顶配版",
+        "period": "yearly",
+        "priceCny": 2140,
+        "gbPerMonth": 1000,
+        "totalGb": 12000,
+        "note": ""
+      }
+    ]
+  },
+  "wuyou": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "无忧（无忧链接）2025 年开业，资料称由海外团队运营，采用 IPLC 专线与 VLESS 协议，标注不限速，另有 100GB 一次性不限时包。",
+    "regions": [
+      "香港",
+      "台湾",
+      "新加坡",
+      "日本",
+      "美国",
+      "东南亚",
+      "欧美"
+    ],
+    "lineTypes": [
+      "IPLC 专线"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "据公开资料，2026 年 10 月起改用官方专属客户端（下载 App 登录即用，新订单不提供订阅链接，不再支持 Clash、Shadowrocket 等第三方客户端）",
+      "已有订阅链接的老用户不受影响（此前资料：Clash Meta / Mihomo；Shadowrocket；sing-box；v2rayN）"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Gemini（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、YouTube、TikTok（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "预算极低的轻度用户（MINI 年付 ¥79）",
+      "大流量用户（忘忧链接 1TB/月）",
+      "跨境电商、TikTok 运营"
+    ],
+    "notSuitableFor": [
+      "重度办公、多设备同时在线或每天大量使用 AI 工具的用户（公开测评认为流量和线路可能不够）"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限速；支持 iOS、Android、Windows、macOS",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、微信、USDT",
+      "客户端变更：据公开资料，自 2026 年 10 月起只能用官方专属客户端，支持哪些平台以官网为准；下单前请确认你的设备可以安装。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "不限时链接",
+        "period": "one-time",
+        "priceCny": 108,
+        "gbPerMonth": null,
+        "totalGb": 100,
+        "note": ""
+      },
+      {
+        "name": "MINI 链接",
+        "period": "yearly",
+        "priceCny": 79,
+        "gbPerMonth": 40,
+        "totalGb": 480,
+        "note": ""
+      },
+      {
+        "name": "舒心链接",
+        "period": "monthly",
+        "priceCny": 19,
+        "gbPerMonth": 100,
+        "totalGb": 100,
+        "note": ""
+      },
+      {
+        "name": "舒心链接",
+        "period": "quarterly",
+        "priceCny": 51,
+        "gbPerMonth": 100,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "舒心链接",
+        "period": "yearly",
+        "priceCny": 182,
+        "gbPerMonth": 100,
+        "totalGb": 1200,
+        "note": ""
+      },
+      {
+        "name": "省心链接",
+        "period": "monthly",
+        "priceCny": 33,
+        "gbPerMonth": 200,
+        "totalGb": 200,
+        "note": ""
+      },
+      {
+        "name": "省心链接",
+        "period": "quarterly",
+        "priceCny": 89,
+        "gbPerMonth": 200,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "省心链接",
+        "period": "yearly",
+        "priceCny": 316,
+        "gbPerMonth": 200,
+        "totalGb": 2400,
+        "note": ""
+      },
+      {
+        "name": "随心链接",
+        "period": "monthly",
+        "priceCny": 77,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": ""
+      },
+      {
+        "name": "随心链接",
+        "period": "quarterly",
+        "priceCny": 207,
+        "gbPerMonth": 500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "随心链接",
+        "period": "yearly",
+        "priceCny": 739,
+        "gbPerMonth": 500,
+        "totalGb": 6000,
+        "note": ""
+      },
+      {
+        "name": "忘忧链接",
+        "period": "monthly",
+        "priceCny": 117,
+        "gbPerMonth": 1024,
+        "totalGb": 1024,
+        "note": ""
+      },
+      {
+        "name": "忘忧链接",
+        "period": "quarterly",
+        "priceCny": 315,
+        "gbPerMonth": 1024,
+        "totalGb": 3072,
+        "note": ""
+      },
+      {
+        "name": "忘忧链接",
+        "period": "yearly",
+        "priceCny": 1123,
+        "gbPerMonth": 1024,
+        "totalGb": 12288,
+        "note": ""
+      }
+    ]
+  },
+  "lingmao": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "灵猫（灵猫网络 / SpiritCat）主打 IPLC 专线和 VLESS 协议，资料称由海外团队运营，套餐档位较少，支持通用订阅、不限客户端。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "美国",
+      "新加坡"
+    ],
+    "lineTypes": [
+      "IPLC 专线"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "据公开资料，2026 年 10 月起改用官方专属客户端（下载 App 登录即用，新订单不提供订阅链接，不再支持 Clash、Shadowrocket 等第三方客户端）",
+      "已有订阅链接的老用户不受影响（此前资料：通用订阅，不限制客户端）"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Gemini、TikTok（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Hulu、HBO、Disney+（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "用量 300GB/月以内、愿意年付的用户（Big 年付每GB成本较低）",
+      "先月付体验的用户"
+    ],
+    "notSuitableFor": [
+      "每月需要 300GB 以上流量的用户（最高档 300GB，需另购加油包）"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限速，标称最大带宽 1000Mbps",
+      "按订单日每月重置，可购买加油包",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "客户端变更：据公开资料，自 2026 年 10 月起只能用官方专属客户端，支持哪些平台以官网为准；下单前请确认你的设备可以安装。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "年付小包",
+        "period": "yearly",
+        "priceCny": 85,
+        "gbPerMonth": 45,
+        "totalGb": 540,
+        "note": ""
+      },
+      {
+        "name": "Small",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": ""
+      },
+      {
+        "name": "Small",
+        "period": "quarterly",
+        "priceCny": 65,
+        "gbPerMonth": 150,
+        "totalGb": 450,
+        "note": ""
+      },
+      {
+        "name": "Small",
+        "period": "yearly",
+        "priceCny": 195,
+        "gbPerMonth": 150,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "Big",
+        "period": "monthly",
+        "priceCny": 45,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "Big",
+        "period": "quarterly",
+        "priceCny": 125,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "Big",
+        "period": "yearly",
+        "priceCny": 295,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": ""
+      }
+    ]
+  },
+  "flashleap": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "闪跃（FlashLeap）2026 年成立，主打 IPLC 线路，提供定制客户端与通用订阅，全部套餐全节点 1 倍率。",
+    "regions": [
+      "香港",
+      "日本",
+      "美国"
+    ],
+    "lineTypes": [
+      "IPLC"
+    ],
+    "protocols": [
+      "官网与公开资料均未公布具体协议"
+    ],
+    "clients": [
+      "据公开资料，2026 年 10 月起改用官方专属客户端（下载 App 登录即用，新订单不提供订阅链接，不再支持 Clash、Shadowrocket 等第三方客户端）",
+      "已有订阅链接的老用户不受影响（此前资料：定制客户端；通用订阅）"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Claude、Gemini（原生 IP 节点）（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+、HBO（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "需要流媒体与 AI 服务的用户"
+    ],
+    "notSuitableFor": [
+      "看重运营年限的用户（2026 年成立）",
+      "想买不限时流量包的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "全节点 1 倍率；服务商称晚高峰不限速",
+      "节点地区、设备数资料未写明",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "客户端变更：据公开资料，自 2026 年 10 月起只能用官方专属客户端，支持哪些平台以官网为准；下单前请确认你的设备可以安装。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "闪跃年付版",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "闪动 Flicker",
+        "period": "monthly",
+        "priceCny": 24,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": ""
+      },
+      {
+        "name": "闪动 Flicker",
+        "period": "quarterly",
+        "priceCny": 64,
+        "gbPerMonth": 150,
+        "totalGb": 450,
+        "note": ""
+      },
+      {
+        "name": "闪动 Flicker",
+        "period": "yearly",
+        "priceCny": 230,
+        "gbPerMonth": 150,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "飞跃 Leap",
+        "period": "monthly",
+        "priceCny": 44,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "飞跃 Leap",
+        "period": "quarterly",
+        "priceCny": 118,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "飞跃 Leap",
+        "period": "yearly",
+        "priceCny": 442,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "瞬移 Teleport",
+        "period": "monthly",
+        "priceCny": 84,
+        "gbPerMonth": 600,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "瞬移 Teleport",
+        "period": "quarterly",
+        "priceCny": 226,
+        "gbPerMonth": 600,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "瞬移 Teleport",
+        "period": "yearly",
+        "priceCny": 806,
+        "gbPerMonth": 600,
+        "totalGb": 7200,
+        "note": ""
+      },
+      {
+        "name": "跃迁 Warp",
+        "period": "monthly",
+        "priceCny": 134,
+        "gbPerMonth": 1000,
+        "totalGb": 1000,
+        "note": ""
+      },
+      {
+        "name": "跃迁 Warp",
+        "period": "quarterly",
+        "priceCny": 369,
+        "gbPerMonth": 1000,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "跃迁 Warp",
+        "period": "yearly",
+        "priceCny": 1315,
+        "gbPerMonth": 1000,
+        "totalGb": 12000,
+        "note": ""
+      }
+    ]
+  },
+  "firefly": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "飞为（Firefly）采用 IPLC 线路与 VLESS 协议，资料称团队有 8 年行业经验，公开说明全节点不限速，另有 100GB 不限时套餐。",
+    "regions": [
+      "香港",
+      "新加坡",
+      "日本",
+      "美国"
+    ],
+    "lineTypes": [
+      "IPLC"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "据公开资料，2026 年 10 月起改用官方专属客户端（下载 App 登录即用，新订单不提供订阅链接，不再支持 Clash、Shadowrocket 等第三方客户端）",
+      "已有订阅链接的老用户不受影响"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Gemini、Meta AI（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 YouTube、Netflix、Disney+、HBO（原生 IP）（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "日常流媒体与 AI 用户（Plus、Blaze）",
+      "低频或备用（不限时 100GB）"
+    ],
+    "notSuitableFor": [
+      "偶尔上网、预算有限的用户（公开测评认为专线成本较高，没必要专门选它）",
+      "习惯用 Clash、Shadowrocket 的新用户（2026 年 10 月起改用专属客户端）"
+    ],
+    "sources": [],
+    "limits": [
+      "全节点不限速",
+      "据公开资料，不限客户端及设备数量",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、USDT，部分资料另列微信",
+      "客户端变更：据公开资料，自 2026 年 10 月起只能用官方专属客户端，支持哪些平台以官网为准；下单前请确认你的设备可以安装。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "年付版",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "Lite",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": ""
+      },
+      {
+        "name": "Lite",
+        "period": "quarterly",
+        "priceCny": 67,
+        "gbPerMonth": 150,
+        "totalGb": 450,
+        "note": ""
+      },
+      {
+        "name": "Lite",
+        "period": "yearly",
+        "priceCny": 240,
+        "gbPerMonth": 150,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "Plus",
+        "period": "monthly",
+        "priceCny": 45,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "Plus",
+        "period": "quarterly",
+        "priceCny": 121,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "Plus",
+        "period": "yearly",
+        "priceCny": 432,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "Blaze",
+        "period": "monthly",
+        "priceCny": 85,
+        "gbPerMonth": 600,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "Blaze",
+        "period": "quarterly",
+        "priceCny": 229,
+        "gbPerMonth": 600,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "Blaze",
+        "period": "yearly",
+        "priceCny": 816,
+        "gbPerMonth": 600,
+        "totalGb": 7200,
+        "note": ""
+      },
+      {
+        "name": "Nova",
+        "period": "monthly",
+        "priceCny": 150,
+        "gbPerMonth": 1000,
+        "totalGb": 1000,
+        "note": ""
+      },
+      {
+        "name": "Nova",
+        "period": "quarterly",
+        "priceCny": 400,
+        "gbPerMonth": 1000,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "Nova",
+        "period": "yearly",
+        "priceCny": 1360,
+        "gbPerMonth": 1000,
+        "totalGb": 12000,
+        "note": ""
+      },
+      {
+        "name": "不限时",
+        "period": "one-time",
+        "priceCny": 100,
+        "gbPerMonth": null,
+        "totalGb": 100,
+        "note": ""
+      }
+    ]
+  },
+  "kuajie": {
+    "status": "verified",
+    "sourceType": "official",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": "2026-10-20",
+    "officialSite": "https://kuajiecloud.homes/",
+    "intro": "跨界云官网提供 IPLC 线路与全球节点订阅，全部套餐不限设备登录数、所有节点 1 倍率。官方客户端登录即可获取节点，Clash、小火箭、v2rayN 的订阅链接需联系客服单独生成。套餐分 Lite、Leap、Soar、Infinity 四档，月流量 120GB 至 1800GB。",
+    "regions": [
+      "全球（官网未列出具体地区）"
+    ],
+    "lineTypes": [
+      "IPLC"
+    ],
+    "protocols": [
+      "官网与公开资料均未公布具体协议"
+    ],
+    "clients": [
+      "据公开资料，2026 年 10 月起改用官方专属客户端（下载 App 登录即用，新订单不提供订阅链接，不再支持 Clash、Shadowrocket 等第三方客户端）",
+      "已有订阅链接的老用户不受影响（此前资料：官方客户端：Windows 10+、macOS 10.15+、iOS 12.0+、Android 5.0+；Clash、Shadowrocket、v2rayN（需联系客服生成订阅））"
+    ],
+    "aiCompat": "官网称面向 ChatGPT、Gemini、Claude 等 AI 工具访问，效果受网络与服务状态影响（本站未检测）。",
+    "streamingCompat": "官网称支持 Netflix、Hulu、HBO、Disney+、DAZN，可用性随平台策略变化（本站未检测）。",
+    "suitableFor": [
+      "全家多设备共用（全部套餐不限设备）",
+      "大流量用户（Infinity 年付每GB约 ¥0.058）",
+      "习惯用官方客户端、不想手动导入订阅的新手"
+    ],
+    "notSuitableFor": [
+      "只想用第三方客户端、不愿联系客服的用户"
+    ],
+    "sources": [
+      {
+        "label": "跨界云官网首页（2026-10-20 读取）",
+        "url": "https://kuajiecloud.homes/"
+      }
+    ],
+    "limits": [
+      "全部套餐不限设备登录数；月流量从购买日起算",
+      "官网公开优惠：年付 8 折、两年 7 折、三年 6 折，新人码 kuajie 全场 8 折，官网称可叠加",
+      "24/7 在线客服（官网描述）",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "客户端变更：据公开资料，自 2026 年 10 月起只能用官方专属客户端，支持哪些平台以官网为准；下单前请确认你的设备可以安装。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "轻云 Lite",
+        "period": "monthly",
+        "priceCny": 20,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": "不限速；1 倍率"
+      },
+      {
+        "name": "轻云 Lite",
+        "period": "yearly",
+        "priceCny": 192,
+        "gbPerMonth": 120,
+        "totalGb": 1440,
+        "note": "不限速；1 倍率"
+      },
+      {
+        "name": "跃云 Leap",
+        "period": "monthly",
+        "priceCny": 40,
+        "gbPerMonth": 330,
+        "totalGb": 330,
+        "note": ""
+      },
+      {
+        "name": "跃云 Leap",
+        "period": "yearly",
+        "priceCny": 384,
+        "gbPerMonth": 330,
+        "totalGb": 3960,
+        "note": ""
+      },
+      {
+        "name": "凌云 Soar",
+        "period": "monthly",
+        "priceCny": 90,
+        "gbPerMonth": 830,
+        "totalGb": 830,
+        "note": "IPLC 高端线路"
+      },
+      {
+        "name": "凌云 Soar",
+        "period": "yearly",
+        "priceCny": 864,
+        "gbPerMonth": 830,
+        "totalGb": 9960,
+        "note": "IPLC 高端线路"
+      },
+      {
+        "name": "无界 Infinity",
+        "period": "monthly",
+        "priceCny": 130,
+        "gbPerMonth": 1800,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "无界 Infinity",
+        "period": "yearly",
+        "priceCny": 1248,
+        "gbPerMonth": 1800,
+        "totalGb": 21600,
+        "note": ""
+      }
+    ]
+  },
+  "liulianyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "榴莲云 2026 年 3 月开业，标注 IPLC 专线与原生 IP，套餐标注不限速、不限设备，提供月、季、半年、年四种周期。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineTypes": [
+      "IPLC 专线",
+      "原生 IP"
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "VLESS"
+    ],
+    "clients": [
+      "通用订阅，可一键导入 Clash Verge Rev、Shadowrocket、Clash Meta for Android 等客户端（公开测评）"
+    ],
+    "aiCompat": "资料称面向 AI 工具访问场景，但未列出具体平台（本站未检测）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "日常办公、海外资讯、看视频的用户",
+      "每月 60GB 以内的轻度用户（年付特惠版）"
+    ],
+    "notSuitableFor": [
+      "需要不限时流量包的用户",
+      "看重运营年限的用户（2026 年开业）"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限速、不限设备；服务商称单节点峰值 2.5Gbps",
+      "没有不限时流量包",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "榴莲包 年付特惠版",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": "购买日起每 30 天刷新"
+      },
+      {
+        "name": "轻享包",
+        "period": "monthly",
+        "priceCny": 24,
+        "gbPerMonth": 140,
+        "totalGb": 140,
+        "note": ""
+      },
+      {
+        "name": "轻享包",
+        "period": "quarterly",
+        "priceCny": 64.8,
+        "gbPerMonth": 140,
+        "totalGb": 420,
+        "note": ""
+      },
+      {
+        "name": "轻享包",
+        "period": "half-year",
+        "priceCny": 122.4,
+        "gbPerMonth": 140,
+        "totalGb": 840,
+        "note": ""
+      },
+      {
+        "name": "轻享包",
+        "period": "yearly",
+        "priceCny": 230.4,
+        "gbPerMonth": 140,
+        "totalGb": 1680,
+        "note": ""
+      },
+      {
+        "name": "畅享包",
+        "period": "monthly",
+        "priceCny": 40,
+        "gbPerMonth": 260,
+        "totalGb": 260,
+        "note": ""
+      },
+      {
+        "name": "畅享包",
+        "period": "quarterly",
+        "priceCny": 108,
+        "gbPerMonth": 260,
+        "totalGb": 780,
+        "note": ""
+      },
+      {
+        "name": "畅享包",
+        "period": "half-year",
+        "priceCny": 204,
+        "gbPerMonth": 260,
+        "totalGb": 1560,
+        "note": ""
+      },
+      {
+        "name": "畅享包",
+        "period": "yearly",
+        "priceCny": 384,
+        "gbPerMonth": 260,
+        "totalGb": 3120,
+        "note": ""
+      },
+      {
+        "name": "尊享包",
+        "period": "monthly",
+        "priceCny": 60,
+        "gbPerMonth": 420,
+        "totalGb": 420,
+        "note": ""
+      },
+      {
+        "name": "尊享包",
+        "period": "quarterly",
+        "priceCny": 162,
+        "gbPerMonth": 420,
+        "totalGb": 1260,
+        "note": ""
+      },
+      {
+        "name": "尊享包",
+        "period": "half-year",
+        "priceCny": 306,
+        "gbPerMonth": 420,
+        "totalGb": 2520,
+        "note": ""
+      },
+      {
+        "name": "尊享包",
+        "period": "yearly",
+        "priceCny": 576,
+        "gbPerMonth": 420,
+        "totalGb": 5040,
+        "note": ""
+      },
+      {
+        "name": "榴莲王",
+        "period": "monthly",
+        "priceCny": 100,
+        "gbPerMonth": 750,
+        "totalGb": 750,
+        "note": ""
+      },
+      {
+        "name": "榴莲王",
+        "period": "quarterly",
+        "priceCny": 270,
+        "gbPerMonth": 750,
+        "totalGb": 2250,
+        "note": ""
+      },
+      {
+        "name": "榴莲王",
+        "period": "half-year",
+        "priceCny": 510,
+        "gbPerMonth": 750,
+        "totalGb": 4500,
+        "note": ""
+      },
+      {
+        "name": "榴莲王",
+        "period": "yearly",
+        "priceCny": 960,
+        "gbPerMonth": 750,
+        "totalGb": 9000,
+        "note": ""
+      }
+    ]
+  },
+  "shandianyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "闪电云（又名“闪电鼠”）2024 年开始运营，采用 VLESS 协议并提供自研客户端；年付小包为 IPLC 专线，常规套餐为 IEPL 专线，标注不限速、不限设备。",
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "台湾",
+      "美国",
+      "英国",
+      "德国"
+    ],
+    "lineTypes": [
+      "IPLC 专线（小包）",
+      "IEPL 专线（常规套餐）"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "自研客户端"
+    ],
+    "aiCompat": "品牌资料称覆盖常见 AI 工具，未列出具体平台（本站未检测）。",
+    "streamingCompat": "品牌资料称覆盖常见流媒体，未列出具体平台（本站未检测）。",
+    "suitableFor": [
+      "预算较低、流量需求不大的轻度用户",
+      "按月用量选择周期套餐的用户"
+    ],
+    "notSuitableFor": [
+      "需要不限时流量包的用户",
+      "想用第三方客户端的用户（资料只提到自研客户端）"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限速、不限设备",
+      "全部套餐每 30 天重置流量",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "限时钜惠小包（IPLC）",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": ""
+      },
+      {
+        "name": "轻快版",
+        "period": "monthly",
+        "priceCny": 22,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": ""
+      },
+      {
+        "name": "轻快版",
+        "period": "quarterly",
+        "priceCny": 59,
+        "gbPerMonth": 120,
+        "totalGb": 360,
+        "note": ""
+      },
+      {
+        "name": "轻快版",
+        "period": "yearly",
+        "priceCny": 210,
+        "gbPerMonth": 120,
+        "totalGb": 1440,
+        "note": ""
+      },
+      {
+        "name": "疾速版",
+        "period": "monthly",
+        "priceCny": 40,
+        "gbPerMonth": 250,
+        "totalGb": 250,
+        "note": ""
+      },
+      {
+        "name": "疾速版",
+        "period": "quarterly",
+        "priceCny": 108,
+        "gbPerMonth": 250,
+        "totalGb": 750,
+        "note": ""
+      },
+      {
+        "name": "疾速版",
+        "period": "yearly",
+        "priceCny": 384,
+        "gbPerMonth": 250,
+        "totalGb": 3000,
+        "note": ""
+      },
+      {
+        "name": "雷霆版",
+        "period": "monthly",
+        "priceCny": 70,
+        "gbPerMonth": 500,
+        "totalGb": 500,
+        "note": ""
+      },
+      {
+        "name": "雷霆版",
+        "period": "quarterly",
+        "priceCny": 189,
+        "gbPerMonth": 500,
+        "totalGb": 1500,
+        "note": ""
+      },
+      {
+        "name": "雷霆版",
+        "period": "yearly",
+        "priceCny": 672,
+        "gbPerMonth": 500,
+        "totalGb": 6000,
+        "note": ""
+      }
+    ]
+  },
+  "huanqiuyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "环球云（又名“环球梯”）提供学生年付、常规周期套餐和 365 天有效的按量流量包，支持通用订阅，各套餐写明同时在线设备上限。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineTypes": [
+      "专线"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "兼容 VLESS 的客户端"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、Disney+（部分地区 Disney+ 检测失败）（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "学生（年付 ¥96）",
+      "需要清楚设备上限的家庭多设备用户",
+      "想买按量包的用户"
+    ],
+    "notSuitableFor": [
+      "对 Disney+ 有稳定要求的用户",
+      "需要明确退款保障的用户"
+    ],
+    "sources": [],
+    "limits": [
+      "设备上限：学生/轻享 3 台、畅游 5 台、尊享 10 台、随行包 5 台、灵活包 8 台",
+      "按量包购买后 365 天内有效（不是永久）",
+      "可付费重置流量（学生 ¥10/次 至 尊享 ¥63/次）",
+      "标注不限速",
+      "退款规则：资料未说明，购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "环球学生套餐",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": "最多 3 台"
+      },
+      {
+        "name": "环球轻享",
+        "period": "monthly",
+        "priceCny": 22,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": "最多 3 台"
+      },
+      {
+        "name": "环球轻享",
+        "period": "quarterly",
+        "priceCny": 65,
+        "gbPerMonth": 120,
+        "totalGb": 360,
+        "note": "最多 3 台"
+      },
+      {
+        "name": "环球轻享",
+        "period": "yearly",
+        "priceCny": 227,
+        "gbPerMonth": 120,
+        "totalGb": 1440,
+        "note": "最多 3 台"
+      },
+      {
+        "name": "环球畅游",
+        "period": "monthly",
+        "priceCny": 39,
+        "gbPerMonth": 240,
+        "totalGb": 240,
+        "note": "最多 5 台"
+      },
+      {
+        "name": "环球畅游",
+        "period": "quarterly",
+        "priceCny": 111,
+        "gbPerMonth": 240,
+        "totalGb": 720,
+        "note": "最多 5 台"
+      },
+      {
+        "name": "环球畅游",
+        "period": "yearly",
+        "priceCny": 378,
+        "gbPerMonth": 240,
+        "totalGb": 2880,
+        "note": "最多 5 台"
+      },
+      {
+        "name": "环球尊享",
+        "period": "monthly",
+        "priceCny": 69,
+        "gbPerMonth": 600,
+        "totalGb": 600,
+        "note": "最多 10 台"
+      },
+      {
+        "name": "环球尊享",
+        "period": "quarterly",
+        "priceCny": 198,
+        "gbPerMonth": 600,
+        "totalGb": 1800,
+        "note": "最多 10 台"
+      },
+      {
+        "name": "环球尊享",
+        "period": "yearly",
+        "priceCny": 678,
+        "gbPerMonth": 600,
+        "totalGb": 7200,
+        "note": "最多 10 台"
+      },
+      {
+        "name": "环球随行包",
+        "period": "one-time",
+        "priceCny": 99,
+        "gbPerMonth": null,
+        "totalGb": 80,
+        "note": "购买后 365 天内有效，最多 5 台"
+      },
+      {
+        "name": "环球灵活包",
+        "period": "one-time",
+        "priceCny": 299,
+        "gbPerMonth": null,
+        "totalGb": 400,
+        "note": "购买后 365 天内有效，最多 8 台"
+      }
+    ]
+  },
+  "shenxingyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "神行云 2025 年开业，主打专线节点与 VLESS 协议：常规套餐为 IPLC 专线，年付特惠版为 IEPL 专线，标注不限设备、不限速，有自研客户端，通用订阅需联系客服。",
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineTypes": [
+      "IPLC 专线（常规）",
+      "IEPL 专线（年付特惠）"
+    ],
+    "protocols": [
+      "VLESS"
+    ],
+    "clients": [
+      "自研客户端",
+      "Clash / v2ray / Shadowrocket（通用订阅需联系客服）"
+    ],
+    "aiCompat": "服务商宣称支持 ChatGPT、Gemini、Claude（本站未检测；AI 服务对节点 IP 有限制，请以实际使用为准）。",
+    "streamingCompat": "服务商宣称支持 Netflix、X、Disney+、YouTube（本站未检测；解锁情况随节点变化）。",
+    "suitableFor": [
+      "晚高峰使用较多的用户",
+      "多设备同时使用的用户"
+    ],
+    "notSuitableFor": [
+      "需要不限时流量包的用户",
+      "想要季付、年付大流量套餐的用户（常规套餐只列月付）"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限设备、不限速，服务商称单节点最高 2.5Gbps",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、微信、USDT"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "年付特惠版（IEPL）",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": "购买日起每 30 天刷新"
+      },
+      {
+        "name": "尝鲜包",
+        "period": "monthly",
+        "priceCny": 23,
+        "gbPerMonth": 120,
+        "totalGb": 120,
+        "note": ""
+      },
+      {
+        "name": "基础包",
+        "period": "monthly",
+        "priceCny": 40,
+        "gbPerMonth": 260,
+        "totalGb": 260,
+        "note": ""
+      },
+      {
+        "name": "尊享包",
+        "period": "monthly",
+        "priceCny": 72,
+        "gbPerMonth": 520,
+        "totalGb": 520,
+        "note": ""
+      }
+    ]
+  },
+  "yunjieyun": {
+    "status": "pending",
+    "sourceType": "third-party",
+    "collectedAt": "2026-10-20",
+    "verifiedAt": null,
+    "officialSite": "",
+    "intro": "云界云（又名“云界线”）标注 IPLC 专线，支持通用订阅，套餐标注不限设备、不限速，周期套餐外另有两档不限时流量包。",
+    "regions": [
+      "香港",
+      "日本",
+      "美国"
+    ],
+    "lineTypes": [
+      "IPLC 专线"
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan"
+    ],
+    "clients": [
+      "通用订阅，可一键导入 Clash Verge Rev、Shadowrocket、Clash Meta for Android 等客户端（公开测评）"
+    ],
+    "aiCompat": "公开测评称 ChatGPT 可解锁（备用进阶版标注“ChatGPT 常用解锁”，轻量备用版未标注）。本站未检测，AI 服务对节点 IP 有限制，请以实际使用为准。",
+    "streamingCompat": "公开测评称 YouTube 可解锁、Disney+ 部分节点解锁，未提及 Netflix。本站未检测，解锁情况随节点变化。",
+    "suitableFor": [
+      "每月 60GB 以内、可以年付的用户",
+      "按月使用或需要更多流量的用户",
+      "偶尔使用或准备备用线路（不限时包）"
+    ],
+    "notSuitableFor": [
+      "经常下载大文件、需要超大流量的用户（公开测评认为流量额度偏紧）",
+      "只想要一条主力线路的用户（公开测评将其定位为备用线路）"
+    ],
+    "sources": [],
+    "limits": [
+      "标注不限设备、不限速",
+      "周期套餐每月重置，可付费重置流量",
+      "退款规则：资料未说明，购买前请向客服确认。",
+      "支付：支付宝、微信、USDT",
+      "设备数说法不一：有资料标注不限设备，也有测评列出 2–5 台（按套餐不同），购买前请向客服确认。"
+    ],
+    "coupon": "",
+    "plans": [
+      {
+        "name": "云界年付小包",
+        "period": "yearly",
+        "priceCny": 96,
+        "gbPerMonth": 60,
+        "totalGb": 720,
+        "note": "每 30 天重置，1 倍率"
+      },
+      {
+        "name": "轻云·基础版",
+        "period": "monthly",
+        "priceCny": 25,
+        "gbPerMonth": 150,
+        "totalGb": 150,
+        "note": ""
+      },
+      {
+        "name": "轻云·基础版",
+        "period": "quarterly",
+        "priceCny": 72,
+        "gbPerMonth": 150,
+        "totalGb": 450,
+        "note": ""
+      },
+      {
+        "name": "轻云·基础版",
+        "period": "half-year",
+        "priceCny": 138,
+        "gbPerMonth": 150,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "轻云·基础版",
+        "period": "yearly",
+        "priceCny": 240,
+        "gbPerMonth": 150,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "凌云·进阶版",
+        "period": "monthly",
+        "priceCny": 45,
+        "gbPerMonth": 300,
+        "totalGb": 300,
+        "note": ""
+      },
+      {
+        "name": "凌云·进阶版",
+        "period": "quarterly",
+        "priceCny": 129,
+        "gbPerMonth": 300,
+        "totalGb": 900,
+        "note": ""
+      },
+      {
+        "name": "凌云·进阶版",
+        "period": "half-year",
+        "priceCny": 246,
+        "gbPerMonth": 300,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "凌云·进阶版",
+        "period": "yearly",
+        "priceCny": 432,
+        "gbPerMonth": 300,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "高级版",
+        "period": "monthly",
+        "priceCny": 75,
+        "gbPerMonth": 600,
+        "totalGb": 600,
+        "note": ""
+      },
+      {
+        "name": "高级版",
+        "period": "quarterly",
+        "priceCny": 216,
+        "gbPerMonth": 600,
+        "totalGb": 1800,
+        "note": ""
+      },
+      {
+        "name": "高级版",
+        "period": "half-year",
+        "priceCny": 414,
+        "gbPerMonth": 600,
+        "totalGb": 3600,
+        "note": ""
+      },
+      {
+        "name": "高级版",
+        "period": "yearly",
+        "priceCny": 720,
+        "gbPerMonth": 600,
+        "totalGb": 7200,
+        "note": ""
+      },
+      {
+        "name": "闲云·随心包",
+        "period": "one-time",
+        "priceCny": 99,
+        "gbPerMonth": null,
+        "totalGb": 80,
+        "note": ""
+      },
+      {
+        "name": "悠云·长享包",
+        "period": "one-time",
+        "priceCny": 199,
+        "gbPerMonth": null,
+        "totalGb": 200,
+        "note": ""
+      }
+    ]
+  }
+}

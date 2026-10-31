@@ -1,0 +1,9 @@
+{
+  "cleanUrls": false,
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/(.*)/index.html", "destination": "/$1/", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/:path(.*)", "has": [{ "type": "host", "value": "www.jichangyouxuan.blog" }], "destination": "https://jichangyouxuan.blog/:path", "permanent": true }
+  ]
+}
