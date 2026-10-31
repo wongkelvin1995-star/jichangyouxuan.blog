@@ -1455,3 +1455,6 @@ html[data-style="budo"] .promo-card .promo-note { background: rgba(20, 33, 74, .
   html.js[data-style="budo"] .nav a:focus-visible { background: rgba(255, 255, 255, .16); color: #fff; }
   html.js[data-style="budo"] .nav a[aria-current="page"] { background: rgba(255, 255, 255, .12); color: #ffe08a; box-shadow: inset 4px 0 0 #ffc400; }
 }
+
+/* 表格首列是短标签时不拆行（如「A：轻度用户」）；末列数值同理。窄屏时表格在 .table-wrap 内横向滑动 */
+.tbl-label-nowrap th:first-child, .tbl-label-nowrap td:first-child, .tbl-label-nowrap td:last-child { white-space: nowrap; }
