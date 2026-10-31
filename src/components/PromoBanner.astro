@@ -25,7 +25,7 @@ const sample = plansOf('lingdongyun').find((p) => p.planName === '拂风' && p.p
       <li><b>{cy.gbPerMonth}GB</b> 每 30 天刷新 · 全年 {cy.trafficGbPerPeriod}GB</li>
       <li>月均 <b>¥{perMonth}</b> · 每 GB 约 <b>¥{perGb}</b></li>
       <li>IPLC 专线 · 不限速 · 设备不限<sup>*</sup></li>
-      <li class="promo-adj">穿云价格已按比例调整至最低价，<b>不再叠加优惠码</b></li>
+      <li class="promo-adj">穿云价格已按比例调整为优惠价，<b>不再叠加优惠码</b></li>
       <li>优惠码 <code>{code}</code><span class="muted-w">其余套餐（含两年付、三年付）{zheLabel(rate)}（{coupons.lingdongyun?.excludeLabel}除外），如拂风月付 ¥{sample.priceCny} → ¥{money(couponPrice(sample)!)}，以结算页为准</span></li>
     </ul>
     <RegisterLink airport={lingdong} label="立即注册 →" class="btn btn-fire promo-btn" where="promo" />

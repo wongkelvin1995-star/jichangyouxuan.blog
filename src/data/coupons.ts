@@ -11,7 +11,7 @@ const NOTE = '站长提供的优惠码，是否仍有效、适用哪些套餐以
  * 只有登记了折扣率的品牌，页面才会显示「用码后」价格；没登记的只显示优惠码，不做猜测。
  */
 export const coupons: Record<string, { code: string; note?: string; discount?: number; excludePlans?: string[]; excludeLabel?: string; excludeNote?: string; discountNote?: string }> = {
-  lingdongyun: { code: "ld888", note: NOTE, discount: 0.8, excludePlans: ["穿云", "至尊私人定制", "不限时包"], excludeLabel: "穿云、至尊私人定制、不限时流量包", excludeNote: "站长说明：穿云（IPLC）的价格已按比例调整至最低价，不再叠加优惠码；至尊私人定制是定制方案、不限时流量包是一次性流量包，同样不参与。", discountNote: "站长登记：ld888 对除穿云、至尊私人定制、不限时流量包外的灵动云套餐（含季付、半年付、年付、两年付、三年付）为 8 折，以结算页为准" }, // 灵动云
+  lingdongyun: { code: "ld888", note: NOTE, discount: 0.8, excludePlans: ["穿云", "至尊私人定制", "不限时包"], excludeLabel: "穿云、至尊私人定制、不限时流量包", excludeNote: "站长说明：穿云（IPLC）的价格已按比例调整为优惠价，不再叠加优惠码；至尊私人定制是定制方案、不限时流量包是一次性流量包，同样不参与。", discountNote: "站长登记：ld888 对除穿云、至尊私人定制、不限时流量包外的灵动云套餐（含季付、半年付、年付、两年付、三年付）为 8 折，以结算页为准" }, // 灵动云
   "muguang-jiasu": { code: "mm88", note: NOTE }, // 暮光加速
   flyv: { code: "fly20", note: NOTE }, // 飞V
   laddercloud: { code: "tzy888", note: NOTE }, // 梯子云
