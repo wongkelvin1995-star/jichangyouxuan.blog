@@ -22,6 +22,16 @@ const byId = (slug: string) => airports.find((a) => a.slug === slug)!;
 
 export const rankings: Ranking[] = [
   {
+    id: 'yearly-100-per-gb',
+    title: '百元内年付每 GB 成本最低',
+    rule: '只看年付价不超过 ¥100 的常规年付套餐（排除定制 / 独享档），计算「年价 ÷ 全年流量」，每家品牌取最低的一档，按每 GB 成本从低到高排序；成本相同按年价低者在前。全部按原价计算，不含优惠码；「优惠码」列里只有登记了折扣率的品牌才显示用码后的价格。',
+    unit: '¥/GB', lowerBetter: true, fmt: (v) => `¥${v.toFixed(3)}`,
+    rows: best(slugs, (s) => {
+      const y = yearlyRegular(s).filter((p) => p.priceCny <= 100).sort((x, y) => costPerGb(x) - costPerGb(y) || x.priceCny - y.priceCny);
+      return y[0] ? { airport: byId(s), value: costPerGb(y[0]), plan: y[0], extra: `¥${y[0].priceCny}/年 · ${y[0].trafficGbPerPeriod}GB/年 · 月均 ¥${(y[0].priceCny / 12).toFixed(2)}` } : null;
+    }),
+  },
+  {
     id: 'entry-yearly',
     title: '年付入门价最低',
     rule: '取每家品牌「常规年付套餐」中价格最低的一档（排除定制 / 独享档），按年付价格从低到高排序；价格相同按全年总流量多者在前。年付需一次付清，请结合退款条款判断。',

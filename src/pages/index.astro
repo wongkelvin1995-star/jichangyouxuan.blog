@@ -63,7 +63,7 @@ const power = top5.map((a) => {
 });
 const maxEntry = Math.max(...power.map((p) => p.entry ?? 0));
 const maxGb = Math.max(...power.map((p) => p.gb ?? 0));
-const rk = rankingById('entry-yearly');
+const rk = rankingById('yearly-100-per-gb');
 
 const hotTags = [['灵动云', '灵动云'], ['预算', '预算'], ['月付', '月付'], ['年付', '年付'], ['每GB成本', '每 GB'], ['IEPL', 'IEPL'], ['IPLC', 'IPLC'], ['Clash', 'Clash'], ['小火箭', '小火箭'], ['ChatGPT', 'ChatGPT'], ['流量包', '流量包'], ['避坑', '避坑'], ['优惠码', '优惠码']];
 
@@ -276,7 +276,7 @@ const itemList = {
             </tbody>
           </table>
         </div>
-        <p class="note">全站 34 家按同样规则排序的榜单见<a href="/rankings/">价格排行榜</a>（当前「年付入门价最低」第一名：{rk.rows[0]?.airport.name} ¥{rk.rows[0]?.value}/年）。想自己算，用<a href="/prices/#calculator">每 GB 成本计算器</a>。</p>
+        <p class="note">全站 34 家按同样规则排序的榜单见<a href="/rankings/">价格排行榜</a>（当前「百元内年付每 GB 成本最低」第一名：{rk.rows[0]?.airport.name} {rk.fmt(rk.rows[0]?.value ?? 0)}）。想自己算，用<a href="/prices/#calculator">每 GB 成本计算器</a>。</p>
       </div>
     </div>
   </section>

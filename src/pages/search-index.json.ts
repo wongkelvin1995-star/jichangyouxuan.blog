@@ -40,7 +40,7 @@ export async function GET() {
     { t: '机场优选 2026 首页', u: '/', s: '机场推荐、梯子优选与套餐价格比较指南。', b: '机场推荐 梯子推荐 机场优选 2026 编辑精选 TOP 5 灵动云 暮光加速 飞猫云 大佬云 微风网络 按预算选择机场 套餐比较' },
     { t: '34 家机场优选目录', u: '/airports/', s: '收录 34 家机场品牌，提供名称搜索、筛选与注册入口。', b: '机场目录 机场推荐 品牌资料库 注册入口 推广链接' },
     { t: '机场套餐价格比较', u: '/prices/', s: '同周期每 GB 成本计算器，只展示已核验价格。', b: '机场套餐价格 月付 年付 一次性流量包 每GB价格 便宜机场 性价比机场 计算器' },
-    { t: '机场排行榜 2026（按价格规则）', u: '/rankings/', s: '年付入门价、每 GB 成本、年付月均等五个规则榜单，非测速。', b: '机场排行榜 排名 便宜机场 性价比 ' + rankings.map((r) => r.title + ' ' + r.rows.slice(0, 5).map((x) => x.airport.name).join(' ')).join(' ') },
+    { t: '机场排行榜 2026（按价格规则）', u: '/rankings/', s: '百元内年付每 GB 成本、年付入门价、年付月均等六个规则榜单，非测速。', b: '机场排行榜 排名 便宜机场 性价比 ' + rankings.map((r) => r.title + ' ' + r.rows.slice(0, 5).map((x) => x.airport.name).join(' ')).join(' ') },
     { t: '机场优惠码汇总 2026', u: '/coupons/', s: '34 家机场优惠码一览，以结算页为准。', b: '优惠码 折扣码 优惠 ' + airports.map((a) => `${a.name}优惠码 ${coupons[a.slug]?.code ?? ''}`).join(' ') },
     { t: '更新记录', u: '/updates/', s: '资料与页面变更日志。', b: '更新记录 更新日期 变更 日志 实测 待更新' },
     ...categories.map((c) => ({ t: `${c.name}文章专区`, u: `/guides/category/${c.slug}/`, s: c.desc.slice(0, 60), b: `${c.name} ${c.flavor} 分类 专区 文章` })),

@@ -5,8 +5,9 @@
  */
 const NOTE = '站长提供的优惠码，是否仍有效、适用哪些套餐以结算页为准。';
 
-export const coupons: Record<string, { code: string; note?: string }> = {
-  lingdongyun: { code: "ld888", note: NOTE }, // 灵动云
+/** discount：站长登记的折扣率（0.8 = 8 折）。只有登记了折扣率的品牌，榜单与卡片才会显示「用码后」价格；没登记的只显示优惠码。 */
+export const coupons: Record<string, { code: string; note?: string; discount?: number; discountNote?: string }> = {
+  lingdongyun: { code: "ld888", note: NOTE, discount: 0.8, discountNote: "站长登记：ld888 为 8 折，以结算页为准" }, // 灵动云
   "muguang-jiasu": { code: "mm88", note: NOTE }, // 暮光加速
   flyv: { code: "fly20", note: NOTE }, // 飞V
   laddercloud: { code: "tzy888", note: NOTE }, // 梯子云
