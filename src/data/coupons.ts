@@ -37,7 +37,7 @@ export const coupons: Record<string, { code: string; note?: string; discount?: n
   wuyou: { code: "wuyou666", note: NOTE }, // 无忧链接
   lingmao: { code: "lingmao", note: NOTE }, // 灵猫
   flashleap: { code: "shanyue", note: NOTE }, // 闪跃
-  firefly: { code: "firefly", note: NOTE }, // 飞为
+  firefly: { code: "firefly", note: NOTE }, // firefly（原名「飞为」）
   kuajie: { code: "kuajie", note: NOTE }, // 跨界
   liulianyun: { code: "ll88", note: NOTE }, // 榴莲云
   dalaoyun: { code: "dly88", note: NOTE }, // 大佬云

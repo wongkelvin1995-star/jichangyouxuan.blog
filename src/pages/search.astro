@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
-const hot = ['灵动云', '暮光加速', '机场优选', '机场推荐', '便宜机场', '年付', 'IEPL', 'Clash', '小火箭', '飞V', '飞为'];
+const hot = ['灵动云', '暮光加速', '机场优选', '机场推荐', '便宜机场', '年付', 'IEPL', 'Clash', '小火箭', '飞V', 'firefly'];
 ---
 <Base
   title="站内搜索｜品牌、文章与套餐问题｜机场优选 2026"

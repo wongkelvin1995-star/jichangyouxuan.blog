@@ -46,7 +46,7 @@ export async function GET() {
     ...categories.map((c) => ({ t: `${c.name}文章专区`, u: `/guides/category/${c.slug}/`, s: c.desc.slice(0, 60), b: `${c.name} ${c.flavor} 分类 专区 文章` })),
     { t: '根据预算选择机场', u: '/budget-guide/', s: '流量估算器与预算反推每 GB 成本。', b: '预算 流量估算 性价比机场 便宜机场 月付 年付 视频清晰度' },
     { t: '机场选购指南', u: '/selection-guide/', s: '六步判断一个机场套餐值不值得买。', b: '选购指南 机场推荐 线路 客户端 条款 退款 试用' },
-    { t: '评选与套餐计算方法', u: '/methodology/', s: '编辑精选顺序、价格计算口径与数据核验规则。', b: '比较方法 编辑精选 测速排名 已核验 未核验 飞V 飞为 不同品牌 大佬云 大哥云' },
+    { t: '评选与套餐计算方法', u: '/methodology/', s: '编辑精选顺序、价格计算口径与数据核验规则。', b: '比较方法 编辑精选 测速排名 已核验 未核验 飞V firefly 不同品牌 大佬云 大哥云' },
     { t: '常见问题 FAQ', u: '/faq/', s: '预算、套餐、线路与使用疑问解答。', b: faqs.map((f) => f.q + ' ' + f.a).join(' ') },
     { t: '关于机场优选', u: '/about/', s: '本站定位、做什么和不做什么。', b: '关于 机场优选 独立 选购 博客' },
     { t: '推广关系说明', u: '/affiliate-disclosure/', s: '本站如何获得收入，以及推广关系对内容的影响。', b: '推广 佣金 sponsored nofollow 注册链接 非官方' },

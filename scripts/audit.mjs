@@ -88,7 +88,9 @@ for (const a of airports) {
 const attach = process.env.AFFILIATE_SOURCE;
 if (attach && fs.existsSync(attach)) {
   const src = fs.readFileSync(attach, 'utf8').split(/\r?\n/).map((l) => l.trim()).filter((l) => /^https?:\/\/\S+#\/\?code=\S+$/.test(l));
-  airports.forEach((a, i) => { if (src[i] !== a.url) fail(`与原始资料不一致：${a.name}`); });
+  const srcSet = new Set(src);
+  if (src.length !== airports.length) fail(`原始资料条数 ${src.length} ≠ ${airports.length}`);
+  airports.forEach((a) => { if (!srcSet.has(a.url)) fail(`与原始资料不一致：${a.name}`); });
   console.log(`✓ 已与原始资料逐条比对 ${src.length} 条推广链接`);
 }
 
@@ -121,9 +123,9 @@ for (const p of pages) {
     if (/aff|code=/.test(m[1]) && !/sponsored/.test(m[0])) fail(`${p.url} 外链缺少 sponsored：${m[1]}`);
   }
 }
-// 飞V / 飞为 / 大佬云 / 无忧
+// 飞V / firefly / 大佬云 / 无忧
 const names = airports.map((a) => a.name);
-for (const n of ['飞V', '飞为', '大佬云', '无忧']) if (names.filter((x) => x === n).length !== 1) fail(`品牌「${n}」应恰好出现 1 次`);
+for (const n of ['飞V', 'firefly', '大佬云', '无忧']) if (names.filter((x) => x === n).length !== 1) fail(`品牌「${n}」应恰好出现 1 次`);
 if (names.includes('大哥云')) fail('不应收录大哥云');
 
 // 4. 首页第一名
@@ -188,7 +190,7 @@ const expect = {
   Clash: (d) => d.k === 'guide',
   小火箭: (d) => d.k === 'guide',
   飞V: (d) => d.k === 'brand' && d.t.includes('飞V'),
-  飞为: (d) => d.k === 'brand' && d.t.includes('飞为'),
+  firefly: (d) => d.k === 'brand' && d.t.includes('firefly'),
 };
 for (const [q, ok] of Object.entries(expect)) {
   const r = search(docs, q);
@@ -196,9 +198,9 @@ for (const [q, ok] of Object.entries(expect)) {
   else console.log(`  搜索「${q}」→ ${r.length} 条，首条：${r[0].t}`);
 }
 const rv = search(docs, '飞V').filter((d) => d.k === 'brand').map((d) => d.t);
-const rw = search(docs, '飞为').filter((d) => d.k === 'brand').map((d) => d.t);
-if (rv.some((t) => t.includes('飞为')) || rw.some((t) => t.includes('飞V'))) fail('飞V 与 飞为 的品牌结果被混合');
-if (rv.length !== 1 || rw.length !== 1) fail(`飞V/飞为品牌结果数量异常：${rv} | ${rw}`);
+const rw = search(docs, 'firefly').filter((d) => d.k === 'brand').map((d) => d.t);
+if (rv.some((t) => t.includes('firefly')) || rw.some((t) => t.includes('飞V'))) fail('飞V 与 firefly 的品牌结果被混合');
+if (rv.length !== 1 || rw.length !== 1) fail(`飞V/firefly 品牌结果数量异常：${rv} | ${rw}`);
 
 // 9. 404
 if (!fs.existsSync(path.join(DIST, '404.html'))) fail('缺少 404.html');

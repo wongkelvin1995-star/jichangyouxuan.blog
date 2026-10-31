@@ -29,6 +29,7 @@ export const PAGE_UPDATED: Record<string, string> = {
   '/rankings/': '2026-11-01',      // 标题与说明加入机场排名用词（榜单规则不变）
   '/airports/': '2026-11-01',      // 标题与说明改为机场导航 / 官网注册入口
   '/prices/': '2026-11-01',        // 标题与说明加入机场对比
+  '/airports/firefly/': '2026-11-01', // 品牌名「飞为」改为 firefly
   '/coupons/': '2026-10-31',       // 优惠码总表上线；灵动云折扣范围说明
   couponsRegistered: '2026-10-30', // 34 家优惠码登记日（品牌页因此有新内容）
   '/budget-guide/': '2026-10-28',

@@ -91,26 +91,36 @@
   },
   {
     "id": 10,
-    "slug": "stardream",
-    "name": "星岛梦",
-    "en": "StarDream",
+    "slug": "wuyou",
+    "name": "无忧",
+    "en": "",
     "aliases": [
-      "星岛"
+      "无忧机场"
     ],
-    "url": "https://kfccbb.xingdaomeng.com/#/?code=8OfXD5OF"
+    "url": "https://wep01.worryfreeaff.com/#/?code=6KQS8Ked"
   },
   {
     "id": 11,
-    "slug": "lightspeed",
-    "name": "光速云",
-    "en": "LightSpeed",
+    "slug": "firefly",
+    "name": "firefly",
+    "en": "",
     "aliases": [
-      "光速"
+      "Firefly"
     ],
-    "url": "https://mdlky.gsyaff.com/#/?code=F7n0RNQb"
+    "url": "https://vip02.fireflyaff.com/#/?code=ChuJcdvd"
   },
   {
     "id": 12,
+    "slug": "quanqiuyun",
+    "name": "全球云",
+    "en": "",
+    "aliases": [
+      "全球"
+    ],
+    "url": "https://sswdh.gcvipaff.com/#/?code=cFVyXgfb"
+  },
+  {
+    "id": 13,
     "slug": "v2yun",
     "name": "唯兔云",
     "en": "",
@@ -121,7 +131,53 @@
     "url": "https://fast.v2yunvipaff.com/#/?code=sZt4VRYd"
   },
   {
-    "id": 13,
+    "id": 14,
+    "slug": "lingmao",
+    "name": "灵猫",
+    "en": "",
+    "aliases": [
+      "灵猫机场"
+    ],
+    "url": "https://vip02.civetaff.com/#/?code=oL5LiBYi"
+  },
+  {
+    "id": 15,
+    "slug": "sogoyun",
+    "name": "Sogo云",
+    "en": "",
+    "aliases": [],
+    "url": "https://wzjc.sogoyunaff.cc/#/?code=EJx2Kerr"
+  },
+  {
+    "id": 16,
+    "slug": "flashleap",
+    "name": "闪跃",
+    "en": "FlashLeap",
+    "aliases": [],
+    "url": "https://vip02.flashleapaff.com/#/?code=mS7mSSyk"
+  },
+  {
+    "id": 17,
+    "slug": "stardream",
+    "name": "星岛梦",
+    "en": "StarDream",
+    "aliases": [
+      "星岛"
+    ],
+    "url": "https://kfccbb.xingdaomeng.com/#/?code=8OfXD5OF"
+  },
+  {
+    "id": 18,
+    "slug": "lightspeed",
+    "name": "光速云",
+    "en": "LightSpeed",
+    "aliases": [
+      "光速"
+    ],
+    "url": "https://mdlky.gsyaff.com/#/?code=F7n0RNQb"
+  },
+  {
+    "id": 19,
     "slug": "u1s1",
     "name": "U1S1",
     "en": "",
@@ -131,7 +187,7 @@
     "url": "https://pkdj7.vipaff.cc/#/?code=fRPgEjR9"
   },
   {
-    "id": 14,
+    "id": 20,
     "slug": "jilianyun",
     "name": "极连云",
     "en": "",
@@ -141,17 +197,7 @@
     "url": "https://kdjhao.jlyvipaff.com/#/?code=CLXGwx9n"
   },
   {
-    "id": 15,
-    "slug": "quanqiuyun",
-    "name": "全球云",
-    "en": "",
-    "aliases": [
-      "全球"
-    ],
-    "url": "https://sswdh.gcvipaff.com/#/?code=cFVyXgfb"
-  },
-  {
-    "id": 16,
+    "id": 21,
     "slug": "guangnianti",
     "name": "光年梯",
     "en": "",
@@ -161,15 +207,7 @@
     "url": "https://ggmq.gntaff.com/#/?code=ntDL4Jt7"
   },
   {
-    "id": 17,
-    "slug": "sogoyun",
-    "name": "Sogo云",
-    "en": "",
-    "aliases": [],
-    "url": "https://wzjc.sogoyunaff.cc/#/?code=EJx2Kerr"
-  },
-  {
-    "id": 18,
+    "id": 22,
     "slug": "yuzhouyun",
     "name": "宇宙云",
     "en": "YuZhou",
@@ -179,7 +217,7 @@
     "url": "https://wzjc.yuzoucloud.cc/#/?code=5LyV2wPs"
   },
   {
-    "id": 19,
+    "id": 23,
     "slug": "ermaoyun",
     "name": "二猫云",
     "en": "2mao",
@@ -190,7 +228,7 @@
     "url": "https://waaa.2maoyunaff.cc/#/?code=eWzdVBUV"
   },
   {
-    "id": 20,
+    "id": 24,
     "slug": "yifanyun",
     "name": "一翻云",
     "en": "1fly",
@@ -201,7 +239,7 @@
     "url": "https://wzjc.1flyunaff.cc/#/?code=6kvuXWSh"
   },
   {
-    "id": 21,
+    "id": 25,
     "slug": "edgenova",
     "name": "边缘节点",
     "en": "EdgeNova",
@@ -209,7 +247,7 @@
     "url": "https://work.edgenovaaff.cc/#/?code=nkZgzbw6"
   },
   {
-    "id": 22,
+    "id": 26,
     "slug": "kexinyun",
     "name": "可信云",
     "en": "",
@@ -220,7 +258,7 @@
     "url": "https://work.kosingaff.com/#/?code=Ho0l8Dcm"
   },
   {
-    "id": 23,
+    "id": 27,
     "slug": "sujie",
     "name": "速界",
     "en": "SuJie",
@@ -230,50 +268,12 @@
     "url": "https://work.speedworldaff.cc/#/?code=sRNgp64F"
   },
   {
-    "id": 24,
+    "id": 28,
     "slug": "kuaili",
     "name": "快狸",
     "en": "KuaiLi",
     "aliases": [],
     "url": "https://work.kuailicloud.cc/#/?code=Tmt2KQBn"
-  },
-  {
-    "id": 25,
-    "slug": "wuyou",
-    "name": "无忧",
-    "en": "",
-    "aliases": [
-      "无忧机场"
-    ],
-    "url": "https://wep01.worryfreeaff.com/#/?code=6KQS8Ked"
-  },
-  {
-    "id": 26,
-    "slug": "lingmao",
-    "name": "灵猫",
-    "en": "",
-    "aliases": [
-      "灵猫机场"
-    ],
-    "url": "https://vip02.civetaff.com/#/?code=oL5LiBYi"
-  },
-  {
-    "id": 27,
-    "slug": "flashleap",
-    "name": "闪跃",
-    "en": "FlashLeap",
-    "aliases": [],
-    "url": "https://vip02.flashleapaff.com/#/?code=mS7mSSyk"
-  },
-  {
-    "id": 28,
-    "slug": "firefly",
-    "name": "飞为",
-    "en": "Firefly",
-    "aliases": [
-      "Firefly"
-    ],
-    "url": "https://vip02.fireflyaff.com/#/?code=ChuJcdvd"
   },
   {
     "id": 29,

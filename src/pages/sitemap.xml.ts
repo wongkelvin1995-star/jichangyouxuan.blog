@@ -13,7 +13,7 @@ export async function GET() {
   const stat = (path: string, lastmod: string, priority: string, freq = 'monthly') => ({ path, lastmod, priority, freq });
   const max = (...ds: string[]) => ds.reduce((m, d) => (d > m ? d : m), '2026-01-01');
   /** 品牌页：该品牌资料的核对/整理日期，与优惠码登记日期取较晚者（优惠码是页面真实内容） */
-  const brandDate = (slug: string) => { const p = profileOf(slug); return max(p.verifiedAt ?? p.collectedAt, PAGE_UPDATED.couponsRegistered); };
+  const brandDate = (slug: string) => { const p = profileOf(slug); return max(p.verifiedAt ?? p.collectedAt, PAGE_UPDATED.couponsRegistered, PAGE_UPDATED[`/airports/${slug}/`]); };
   const brandsLatest = max(...airports.map((a) => brandDate(a.slug)));
   const latestUpdate = updates[0]?.date ?? SITE.updated;
   const catDate = (name: string) => fmtDate(guides.filter((g) => g.data.category === name).reduce((m, g) => (g.data.updatedDate > m ? g.data.updatedDate : m), new Date(0)));
