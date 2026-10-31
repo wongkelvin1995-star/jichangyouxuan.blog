@@ -64,7 +64,7 @@ export const rankings: Ranking[] = [
   {
     id: 'plan-count',
     title: '套餐档位最多',
-    rule: '统计每家品牌整理到的套餐档位数量（含各周期与流量包），按数量从多到少排序。档位多意味着选择细，但不代表更划算。',
+    rule: '统计每家品牌整理到的套餐档位数量（含各周期与流量包），按数量从多到少排序。档位多意味着选择细，但不代表更划算；历史参考品牌的资料可能漏记了部分周期或档位，所以这个榜单也受资料完整度影响。',
     unit: '档', lowerBetter: false, fmt: (v) => `${v} 档`,
     rows: best(slugs, (s) => {
       const ps = plansOf(s);

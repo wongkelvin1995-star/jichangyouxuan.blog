@@ -4,7 +4,7 @@
  */
 import profiles from './profiles.json';
 
-export type Period = 'monthly' | 'quarterly' | 'half-year' | 'yearly' | 'one-time';
+export type Period = 'monthly' | 'quarterly' | 'half-year' | 'yearly' | 'two-year' | 'three-year' | 'one-time';
 export type PlanStatus = 'verified' | 'reference';
 
 export interface Plan {
@@ -72,6 +72,8 @@ export const periodLabel: Record<Period, string> = {
   quarterly: '季付',
   'half-year': '半年付',
   yearly: '年付',
+  'two-year': '两年付',
+  'three-year': '三年付',
   'one-time': '一次性流量包',
 };
 
@@ -80,6 +82,8 @@ export const periodMonths: Record<Period, number | null> = {
   quarterly: 3,
   'half-year': 6,
   yearly: 12,
+  'two-year': 24,
+  'three-year': 36,
   'one-time': null,
 };
 

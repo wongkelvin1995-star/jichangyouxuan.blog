@@ -44,7 +44,7 @@ const withCode = airports.filter((a) => coupons[a.slug]);
                   <td><a href={`/airports/${a.slug}/`}>{fullName(a)}</a>{rankOf(a) > 0 && <span class="chip chip-sun" style="margin-left:6px;font-size:12px">精选 No.{rankOf(a)}</span>}</td>
                   <td>{coupons[a.slug] ? <code style="font-size:16px;font-weight:900">{coupons[a.slug].code}</code> : <span class="muted">暂无</span>}</td>
                   <td class="small">{summaryLine(a.slug)}</td>
-                  <td class="small">{coupons[a.slug]?.note ?? '本站没有收到可核实的优惠码，所以不编造。'}{coupons[a.slug]?.discount && <><br /><strong class="rk-after" style="display:inline">{zheLabel(coupons[a.slug].discount!)}{coupons[a.slug].excludePlans?.length ? `（${coupons[a.slug].excludePlans!.join('、')}除外）` : ''}</strong>　{coupons[a.slug].excludeNote}</>}</td>
+                  <td class="small">{coupons[a.slug]?.note ?? '本站没有收到可核实的优惠码，所以不编造。'}{coupons[a.slug]?.discount && <><br /><strong class="rk-after" style="display:inline">{zheLabel(coupons[a.slug].discount!)}{(coupons[a.slug].excludeLabel ?? coupons[a.slug].excludePlans?.join('、')) ? `（${coupons[a.slug].excludeLabel ?? coupons[a.slug].excludePlans!.join('、')}除外）` : ''}</strong>　{coupons[a.slug].excludeNote}</>}</td>
                   <td><RegisterLink airport={a} label="注册" class="btn btn-ghost btn-sm" where="coupons" /></td>
                 </tr>
               ))}

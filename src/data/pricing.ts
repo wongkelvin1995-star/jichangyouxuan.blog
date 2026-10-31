@@ -22,4 +22,4 @@ export const couponExcluded = (p: Plan) => !!coupons[p.airportSlug]?.discount &&
 /** 8 折 / 7.5 折 这样的中文写法 */
 export const zheLabel = (rate: number) => `${Number((rate * 10).toFixed(1))} 折`;
 export const money = (n: number) => String(Number(n.toFixed(2)));
-export const perSuffix: Record<string, string> = { monthly: '/月', quarterly: '/季', 'half-year': '/半年', yearly: '/年', 'one-time': '' };
+export const perSuffix: Record<string, string> = { monthly: '/月', quarterly: '/季', 'half-year': '/半年', yearly: '/年', 'two-year': '/两年', 'three-year': '/三年', 'one-time': '' };

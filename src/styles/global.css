@@ -1426,6 +1426,9 @@ html[data-style="budo"] .pl-head h2 .ico, html[data-style="budo"] .pp-sec-head h
 .header-social .hs-ico, .header-social .hs-ico:visited, .header-social .hs-ico:hover { color: #fff; text-decoration: none; }
 .header-social .hs-ico svg, .header-social .hs-ico svg path { fill: #fff; }
 /* 推广框：穿云不叠加优惠码的说明行；折扣说明另起一行 */
-.promo-facts li.promo-adj { background: rgba(255, 211, 77, .22); border-color: #ffd34d; font-weight: 700; }
+.promo-facts li.promo-adj { background: rgba(20, 33, 74, .74); border-color: #ffd34d; border-width: 2px; font-weight: 700; }
 .promo-facts li .muted-w { display: block; margin-top: 2px; }
+/* 推广框底部两行小字：卡片底部是橙黄渐变，浅色小字看不清，统一垫深蓝底（与上方各行一致） */
+html[data-style="budo"] .promo-card .promo-more { background: rgba(20, 33, 74, .82); color: #ffd34d; border-radius: 9px; padding: 5px 8px; text-decoration: none; }
+html[data-style="budo"] .promo-card .promo-note { background: rgba(20, 33, 74, .82); color: #fff; border-radius: 9px; padding: 4px 8px; }
 .bd-after { display: block; font-size: 13px; font-weight: 800; color: #8f4a00; margin-top: 1px; }

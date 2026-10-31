@@ -22,7 +22,8 @@ const coupon = coupons[a.slug];
 const isLd = a.slug === 'lingdongyun';
 const hasDiscount = !!coupon?.discount;
 const discLabel = coupon?.discount ? zheLabel(coupon.discount) : '';
-const exclText = coupon?.excludePlans?.length ? `（${coupon.excludePlans.join('、')}除外）` : '';
+const exclLabel = coupon?.excludeLabel ?? coupon?.excludePlans?.join('、') ?? '';
+const exclText = exclLabel ? `（${exclLabel}除外）` : '';
 const official = pr.sourceType === 'official';
 const verified = !!pr.verifiedBy;
 const date = pr.verifiedAt ?? pr.collectedAt;
@@ -32,7 +33,7 @@ const best = bestMonthlyGb(a.slug);
 const monthly = ps.filter((p) => p.period === 'monthly' && !isCustom(p)).sort((x, y) => x.priceCny - y.priceCny);
 const custom = ps.filter(isCustom);
 const packs = ps.filter((p) => p.period === 'one-time');
-const longTerm = ps.filter((p) => ['quarterly', 'half-year', 'yearly'].includes(p.period));
+const longTerm = ps.filter((p) => ['quarterly', 'half-year', 'yearly', 'two-year', 'three-year'].includes(p.period));
 
 // 同一套餐在不同周期的月均价对比
 const names = Array.from(new Set(ps.filter((p) => p.period !== 'one-time').map((p) => p.planName)));
@@ -59,10 +60,10 @@ const packRange = packs.length ? [Math.min(...packs.map(costPerGb)), Math.max(..
 const tag = (p: (typeof ps)[number]) => (p.period === 'one-time' ? '一次性' : periodLabel[p.period]);
 
 const title = `${a.name}机场套餐价格、线路与适合人群｜机场优选 2026`;
-const description = `${a.name}${start ? `最低 ¥${fmt(start.priceCny)}${start.period === 'monthly' ? '/月' : ''}起` : ''}，共 ${ps.length} 档套餐。本页整理${a.name}的价格、每 GB 成本、线路、客户端与适合人群，资料${verified ? `按官网套餐页核对于 ${date}` : `为 ${date} 历史参考`}，实测待更新。`;
+const description = `${a.name}${start ? `最低 ¥${fmt(start.priceCny)}${start.period === 'monthly' ? '/月' : ''}起` : ''}，共 ${ps.length} 档套餐。本页整理${a.name}的价格、每 GB 成本、线路、客户端与适合人群，资料${verified ? `按站长提供的截图核对于 ${date}` : `为 ${date} 历史参考`}，实测待更新。`;
 
 const faqs = [
-  { q: `${a.name}多少钱？`, a: start ? `按 ${date} 整理的资料，${a.name}最低的${periodLabel[start.period]}套餐是「${start.planName}」，¥${fmt(start.priceCny)}，${start.gbPerMonth ? `每月 ${start.gbPerMonth}GB` : `${start.trafficGbPerPeriod}GB`}；共 ${ps.length} 档套餐，完整价格见本页套餐表。${verified ? '价格按官网套餐页核对' : '价格为历史参考'}，不含优惠码，以结算页为准。` : '暂无套餐资料。' },
+  { q: `${a.name}多少钱？`, a: start ? `按 ${date} 整理的资料，${a.name}最低的${periodLabel[start.period]}套餐是「${start.planName}」，¥${fmt(start.priceCny)}，${start.gbPerMonth ? `每月 ${start.gbPerMonth}GB` : `${start.trafficGbPerPeriod}GB`}；共 ${ps.length} 档套餐，完整价格见本页套餐表。${verified ? '价格按站长提供的截图核对' : '价格为历史参考'}，不含优惠码，以结算页为准。` : '暂无套餐资料。' },
   { q: `${a.name}有优惠码吗？`, a: coupon ? (coupon.discount ? `${a.name}的优惠码是「${coupon.code}」，站长登记为${zheLabel(coupon.discount)}${exclText}。${coupon.excludeNote ?? ''}本页「价格」列是原价，「用码后」列按折扣率另算；实际金额请以结算页为准。` : `${a.name}的优惠码是「${coupon.code}」。${coupon.note ?? ''}价格表里的价格不含优惠码，实际金额请以结算页为准。`) : `本站目前没有收到${a.name}的优惠码，所以不编造。` },
   { q: `${a.name}有本站实测吗？`, a: '目前没有，实测数据待更新中。所以本页不写速度、延迟或稳定性结论；线路、AI 与流媒体信息均来自服务商宣传或整理资料，请以自己的试用为准。' },
   { q: `${a.name}适合哪些人？`, a: pr.suitableFor.length ? `${pr.suitableFor.join('；')}。` + (pr.notSuitableFor.length ? `不太适合：${pr.notSuitableFor.join('；')}。` : '') : '暂无整理。' },

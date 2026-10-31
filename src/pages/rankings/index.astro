@@ -20,7 +20,7 @@ const ld = rankings.map((r) => ({
 ---
 <Base
   title="机场排行榜 2026：按价格规则排名的 34 家机场（非测速）｜机场优选 2026"
-  description="机场优选 2026 的价格排行榜：百元内年付每 GB 成本最低、年付入门价最低、月付每 GB 成本最低、年付月均最低、套餐档位最多、流量包每 GB 最低。每个榜单都写明可复算的规则，数据为 2026-10-20 历史参考，不是测速排名。"
+  description="机场优选 2026 的价格排行榜：百元内年付每 GB 成本最低、年付入门价最低、月付每 GB 成本最低、年付月均最低、套餐档位最多、流量包每 GB 最低。每个榜单都写明可复算的规则，数据以 2026-10-20 历史参考为主（灵动云、飞V 为 2026-10-31 核对），不是测速排名。"
   path="/rankings/"
   crumbs={[{ name: '排行榜', path: '/rankings/' }]}
   jsonLd={ld}
@@ -28,7 +28,7 @@ const ld = rankings.map((r) => ({
   <section class="container page-head">
     <span class="eyebrow">战力分析 · 价格排行榜</span>
     <h1>机场排行榜 2026：按明确价格规则排名</h1>
-    <p class="lead">这里的每个榜单都只用一条写明的规则排序，你可以用<a href="/prices/">价格页</a>的数据自己复算。它们回答的是「哪家便宜」这一类问题，<strong>不回答「哪家快」</strong>：本站实测数据待更新中，不发布速度排名。数据为 {SITE.referenceDate} 的历史参考，不含优惠码，以结算页为准；只有站长登记了折扣率的品牌，才会在「优惠码」列附上用码后的价格。</p>
+    <p class="lead">这里的每个榜单都只用一条写明的规则排序，你可以用<a href="/prices/">价格页</a>的数据自己复算。它们回答的是「哪家便宜」这一类问题，<strong>不回答「哪家快」</strong>：本站实测数据待更新中，不发布速度排名。数据以 {SITE.referenceDate} 的历史参考为主（灵动云、飞V 已按站长提供的截图核对，{SITE.dataCheckedOn}），榜单一律按不含优惠码的原价排序，以结算页为准；只有站长登记了折扣率的品牌，才会在「优惠码」列附上用码后的价格。</p>
     <div class="chips">{rankings.map((r) => <a class="chip" href={`#${r.id}`}>{r.title}</a>)}</div>
   </section>
 

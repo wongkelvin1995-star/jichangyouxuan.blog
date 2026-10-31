@@ -25,7 +25,7 @@ import { SITE } from '../data/site';
         <table>
           <thead><tr><th>等级</th><th>含义</th><th>在页面上的标注</th></tr></thead>
           <tbody>
-            <tr><td>已核对</td><td>按站长提供的官网套餐页截图逐档核对，并记录来源与日期</td><td>显示数值 + 来源 + 核对日期（目前 {planStats.verified} 条）</td></tr>
+            <tr><td>已核对</td><td>按站长提供的官网套餐页或套餐列表截图逐档核对，并记录来源与日期</td><td>显示数值 + 来源 + 核对日期（目前 {planStats.verified} 条）</td></tr>
             <tr><td>历史参考</td><td>来自站长另一博客的资料整理（部分品牌整理时读取过官网），有整理日期，但尚未逐档核对</td><td>标注「历史参考」+ 整理日期；价格为原价，不含优惠码</td></tr>
             <tr><td>未核验</td><td>资料里没有、也无法确认的字段（例如退款规则、设备数）</td><td>写明「资料未说明」，不编造</td></tr>
             <tr><td>宣传信息</td><td>服务商自己的宣传描述，没有独立验证</td><td>标注为宣传，不写成结论</td></tr>
@@ -33,7 +33,7 @@ import { SITE } from '../data/site';
           </tbody>
         </table>
       </div>
-      <p>截至 {SITE.dataCheckedOn}，价格页共有 34 家品牌、{planStats.total} 档套餐：{planStats.verified} 档「已核对」（{planStats.verifiedBrands.length} 家，按官网截图逐档核对），{planStats.reference} 档「历史参考」（资料整理于 {SITE.referenceDate}）。</p>
+      <p>截至 {SITE.dataCheckedOn}，价格页共有 34 家品牌、{planStats.total} 档套餐：{planStats.verified} 档「已核对」（{planStats.verifiedBrands.length} 家，按站长提供的截图逐档核对），{planStats.reference} 档「历史参考」（资料整理于 {SITE.referenceDate}）。</p>
 
       <h2>三、套餐价格如何计算</h2>
       <p>所有套餐使用同一套公式：</p>
