@@ -198,12 +198,16 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
       (function () {
         var b = document.querySelector('.nav-toggle'), n = document.getElementById('site-nav');
         if (!b || !n) return;
-        b.addEventListener('click', function () {
-          var o = n.classList.toggle('open');
+        function set(o) {
+          n.classList.toggle('open', o);
           b.setAttribute('aria-expanded', o ? 'true' : 'false');
           b.setAttribute('aria-label', o ? '关闭菜单' : '打开菜单');
           b.textContent = o ? '✕' : '☰';
-        });
+        }
+        b.addEventListener('click', function () { set(!n.classList.contains('open')); });
+        // 按 Esc、点菜单以外的地方，都可以收起菜单
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && n.classList.contains('open')) { set(false); b.focus(); } });
+        document.addEventListener('click', function (e) { if (n.classList.contains('open') && !n.contains(e.target) && !b.contains(e.target)) set(false); });
       })();
     </script>
     <MascotFloat />

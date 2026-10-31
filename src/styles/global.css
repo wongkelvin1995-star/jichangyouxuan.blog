@@ -1432,3 +1432,26 @@ html[data-style="budo"] .pl-head h2 .ico, html[data-style="budo"] .pp-sec-head h
 html[data-style="budo"] .promo-card .promo-more { background: rgba(20, 33, 74, .82); color: #ffd34d; border-radius: 9px; padding: 5px 8px; text-decoration: none; }
 html[data-style="budo"] .promo-card .promo-note { background: rgba(20, 33, 74, .82); color: #fff; border-radius: 9px; padding: 4px 8px; }
 .bd-after { display: block; font-size: 13px; font-weight: 800; color: #8f4a00; margin-top: 1px; }
+
+/* ---------- 手机 / 平板菜单修复 ----------
+   <html> 本身带 .js 类，旧规则 `html[data-style="budo"] .js .nav` 要求 .js 是 html 的后代，永远匹配不到：
+   展开的菜单面板一直是奶油底，链接却是浅蓝 / 浅黄，文字几乎看不见。这里改用 html.js[data-style="budo"]：
+   面板与导航栏同色（深蓝 + 橙色底边）、链接白字；单列、超出屏幕高度时滚动（不再折成第二列）；
+   推广胶囊的层级降到顶栏之下，菜单展开时盖在它上面。 */
+.promo { z-index: 45; }
+@media (max-width: 980px) {
+  html.js[data-style="budo"] .nav {
+    background: #0f3b8c;
+    border-bottom: 4px solid #ff7a00;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    max-height: calc(100vh - 76px);
+    max-height: calc(100dvh - 76px);
+    box-shadow: 0 16px 28px rgba(15, 59, 140, .35);
+  }
+  html.js[data-style="budo"] .nav a { flex: 0 0 auto; color: #fff; border-radius: 10px; }
+  html.js[data-style="budo"] .nav a:hover,
+  html.js[data-style="budo"] .nav a:focus-visible { background: rgba(255, 255, 255, .16); color: #fff; }
+  html.js[data-style="budo"] .nav a[aria-current="page"] { background: rgba(255, 255, 255, .12); color: #ffe08a; box-shadow: inset 4px 0 0 #ffc400; }
+}
