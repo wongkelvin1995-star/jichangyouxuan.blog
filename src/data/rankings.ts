@@ -23,7 +23,7 @@ const byId = (slug: string) => airports.find((a) => a.slug === slug)!;
 export const rankings: Ranking[] = [
   {
     id: 'yearly-100-per-gb',
-    title: '百元内年付每 GB 成本最低',
+    title: '百元内年付每 GB 成本排行',
     rule: '只看年付价不超过 ¥100 的常规年付套餐（排除定制 / 独享档），计算「年价 ÷ 全年流量」，每家品牌取最低的一档，按每 GB 成本从低到高排序；成本相同按年价低者在前。全部按原价计算，不含优惠码；「优惠码」列里，只有登记了折扣率且该档参与折扣的品牌才会另附用码后价格（灵动云的穿云不参与）。',
     unit: '¥/GB', lowerBetter: true, fmt: (v) => `¥${v.toFixed(3)}`,
     rows: best(slugs, (s) => {
@@ -33,7 +33,7 @@ export const rankings: Ranking[] = [
   },
   {
     id: 'entry-yearly',
-    title: '年付入门价最低',
+    title: '年付入门价排行',
     rule: '取每家品牌「常规年付套餐」中价格最低的一档（排除定制 / 独享档），按年付价格从低到高排序；价格相同按全年总流量多者在前。年付需一次付清，请结合退款条款判断。',
     unit: '¥/年', lowerBetter: true, fmt: (v) => `¥${v}`,
     rows: best(slugs, (s) => {
@@ -43,7 +43,7 @@ export const rankings: Ranking[] = [
   },
   {
     id: 'monthly-per-gb',
-    title: '月付每 GB 成本最低',
+    title: '月付每 GB 成本排行',
     rule: '对每家品牌的常规月付套餐计算「月价 ÷ 每月流量」，取最低值，按每 GB 成本从低到高排序。流量越大的档位通常越占优，请同时看入门价。',
     unit: '¥/GB', lowerBetter: true, fmt: (v) => `¥${v.toFixed(2)}`,
     rows: best(slugs, (s) => {
@@ -53,7 +53,7 @@ export const rankings: Ranking[] = [
   },
   {
     id: 'yearly-per-month',
-    title: '年付月均最低',
+    title: '年付月均费用排行',
     rule: '取每家品牌年付套餐中「年价 ÷ 12」最低的一档（排除定制 / 独享档），按月均价从低到高排序。年付需一次付清，请结合退款条款判断。',
     unit: '¥/月', lowerBetter: true, fmt: (v) => `¥${v.toFixed(2)}`,
     rows: best(slugs, (s) => {
@@ -63,7 +63,7 @@ export const rankings: Ranking[] = [
   },
   {
     id: 'plan-count',
-    title: '套餐档位最多',
+    title: '套餐档位数排行',
     rule: '统计每家品牌整理到的套餐档位数量（含各周期与流量包），按数量从多到少排序。档位多意味着选择细，但不代表更划算；历史参考品牌的资料可能漏记了部分周期或档位，所以这个榜单也受资料完整度影响。',
     unit: '档', lowerBetter: false, fmt: (v) => `${v} 档`,
     rows: best(slugs, (s) => {
@@ -73,7 +73,7 @@ export const rankings: Ranking[] = [
   },
   {
     id: 'pack-per-gb',
-    title: '不限时流量包每 GB 最低',
+    title: '不限时流量包每 GB 成本排行',
     rule: '仅统计提供一次性（不限时）流量包的品牌，取「包价 ÷ 包内流量」最低的一档，从低到高排序。流量包买的是灵活，不与月付直接比较。',
     unit: '¥/GB', lowerBetter: true, fmt: (v) => `¥${v.toFixed(2)}`,
     rows: best(slugs, (s) => {

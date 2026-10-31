@@ -1,6 +1,6 @@
 ---
 title: "Clash、Shadowrocket、v2rayN 怎么选？机场订阅导入与客户端兼容性"
-description: "机场订阅怎么导入、用哪个客户端：按 Windows、Android、iOS、macOS 设备梳理 Clash 系、小火箭、v2rayN、sing-box、Hiddify 的差异，说明订阅格式、多设备注意事项与基础安全检查。"
+description: "机场订阅怎么导入、用哪个客户端：按设备梳理 Clash 系、小火箭、v2rayN、sing-box、Hiddify 的差异，附 Clash Verge Rev、小火箭、v2rayN 导入订阅步骤与排查方法。"
 keyword: "机场订阅"
 category: "客户端"
 summary: "客户端只是工具，机场提供的是订阅。本文从设备出发，梳理常见客户端的适用平台、订阅格式的差异、多设备使用的注意事项，以及几条基础的安全检查。"
@@ -18,7 +18,7 @@ related: ["airport-buying-pitfalls-guide", "iepl-iplc-relay-direct-explained", "
 
 | 平台 | 常见客户端 | 备注 |
 | --- | --- | --- |
-| Windows | Clash 系客户端（如 Clash Verge）、v2rayN、sing-box | Clash 系客户端目前多基于 Mihomo 内核 |
+| Windows | Clash 系客户端（如 Clash Verge Rev）、v2rayN、sing-box | Clash 系客户端目前多基于 Mihomo 内核 |
 | macOS | Clash 系客户端、sing-box、小火箭（Apple 芯片机型） | 以实际可用版本为准 |
 | Android | v2rayNG、Clash 系客户端、sing-box、Hiddify | 注意安装包来源 |
 | iOS | 小火箭（Shadowrocket）、sing-box 等 | 通常需要在 App Store 获取，付费与地区限制以商店为准 |
@@ -41,13 +41,19 @@ related: ["airport-buying-pitfalls-guide", "iepl-iplc-relay-direct-explained", "
 
 以 Windows / macOS 上常见的 Clash Verge Rev 为例（其他 Clash 系客户端的菜单名称可能略有不同）：
 
+> 灵动云用户先看这里：灵动云目前以官方专用客户端为主，通用订阅需要通过客服获取，具体以[灵动云详细页](/airports/lingdongyun/)和客服说明为准。
+
 1. 在机场后台复制 Clash 订阅链接（常见入口叫「一键订阅」或「复制订阅地址」），不要发给别人；
-2. 打开客户端的「订阅」页，粘贴链接并点击「导入」，等待节点列表出现；
-3. 到「代理」页选择一个节点，模式先用「规则」，只有确实需要时才切换到「全局」；
-4. 在设置里开启「系统代理」，浏览器等应用就会通过所选节点上网；
+2. 打开客户端的「订阅」页，粘贴链接并点击「导入」；导入后列表里会出现这个订阅，点选它，让它处于启用状态；
+3. 到「代理」页查看节点并选择一个，模式先用「规则」，只有确实需要时才切换到「全局」；
+4. 在设置里开启「系统代理」，需要代理的网页和应用就会通过所选节点连接；不读取系统代理的软件，可以改用「虚拟网卡模式」（TUN）；
 5. 连不上时先更新订阅、换一个节点，再按下文的排查顺序检查。
 
-iPhone 上的小火箭、Windows 上的 v2rayN 思路相同：导入订阅、选择节点、开启连接。客户端请只从项目官方页面或正规应用商店安装。
+**小火箭（Shadowrocket，iOS）：** 点右上角「＋」，类型选「Subscribe」（订阅），粘贴订阅链接后保存；回到首页选中一个节点，打开顶部的连接开关。第一次连接时 iOS 会提示添加 VPN 配置，按提示允许即可。
+
+**v2rayN（Windows）：** 在「订阅分组」里打开「订阅分组设置」，添加订阅并粘贴链接，保存后执行「更新订阅」；节点出现后选中一个，再把底部的系统代理设为「自动配置系统代理」。
+
+不同版本的菜单名称可能略有差异，以软件界面为准。客户端请只从项目官方页面或正规应用商店安装。
 
 ## 多设备使用要注意什么
 

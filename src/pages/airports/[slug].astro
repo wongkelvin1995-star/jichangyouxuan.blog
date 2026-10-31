@@ -60,10 +60,10 @@ const packRange = packs.length ? [Math.min(...packs.map(costPerGb)), Math.max(..
 const tag = (p: (typeof ps)[number]) => (p.period === 'one-time' ? '一次性' : periodLabel[p.period]);
 
 const title = `${a.name}机场套餐价格、线路与适合人群｜机场优选 2026`;
-const description = `${a.name}${start ? `最低 ¥${fmt(start.priceCny)}${start.period === 'monthly' ? '/月' : ''}起` : ''}，共 ${ps.length} 档套餐。本页整理${a.name}的价格、每 GB 成本、线路、客户端与适合人群，资料${verified ? `按站长提供的截图核对于 ${date}` : `为 ${date} 历史参考`}，实测待更新。`;
+const description = `${a.name}${start ? ` ¥${fmt(start.priceCny)}${start.period === 'monthly' ? '/月' : ''}起` : ''}，共 ${ps.length} 档套餐。本页整理${a.name}的价格、每 GB 成本、线路、客户端与适合人群，资料${verified ? `按站长提供的截图核对于 ${date}` : `为 ${date} 历史参考`}，实测待更新。`;
 
 const faqs = [
-  { q: `${a.name}多少钱？`, a: start ? `按 ${date} 整理的资料，${a.name}最低的${periodLabel[start.period]}套餐是「${start.planName}」，¥${fmt(start.priceCny)}，${start.gbPerMonth ? `每月 ${start.gbPerMonth}GB` : `${start.trafficGbPerPeriod}GB`}；共 ${ps.length} 档套餐，完整价格见本页套餐表。${verified ? '价格按站长提供的截图核对' : '价格为历史参考'}，不含优惠码，以结算页为准。` : '暂无套餐资料。' },
+  { q: `${a.name}多少钱？`, a: start ? `按 ${date} 整理的资料，${a.name}的入门${periodLabel[start.period]}套餐是「${start.planName}」，¥${fmt(start.priceCny)}，${start.gbPerMonth ? `每月 ${start.gbPerMonth}GB` : `${start.trafficGbPerPeriod}GB`}；共 ${ps.length} 档套餐，完整价格见本页套餐表。${verified ? '价格按站长提供的截图核对' : '价格为历史参考'}，不含优惠码，以结算页为准。` : '暂无套餐资料。' },
   { q: `${a.name}有优惠码吗？`, a: coupon ? (coupon.discount ? `${a.name}的优惠码是「${coupon.code}」，站长登记为${zheLabel(coupon.discount)}${exclText}。${coupon.excludeNote ?? ''}本页「价格」列是原价，「用码后」列按折扣率另算；实际金额请以结算页为准。` : `${a.name}的优惠码是「${coupon.code}」。${coupon.note ?? ''}价格表里的价格不含优惠码，实际金额请以结算页为准。`) : `本站目前没有收到${a.name}的优惠码，所以不编造。` },
   { q: `${a.name}有本站实测吗？`, a: '目前没有，实测数据待更新中。所以本页不写速度、延迟或稳定性结论；线路、AI 与流媒体信息均来自服务商宣传或整理资料，请以自己的试用为准。' },
   { q: `${a.name}适合哪些人？`, a: pr.suitableFor.length ? `${pr.suitableFor.join('；')}。` + (pr.notSuitableFor.length ? `不太适合：${pr.notSuitableFor.join('；')}。` : '') : '暂无整理。' },
@@ -93,7 +93,7 @@ const near = [airports[(a.id - 2 + airports.length) % airports.length], airports
   <div class="container pp-read">
     <div class="pp-main">
     <div class="prose">
-      <div class="summary-box"><b>摘要</b>{a.name}共整理到 {ps.length} 档套餐，{start ? `最低 ¥${fmt(start.priceCny)}${start.period === 'monthly' ? '/月' : ''}（${start.planName}）` : ''}{best && `，月付档里每 GB 成本最低的是「${best.planName}」约 ¥${costPerGb(best).toFixed(2)}`}。资料{verified ? `按${pr.verifiedBy}核对` : official ? '整理时读取过服务商官网' : '按公开资料整理'}，日期 {date}，<strong>{verified ? '本站未在结算页逐条下单核验' : '本站没有在结算页核验'}</strong>，实测数据待更新中。{rank === 1 ? '灵动云是本站第 1 位编辑精选，同时存在推广合作，这不是测速排名。' : rank ? `本品牌是本站第 ${rank} 位编辑精选，与推广合作有关，这不是测速排名。` : ''}</div>
+      <div class="summary-box"><b>摘要</b>{a.name}共整理到 {ps.length} 档套餐，{start ? `¥${fmt(start.priceCny)}${start.period === 'monthly' ? '/月' : ''}起（${start.planName}）` : ''}{best && `，月付档每 GB 成本约 ¥${costPerGb(best).toFixed(2)} 起（${best.planName}）`}。资料{verified ? `按${pr.verifiedBy}核对` : official ? '整理时读取过服务商官网' : '按公开资料整理'}，日期 {date}，<strong>{verified ? '本站未在结算页逐条下单核验' : '本站没有在结算页核验'}</strong>，实测数据待更新中。{rank === 1 ? '灵动云是本站第 1 位编辑精选，同时存在推广合作，这不是测速排名。' : rank ? `本品牌是本站第 ${rank} 位编辑精选，与推广合作有关，这不是测速排名。` : ''}</div>
 
       <h2>基本信息</h2>
       <div class="table-wrap">
@@ -147,7 +147,7 @@ const near = [airports[(a.id - 2 + airports.length) % airports.length], airports
       {monthly.length > 0 && (
         <>
           <h3>月付：哪一档更划算</h3>
-          <p>{a.name}的常规月付档有 {monthly.length} 个：{monthly.map((p) => `${p.planName}（¥${fmt(p.priceCny)}/${p.gbPerMonth}GB）`).join('、')}。每 GB 成本从 ¥{costPerGb(monthly[0]).toFixed(2)} 到 ¥{costPerGb(monthly[monthly.length - 1]).toFixed(2)}，其中最低的是「{best?.planName}」，约 ¥{best ? costPerGb(best).toFixed(2) : ''}/GB。用不完的流量一般不结转，先估算自己的月用量，再选刚好覆盖的档位。</p>
+          <p>{a.name}的常规月付档有 {monthly.length} 个：{monthly.map((p) => `${p.planName}（¥${fmt(p.priceCny)}/${p.gbPerMonth}GB）`).join('、')}。每 GB 成本从 ¥{costPerGb(monthly[0]).toFixed(2)} 到 ¥{costPerGb(monthly[monthly.length - 1]).toFixed(2)}，按每 GB 算「{best?.planName}」约 ¥{best ? costPerGb(best).toFixed(2) : ''}/GB，排在前面。用不完的流量一般不结转，先估算自己的月用量，再选刚好覆盖的档位。</p>
           {margins.length > 0 && (
             <ul>
               {margins.map((m) => <li>从「{m.from}」升到「{m.to}」：多付 ¥{fmt(m.dp)}，多得 {m.dg}GB，边际成本约 ¥{m.per.toFixed(2)}/GB。</li>)}
@@ -176,7 +176,7 @@ const near = [airports[(a.id - 2 + airports.length) % airports.length], airports
       {packs.length > 0 && packRange && (
         <>
           <h3>不限时流量包</h3>
-          <p>{packs.map((p) => `${p.planName}（¥${fmt(p.priceCny)}/${p.trafficGbPerPeriod}GB）`).join('、')}。每 GB 成本约 ¥{packRange[0].toFixed(2)}{packRange[1] !== packRange[0] ? `–¥${packRange[1].toFixed(2)}` : ''}{best ? `，约是上面月付最低档（¥${costPerGb(best).toFixed(2)}/GB）的 ${(packRange[0] / costPerGb(best)).toFixed(1)}–${(packRange[1] / costPerGb(best)).toFixed(1)} 倍` : ''}。它们买的是「不按月续费」的灵活，适合偶尔使用的人；购买前请确认有效期和是否可以叠加。</p>
+          <p>{packs.map((p) => `${p.planName}（¥${fmt(p.priceCny)}/${p.trafficGbPerPeriod}GB）`).join('、')}。每 GB 成本约 ¥{packRange[0].toFixed(2)}{packRange[1] !== packRange[0] ? `–¥${packRange[1].toFixed(2)}` : ''}{best ? `，约是上面月付档每 GB 起步价（¥${costPerGb(best).toFixed(2)}/GB）的 ${(packRange[0] / costPerGb(best)).toFixed(1)}–${(packRange[1] / costPerGb(best)).toFixed(1)} 倍` : ''}。它们买的是「不按月续费」的灵活，适合偶尔使用的人；购买前请确认有效期和是否可以叠加。</p>
         </>
       )}
       {custom.length > 0 && (

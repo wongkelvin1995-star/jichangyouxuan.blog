@@ -56,7 +56,7 @@ const scenes = [
   { icon: '🤖', title: 'AI 与流媒体需求', sub: '如何确认实际支持条件', text: '没有任何服务能永久保证解锁。下单前该问什么、怎么用月付验证。', href: '/guides/chatgpt-streaming-airport-checklist/', bg: 'linear-gradient(150deg,#0e7a6c,#1aa98f 70%,#8fe3c8)' },
 ];
 
-// 战力比较：TOP 5 的入门月付价与月付最低每 GB（真实数据，历史参考）
+// 战力比较：TOP 5 的入门月付价与月付每 GB 起步价（真实数据）
 const power = top5.map((a) => {
   const s = startPlan(a.slug);
   const b = bestMonthlyGb(a.slug);
@@ -174,7 +174,7 @@ const itemList = {
           <p>灵动云是本站现阶段的第一位编辑推荐。本站尚未公布独立实测数据，所以这里不写速度、延迟或稳定性的结论；下面的面板只放可以复算的套餐数字，建议先看详细页里的套餐表和「下单前的核对清单」，再用月付小额试用。</p>
           <div class="bd-stats" aria-label="灵动云套餐数据（按站长提供的截图核对）">
             <div class="bd-stat"><small>入门月付（原价）</small><b>{ldStart ? `¥${fmt(ldStart.priceCny)}/月` : '—'}{ldStart && couponPrice(ldStart) !== null && <span class="bd-after">用码后 ¥{money(couponPrice(ldStart)!)}/月</span>}</b></div>
-            <div class="bd-stat"><small>月付最低每 GB</small><b>{ldBest ? `¥${costPerGb(ldBest).toFixed(2)}` : '—'}</b></div>
+            <div class="bd-stat"><small>月付每 GB 起</small><b>{ldBest ? `¥${costPerGb(ldBest).toFixed(2)}` : '—'}</b></div>
             <div class="bd-stat"><small>套餐档位</small><b>{plansOf(featured.slug).length} 档</b></div>
             <div class="bd-stat"><small>线路类型</small><b style="font-size:15px">{ldProfile.lineTypes.join(' / ') || '未说明'}</b></div>
             <div class="bd-stat"><small>优惠码{(coupons[featured.slug]?.excludeLabel ?? coupons[featured.slug]?.excludePlans?.join('、')) ? `（${coupons[featured.slug].excludeLabel ?? coupons[featured.slug].excludePlans!.join('、')}除外）` : ''}</small><b>{coupons[featured.slug]?.code ?? '暂无'}{coupons[featured.slug]?.discount && <span class="bd-after">{zheLabel(coupons[featured.slug].discount!)}</span>}</b></div>
@@ -259,16 +259,16 @@ const itemList = {
       <div class="bd-sec-head">
         <div><span class="eyebrow">战力比较</span><h2>TOP 5 套餐价格战力面板</h2></div>
         <a class="more" href="/prices/">{planStats.total} 档套餐全表 ›</a>
-        <p>「战力」只是比喻，条形图里的数字都是可以复算的：入门月付价取每家最低的常规月付档，每 GB 成本 = 月价 ÷ 每月流量。条越短越便宜。全部为 {SITE.referenceDate} 历史参考，不含优惠码，不代表速度。</p>
+        <p>「战力」只是比喻，条形图里的数字都是可以复算的：入门月付价取每家常规月付档的起步价，每 GB 成本 = 月价 ÷ 每月流量。条越短越便宜。全部为 {SITE.referenceDate} 历史参考，不含优惠码，不代表速度。</p>
       </div>
       <div class="bd-power">
         <div class="table-wrap">
           <table>
-            <thead><tr><th>品牌</th><th>入门月付价（越低越好）</th><th>月付最低每 GB（越低越好）</th><th>档位</th></tr></thead>
+            <thead><tr><th>品牌</th><th>入门月付价（越低越好）</th><th>月付每 GB 起（越低越好）</th><th>档位</th></tr></thead>
             <tbody>
               {power.map((p, i) => (
                 <tr>
-                  <td class="name"><a href={`/airports/${p.a.slug}/`}>No.{i + 1} {p.a.name}</a><small>{p.gbPlan ? `最低每 GB 档：${p.gbPlan.planName}` : ''}</small></td>
+                  <td class="name"><a href={`/airports/${p.a.slug}/`}>No.{i + 1} {p.a.name}</a><small>{p.gbPlan ? `每 GB 起步档：${p.gbPlan.planName}` : ''}</small></td>
                   <td><span class="bd-bar"><i style={`--w:${p.entry ? ((p.entry / maxEntry) * 100).toFixed(0) : 0}%`}></i><b>{p.entry ? `¥${fmt(p.entry)}/月` : '—'}</b></span></td>
                   <td><span class="bd-bar blue"><i style={`--w:${p.gb ? ((p.gb / maxGb) * 100).toFixed(0) : 0}%`}></i><b>{p.gb ? `¥${p.gb.toFixed(2)}` : '—'}</b></span></td>
                   <td>{p.n} 档</td>
@@ -277,7 +277,7 @@ const itemList = {
             </tbody>
           </table>
         </div>
-        <p class="note">全站 34 家按同样规则排序的榜单见<a href="/rankings/">价格排行榜</a>（当前「百元内年付每 GB 成本最低」第一名：{rk.rows[0]?.airport.name} {rk.fmt(rk.rows[0]?.value ?? 0)}）。想自己算，用<a href="/prices/#calculator">每 GB 成本计算器</a>。</p>
+        <p class="note">全站 34 家按同样规则排序的榜单见<a href="/rankings/">价格排行榜</a>（例如「{rk.title}」目前排在前面的是 {rk.rows[0]?.airport.name} {rk.fmt(rk.rows[0]?.value ?? 0)}）。想自己算，用<a href="/prices/#calculator">每 GB 成本计算器</a>。</p>
       </div>
     </div>
   </section>

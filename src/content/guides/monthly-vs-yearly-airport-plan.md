@@ -5,7 +5,7 @@ keyword: "月付机场与年付机场"
 category: "价格成本"
 summary: "年付的月均价通常更低，但一次性付出更多，还要承担服务持续性风险。本文区分月度流量与全年总量，用假设数字演示盈亏平衡月数，并说明年付前该核对什么。"
 pubDate: 2026-10-28
-updatedDate: 2026-10-28
+updatedDate: 2026-11-01
 order: 2
 related: ["cheap-airport-cost-per-gb", "airport-buying-pitfalls-guide", "airport-selection-2026-budget-traffic-needs"]
 ---
@@ -30,7 +30,7 @@ related: ["cheap-airport-cost-per-gb", "airport-buying-pitfalls-guide", "airport
 
 ## 一个教学计算示例（数字为假设）
 
-假设有这样两个套餐，数字仅用于演示算法，不对应任何真实服务：
+假设有这样两个套餐，数字仅用于演示算法：
 
 | 项目 | 月付套餐 | 年付套餐 |
 | --- | --- | --- |

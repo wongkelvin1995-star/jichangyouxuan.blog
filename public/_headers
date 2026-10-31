@@ -9,3 +9,10 @@
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Cloudflare 的 pages.dev 生产别名与分支预览不被搜索引擎收录（正式域名不受影响）
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex

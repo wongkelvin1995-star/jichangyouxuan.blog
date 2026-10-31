@@ -1482,3 +1482,15 @@ html[data-style="budo"] .promo-card .promo-note { background: rgba(20, 33, 74, .
 .tbl-nowrap th, .tbl-nowrap td { white-space: nowrap; } /* 每行一行显示，窄屏在 .table-wrap 内横向滑动 */
 .tbl-hint { display: none; }
 @media (max-width: 800px) { .tbl-hint { display: block; margin: 0 0 8px; } }
+
+/* 审计修正 2026-11-01 */
+/* 手机与平板上推广胶囊不再压住面包屑：改到左下角（右下角是吉祥物） */
+@media (max-width: 1100px) {
+  .promo { top: auto; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); left: 12px; right: auto; width: min(272px, calc(100vw - 92px)); }
+  .promo .promo-mini { margin-left: 0; }
+}
+/* 短标签（已核对 / 历史参考 / 半年付等）不拆成两行 */
+.chip { white-space: nowrap; }
+/* 标题自动平衡各行长度，避免末行只剩一个字 */
+h1, h2, h3 { text-wrap: balance; }
+

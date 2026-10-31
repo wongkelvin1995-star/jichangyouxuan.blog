@@ -32,11 +32,12 @@ export const PAGE_UPDATED: Record<string, string> = {
   '/airports/firefly/': '2026-11-01', // 品牌名「飞为」改为 firefly
   '/coupons/': '2026-10-31',       // 优惠码总表上线；灵动云折扣范围说明
   couponsRegistered: '2026-10-30', // 34 家优惠码登记日（品牌页因此有新内容）
+  brandTemplate: '2026-11-01',     // 品牌页摘要与描述改为中性说法（去掉「最低」）
   '/budget-guide/': '2026-11-01',   // 估算器下方新增套餐建议与灵动云选档表
   '/selection-guide/': '2026-10-28',
   '/methodology/': '2026-10-31',   // 已核对 / 历史参考统计口径
   '/faq/': '2026-11-01',           // 新增：机场 VPN 是什么、有没有稳定机场推荐
-  '/about/': '2026-10-31',         // 联系邮箱
+  '/about/': '2026-11-01',         // 定位说明：不发布测速结果和速度排行榜
   '/affiliate-disclosure/': '2026-10-28',
   '/privacy/': '2026-10-31',       // 联系邮箱
 };

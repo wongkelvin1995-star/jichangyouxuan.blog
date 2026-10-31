@@ -26,6 +26,9 @@ const list = {
     itemListElement: airports.map((a) => ({ '@type': 'ListItem', position: a.id, name: fullName(a) })),
   },
 };
+import { SITE } from '../../data/site';
+import { planStats } from '../../data/plans';
+const verifiedNames = planStats.verifiedBrands.map((x) => airports.find((a) => a.slug === x)?.name).join('、');
 ---
 <Base
   title="机场导航｜34 家机场官网注册入口、套餐价格与品牌图鉴｜机场优选 2026"
@@ -37,7 +40,7 @@ const list = {
   <section class="container page-head">
     <span class="eyebrow">机场图鉴 · 品牌资料库</span>
     <h1>34 家机场导航：品牌图鉴与官网注册入口</h1>
-    <p class="lead">这里收录了 34 家机场品牌。前 5 位是编辑精选展示顺序（灵动云固定第一），其余按站长安排的目录顺序排列。每个品牌都有自己的详细页，写明套餐价格、线路、客户端和适合人群；这些资料是 2026-10-20 的历史参考，本站实测数据待更新中，不会用评分或星级制造完整感。</p>
+    <p class="lead">这里收录了 34 家机场品牌。前 5 位是编辑精选展示顺序（灵动云固定第一），其余按站长安排的目录顺序排列。每个品牌都有自己的详细页，写明套餐价格、线路、客户端和适合人群；其中 {verifiedNames} 的价格已按站长提供的官网截图核对，其余为 {SITE.referenceDate} 的历史参考，本站实测数据待更新中，不会用评分或星级制造完整感。</p>
     <div class="callout callout-note">
       <b class="t">先读这三点</b>
       <ul>

@@ -32,6 +32,8 @@
 | 文章 how-we-compare-34-airports | 机场测评 | 机场评测（只讲比较标准，本站暂无实测） |
 | 文章 airport-buying-pitfalls-guide | 机场购买 | 避坑、退款条款 |
 | 文章 chatgpt-streaming-airport-checklist | AI 机场推荐 | ChatGPT 无法访问 |
+| 文章 airport-node-speed-test-method | 机场测速 | 晚高峰测速、节点测速方法、速度表现（只讲方法，不发布测速排名） |
+| 文章 airport-beginner-tutorial | 科学上网教程 | 机场怎么用（FAQ 同题问答链接本文）、机场订阅入门 |
 
 暂不采用：Clash 下载（本站不推荐下载渠道）、游戏加速器、VPN 连接失败 / VPN 无法上网 / iOS VPN / Android VPN / WireGuard VPN（VPN 产品词，与本站定位不符）。
 
