@@ -1398,3 +1398,5 @@ html[data-style="budo"] .skip, html[data-style="budo"] .skip:focus { color: #fff
 html[data-style="budo"] h2 .ico { color: #d35400; }
 html[data-style="budo"] .pl-head h2 .ico, html[data-style="budo"] .pp-sec-head h2 .ico { color: #d35400; }
 .rk-after { display: block; margin-top: 2px; color: #8f4a00; font-weight: 700; white-space: nowrap; }
+.foot-about { margin-top: 14px; } .foot-about h2 { margin: 0 0 6px; } .foot-about p { margin: 0 0 8px; line-height: 1.75; } .foot-about .foot-slogan { font-weight: 700; margin-top: 4px; }
+@media (min-width: 901px) { .foot-grid { grid-template-columns: 1.9fr 1fr 1.2fr 1fr; } }
