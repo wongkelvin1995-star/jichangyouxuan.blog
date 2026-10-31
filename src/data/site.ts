@@ -7,7 +7,7 @@ export const SITE = {
   lang: 'zh-CN',
   /** 顶部图标链接：telegram 为站长频道；github 留空则不显示（填入仓库地址后自动出现） */
   telegram: 'https://t.me/+pl2ujC4m36U1NWM1',
-  github: 'https://github.com/wongkelvin1995-star/jichangyouxuan.blog/issues',
+  github: 'https://github.com/wongkelvin1995-star/jichangyouxuan.blog/issues/1',
   ogImage: '/og-default.png',
   /** 站点内容最近一次实质更新日期（用于页面展示与 sitemap lastmod） */
   updated: '2026-10-31',
