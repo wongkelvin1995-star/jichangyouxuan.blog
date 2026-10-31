@@ -3,6 +3,8 @@ import { planStats } from '../../data/plans';
 import Base from '../../layouts/Base.astro';
 import { plans, periodLabel, costPerGb, perMonth, fmt } from '../../data/plans';
 import { airports } from '../../data/airports';
+import { couponPrice, couponExcluded, zheLabel, money } from '../../data/pricing';
+import { coupons } from '../../data/coupons';
 import { SITE } from '../../data/site';
 
 const name = (slug: string) => airports.find((a) => a.slug === slug)?.name ?? slug;
@@ -22,7 +24,7 @@ const name = (slug: string) => airports.find((a) => a.slug === slug)?.name ?? sl
   <section class="container" style="padding-bottom:20px">
     <div class="card" style="background:#fff3da;margin-bottom:24px">
       <h2>目前：34 家 {plans.length} 档套餐，已核对 {plans.filter((p) => p.status === 'verified').length} 条，其余为历史参考</h2>
-      <p>标为<strong>「已核对」</strong>的套餐（目前为 {planStats.verifiedBrands.map((s) => airports.find((a) => a.slug === s)?.name).join('、')}）按站长提供的官网套餐页截图逐档核对；其余数字来自站长另一博客在 {SITE.referenceDate} 整理的资料，<strong>均为「历史参考」</strong>，尚未逐档核对，也不代表当前在售。两类都不含优惠码，付款前请以对应品牌的结算页为准。</p>
+      <p>标为<strong>「已核对」</strong>的套餐（目前为 {planStats.verifiedBrands.map((s) => airports.find((a) => a.slug === s)?.name).join('、')}）按站长提供的官网套餐页截图逐档核对；其余数字来自站长另一博客在 {SITE.referenceDate} 整理的资料，<strong>均为「历史参考」</strong>，尚未逐档核对，也不代表当前在售。表中「价格」一律是未使用优惠码的原价，排序与每 GB 成本也按原价；只有站长登记了折扣率的灵动云，会在价格下方另标「用码后」金额（{coupons.lingdongyun.code}：{zheLabel(coupons.lingdongyun.discount!)}，穿云与至尊私人定制不参与）。付款前请以对应品牌的结算页为准。</p>
       <p style="margin-bottom:0">每 GB 成本和月均费用由本站按「付款金额 ÷ 周期总流量」计算。月付、季付、年付、一次性流量包请分开看（用上方按钮筛选），不同周期的每 GB 成本不能直接排名。</p>
     </div>
     <div class="tools" style="margin-bottom:10px">
@@ -50,7 +52,7 @@ const name = (slug: string) => airports.find((a) => a.slug === slug)?.name ?? sl
               <td><a href={`/airports/${p.airportSlug}/`}><strong>{name(p.airportSlug)}</strong></a></td>
               <td>{p.planName}{p.note && <div class="small muted">{p.note}</div>}</td>
               <td>{periodLabel[p.period]}</td>
-              <td>{fmt(p.priceCny)}</td>
+              <td>{fmt(p.priceCny)}{couponPrice(p) !== null && <div class="small rk-after">用码后 ¥{money(couponPrice(p)!)}</div>}{couponExcluded(p) && <div class="small muted">不参与优惠码</div>}</td>
               <td>{p.gbPerMonth ? `${p.gbPerMonth} GB` : '—'}</td>
               <td>{p.trafficGbPerPeriod} GB</td>
               <td><strong>¥{costPerGb(p).toFixed(2)}</strong></td>
@@ -67,7 +69,7 @@ const name = (slug: string) => airports.find((a) => a.slug === slug)?.name ?? sl
   <section class="container section" style="padding-top:10px">
     <div class="prose">
       <h2>从这张表能读出什么</h2>
-      <p>以灵动云为例（历史参考）：月付四档从 ¥20/100GB 到 ¥180/1500GB，每 GB 成本从 ¥0.20 降到 ¥0.12，档位越大越划算；年付「穿云」¥99，每 30 天刷新 70GB，折合每 GB 约 ¥0.12，是流量不大时很便宜的入口，但只有 70GB/月，也不是通用线路；一次性流量包的每 GB 成本在 ¥1.1–¥1.3，远高于月付档。同样叫「便宜」，换成不同的周期和规则，成本可以差出十倍。完整解读见<a href="/guides/lingdongyun-plan-price-structure/">《灵动云套餐价格结构解读》</a>，其他品牌请打开各自的详细页。</p>
+      <p>以灵动云为例（按官网套餐页截图核对）：月付四档从 ¥20/100GB 到 ¥180/1500GB，每 GB 成本从 ¥0.20 降到 ¥0.12，档位越大越划算；年付「穿云」¥99，每 30 天刷新 70GB，折合每 GB 约 ¥0.12，是流量不大时很便宜的入口，但只有 70GB/月，也不是通用线路；一次性流量包的每 GB 成本在 ¥1.1–¥1.3，远高于月付档。同样叫「便宜」，换成不同的周期和规则，成本可以差出十倍。用优惠码 ld888 后，除穿云和至尊私人定制外的档位享 8 折（如拂风月付 ¥20 → ¥16、驭浪年付 ¥510 → ¥408）；穿云价格已按比例调整为优惠价，不再叠加优惠码。完整解读见<a href="/guides/lingdongyun-plan-price-structure/">《灵动云套餐价格结构解读》</a>，其他品牌请打开各自的详细页。</p>
       <p>要提醒的是：定制或独享档位（例如 ¥680 的独立 IP 方案）买的是独立带宽或独立公网 IP，不是流量，因此不要用它们的每 GB 成本去和普通档位比较。</p>
     </div>
   </section>

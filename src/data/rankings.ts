@@ -24,7 +24,7 @@ export const rankings: Ranking[] = [
   {
     id: 'yearly-100-per-gb',
     title: '百元内年付每 GB 成本最低',
-    rule: '只看年付价不超过 ¥100 的常规年付套餐（排除定制 / 独享档），计算「年价 ÷ 全年流量」，每家品牌取最低的一档，按每 GB 成本从低到高排序；成本相同按年价低者在前。全部按原价计算，不含优惠码；「优惠码」列里只有登记了折扣率的品牌才显示用码后的价格。',
+    rule: '只看年付价不超过 ¥100 的常规年付套餐（排除定制 / 独享档），计算「年价 ÷ 全年流量」，每家品牌取最低的一档，按每 GB 成本从低到高排序；成本相同按年价低者在前。全部按原价计算，不含优惠码；「优惠码」列里，只有登记了折扣率且该档参与折扣的品牌才会另附用码后价格（灵动云的穿云不参与）。',
     unit: '¥/GB', lowerBetter: true, fmt: (v) => `¥${v.toFixed(3)}`,
     rows: best(slugs, (s) => {
       const y = yearlyRegular(s).filter((p) => p.priceCny <= 100).sort((x, y) => costPerGb(x) - costPerGb(y) || x.priceCny - y.priceCny);

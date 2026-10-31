@@ -26,8 +26,8 @@ export const SITE = {
  */
 export const PAGE_UPDATED: Record<string, string> = {
   '/': '2026-10-31',               // 首页文案与编辑精选顺序
-  '/rankings/': '2026-10-31',      // 首榜改为年付入门价
-  '/coupons/': '2026-10-30',       // 优惠码总表上线
+  '/rankings/': '2026-10-31',      // 首榜改为年付入门价；优惠码列按档位显示用码后价格
+  '/coupons/': '2026-10-31',       // 优惠码总表上线；灵动云折扣范围说明
   couponsRegistered: '2026-10-30', // 34 家优惠码登记日（品牌页因此有新内容）
   '/budget-guide/': '2026-10-28',
   '/selection-guide/': '2026-10-28',

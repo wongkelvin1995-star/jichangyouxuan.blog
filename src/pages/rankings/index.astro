@@ -4,6 +4,7 @@ import RegisterLink from '../../components/RegisterLink.astro';
 import { rankings } from '../../data/rankings';
 import { rankOf } from '../../data/airports';
 import { coupons } from '../../data/coupons';
+import { couponPrice, couponExcluded, money, perSuffix } from '../../data/pricing';
 import { SITE, abs } from '../../data/site';
 
 const TOPN = 10;
@@ -49,9 +50,9 @@ const ld = rankings.map((r) => ({
                       <td><a href={`/airports/${x.airport.slug}/`}>{x.airport.name}</a>{rankOf(x.airport) > 0 && <span class="chip chip-sun" style="margin-left:6px;font-size:12px">精选 No.{rankOf(x.airport)}</span>}</td>
                       <td><strong>{r.fmt(x.value)}</strong></td>
                       <td class="small">{x.plan.planName}{x.extra ? `（${x.extra}）` : ''}</td>
-                      <td class="small">{coupons[x.airport.slug]?.code ?? '—'}{coupons[x.airport.slug]?.discount && (x.plan.period === 'yearly' || x.plan.period === 'monthly') && (
-                        <small class="rk-after" title={coupons[x.airport.slug]?.discountNote}>用码后 ¥{(x.plan.priceCny * coupons[x.airport.slug]!.discount!).toFixed(1)}/{x.plan.period === 'yearly' ? '年' : '月'}{x.plan.period === 'yearly' && ` · 月均 ¥${((x.plan.priceCny * coupons[x.airport.slug]!.discount!) / 12).toFixed(2)}`}</small>
-                      )}</td>
+                      <td class="small">{coupons[x.airport.slug]?.code ?? '—'}{couponPrice(x.plan) !== null && (
+                        <small class="rk-after" title={coupons[x.airport.slug]?.discountNote}>用码后 ¥{money(couponPrice(x.plan)!)}{perSuffix[x.plan.period]}{x.plan.period === 'yearly' && ` · 月均 ¥${(couponPrice(x.plan)! / 12).toFixed(2)}`}</small>
+                      )}{couponExcluded(x.plan) && <small class="muted" style="display:block" title={coupons[x.airport.slug]?.excludeNote}>该档不参与优惠码</small>}</td>
                       <td><RegisterLink airport={x.airport} label="注册" class="btn btn-ghost btn-sm" where="rankings" /></td>
                     </tr>
                   ))}

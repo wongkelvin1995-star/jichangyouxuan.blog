@@ -6,6 +6,7 @@ import { airports, DETAIL_SLUGS, getAirport, rankOf, fullName } from '../../data
 import { SITE, abs } from '../../data/site';
 import { profileOf, plansOf, periodLabel, periodMonths, costPerGb, perMonth, isCustom, fmt, summaryLine, startPlan, bestMonthlyGb } from '../../data/plans';
 import { coupons } from '../../data/coupons';
+import { couponPrice, couponExcluded, zheLabel, money } from '../../data/pricing';
 import Art from '../../components/Art.astro';
 import { initial } from '../../data/art';
 
@@ -19,6 +20,9 @@ const ps = plansOf(a.slug);
 const rank = rankOf(a);
 const coupon = coupons[a.slug];
 const isLd = a.slug === 'lingdongyun';
+const hasDiscount = !!coupon?.discount;
+const discLabel = coupon?.discount ? zheLabel(coupon.discount) : '';
+const exclText = coupon?.excludePlans?.length ? `（${coupon.excludePlans.join('、')}除外）` : '';
 const official = pr.sourceType === 'official';
 const verified = !!pr.verifiedBy;
 const date = pr.verifiedAt ?? pr.collectedAt;
@@ -59,7 +63,7 @@ const description = `${a.name}${start ? `最低 ¥${fmt(start.priceCny)}${start.
 
 const faqs = [
   { q: `${a.name}多少钱？`, a: start ? `按 ${date} 整理的资料，${a.name}最低的${periodLabel[start.period]}套餐是「${start.planName}」，¥${fmt(start.priceCny)}，${start.gbPerMonth ? `每月 ${start.gbPerMonth}GB` : `${start.trafficGbPerPeriod}GB`}；共 ${ps.length} 档套餐，完整价格见本页套餐表。${verified ? '价格按官网套餐页核对' : '价格为历史参考'}，不含优惠码，以结算页为准。` : '暂无套餐资料。' },
-  { q: `${a.name}有优惠码吗？`, a: coupon ? `${a.name}的优惠码是「${coupon.code}」。${coupon.note ?? ''}价格表里的价格不含优惠码，实际金额请以结算页为准。` : `本站目前没有收到${a.name}的优惠码，所以不编造。` },
+  { q: `${a.name}有优惠码吗？`, a: coupon ? (coupon.discount ? `${a.name}的优惠码是「${coupon.code}」，站长登记为${zheLabel(coupon.discount)}${exclText}。${coupon.excludeNote ?? ''}本页「价格」列是原价，「用码后」列按折扣率另算；实际金额请以结算页为准。` : `${a.name}的优惠码是「${coupon.code}」。${coupon.note ?? ''}价格表里的价格不含优惠码，实际金额请以结算页为准。`) : `本站目前没有收到${a.name}的优惠码，所以不编造。` },
   { q: `${a.name}有本站实测吗？`, a: '目前没有，实测数据待更新中。所以本页不写速度、延迟或稳定性结论；线路、AI 与流媒体信息均来自服务商宣传或整理资料，请以自己的试用为准。' },
   { q: `${a.name}适合哪些人？`, a: pr.suitableFor.length ? `${pr.suitableFor.join('；')}。` + (pr.notSuitableFor.length ? `不太适合：${pr.notSuitableFor.join('；')}。` : '') : '暂无整理。' },
 ];
@@ -96,7 +100,7 @@ const near = [airports[(a.id - 2 + airports.length) % airports.length], airports
           <tbody>
             <tr><th scope="row">全称</th><td>{fullName(a)}{a.aliases.length > 0 && <>（别名：{a.aliases.join('、')}）</>}</td></tr>
             <tr><th scope="row">价格 / 线路</th><td>{summaryLine(a.slug)}</td></tr>
-            <tr><th scope="row">优惠码</th><td>{coupon ? <><strong>{coupon.code}</strong>　<span class="small muted">{coupon.note}</span></> : <span class="muted">暂无（本站没有收到可核实的优惠码）</span>}</td></tr>
+            <tr><th scope="row">优惠码</th><td>{coupon ? <><strong>{coupon.code}</strong>{hasDiscount && <>　<strong class="rk-after" style="display:inline">{discLabel}{exclText}</strong></>}　<span class="small muted">{coupon.note}</span></> : <span class="muted">暂无（本站没有收到可核实的优惠码）</span>}</td></tr>
             <tr><th scope="row">本站实测</th><td>待更新中（目前不发布速度、延迟、稳定性结论）</td></tr>
             <tr><th scope="row">资料来源</th><td>{verified ? pr.verifiedBy : official ? '整理时读取过官网' : '公开资料整理'}，{date}；{verified ? '价格以结算页为准' : '本站未在结算页核验'}。{pr.officialSite && <> 官网：{pr.officialSite}</>}</td></tr>
           </tbody>
@@ -104,16 +108,29 @@ const near = [airports[(a.id - 2 + airports.length) % airports.length], airports
       </div>
 
       <h2>{a.name}全部套餐与每 GB 成本</h2>
-      {verified ? <p>下表数字按 <strong>{pr.verifiedBy}</strong> 核对，日期 {date}；价格可能随时调整，下单仍以结算页为准。每 GB 成本、月均费用由本站按「付款金额 ÷ 周期总流量」计算，不含任何优惠码。</p> : <p>下表所有数字为 {date} 的<strong>历史参考</strong>，来自站长另一博客的整理，不代表当前在售。每 GB 成本、月均费用由本站按「付款金额 ÷ 周期总流量」计算，不含任何优惠码。</p>}
+      {verified ? <p>下表数字按 <strong>{pr.verifiedBy}</strong> 核对，日期 {date}；价格可能随时调整，下单仍以结算页为准。每 GB 成本、月均费用由本站按「付款金额 ÷ 周期总流量」计算，{hasDiscount ? '均按原价，「用码后」列另算' : '不含任何优惠码'}。</p> : <p>下表所有数字为 {date} 的<strong>历史参考</strong>，来自站长另一博客的整理，不代表当前在售。每 GB 成本、月均费用由本站按「付款金额 ÷ 周期总流量」计算，不含任何优惠码。</p>}
+      {hasDiscount && (
+        <div class="callout callout-note" style="margin-bottom:14px">
+          <b class="t">优惠码 {coupon!.code}：{discLabel}{exclText}</b>
+          表里「价格」列是原价；标「用码后」的是按站长登记的 {discLabel} 另算的金额，排序和每 GB 成本一律按原价。{coupon!.excludeNote} 折扣是否生效、适用哪些周期，以结算页为准。
+        </div>
+      )}
       <div class="table-wrap">
-        <table style="min-width:720px">
-          <thead><tr><th>套餐</th><th>周期</th><th>价格</th><th>每月流量</th><th>周期总流量</th><th>每 GB</th><th>月均</th><th>备注</th></tr></thead>
+        <table style={`min-width:${hasDiscount ? 860 : 720}px`}>
+          <thead><tr><th>套餐</th><th>周期</th><th>价格</th>{hasDiscount && <th>用码后（{discLabel}）</th>}<th>每月流量</th><th>周期总流量</th><th>每 GB</th><th>月均</th><th>备注</th></tr></thead>
           <tbody>
             {ps.map((p) => (
               <tr>
                 <td>{p.planName}</td>
                 <td>{tag(p)}</td>
                 <td>¥{fmt(p.priceCny)}</td>
+                {hasDiscount && (
+                  <td>
+                    {couponPrice(p) !== null
+                      ? <><strong class="rk-after" style="display:inline">¥{money(couponPrice(p)!)}</strong><small class="rk-after" style="font-weight:600">{perMonth(p) ? `月均 ¥${(couponPrice(p)! * perMonth(p)! / p.priceCny).toFixed(2)} · ` : ''}每 GB ¥{(couponPrice(p)! / p.trafficGbPerPeriod).toFixed(3)}</small></>
+                      : couponExcluded(p) ? <span class="small muted">不参与优惠码</span> : '—'}
+                  </td>
+                )}
                 <td>{p.gbPerMonth ? `${p.gbPerMonth} GB` : '—'}</td>
                 <td>{p.trafficGbPerPeriod} GB</td>
                 <td>¥{costPerGb(p).toFixed(2)}</td>

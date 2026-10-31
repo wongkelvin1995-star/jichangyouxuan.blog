@@ -4,6 +4,7 @@ import RegisterLink from '../../components/RegisterLink.astro';
 import { airports, rankOf, fullName } from '../../data/airports';
 import { coupons } from '../../data/coupons';
 import { summaryLine } from '../../data/plans';
+import { zheLabel } from '../../data/pricing';
 import { SITE } from '../../data/site';
 
 const withCode = airports.filter((a) => coupons[a.slug]);
@@ -17,7 +18,7 @@ const withCode = airports.filter((a) => coupons[a.slug]);
   <section class="container page-head">
     <span class="eyebrow">经典招式 · 优惠码总表</span>
     <h1>机场优惠码汇总 2026</h1>
-    <p class="lead">本页集中列出 {withCode.length} 家机场的优惠码，与各品牌详细页、图鉴卡片同步。优惠码由站长整理提供，<strong>本站没有逐一在结算页验证</strong>，是否仍有效、适用哪些套餐和周期，请以结算页显示为准；本站所有价格表都是未使用优惠码的原价（{SITE.referenceDate} 历史参考）。</p>
+    <p class="lead">本页集中列出 {withCode.length} 家机场的优惠码，与各品牌详细页、图鉴卡片同步。优惠码由站长整理提供，<strong>本站没有逐一在结算页验证</strong>，是否仍有效、适用哪些套餐和周期，请以结算页显示为准；本站价格表里的「价格」都是未使用优惠码的原价；只有站长登记了折扣率的灵动云，会另标「用码后」金额，排序和每 GB 成本仍按原价。</p>
   </section>
 
   <div class="container pp-read no-side">
@@ -35,7 +36,7 @@ const withCode = airports.filter((a) => coupons[a.slug]);
         <p class="small muted">按图鉴收录顺序排列，前 5 位是编辑精选顺序（含推广合作），不是测速排名。</p>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>#</th><th>品牌</th><th>优惠码</th><th>价格 / 线路（历史参考）</th><th>说明</th><th></th></tr></thead>
+            <thead><tr><th>#</th><th>品牌</th><th>优惠码</th><th>价格 / 线路</th><th>说明</th><th></th></tr></thead>
             <tbody>
               {airports.map((a) => (
                 <tr id={a.slug}>
@@ -43,7 +44,7 @@ const withCode = airports.filter((a) => coupons[a.slug]);
                   <td><a href={`/airports/${a.slug}/`}>{fullName(a)}</a>{rankOf(a) > 0 && <span class="chip chip-sun" style="margin-left:6px;font-size:12px">精选 No.{rankOf(a)}</span>}</td>
                   <td>{coupons[a.slug] ? <code style="font-size:16px;font-weight:900">{coupons[a.slug].code}</code> : <span class="muted">暂无</span>}</td>
                   <td class="small">{summaryLine(a.slug)}</td>
-                  <td class="small">{coupons[a.slug]?.note ?? '本站没有收到可核实的优惠码，所以不编造。'}</td>
+                  <td class="small">{coupons[a.slug]?.note ?? '本站没有收到可核实的优惠码，所以不编造。'}{coupons[a.slug]?.discount && <><br /><strong class="rk-after" style="display:inline">{zheLabel(coupons[a.slug].discount!)}{coupons[a.slug].excludePlans?.length ? `（${coupons[a.slug].excludePlans!.join('、')}除外）` : ''}</strong>　{coupons[a.slug].excludeNote}</>}</td>
                   <td><RegisterLink airport={a} label="注册" class="btn btn-ghost btn-sm" where="coupons" /></td>
                 </tr>
               ))}

@@ -9,6 +9,7 @@ import { homeFaqs } from '../data/faq';
 import { abs, fmtDate, SITE } from '../data/site';
 import { summaryLine, plansOf, startPlan, bestMonthlyGb, costPerGb, profileOf, fmt } from '../data/plans';
 import { coupons } from '../data/coupons';
+import { couponPrice, zheLabel, money } from '../data/pricing';
 import { paletteOf, initial } from '../data/art';
 import { categories, categoryOf } from '../data/categories';
 import { rankingById } from '../data/rankings';
@@ -171,12 +172,12 @@ const itemList = {
           <span class="crown">👑 编辑精选 No.1</span>
           <h3 id="top1-title">{featured.name}<small>本站第 1 位推荐</small></h3>
           <p>灵动云是本站现阶段的第一位编辑推荐。本站尚未公布独立实测数据，所以这里不写速度、延迟或稳定性的结论；下面的面板只放可以复算的套餐数字，建议先看详细页里的套餐表和「下单前的核对清单」，再用月付小额试用。</p>
-          <div class="bd-stats" aria-label="灵动云套餐数据（历史参考）">
-            <div class="bd-stat"><small>入门月付</small><b>{ldStart ? `¥${fmt(ldStart.priceCny)}/月` : '—'}</b></div>
+          <div class="bd-stats" aria-label="灵动云套餐数据（按官网截图核对）">
+            <div class="bd-stat"><small>入门月付（原价）</small><b>{ldStart ? `¥${fmt(ldStart.priceCny)}/月` : '—'}{ldStart && couponPrice(ldStart) !== null && <span class="bd-after">用码后 ¥{money(couponPrice(ldStart)!)}/月</span>}</b></div>
             <div class="bd-stat"><small>月付最低每 GB</small><b>{ldBest ? `¥${costPerGb(ldBest).toFixed(2)}` : '—'}</b></div>
             <div class="bd-stat"><small>套餐档位</small><b>{plansOf(featured.slug).length} 档</b></div>
             <div class="bd-stat"><small>线路类型</small><b style="font-size:15px">{ldProfile.lineTypes.join(' / ') || '未说明'}</b></div>
-            <div class="bd-stat"><small>优惠码</small><b>{coupons[featured.slug]?.code ?? '暂无'}</b></div>
+            <div class="bd-stat"><small>优惠码{coupons[featured.slug]?.excludePlans?.length ? `（${coupons[featured.slug].excludePlans!.join('、')}除外）` : ''}</small><b>{coupons[featured.slug]?.code ?? '暂无'}{coupons[featured.slug]?.discount && <span class="bd-after">{zheLabel(coupons[featured.slug].discount!)}</span>}</b></div>
             <div class="bd-stat"><small>本站实测</small><b style="font-size:15px">待更新中</b></div>
           </div>
           <div class="btn-row">

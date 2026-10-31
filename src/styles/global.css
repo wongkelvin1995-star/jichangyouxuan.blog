@@ -1363,7 +1363,6 @@ html[data-style="budo"] .bd-fighter .bubble { position: absolute; left: 4%; righ
 @media (max-width: 900px) { html[data-style="budo"] .bd-fighter { padding: 56px 0 30px; text-align: center; } html[data-style="budo"] .bd-fighter .mascot { width: 240px; margin: 0 auto; } html[data-style="budo"] .bd-fighter .bubble { position: absolute; left: 50%; transform: translateX(-50%) rotate(-2deg); bottom: 0; margin: 0; width: max-content; max-width: 86%; } }
 
 /* 推广框：原价划线 */
-.promo-was{font-size:.6em;font-weight:600;opacity:.75;text-decoration:line-through;margin-right:2px}
 
 /* 播放器：YouTube 不可用时的提示 */
 
@@ -1426,3 +1425,7 @@ html[data-style="budo"] .pl-head h2 .ico, html[data-style="budo"] .pp-sec-head h
 /* 顶部社交图标：图形固定为白色（避免被全局链接色覆盖成橙色） */
 .header-social .hs-ico, .header-social .hs-ico:visited, .header-social .hs-ico:hover { color: #fff; text-decoration: none; }
 .header-social .hs-ico svg, .header-social .hs-ico svg path { fill: #fff; }
+/* 推广框：穿云不叠加优惠码的说明行；折扣说明另起一行 */
+.promo-facts li.promo-adj { background: rgba(255, 211, 77, .22); border-color: #ffd34d; font-weight: 700; }
+.promo-facts li .muted-w { display: block; margin-top: 2px; }
+.bd-after { display: block; font-size: 13px; font-weight: 800; color: #8f4a00; margin-top: 1px; }
