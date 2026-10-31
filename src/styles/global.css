@@ -1377,12 +1377,35 @@ html[data-style="budo"] .bd-fighter .bubble { position: absolute; left: 4%; righ
 @media (max-width: 720px) { .mascot-float { width: 48px; height: 48px; right: 10px; bottom: 10px; } }
 
 /* ---- 顶部社交图标（Telegram / GitHub），搜索框旁，所有宽度可见 ---- */
-.header-social { display: flex; align-items: center; gap: 6px; margin-left: 8px; }
-.hs-ico { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; color: #fff; background: rgba(255, 255, 255, .16); transition: transform .15s ease, background .15s ease; }
-.hs-ico:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .3); }
-.hs-tg { background: #229ed9; }
-.hs-tg:hover { background: #1b8bc2; }
+.header-social { display: flex; align-items: center; gap: 10px; margin-left: 10px; }
+.hs-ico { display: inline-grid; place-items: center; border-radius: 50%; color: #fff; border: 2px solid #fff; transition: transform .15s ease, box-shadow .15s ease, filter .15s ease; }
+.hs-ico:hover { transform: translateY(-2px) scale(1.06); }
+.hs-ico:focus-visible { outline: 3px solid #ffc400; outline-offset: 3px; }
+/* Telegram：官方蓝渐变，放大并加白边与蓝色光晕，在深蓝页头上更醒目 */
+.hs-tg { width: 50px; height: 50px; background: linear-gradient(180deg, #37aee2 0%, #1e96c8 100%); box-shadow: 0 0 0 4px rgba(55, 174, 226, .38), 0 6px 14px rgba(0, 0, 0, .35); }
+.hs-tg svg { width: 28px; height: 28px; margin-left: -2px; }
+.hs-tg:hover { box-shadow: 0 0 0 5px rgba(55, 174, 226, .5), 0 8px 18px rgba(0, 0, 0, .4); filter: brightness(1.06); }
+/* GitHub：官方深色 #24292f + 白色 Octocat */
+.hs-gh { width: 40px; height: 40px; background: #24292f; border-color: rgba(255, 255, 255, .92); box-shadow: 0 4px 10px rgba(0, 0, 0, .35); }
+.hs-gh svg { width: 24px; height: 24px; }
+.hs-gh:hover { background: #000; box-shadow: 0 6px 14px rgba(0, 0, 0, .45); }
 @media (max-width: 1240px) { .header-social { margin-left: auto; margin-right: 6px; } }
+/* 手机：图标放大后仍要和 logo、菜单按钮挤在同一行（不换行成两行） */
+@media (max-width: 480px) {
+  .site-header .header-inner { gap: 8px; }
+  .site-header .logo { gap: 8px; }
+  .site-header .logo-mark { width: 38px; height: 38px; }
+  .site-header .nav-toggle { width: 42px; height: 42px; font-size: 20px; }
+  .header-social { gap: 6px; margin-right: 0; }
+  .hs-tg { width: 44px; height: 44px; box-shadow: 0 0 0 3px rgba(55, 174, 226, .38), 0 4px 10px rgba(0, 0, 0, .35); } .hs-tg svg { width: 24px; height: 24px; }
+  .hs-gh { width: 34px; height: 34px; } .hs-gh svg { width: 20px; height: 20px; }
+}
+@media (max-width: 374px) {
+  .site-header .container { padding-inline: 14px; }
+  .hs-tg { width: 40px; height: 40px; box-shadow: 0 0 0 3px rgba(55, 174, 226, .38), 0 3px 8px rgba(0, 0, 0, .35); } .hs-tg svg { width: 22px; height: 22px; }
+  .hs-gh { width: 32px; height: 32px; } .hs-gh svg { width: 18px; height: 18px; }
+}
+@media (max-width: 359px) { .site-header .logo-text i { display: none; } }
 
 /* ---- 对比度修复（2026-10-31 排查）：浅色面板里的链接 / 次要文字 / 焦点跳转链接 ---- */
 html[data-style="budo"] .page-head .callout a:not(.btn),
@@ -1400,3 +1423,6 @@ html[data-style="budo"] .pl-head h2 .ico, html[data-style="budo"] .pp-sec-head h
 .rk-after { display: block; margin-top: 2px; color: #8f4a00; font-weight: 700; white-space: nowrap; }
 .foot-about { margin-top: 14px; } .foot-about h2 { margin: 0 0 6px; } .foot-about p { margin: 0 0 8px; line-height: 1.75; } .foot-about .foot-slogan { font-weight: 700; margin-top: 4px; }
 @media (min-width: 901px) { .foot-grid { grid-template-columns: 1.9fr 1fr 1.2fr 1fr; } }
+/* 顶部社交图标：图形固定为白色（避免被全局链接色覆盖成橙色） */
+.header-social .hs-ico, .header-social .hs-ico:visited, .header-social .hs-ico:hover { color: #fff; text-decoration: none; }
+.header-social .hs-ico svg, .header-social .hs-ico svg path { fill: #fff; }
