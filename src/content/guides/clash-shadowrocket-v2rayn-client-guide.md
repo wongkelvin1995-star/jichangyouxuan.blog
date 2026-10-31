@@ -1,11 +1,11 @@
 ---
-title: "Clash、Shadowrocket、v2rayN 怎么选？从设备出发看客户端兼容性"
-description: "机场客户端选择指南：按 Windows、Android、iOS、macOS 设备梳理 Clash 系、小火箭、v2rayN、sing-box、Hiddify 的差异，说明订阅格式、多设备注意事项与基础安全检查。"
-keyword: "机场客户端选择"
+title: "Clash、Shadowrocket、v2rayN 怎么选？机场订阅导入与客户端兼容性"
+description: "机场订阅怎么导入、用哪个客户端：按 Windows、Android、iOS、macOS 设备梳理 Clash 系、小火箭、v2rayN、sing-box、Hiddify 的差异，说明订阅格式、多设备注意事项与基础安全检查。"
+keyword: "机场订阅"
 category: "客户端"
 summary: "客户端只是工具，机场提供的是订阅。本文从设备出发，梳理常见客户端的适用平台、订阅格式的差异、多设备使用的注意事项，以及几条基础的安全检查。"
 pubDate: 2026-10-28
-updatedDate: 2026-10-28
+updatedDate: 2026-11-01
 order: 6
 related: ["airport-buying-pitfalls-guide", "iepl-iplc-relay-direct-explained", "airport-selection-2026-budget-traffic-needs"]
 ---
@@ -29,13 +29,25 @@ related: ["airport-buying-pitfalls-guide", "iepl-iplc-relay-direct-explained", "
 
 安装客户端不等于拥有了服务。你还需要从机场获取**订阅链接**，再把它导入客户端。订阅链接相当于你的账户凭证：谁拿到它，谁就能使用你的流量。
 
-## 常见的订阅格式
+## 机场订阅的常见格式
 
 - **Clash 配置格式：** 通常是 YAML，包含节点与规则，Clash 系客户端可以直接导入；
 - **通用订阅格式：** 一组节点链接，经过编码，适用于 v2rayN、v2rayNG、小火箭等；
 - **sing-box 配置格式：** JSON 配置，供 sing-box 与相关客户端使用。
 
 购买前请确认服务商是否提供与你的客户端匹配的格式。如果需要使用格式转换，请优先使用服务商自己提供的转换方式，因为把订阅链接填进陌生的在线转换站，等于把凭证交给了第三方。
+
+## Clash 教程：导入机场订阅的基本步骤
+
+以 Windows / macOS 上常见的 Clash Verge Rev 为例（其他 Clash 系客户端的菜单名称可能略有不同）：
+
+1. 在机场后台复制 Clash 订阅链接（常见入口叫「一键订阅」或「复制订阅地址」），不要发给别人；
+2. 打开客户端的「订阅」页，粘贴链接并点击「导入」，等待节点列表出现；
+3. 到「代理」页选择一个节点，模式先用「规则」，只有确实需要时才切换到「全局」；
+4. 在设置里开启「系统代理」，浏览器等应用就会通过所选节点上网；
+5. 连不上时先更新订阅、换一个节点，再按下文的排查顺序检查。
+
+iPhone 上的小火箭、Windows 上的 v2rayN 思路相同：导入订阅、选择节点、开启连接。客户端请只从项目官方页面或正规应用商店安装。
 
 ## 多设备使用要注意什么
 
@@ -52,7 +64,7 @@ related: ["airport-buying-pitfalls-guide", "iepl-iplc-relay-direct-explained", "
 - 怀疑订阅泄露时，立即向服务商申请重置；
 - 用独立邮箱注册，避免重复使用重要密码。
 
-## 导入订阅失败时的排查思路
+## Clash 无法连接、订阅导入失败怎么排查
 
 第一次导入订阅，最常见的问题其实不复杂。可以按下面的顺序检查：
 

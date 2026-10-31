@@ -1,11 +1,11 @@
 ---
-title: "机场套餐中的 IEPL、IPLC、中转与直连，有哪些选择差异？"
-description: "机场线路选择指南：解释 IEPL、IPLC、BGP 中转、中转和直连的基本含义，说明线路名称为什么不等于实际速度，以及购买前如何核对线路说明。"
-keyword: "机场线路选择"
+title: "机场节点与线路怎么选？IEPL、IPLC、中转与直连的区别"
+description: "机场节点和线路怎么看：解释 IEPL、IPLC、BGP 中转、中转和直连的基本含义，说明节点数量和线路名称为什么都不等于实际速度，以及购买前如何核对线路说明。"
+keyword: "机场节点"
 category: "线路选择"
 summary: "线路名称说明的是网络结构，不是速度保证。本文解释 IEPL、IPLC、中转、直连等常见术语，不同使用场景的关注重点，以及购买前该如何核对线路说明。"
 pubDate: 2026-10-28
-updatedDate: 2026-10-28
+updatedDate: 2026-11-01
 order: 4
 related: ["chatgpt-streaming-airport-checklist", "airport-buying-pitfalls-guide", "airport-selection-2026-budget-traffic-needs"]
 ---
@@ -44,7 +44,7 @@ related: ["chatgpt-streaming-airport-checklist", "airport-buying-pitfalls-guide"
 
 如果你只是以网页和文字为主，不必为昂贵的专线套餐多付钱；如果你对延迟敏感，则要格外认真地核对线路说明，并用月付试用。
 
-## 为什么不能只看节点数量
+## 机场节点怎么看：为什么不能只看节点数量
 
 节点列表很长，看起来很丰富，但数量不等于质量。多个节点可能位于同一个机房、共用同一个出口；节点多也意味着你需要更多时间挑选。比起「有多少个节点」，更实用的问题是：**出口地区覆盖了哪些？每个地区有几个独立的出口？**
 

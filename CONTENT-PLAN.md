@@ -4,22 +4,36 @@
 
 | # | 文章 slug | 核心词 | 搜索意图 | 目标页面定位 | 后续更新建议 |
 | --- | --- | --- | --- | --- | --- |
-| 1 | airport-selection-2026-budget-traffic-needs | 机场优选 2026 | 「怎么根据预算/流量选机场」（决策框架） | 概念总览，导向预算页与选购指南 | 价格核验后加入"按预算档位推荐名单"章节 |
+| 1 | airport-selection-2026-budget-traffic-needs | 机场推荐指南 | 「怎么根据预算/流量选机场」（决策框架） | 概念总览，导向预算页与选购指南 | 价格核验后加入"按预算档位推荐名单"章节 |
 | 2 | monthly-vs-yearly-airport-plan | 月付机场与年付机场 | 月付 vs 年付划不划算 | 盈亏平衡月数的教学计算 | 加入真实套餐对照（需核验） |
-| 3 | cheap-airport-cost-per-gb | 便宜机场推荐 | 低价是否划算、每GB价格怎么算 | 每GB成本方法论 + 假设案例 | 与价格页数据联动，展示真实案例 |
-| 4 | iepl-iplc-relay-direct-explained | 机场线路选择 | IEPL/IPLC/中转/直连区别 | 术语解释与核对清单 | 随行业变化修订术语 |
+| 3 | cheap-airport-cost-per-gb | 性价比机场 / 便宜机场 | 低价是否划算、每GB价格怎么算 | 每GB成本方法论 + 假设案例 | 与价格页数据联动，展示真实案例 |
+| 4 | iepl-iplc-relay-direct-explained | 机场节点 / 线路选择 | IEPL/IPLC/中转/直连区别 | 术语解释与核对清单 | 随行业变化修订术语 |
 | 5 | chatgpt-streaming-airport-checklist | AI机场推荐 | ChatGPT/流媒体选机场要看什么 | 条件清单，不做解锁承诺 | 有核验信息后加入各品牌宣传范围对照 |
-| 6 | clash-shadowrocket-v2rayn-client-guide | 机场客户端选择 | 各设备用哪个客户端 | 兼容性与订阅格式 | 每季度复核客户端维护状态 |
+| 6 | clash-shadowrocket-v2rayn-client-guide | 机场订阅 / Clash 教程 | 各设备用哪个客户端 | 兼容性与订阅格式 | 每季度复核客户端维护状态 |
 | 7 | airport-buying-pitfalls-guide | 机场购买避坑 | 买之前避免哪些坑 | 条款/宣传识别 | 补充真实读者反馈的常见问题 |
-| 8 | how-we-compare-34-airports | 机场比较方法 | 本站怎么比较、可信吗 | 透明度与 E-E-A-T | 每次数据更新时同步修改 |
+| 8 | how-we-compare-34-airports | 机场测评 | 本站怎么比较、可信吗 | 透明度与 E-E-A-T | 每次数据更新时同步修改 |
 
-## 防止关键词内耗
+## 防止关键词内耗（2026-11-01 按站长给的关键词重新分配）
 
-- `/`：品牌与泛词（机场优选、机场推荐 2026）；
-- `/budget-guide/`：工具型，按预算选（估算流量、预算反推每GB成本）；
-- `/selection-guide/`：流程型枢纽页（六步），分流到各文章；
-- 文章 1 与上述页面通过**不同意图**区分：1 讲思路，预算页给工具，指南页给流程；
-- `/airports/lingdongyun/`：承接"灵动云 / 灵动云机场 / 灵动云套餐"品牌词，只写已知/未知和核对清单。
+一页一个主关键词，同义词集中放在同一页；新内容不要把下表的主关键词放进其他页面的 Title。
+
+| 页面 | 主关键词 | 辅助关键词 |
+| --- | --- | --- |
+| `/` | 机场推荐 | 2026 机场推荐、机场推荐 2026、机场推荐最新、机场推荐网站、机场推荐榜、机场优选 |
+| `/rankings/` | 机场排名 | 机场排行榜、机场排行 |
+| `/airports/` | 机场导航 | 机场官网（注册按钮是推广链接，不声称本站是官网） |
+| `/prices/` | 机场对比 | 机场套餐价格比较、每 GB 成本 |
+| `/faq/` | 机场 VPN | 机场怎么用、稳定机场推荐（本站无实测，不做稳定性排名） |
+| `/airports/lingdongyun/` | 灵动云 | 灵动云机场、灵动云套餐 |
+| 文章 airport-selection-2026-budget-traffic-needs | 机场推荐指南 | 「机场优选 2026」留给首页 |
+| 文章 iepl-iplc-relay-direct-explained | 机场节点 | IEPL、IPLC、中转、直连 |
+| 文章 clash-shadowrocket-v2rayn-client-guide | 机场订阅 | Clash 教程、Clash 订阅链接、Clash 无法连接、Clash Verge Rev、Shadowrocket、小火箭、v2rayN |
+| 文章 cheap-airport-cost-per-gb | 性价比机场 | 便宜机场、每 GB 成本 |
+| 文章 how-we-compare-34-airports | 机场测评 | 机场评测（只讲比较标准，本站暂无实测） |
+| 文章 airport-buying-pitfalls-guide | 机场购买 | 避坑、退款条款 |
+| 文章 chatgpt-streaming-airport-checklist | AI 机场推荐 | ChatGPT 无法访问 |
+
+暂不采用：Clash 下载（本站不推荐下载渠道）、游戏加速器、VPN 连接失败 / VPN 无法上网 / iOS VPN / Android VPN / WireGuard VPN（VPN 产品词，与本站定位不符）。
 
 ## 后续 3 个月建议（按优先级）
 

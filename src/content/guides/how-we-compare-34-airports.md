@@ -1,11 +1,11 @@
 ---
-title: "如何比较 34 家机场？机场优选的选购标准与资料更新方法"
-description: "机场比较方法说明：为什么机场优选采用编辑精选展示，套餐价格如何统一口径，数据来源与更新时间怎么标注，未核验信息如何区分，以及读者如何使用目录筛选工具。"
-keyword: "机场比较方法"
+title: "如何比较 34 家机场？机场测评标准与资料更新方法"
+description: "机场评测该看什么：机场优选为什么采用编辑精选展示，套餐价格如何统一口径，数据来源与更新时间怎么标注，未经实测的信息如何区分，以及读者如何使用目录筛选工具。"
+keyword: "机场测评"
 category: "方法与透明度"
 summary: "本文公开机场优选 2026 如何比较 34 家机场：为什么采用编辑精选展示、价格怎样统一口径、数据来源与更新时间怎么标注、未经实测的信息如何区分，以及灵动云与其他品牌的列入方式。"
 pubDate: 2026-10-28
-updatedDate: 2026-10-31
+updatedDate: 2026-11-01
 order: 8
 related: ["airport-selection-2026-budget-traffic-needs", "cheap-airport-cost-per-gb", "airport-buying-pitfalls-guide"]
 ---
@@ -61,4 +61,4 @@ related: ["airport-selection-2026-budget-traffic-needs", "cheap-airport-cost-per
 
 ## 这套方法的局限
 
-我们清楚这套方法有局限：缺少实测，价格只是历史参考，推广关系也会影响重点推荐的对象。我们的做法是把局限公开，让你自己判断。更完整的规则请看[评选与套餐计算方法](/methodology/)，需要选购思路则可以读[《机场优选 2026：如何根据预算、流量与实际需求选择机场》](/guides/airport-selection-2026-budget-traffic-needs/)。
+我们清楚这套方法有局限：缺少实测，价格只是历史参考，推广关系也会影响重点推荐的对象。我们的做法是把局限公开，让你自己判断。更完整的规则请看[评选与套餐计算方法](/methodology/)，需要选购思路则可以读[《机场推荐指南：如何根据预算、流量与实际需求选择机场》](/guides/airport-selection-2026-budget-traffic-needs/)。

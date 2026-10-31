@@ -10,8 +10,8 @@ import { SITE } from '../../data/site';
 const name = (slug: string) => airports.find((a) => a.slug === slug)?.name ?? slug;
 ---
 <Base
-  title="机场套餐价格比较｜同周期每 GB 成本计算器｜机场优选 2026"
-  description={`机场套餐价格比较：34 家机场共 ${planStats.total} 档套餐（${planStats.verified} 档已按站长提供的截图核对），按月付、季付、半年付、年付、两年付、三年付、一次性流量包分开比较每 GB 成本与月均费用，附计算器，价格均标明来源与日期。`}
+  title="机场对比｜34 家机场套餐价格比较与每 GB 成本计算器｜机场优选 2026"
+  description={`机场对比与套餐价格比较：34 家机场共 ${planStats.total} 档套餐（${planStats.verified} 档已按站长提供的截图核对），按月付、季付、半年付、年付、两年付、三年付、一次性流量包分开比较每 GB 成本与月均费用，附计算器，价格均标明来源与日期。`}
   path="/prices/"
   crumbs={[{ name: '价格比较', path: '/prices/' }]}
 >
@@ -70,7 +70,7 @@ const name = (slug: string) => airports.find((a) => a.slug === slug)?.name ?? sl
 
   <section class="container section" style="padding-top:10px">
     <div class="prose">
-      <h2>从这张表能读出什么</h2>
+      <h2>机场对比：从这张表能读出什么</h2>
       <p>以灵动云为例（按站长提供的截图核对）：月付四档从 ¥20/100GB 到 ¥180/1500GB，每 GB 成本从 ¥0.20 降到 ¥0.12，档位越大越划算；同一档位拉长周期还会再降，如拂风月付 ¥20，三年付 ¥540 折合月均 ¥15；年付「穿云」¥99，每 30 天刷新 70GB，折合每 GB 约 ¥0.12，是流量不大时很便宜的入口，但只有 70GB/月，也不是通用线路；一次性流量包的每 GB 成本在 ¥1.1–¥1.3，远高于月付档。同样叫「便宜」，换成不同的周期和规则，成本可以差出十倍。用优惠码 ld888 后，除穿云、至尊私人定制、不限时流量包外的档位（含两年付、三年付）享 8 折（如拂风月付 ¥20 → ¥16、拂风三年付 ¥540 → ¥432、驭浪年付 ¥510 → ¥408）；站长说明穿云价格已按比例调整为优惠价，不再叠加优惠码，实际金额以结算页为准。完整解读见<a href="/guides/lingdongyun-plan-price-structure/">《灵动云套餐价格结构解读》</a>，其他品牌请打开各自的详细页。</p>
       <p>要提醒的是：定制或独享档位（例如 ¥680 的独立 IP 方案）买的是独立带宽或独立公网 IP，不是流量，因此不要用它们的每 GB 成本去和普通档位比较。</p>
     </div>
@@ -118,7 +118,7 @@ const name = (slug: string) => airports.find((a) => a.slug === slug)?.name ?? sl
 
       <h2>每条套餐会记录哪些信息</h2>
       <p>一条合格的套餐记录至少包含：品牌名称、套餐名称、人民币价格、计费周期、每周期流量、流量重置方式、每 GB 参考成本、线路类型、可用客户端、AI 与流媒体相关支持信息，以及资料来源类型和日期。缺少日期的记录，不会进入比较表。</p>
-      <p>想了解为什么低价不等于划算，请读<a href="/guides/cheap-airport-cost-per-gb/">《便宜机场真的划算吗？学会计算每 GB 流量成本》</a>；想了解月付与年付如何取舍，请读<a href="/guides/monthly-vs-yearly-airport-plan/">《月付机场与年付机场怎么选》</a>。</p>
+      <p>想了解为什么低价不等于划算，请读<a href="/guides/cheap-airport-cost-per-gb/">《便宜机场真的划算吗？性价比机场要看每 GB 流量成本》</a>；想了解月付与年付如何取舍，请读<a href="/guides/monthly-vs-yearly-airport-plan/">《月付机场与年付机场怎么选》</a>。</p>
     </div>
   </section>
 

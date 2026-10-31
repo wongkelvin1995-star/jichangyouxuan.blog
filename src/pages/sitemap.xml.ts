@@ -19,9 +19,9 @@ export async function GET() {
   const catDate = (name: string) => fmtDate(guides.filter((g) => g.data.category === name).reduce((m, g) => (g.data.updatedDate > m ? g.data.updatedDate : m), new Date(0)));
   const urls = [
     stat('/', max(fmtDate(latestGuide), brandsLatest, PAGE_UPDATED['/']), '1.0', 'weekly'),
-    stat('/airports/', brandsLatest, '0.9', 'weekly'),
+    stat('/airports/', max(brandsLatest, PAGE_UPDATED['/airports/']), '0.9', 'weekly'),
     ...airports.map((a) => stat(`/airports/${a.slug}/`, brandDate(a.slug), rankOf(a) ? '0.9' : '0.7', 'weekly')),
-    stat('/prices/', brandsLatest, '0.9', 'weekly'),
+    stat('/prices/', max(brandsLatest, PAGE_UPDATED['/prices/']), '0.9', 'weekly'),
     stat('/rankings/', max(brandsLatest, PAGE_UPDATED['/rankings/']), '0.9', 'weekly'),
     stat('/coupons/', max(PAGE_UPDATED.couponsRegistered, PAGE_UPDATED['/coupons/']), '0.8', 'weekly'),
     stat('/budget-guide/', PAGE_UPDATED['/budget-guide/'], '0.8'),

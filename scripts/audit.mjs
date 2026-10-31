@@ -132,7 +132,7 @@ const top1 = home.indexOf('id="top1-title"');
 if (top1 < 0 || !/id="top1-title">灵动云/.test(home)) fail('首页第一名不是灵动云');
 const order = ['灵动云', '暮光加速', '微风网络', '飞猫云', '大佬云'].map((n) => home.indexOf(`>${n}`, home.indexOf('id="top5"')));
 if (order.some((x, i) => x < 0 || (i && x < order[i - 1]))) fail('首页 TOP5 顺序不正确');
-if (!home.includes('机场优选 2026：从预算到套餐，')) fail('首页 H1 文案不符');
+if (!home.includes('机场优选 2026：') || !home.includes('机场推荐与选购，')) fail('首页 H1 文案不符');
 
 // 5. 文章
 const gdir = path.join('src/content/guides');
