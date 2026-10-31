@@ -1,9 +1,46 @@
 ---
 import Base from '../layouts/Base.astro';
+import { airports, lingdong } from '../data/airports';
+import { plans, plansOf, isCustom, profileOf, fmt, planStats } from '../data/plans';
+import { couponPrice } from '../data/pricing';
+import { coupons } from '../data/coupons';
+import { SITE } from '../data/site';
+
+const nameOf = (s: string) => airports.find((a) => a.slug === s)?.name ?? s;
+const ldPlans = plansOf('lingdongyun');
+const ldProfile = profileOf('lingdongyun');
+/** 灵动云常规月付档（排除定制档），按每月流量从小到大；附同名年付与用码后价格 */
+const ldTiers = ldPlans
+  .filter((p) => p.period === 'monthly' && !isCustom(p) && p.gbPerMonth)
+  .sort((a, b) => a.gbPerMonth! - b.gbPerMonth!)
+  .map((p) => {
+    const y = ldPlans.find((x) => x.period === 'yearly' && x.planName === p.planName);
+    return { n: p.planName, g: p.gbPerMonth!, c: p.priceCny, cc: couponPrice(p), y: y ? y.priceCny : null, yc: y ? couponPrice(y) : null };
+  });
+/** 穿云：年付专属档，每 30 天刷新 */
+const cy = ldPlans.find((p) => p.planName.startsWith('穿云') && p.period === 'yearly' && p.gbPerMonth);
+/** 其他机场的月付候选（排除定制档与灵动云） */
+const pool = plans
+  .filter((p) => p.period === 'monthly' && !isCustom(p) && p.gbPerMonth && p.airportSlug !== 'lingdongyun')
+  .map((p) => ({ s: p.airportSlug, n: nameOf(p.airportSlug), p: p.planName, c: p.priceCny, g: p.gbPerMonth!, v: p.status === 'verified' ? 1 : 0, t: /限时|活动|首月|新用户/.test(p.note + p.planName) ? '限时价' : '' }));
+const verifiedNames = planStats.verifiedBrands.map(nameOf).join('、');
+const planData = {
+  ld: { tiers: ldTiers, cy: cy ? { n: cy.planName, g: cy.gbPerMonth, y: cy.priceCny } : null, url: lingdong.url, line: ldProfile.lineTypes[0] ?? '', code: coupons.lingdongyun?.code ?? '' },
+  pool,
+  vn: verifiedNames,
+  ref: SITE.referenceDate,
+};
+const planJson = JSON.stringify(planData).replace(/</g, '\\u003c');
+/** 可收录的选档表：每月实际用量 = 档位流量 ÷ 1.2（留 20% 余量） */
+const ldRows = [
+  ...(cy ? [{ name: cy.planName, gb: `${cy.gbPerMonth}GB / 30 天`, cap: Math.floor(cy.gbPerMonth! / 1.2), mon: '年付专属', yr: `¥${fmt(cy.priceCny)}（约 ¥${fmt(cy.priceCny / 12)}/月）`, cp: '不参与优惠码' }] : []),
+  ...ldTiers.map((t) => ({ name: t.n, gb: `${t.g}GB/月`, cap: Math.floor(t.g / 1.2), mon: `¥${fmt(t.c)}`, yr: t.y ? `¥${fmt(t.y)}（约 ¥${fmt(t.y / 12)}/月）` : '—', cp: t.cc !== null ? `月付 ¥${fmt(t.cc)}${t.yc !== null ? ` · 年付 ¥${fmt(t.yc)}` : ''}` : '不参与优惠码' })),
+];
+const ldDate = ldProfile.verifiedAt ?? ldProfile.collectedAt;
 ---
 <Base
   title="根据预算选择机场｜流量估算器与预算反推每 GB 成本｜机场优选 2026"
-  description="不知道该花多少钱买机场？先用流量估算器算出每月需要多少 GB，再用预算反推可接受的每 GB 成本，最后按月付试用、年付长期的顺序选择适合自己的套餐。"
+  description="不知道该花多少钱买机场？先用流量估算器算出每月需要多少 GB，页面会按流量列出够用的套餐（灵动云编辑精选在前），再用预算反推可接受的每 GB 成本，按月付试用、年付长期的顺序选择。"
   path="/budget-guide/"
   crumbs={[{ name: '按预算选', path: '/budget-guide/' }]}
 >
@@ -28,9 +65,14 @@ import Base from '../layouts/Base.astro';
         <div class="field"><label for="e-ai">每天 AI 对话 / 在线办公（小时）</label><input id="e-ai" type="number" inputmode="decimal" min="0" step="0.5" value="0.5" /></div>
         <div class="field"><label for="e-dl">每月大文件下载（GB）</label><input id="e-dl" type="number" inputmode="decimal" min="0" step="1" value="0" /></div>
         <div class="field"><label for="e-days">每月使用天数</label><input id="e-days" type="number" inputmode="numeric" min="1" max="31" step="1" value="30" /></div>
+        <div class="field"><label for="e-budget">每月预算（元，可不填）</label><input id="e-budget" type="number" inputmode="decimal" min="0" step="1" placeholder="例如 40" /></div>
       </form>
-      <div class="result" id="est-out" aria-live="polite"></div>
+      <div class="est-side">
+        <div class="result" id="est-out" aria-live="polite"></div>
+        <div class="est-plans" id="est-plans" aria-live="polite"></div>
+      </div>
     </div>
+    <script is:inline type="application/json" id="plan-data" set:html={planJson}></script>
     <p class="small muted" style="margin-top:14px">单位流量参考：网页/社交约 0.2 GB/小时，音乐约 0.06 GB/小时，AI 对话与在线办公约 0.03 GB/小时，视频按所选清晰度。这些是教学用的典型估算值，不代表任何服务商的实测数据。</p>
   </section>
 
@@ -46,6 +88,23 @@ import Base from '../layouts/Base.astro';
       </form>
       <div class="result" id="bud-out" aria-live="polite"><p class="muted" style="margin:0">填入预算和流量，这里会显示每 GB 成本上限。</p></div>
     </div>
+  </section>
+
+  <section class="container section" id="lingdongyun-by-usage" style="padding-top:0">
+    <div class="section-head">
+      <h2>灵动云套餐按每月用量怎么选</h2>
+      <p>灵动云是本站编辑精选第一（<a href="/affiliate-disclosure/">推广合作</a>）。下表按站长提供的官网截图核对的价格（{ldDate}）生成，已按 20% 余量换算：每月实际用量不超过左列数字，就可以选对应档位。</p>
+    </div>
+    <p class="small muted tbl-hint">表格可左右滑动，查看月付、年付和用码后价格。</p>
+    <div class="table-wrap">
+      <table class="tbl-nowrap">
+        <thead><tr><th>每月实际用量</th><th>灵动云档位</th><th>月付</th><th>年付（折合每月）</th><th>用 {coupons.lingdongyun?.code} 后</th></tr></thead>
+        <tbody>
+          {ldRows.map((r) => <tr><td>≤ {r.cap} GB</td><td><b>{r.name}</b> · {r.gb}</td><td>{r.mon}</td><td>{r.yr}</td><td>{r.cp}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:12px">穿云是年付专属档，购买日起每 30 天刷新流量，不参与优惠码；用码后价格按站长登记的折扣计算，以结算页为准。季付、半年付、两年付、三年付与重置包见<a href="/airports/lingdongyun/">灵动云详细页</a>，各档的每 GB 成本见<a href="/guides/lingdongyun-plan-price-structure/">灵动云套餐价格结构解读</a>。</p>
   </section>
 
   <section class="container section" style="padding-top:0">
@@ -92,6 +151,51 @@ import Base from '../layouts/Base.astro';
     (function () {
       var g = function (id) { return document.getElementById(id); }, n = function (id) { return parseFloat(g(id).value) || 0; };
       var out = g('est-out'); if (!out) return;
+      var PD = null; try { PD = JSON.parse(g('plan-data').textContent); } catch (e) { PD = null; }
+      var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+      var m2 = function (x) { return String(Math.round(x * 100) / 100); };
+      function renderPlans(need) {
+        var box = g('est-plans'); if (!box || !PD) return;
+        if (!(need > 0)) { box.innerHTML = ''; return; }
+        var budget = n('e-budget'), ld = PD.ld, t = null, i;
+        for (i = 0; i < ld.tiers.length; i++) { if (ld.tiers[i].g >= need) { t = ld.tiers[i]; break; } }
+        var over = !t; if (over) t = ld.tiers[ld.tiers.length - 1];
+        var notes = [];
+        if (t.y) notes.push('年付 ¥' + m2(t.y) + '，折合约 ¥' + m2(t.y / 12) + '/月');
+        if (t.cc !== null) notes.push('用优惠码 ' + esc(ld.code) + '：月付约 ¥' + m2(t.cc) + (t.yc !== null ? '，年付约 ¥' + m2(t.yc) : '') + '（以结算页为准）');
+        if (over) notes.push('你的建议流量超过灵动云常规档位的上限（' + t.g + 'GB/月），可以先向客服确认更大流量的方案');
+        if (budget > 0 && t.c > budget) notes.push('月付比你的预算高 ¥' + m2(t.c - budget) + (t.y ? '；年付折合每月 ¥' + m2(t.y / 12) : ''));
+        if (ld.cy && ld.cy.g >= need) notes.push('流量不大时也可以看「' + esc(ld.cy.n) + '」：¥' + m2(ld.cy.y) + '/年，每 30 天刷新 ' + ld.cy.g + 'GB，折合约 ¥' + m2(ld.cy.y / 12) + '/月（年付专属，不参与优惠码）');
+        if (ld.line) notes.push('线路：' + esc(ld.line));
+        var h = '<div class="card est-pick"><div class="est-pick-head"><span class="chip chip-sun">编辑精选 No.1</span><a class="small muted" href="/affiliate-disclosure/">推广合作</a></div>'
+          + '<div class="est-pick-name">灵动云 · ' + esc(t.n) + '<span>' + t.g + 'GB/月 · ' + (over ? '常规档上限' : '流量够用的入门档') + '</span></div>'
+          + '<div class="est-pick-price">¥' + m2(t.c) + '<small>/月</small></div>'
+          + '<ul class="est-pick-notes">' + notes.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>'
+          + '<div class="btn-row est-pick-btns"><a class="btn btn-sm" href="' + esc(ld.url) + '" rel="sponsored nofollow noopener" target="_blank">前往灵动云注册</a><a class="btn btn-sm btn-ghost" href="/airports/lingdongyun/">灵动云全部套餐</a></div></div>';
+        var best = {}, all = [];
+        ld.tiers.forEach(function (x) { if (x.g >= need) all.push(x.c); });
+        PD.pool.forEach(function (p) {
+          if (p.g < need) return;
+          all.push(p.c);
+          if (budget > 0 && p.c > budget) return;
+          var b = best[p.s]; if (!b || p.c < b.c || (p.c === b.c && p.g > b.g)) best[p.s] = p;
+        });
+        var list = Object.keys(best).map(function (k) { return best[k]; }).sort(function (a, b) { return a.c - b.c || b.g - a.g; });
+        all.sort(function (a, b) { return a - b; });
+        h += '<div class="card est-others"><h3>其他机场：流量够用的月付套餐</h3>';
+        if (all.length) h += '<p class="small muted">本站资料里每月不少于 ' + Math.ceil(need) + 'GB 的月付套餐有 ' + all.length + ' 档，¥' + m2(all[0]) + ' 起，中位数约 ¥' + m2(all[Math.floor((all.length - 1) / 2)]) + '/月。下面每家只列一档，按价格从低到高' + (budget > 0 ? '，只显示 ¥' + m2(budget) + ' 以内' : '') + '。</p>';
+        if (list.length) {
+          h += '<ul class="est-list">' + list.slice(0, 5).map(function (p) {
+            return '<li><span><a class="nm" href="/airports/' + p.s + '/">' + esc(p.n) + '</a><span class="meta">' + esc(p.p) + ' · ' + p.g + 'GB/月' + (p.t ? ' · ' + p.t : '') + '</span></span>'
+              + '<span class="pr">¥' + m2(p.c) + '/月<span class="chip ' + (p.v ? 'chip-mint' : 'chip-sun') + '">' + (p.v ? '已核对' : '历史参考') + '</span></span></li>';
+          }).join('') + '</ul>';
+          if (list.length > 5) h += '<p class="small" style="margin:0 0 6px"><a href="/prices/">到价格比较页看全部 ' + list.length + ' 家</a></p>';
+        } else {
+          h += '<p class="small">' + (budget > 0 && all.length ? '预算内没有流量够用的月付套餐。可以把视频清晰度调低一档，或适当提高预算。' : '本站资料里没有单月流量这么大的月付套餐，可以到<a href="/prices/">价格比较页</a>看年付或一次性流量包。') + '</p>';
+        }
+        h += '<p class="small muted" style="margin:0">价格为未用优惠码的原价，排序也按原价。' + esc(PD.vn) + ' 的价格已核对，其余为 ' + esc(PD.ref) + ' 的历史参考，下单前请以官网结算页为准。</p></div>';
+        box.innerHTML = h;
+      }
       function est() {
         var days = Math.max(1, Math.min(31, n('e-days')));
         var day = n('e-web') * 0.2 + n('e-vid') * n('e-q') + n('e-aud') * 0.06 + n('e-ai') * 0.03;
@@ -99,6 +203,7 @@ import Base from '../layouts/Base.astro';
         var buf = mon * 1.2;
         out.innerHTML = '<div class="big">约 ' + mon.toFixed(1) + ' GB / 月</div><p class="small muted" style="margin:0">估算范围：' + (mon * 0.7).toFixed(0) + ' – ' + (mon * 1.4).toFixed(0) + ' GB（习惯会波动）</p><dl><dt>每天平均</dt><dd>' + day.toFixed(2) + ' GB</dd><dt>留 20% 余量后建议不少于</dt><dd>' + buf.toFixed(0) + ' GB</dd></dl>';
         var b = g('b-gb'); if (!b.dataset.touched) { b.value = Math.ceil(buf); bud(); }
+        renderPlans(buf);
       }
       function bud() {
         var m = n('b-money'), gb = n('b-gb'), o = g('bud-out');
@@ -107,7 +212,8 @@ import Base from '../layouts/Base.astro';
       }
       ['e-web','e-vid','e-q','e-aud','e-ai','e-dl','e-days'].forEach(function (id) { g(id).addEventListener('input', est); g(id).addEventListener('change', est); });
       g('b-gb').addEventListener('input', function () { this.dataset.touched = '1'; bud(); });
-      g('b-money').addEventListener('input', bud);
+      g('b-money').addEventListener('input', function () { this.dataset.touched = '1'; bud(); });
+      g('e-budget').addEventListener('input', function () { var bm = g('b-money'); if (!bm.dataset.touched) { bm.value = this.value; bud(); } est(); });
       est();
     })();
   </script>

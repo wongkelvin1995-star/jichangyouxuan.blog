@@ -59,8 +59,10 @@ const exists = (u) => {
   return fs.existsSync(path.join(p, 'index.html'));
 };
 let linkCount = 0;
+// 只检查页面里真实的 <a> 链接：<script> 里由脚本拼接的 HTML 字符串不是可抓取链接，先剔除
+const noScript = (h) => h.replace(/<script\b[\s\S]*?<\/script>/g, '');
 for (const p of pages) {
-  for (const m of p.html.matchAll(/<a [^>]*href="([^"]+)"/g)) {
+  for (const m of noScript(p.html).matchAll(/<a [^>]*href="([^"]+)"/g)) {
     const h = m[1];
     if (/^(https?:|mailto:|tel:)/.test(h)) continue;
     linkCount++;
@@ -118,7 +120,7 @@ if (attach && fs.existsSync(attach)) {
 }
 // 外部链接 rel
 for (const p of pages) {
-  for (const m of p.html.matchAll(/<a [^>]*href="(https?:\/\/[^"]+)"[^>]*>/g)) {
+  for (const m of noScript(p.html).matchAll(/<a [^>]*href="(https?:\/\/[^"]+)"[^>]*>/g)) {
     if (m[1].includes('jichangyouxuan.blog')) continue;
     if (/aff|code=/.test(m[1]) && !/sponsored/.test(m[0])) fail(`${p.url} 外链缺少 sponsored：${m[1]}`);
   }

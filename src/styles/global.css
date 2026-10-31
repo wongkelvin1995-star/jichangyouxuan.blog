@@ -1458,3 +1458,27 @@ html[data-style="budo"] .promo-card .promo-note { background: rgba(20, 33, 74, .
 
 /* 表格首列是短标签时不拆行（如「A：轻度用户」）；末列数值同理。窄屏时表格在 .table-wrap 内横向滑动 */
 .tbl-label-nowrap th:first-child, .tbl-label-nowrap td:first-child, .tbl-label-nowrap td:last-child { white-space: nowrap; }
+
+/* 按预算选：估算器右栏的套餐建议（灵动云编辑精选在前，其余按原价） */
+.est-side { display: grid; gap: 16px; }
+.est-plans { display: grid; gap: 14px; }
+.est-plans:empty { display: none; }
+.est-pick, .est-others { padding: 16px 18px; }
+.est-pick-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.est-pick-name { font-weight: 900; font-size: 19px; line-height: 1.4; }
+.est-pick-name span { display: block; font-size: 14px; font-weight: 700; color: var(--muted); }
+.est-pick-price { font-size: 30px; font-weight: 900; line-height: 1.2; color: var(--orange-deep); margin: 4px 0 6px; }
+.est-pick-price small { font-size: 15px; font-weight: 700; color: var(--muted); }
+.est-pick-notes { margin: 0 0 12px; padding-left: 1.2em; font-size: 14.5px; line-height: 1.7; }
+.est-pick-btns { gap: 10px; }
+.est-others h3 { margin: 0 0 6px; font-size: 18px; }
+.est-list { list-style: none; margin: 8px 0; padding: 0; }
+.est-list li { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 9px 0; border-top: 1px dashed var(--line); }
+.est-list li:first-child { border-top: 0; }
+.est-list .nm { font-weight: 800; }
+.est-list .meta { display: block; font-size: 13.5px; color: var(--muted); }
+.est-list .pr { white-space: nowrap; font-weight: 900; text-align: right; }
+.est-list .pr .chip { display: table; margin: 4px 0 0 auto; font-size: 12px; padding: 0 8px; line-height: 1.6; }
+.tbl-nowrap th, .tbl-nowrap td { white-space: nowrap; } /* 每行一行显示，窄屏在 .table-wrap 内横向滑动 */
+.tbl-hint { display: none; }
+@media (max-width: 800px) { .tbl-hint { display: block; margin: 0 0 8px; } }
