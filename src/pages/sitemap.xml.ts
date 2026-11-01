@@ -15,6 +15,8 @@ export async function GET() {
   /** 品牌页：该品牌资料的核对/整理日期，与优惠码登记日期取较晚者（优惠码是页面真实内容） */
   const brandDate = (slug: string) => { const p = profileOf(slug); return max(p.verifiedAt ?? p.collectedAt, PAGE_UPDATED.couponsRegistered, PAGE_UPDATED.brandTemplate, PAGE_UPDATED[`/airports/${slug}/`]); };
   const brandsLatest = max(...airports.map((a) => brandDate(a.slug)));
+  /** 套餐资料最近一次整理 / 核对的日期：优惠码总表（每家起步价）和方法说明（已核对档数）直接显示这些数据 */
+  const dataLatest = max(...airports.map((a) => { const p = profileOf(a.slug); return p.verifiedAt ?? p.collectedAt; }));
   const latestUpdate = updates[0]?.date ?? SITE.updated;
   const catDate = (name: string) => fmtDate(guides.filter((g) => g.data.category === name).reduce((m, g) => (g.data.updatedDate > m ? g.data.updatedDate : m), new Date(0)));
   const urls = [
@@ -23,14 +25,14 @@ export async function GET() {
     ...airports.map((a) => stat(`/airports/${a.slug}/`, brandDate(a.slug), rankOf(a) ? '0.9' : '0.7', 'weekly')),
     stat('/prices/', max(brandsLatest, PAGE_UPDATED['/prices/']), '0.9', 'weekly'),
     stat('/rankings/', max(brandsLatest, PAGE_UPDATED['/rankings/']), '0.9', 'weekly'),
-    stat('/coupons/', max(PAGE_UPDATED.couponsRegistered, PAGE_UPDATED['/coupons/']), '0.8', 'weekly'),
+    stat('/coupons/', max(dataLatest, PAGE_UPDATED.couponsRegistered, PAGE_UPDATED['/coupons/']), '0.8', 'weekly'),
     stat('/budget-guide/', PAGE_UPDATED['/budget-guide/'], '0.8'),
     stat('/selection-guide/', PAGE_UPDATED['/selection-guide/'], '0.8'),
     stat('/guides/', fmtDate(latestGuide), '0.8', 'weekly'),
     ...guides.sort((a, b) => a.data.order - b.data.order).map((g) => stat(`/guides/${g.id}/`, fmtDate(g.data.updatedDate), '0.7')),
     ...categories.filter((c) => guides.filter((g) => g.data.category === c.name).length >= 2).map((c) => stat(`/guides/category/${c.slug}/`, catDate(c.name), '0.6')),
     stat('/updates/', latestUpdate, '0.5', 'weekly'),
-    stat('/methodology/', PAGE_UPDATED['/methodology/'], '0.6'),
+    stat('/methodology/', max(dataLatest, PAGE_UPDATED['/methodology/']), '0.6'),
     stat('/faq/', PAGE_UPDATED['/faq/'], '0.6'),
     stat('/about/', PAGE_UPDATED['/about/'], '0.4', 'yearly'),
     stat('/affiliate-disclosure/', PAGE_UPDATED['/affiliate-disclosure/'], '0.4', 'yearly'),

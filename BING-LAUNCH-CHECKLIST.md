@@ -14,14 +14,14 @@
    - 或构建时设置 `PUBLIC_BING_VERIFY=验证码`（输出 `msvalidate.01` meta）；
 3. [ ] **提交 Sitemap**：`https://jichangyouxuan.blog/sitemap.xml`；
 4. [ ] **IndexNow**：部署后在项目目录运行 `npm run indexnow -- --all`（首次全量），之后只用 `npm run indexnow`；
-5. [ ] **URL 检查 / 提交 URL**：先提交首页、`/airports/lingdongyun/`、`/airports/`、`/prices/` `/rankings/`、`/coupons/` 与 9 篇文章里最重要的 3–4 篇；
+5. [ ] **URL 检查 / 提交 URL**：先提交首页、`/airports/lingdongyun/`、`/airports/`、`/prices/` `/rankings/`、`/coupons/` 与 11 篇文章里最重要的 3–4 篇；
 6. [ ] 检查「站点扫描 / SEO 报告」是否有错误。
 
 ## 上线后 1–4 周
-- [ ] 在 Bing 搜索 `site:jichangyouxuan.blog` 观察收录数量（预期逐步增长到约 60 页（sitemap 当前 58 条））；
+- [ ] 在 Bing 搜索 `site:jichangyouxuan.blog` 观察收录数量（sitemap 当前 62 条，收录数会逐步增加）；
 - [ ] 每周在 Webmaster Tools 查看抓取错误、已编入索引页面、查询词；
 - [ ] 若 1–2 周仍未收录：检查是否有外部链接、内容是否被判重复、sitemap 是否被读取；
-- [ ] 每次更新内容后：修改 `updatedDate`/`SITE.updated` → 构建 → 部署 → `npm run indexnow`；
+- [ ] 每次更新内容后：修改文章的 `updatedDate` 或 `site.ts` 的 `PAGE_UPDATED` → 构建 → 部署 → `npm run indexnow`；
 - [ ] 自然增加外部入口：社交媒体账号主页、你已有博客中**自然相关**的引用（不要站群互链）。
 
 ## 关于"短时间排到首页"的现实说明

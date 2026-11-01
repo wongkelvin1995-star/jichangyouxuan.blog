@@ -23,6 +23,8 @@ export const SITE = {
 /**
  * 各静态页面正文最近一次真实变化的日期（sitemap lastmod 用）。
  * 规则：只有该页的文字 / 数据 / 链接真的改了才更新；换版式、改样式、改脚本不算。
+ * 调整目录顺序或改品牌名称时，除了 brandTemplate，还要一起改 /、/airports/、/prices/、/coupons/；
+ * 正文里写到品牌名的页面（如 /methodology/）也要改。
  */
 export const PAGE_UPDATED: Record<string, string> = {
   '/': '2026-11-01',               // 首页标题与机场推荐用词调整（编辑精选顺序不变）
@@ -30,12 +32,12 @@ export const PAGE_UPDATED: Record<string, string> = {
   '/airports/': '2026-11-01',      // 标题与说明改为机场导航 / 官网注册入口
   '/prices/': '2026-11-01',        // 标题与说明加入机场对比
   '/airports/firefly/': '2026-11-01', // 品牌名「飞为」改为 firefly
-  '/coupons/': '2026-10-31',       // 优惠码总表上线；灵动云折扣范围说明
+  '/coupons/': '2026-11-01',       // 目录顺序调整（无忧第 10 … 闪跃第 16），飞为改名 firefly
   couponsRegistered: '2026-10-30', // 34 家优惠码登记日（品牌页因此有新内容）
   brandTemplate: '2026-11-01',     // 品牌页摘要与描述改为中性说法（去掉「最低」）
   '/budget-guide/': '2026-11-01',   // 估算器下方新增套餐建议与灵动云选档表
   '/selection-guide/': '2026-10-28',
-  '/methodology/': '2026-10-31',   // 已核对 / 历史参考统计口径
+  '/methodology/': '2026-11-01',   // 飞为改名 firefly；引用的文章标题同步更新
   '/faq/': '2026-11-01',           // 新增：机场 VPN 是什么、有没有稳定机场推荐
   '/about/': '2026-11-01',         // 定位说明：不发布测速结果和速度排行榜
   '/affiliate-disclosure/': '2026-10-28',

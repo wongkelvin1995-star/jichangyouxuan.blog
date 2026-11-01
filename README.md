@@ -40,7 +40,7 @@ npm run preview    # 预览 dist
 - **修改优惠码**：只改 `coupons.ts`；图鉴卡片、详细页、优惠码总表、首页同步更新，并在 `updates.ts` 记一笔。
 - **新增文章分类**：在 `categories.ts` 增加一项，`name` 与文章 frontmatter 的 `category` 一致，分类页与 sitemap 自动生成。
 - **发布/更新文章**：在 `src/content/guides/` 新增或修改 md；更新时同步修改 `updatedDate`，sitemap 的 lastmod 会跟随。
-- **站点更新日期**：`site.ts` 的 `updated`（影响静态页面 lastmod）。
+- **sitemap 日期（lastmod）**：`/sitemap.xml` 由 `src/pages/sitemap.xml.ts` 在每次构建时自动生成，不用手动编辑。文章跟随 `updatedDate`，品牌页跟随资料日期，其余静态页跟随 `site.ts` 里的 `PAGE_UPDATED`；改了哪一页的正文，就把那一页改成当天日期（只改样式不算）。`site.ts` 的 `updated` 只用于隐私、推广披露两页显示的日期。
 - **联系邮箱**：在 `site.ts` 填写 `contactEmail`，关于/隐私页会自动显示。
 - **Bing 验证 meta**：构建时设置环境变量 `PUBLIC_BING_VERIFY=你的验证码`；或把 Bing 提供的 `BingSiteAuth.xml` 放进 `public/`。
 
