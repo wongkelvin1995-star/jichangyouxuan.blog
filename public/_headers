@@ -16,3 +16,7 @@ https://:project.pages.dev/*
 
 https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex
+
+# www 子域名是整站的重复副本：在 Cloudflare 设置 301 跳转到主域名之前，先不让搜索引擎收录 www（主域名不受影响）
+https://www.jichangyouxuan.blog/*
+  X-Robots-Tag: noindex
